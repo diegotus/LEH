@@ -1,0 +1,224 @@
+{
+  "buttons": {
+    "login": "Login",
+    "sign_in": "Sign-in",
+    "logout": "Logout",
+    "sign_in_fb": "Sign-in with Facebook",
+    "sign_in_google": "Sign-in with Google",
+    "sign_in_apple": "Sign-in with Apple"
+  },
+  "direction": {
+    "inbound": "Received",
+    "outbound": "Send"
+  },
+  "direPreposition": {
+    "inbound": "from",
+    "outbound": "to"
+  },
+  "transactionStatus": {
+    "failed": "Failed",
+    "success": "Success",
+    "adverbe": {
+      "failed": "successfully",
+      "success": "successfully"
+    }
+  },
+
+  "NOTIFICATION_TITLE_TRANSFER_RECEIVED": "Lajan antre",
+  "NOTIFICATION_BODY_TRANSFER_RECEIVED": "Ou te resevwa yon kantite %s HLG nan men %s.",
+  "NOTIFICATION_TITLE_TRANSFER_SENT": "Lajan Soti",
+  "NOTIFICATION_BODY_TRANSFER_SENT": "Ou voye yon kantite %s HLG bay %s.",
+
+  "NOTIFICATION_TITLE_WITHDRAW": " Retire Lajan",
+  "NOTIFICATION_BODY_WITHDRAW": " Ou retire yon kantite %s HLG nan %s.",
+  "NOTIFICATION_TITLE_CASH_IN": "Depot pa %s.",
+  "NOTIFICATION_BODY_CASH_IN": " Ou te fè depo pa %s.",
+  "NOTIFICATION_TITLE_CASH_OUT": "Retrè pa %s.",
+  "NOTIFICATION_BODY_CASH_OUT": "Ou fè yn retrè pa %s.",
+  "NOTIFICATION_TITLE_PAYMENT": " Peman bòdwo.",
+  "NOTIFICATION_BODY_PAYMENT": " Ou peye yon bòdwo %s HLG pou %s.",
+
+  "NOTIFICATION_TITLE_LOTOPLAY": "Biyè Achte",
+  "NOTIFICATION_BODY_LOTOPLAY": " Ou achte yon biyè pou %s HLG nan %s.",
+  "NOTIFICATION_TITLE_LOTOWIN": " Ou Genyen",
+  "NOTIFICATION_BODY_LOTOWIN": " Ou resevwa %s HLG paske ou genyen nan yon tiraj.",
+
+  "LOG_IN": "Konekte",
+  "REGISTER": "Enskri",
+  "RESET_PASSWORD": "Reyajiste modpas",
+  "RESET": "Reset",
+  "SIGN_UP_NOW": "Enskri kounye a",
+  "SIGN_UP": "Enskri",
+  "VERIFY_PHONE_NUMBER": "Verifye Nimewo Telefòn",
+  "VERIFY_EMAIL": "Verifye Imèl",
+  "CONTINUE": "Kontinye",
+  "RESEND_CODE_BTN": "Revoye kòd",
+  "CHAT_BTN": "Chat",
+
+  "ACCEPT": "Aksepte",
+  "REJECT": "Rejte",
+  "SAVE": "Anregistre",
+  "PASSWORD_INVALID": "Password must contain at least one lowercase, one uppercase letter, one number, one symbol",
+
+  "PASSWORD_MIN_LOWERCASE": "Modpas dwe genyen omwen yon lèt miniskil.",
+  "PASSWORD_MIN_UPPERCASE": "Modpas dwe genyen omwen yon lèt majiskil.",
+  "PASSWORD_MIN_NUMBERS": "Modpas dwe genyen omwen yon nimewo.",
+  "PASSWORD_MIN_SYMBOLS": "Modpas dwe genyen omwen yon senbòl.",
+  "PASSWORD_MAX_LENGTH": "Modpas pa dwe depase 12 karaktè.",
+
+  "APP_NAME": "AYITI LOTRI",
+  "EASY_AFFORDABLE_BANKING": "Fasil ak Abòdab Banking",
+  "WELCOME": "Byenvini nan AYITI LOTRI",
+  "FORGOT_PASSWORD": "ou Bliye Modpas ou?",
+  "FORGOT_PASSWORD2": "Bliye Modpa",
+  "CREATE_NEW_PASSWORD": "Kreye yon nouvo modpas",
+  "NEW_USER": "ou se yon Nouvo itilizatè?",
+  "BACK_TO": "Retounen nan",
+  "REGISTER_HERE": "Enskri isit la",
+  "ALREADY_HAVE_AN_ACCOUNT": "Deja gen yon kont?",
+  "LOGIN": " Konekte ",
+  "OTP": "OTP",
+  "CODE_IS_SENT_TO": "Kòd yo voye bay",
+  "RESEND_CODE": "Revoye kòd",
+  "SERVICE_AT_YOU_FINGERTIPS": "Sèvis nan men ou",
+  "FOR_ANY_ASSISTANCE_PLEASE": "Pou nenpòt asistans tanpri",
+  "CALL": "Rele",
+
+  "EMAIL": "Imel",
+  "PASSWORD": "Modpas",
+  "NAME": "Non",
+  "PHONE_NUMBER": "Nimewo Telefòn",
+  "SEARCH": "Rechèch..",
+
+  "ENTER_DURATION": "Antre dire",
+  "ENTER_OLD_PASSWORD": "Antre ansyen modpas",
+  "ENTER_NEW_PASSWORD": "Antre Nouvo Modpas",
+  "ENTER_CONFIRM_NEW_PASSWORD": "Antre Konfime Nouvo Modpas",
+  "OLD_PASSWORD": "Ansyen modpas",
+  "NEW_PASSWORD": "Nouvo modpas",
+  "CONFIRM_NEW_PASSWORD": "Konfime nouvo modpas",
+
+  "PLS_ENTER": {
+    "EMAILID": "Tanpri antre imel ou",
+    "VALID_EMAILID": "Tanpri antre idantifikasyon imel ki valab",
+    "VALID_EMAIL": "Tanpri antre yon imèl ki valab",
+    "EMAIL": "Tanpri antre yon imèl",
+    "MESSAGE": "Tanpri, longè mesaj la ta dwe omwen 50",
+    "PASSWORD": "Tanpri antre modpas",
+    "CONFIRM_PASSWORD": "Tanpri antre konfime modpas",
+    "PASSWORD_MUST_BE_LONG": "Tanpri, modpas la dwe gen 8 a 20 karaktè",
+    "PASSWORD_NOT_MATCH": "Modpas pa matche",
+    "NAME": "Tanpri antre non",
+    "PHONE_NUMBER": "Tanpri antre nimewo telefòn",
+    "VALID_PHONE_NUMBER": "Tanpri antre nimewo telefòn valid Ayiti",
+    "OTP": "Tanpri antre otp",
+    "_VALID_OTP": "Tanpri antre valab otp",
+    "PIN": "Tanpri antre PIN ou pou konplete tranzaksyon an"
+  },
+
+  "onEmpty": "Tanpri antre yon valè.",
+
+  "STAR_SIGN": "* ",
+  "NO_DATA_FOUND": "Pa jwenn done",
+
+  "ENTER_AMOUNT": "Antre kantite lajan (HLG)",
+
+  "ADDRESS_MARKET_DETAILS": "Detay sou mache adrès",
+  "CONTACTS": "Kontak",
+  "AMOUNT": "Kantite",
+  "E_G_8_OR_12": "egzanp, 8 oswa 12",
+  "E_G_12_OR_24": "egzanp, 12 oswa 24",
+  "SUBMIT": "Soumèt",
+
+  "PAYMENT_REQUEST": "Demann Peman",
+  "SEND": "Voye",
+  "SEND_EMAIL": "Voye imel",
+  "CREATE_PASSWORD": "Kreye modpas",
+  "EDIT_PROFILE": "Edit Profile",
+
+  "PLS_ENTER_AMOUNT": "Tanpri antre kantite lajan",
+
+  "PLEASE_ENTER_OLD_PASSWORD": "Tanpri antre ansyen modpas",
+  "PLEASE_ENTER_NEW_PASSWORD": "Tanpri antre nouvo modpas",
+  "PLEASE_ENTER_CONFIRM_NEW_PASSWORD": "Tanpri antre nouvo modpas la anko.",
+  "DOES_NOT_MATCH_CONFIRM_PASSWORD": "Pa matche ak nouvo modpas ak konfime modpas",
+  "PLS_MIN_AMOUNT": "Tanpri antre yon minimòm de 100 HLG",
+  "PLS_ENTER_INCOME": "Tanpri antre revni ou",
+  "PLS_ENTER_OCCUPATION": "Tanpri Antre Okipasyon w",
+  "PLS_ENTER_ADDRESS": "Tanpri antre adrès ou",
+  "PLS_ENTER_STATE": "Tanpri Antre Eta ou",
+  "PLS_ENTER_CITY": "Tanpri Antre Vil ou a",
+  "PLS_ENTER_COUNTRY": "Tanpri Antre Peyi w",
+  "PLS_ENTER_ZIPCODE": "Tanpri Antre Kòd Postal ou",
+  "PASSWORD_NOT_MATCH": "Modpas yo pa koresponn.",
+
+  "GENERAL_CHAT": "Chat jeneral",
+  "PROFILE": "Pwofil",
+
+  "CHANGE_PASSWORD": "Chanje modpas",
+  "ADDRESS": "Adrès",
+  "IDENTITY_VERIFICATION": "Verifikasyon idantite",
+  "INCOME_VERIFICATION": "Verifikasyon revni",
+  "OCCUPATION_VERIFICATION": "Verifikasyon Okipasyon",
+  "TRANSACTIONS": "Tranzaksyon",
+  "IS_TYPING": "Ap ekri...",
+  "CONNECTING": "konekte...",
+
+  "SUBMITTED_SUCCESSFULLY": "Submitted Successfully",
+
+  "RECEIVED_REQUEST": "Received Request",
+
+  "MONEY_THAT_YOU_HAVE_BORROWED_FROM_OTHERS": "Money that you have borrowed from others",
+
+  "MONEY_THAT_YOU_HAVE_LET_OTHER_PEOPLE_BORROW": "Money that you have let other people borrow",
+
+  "UPDATE_BALANCE": "Update Balance",
+
+  "ABOUT_US": "Sou nou",
+  "PRIVACY_POLICY": "Règleman sou enfòmasyon prive",
+  "TERMS_OF_USE": "Kondisyon pou itilize",
+  "HELP_CENTER": "Sant Èd",
+
+  "MESAJ": "Mesaj",
+  "ENTER_MESSAGE": "Antre Mesaj",
+  "ENTER_EMAIL": "Antre Imèl",
+  "ENTER_NAME": "Antre non",
+  "ENTER_CITY": "Antre vil la",
+  "ENTER_STATE": "Antre eta a",
+  "ENTER_PINCODE": "Antre Pincode",
+  "ENTER_ZIPCODE": "Antre Pincode",
+  "ENTER_ADDRESS": "Antre adrès",
+  "ENTER_COUNTRY": "Antre peyi a",
+
+  "ENTER_AGE": "Antre laj",
+  "ENTER_OCCUPATION": "Antre okipasyon",
+  "ENTER_INCOME": "Antre revni",
+
+  "AGE": "Laj",
+  "OCCUPATION": "Okipasyon",
+  "REVNI": "Revni",
+
+  "CITY": "Vil",
+  "ETA": "Eta",
+  "COUNTRY": "peyi",
+  "PINCODE": "Pinkod",
+  "ZIPCODE": "Kod Postal",
+
+  "NOTIFICATION": "Notifikasyon",
+
+  "transactionType": {
+    "transfer": "Transfè Lajan",
+    "lotoPlay": "Achte Biyè",
+    "lotoWin": "Genyen nan Jwet",
+    "payment": "Pèman",
+    "cash": "Cash"
+  },
+  "type": "Kalite",
+  "fee": "Frè",
+  "amount": "kantite lajan",
+  "tax": "Taks",
+  "from": "De",
+  "to": "Pou",
+  "viewMore": "Gade plis",
+  "clickHere": "Klike la a"
+}

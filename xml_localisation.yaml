@@ -1,0 +1,16 @@
+ht:
+  NOTIFICATION_TITLE_TRANSFER_RECEIVED: Lajan antre
+  NOTIFICATION_BODY_TRANSFER_RECEIVED: 'Ou te resevwa yon kantite %s HLG nan men %s'
+  NOTIFICATION_TITLE_TRANSFER_SENT: Lajan Soti
+  NOTIFICATION_BODY_TRANSFER_SENT: 'Ou voye yon kantite %s HLG bay %s'
+  NOTIFICATION_TITLE_WITHDRAW: Retire Lajan
+  NOTIFICATION_BODY_WITHDRAW: Ou retire yon kantite %s HLG nan %s
+  NOTIFICATION_TITLE_RECHARGE: Ou a joute kob pa %s
+  NOTIFICATION_BODY_RECHARGE: Ou te fè depo %s HLG nan %s
+  NOTIFICATION_TITLE_PAYMENT: Peman bòdwo
+  NOTIFICATION_BODY_PAYMENT: Ou peye yon bòdwo %s HLG pou %s
+
+  NOTIFICATION_TITLE_LOTOPLAY: Biyè Achte
+  NOTIFICATION_BODY_LOTOPLAY: Ou achte yon biyè pou %s HLG nan %s;
+  NOTIFICATION_TITLE_LOTOWIN: Ou Genyen
+  NOTIFICATION_BODY_LOTOWIN: Ou resevwa %s HLG paske ou genyen nan %s tiraj %d.

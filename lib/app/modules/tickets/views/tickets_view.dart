@@ -33,7 +33,7 @@ class TicketsView extends GetView<TicketsController> {
           children: [
             Obx(
               () => FilterButton.checkBox(
-                title: "WinTicket",
+                title: "Biyè Genyen",
                 value: controller.winTickets.isTrue,
                 onPressedChecked: (val) {
                   controller.winTickets(val);

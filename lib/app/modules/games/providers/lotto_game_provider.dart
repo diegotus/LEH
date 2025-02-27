@@ -27,13 +27,11 @@ class LottoGameProvider extends DefaultWithAuthProvider {
 
   Future<ServerResponseModel?> getTicketsApi(
       {bool winOnly = false, DateTime? date}) async {
-    print("the request $winOnly $date");
     var response = await tryCatch(() async {
       var response = await get<ServerResponseModel>(Url.tickets, query: {
         "winOnly": winOnly.toString(),
         if (date != null) "date": date.millisecondsSinceEpoch.toString()
       });
-      print("the request response $response");
       return CoreService.returnResponse(response);
     });
     return response;

@@ -2,8 +2,97 @@ import 'package:flutter/material.dart';
 import 'package:sizing/sizing.dart';
 
 import '../core/utils/app_colors.dart';
+import '../core/utils/text_style.dart';
 import '../core/utils/text_teme_helper.dart';
 import 'box_decoration.dart';
+
+class FilterButton extends StatelessWidget {
+  const FilterButton({
+    super.key,
+    this.onPressed,
+    required this.title,
+  })  : isCheckBox = false,
+        value = null,
+        onPressedChecked = null;
+  const FilterButton.checkBox({
+    super.key,
+    this.onPressedChecked,
+    required this.title,
+    this.value = false,
+  })  : isCheckBox = true,
+        onPressed = null;
+  final bool? value;
+  final void Function()? onPressed;
+  final void Function(bool value)? onPressedChecked;
+  final String title;
+  final bool isCheckBox;
+  @override
+  Widget build(BuildContext context) {
+    var backGroundColor = Colors.grey.shade100;
+    var foreGroundColor = FontColors.PRIMARY2;
+    if (value == true) {
+      backGroundColor = AppColors.PRIMARY2;
+      foreGroundColor = AppColors.WHITE;
+    }
+    return SizedBox(
+      height: 30,
+      child: FilledButton(
+        style: FilledButton.styleFrom(
+          backgroundColor: backGroundColor,
+          foregroundColor: foreGroundColor,
+          shadowColor: Colors.black,
+          elevation: 5,
+        ),
+        onPressed:
+            isCheckBox ? () => onPressedChecked?.call(!value!) : onPressed,
+        child: Text(title),
+      ),
+    );
+  }
+}
+
+class DropdownFilterButton<T> extends StatelessWidget {
+  const DropdownFilterButton(
+      {super.key,
+      required this.items,
+      required this.onChanged,
+      this.value,
+      this.selectedItemBuilder});
+  final List<DropdownMenuItem<T>>? items;
+  final void Function(T?)? onChanged;
+  final T? value;
+  final List<Widget> Function(BuildContext, List<DropdownMenuItem<T>>?, T?)?
+      selectedItemBuilder;
+  @override
+  Widget build(BuildContext context) {
+    final boderRadius = BorderRadius.circular(15);
+    return Container(
+      height: 30,
+      decoration: BoxDecoration(
+        color: Colors.grey.shade100,
+        borderRadius: boderRadius,
+        boxShadow: [
+          BoxShadow(
+              color: Colors.black38, offset: Offset(0, 4), blurRadius: 10),
+          // BoxShadow(color: Colors.black, offset: Offset(0, 2), blurRadius: 2)
+        ],
+      ),
+      child: DropdownButton<T>(
+        value: value,
+        items: items,
+        onChanged: onChanged,
+        style: dropDownTextStyle,
+        iconEnabledColor: FontColors.PRIMARY2,
+        selectedItemBuilder: selectedItemBuilder == null
+            ? null
+            : (context) => selectedItemBuilder!(context, items, value),
+        underline: SizedBox.shrink(),
+        borderRadius: boderRadius,
+        padding: EdgeInsets.only(left: 10),
+      ),
+    );
+  }
+}
 
 class AppButton extends StatelessWidget {
   final String? buttonText;

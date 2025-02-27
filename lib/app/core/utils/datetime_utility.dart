@@ -23,6 +23,11 @@ class DateTimeUtility {
     return todayDate.toLocal();
   }
 
+  static DateTime convertDateFromStringFormat(String strDate, String format) {
+    DateTime todayDate = DateFormat(format).parse(strDate);
+    return todayDate;
+  }
+
   String getTimeFromTimeStamp(timeInMillis) {
     //int timeInMillis = 1586348737122;
     var date = DateTime.fromMillisecondsSinceEpoch(timeInMillis);

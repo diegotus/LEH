@@ -514,7 +514,7 @@ class MaterialLocalizationHt extends GlobalMaterialLocalizations {
 
   @override
   // TODO: implement selectedDateLabel
-  String get selectedDateLabel => throw UnimplementedError();
+  String get selectedDateLabel => "Chwazi";
 
   @override
   // TODO: implement shareButtonLabel

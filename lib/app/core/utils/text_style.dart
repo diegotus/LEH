@@ -15,3 +15,9 @@ final transactionTitleDetailStyle = TextStyle(
   color: FontColors.BLUE_FADE,
   fontFamily: FontPoppins.REGULAR,
 );
+
+final dropDownTextStyle = TextStyle(
+  fontSize: 15.fss,
+  color: FontColors.PRIMARY2,
+  fontFamily: FontPoppins.REGULAR,
+);

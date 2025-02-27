@@ -31,6 +31,7 @@ FutureOr<T?> tryCatch<T>(FutureOr<T> Function() doaction) async {
 
     // throw e;
   } catch (e) {
+    print("the request response $e");
     e.printError();
     Get.log("its an error $e", isError: true);
     appService.errorMsg.value = "Unknow Error : $e";

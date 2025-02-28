@@ -22,6 +22,7 @@ class LotoResultsView extends GetView<LotoResultsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.WHITE,
       appBar: AppBarWithWidgetTitle(
         title: "Haiti Loto Rezilta",
         child: TabBar(

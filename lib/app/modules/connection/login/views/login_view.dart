@@ -29,78 +29,82 @@ class LoginView extends GetView<LoginController> {
             verticalSpaceRegular,
             Form(
               key: controller.formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20.ss,
+              child: AutofillGroup(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20.ss,
+                      ),
+                      child: CustomInputFormField(
+                        hintText: AppStrings.EMAIL,
+                        keyboardType: TextInputType.emailAddress,
+                        textInputAction: TextInputAction.next,
+                        autofillHints: [AutofillHints.email],
+                        validator: (value) {
+                          if ((value ?? "").isEmpty) {
+                            return AppStrings.PLS_ENTER_EMAILID;
+                          } else if (!value!.isEmail) {
+                            return AppStrings.PLS_ENTER_VALID_EMAILID;
+                          } else {
+                            return null;
+                          }
+                        },
+                        onSaved: (p0) {
+                          controller.email = p0 ?? "";
+                        },
+                      ),
                     ),
-                    child: CustomInputFormField(
-                      hintText: AppStrings.EMAIL,
-                      keyboardType: TextInputType.emailAddress,
-                      textInputAction: TextInputAction.next,
-                      validator: (value) {
-                        if ((value ?? "").isEmpty) {
-                          return AppStrings.PLS_ENTER_EMAILID;
-                        } else if (!value!.isEmail) {
-                          return AppStrings.PLS_ENTER_VALID_EMAILID;
-                        } else {
+                    verticalSpaceRegular,
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20.ss,
+                      ),
+                      child: CustomInputFormField(
+                        keyboardType: TextInputType.visiblePassword,
+                        autofillHints: [AutofillHints.password],
+                        hintText: AppStrings.PASSWORD,
+                        obscureText: true,
+                        textInputAction: TextInputAction.done,
+                        onFieldSubmitted: (_) => submitLogin(),
+                        errorMaxLines: 5,
+                        validator: (value) {
+                          if ((value ?? "").isEmpty) {
+                            return AppStrings.PLS_ENTER_PASSWORD;
+                          }
                           return null;
-                        }
-                      },
-                      onSaved: (p0) {
-                        controller.email = p0 ?? "";
-                      },
+                        },
+                        onSaved: (p0) {
+                          controller.password = p0 ?? "";
+                        },
+                      ),
                     ),
-                  ),
-                  verticalSpaceRegular,
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20.ss,
-                    ),
-                    child: CustomInputFormField(
-                      keyboardType: TextInputType.visiblePassword,
-                      hintText: AppStrings.PASSWORD,
-                      obscureText: true,
-                      textInputAction: TextInputAction.done,
-                      onFieldSubmitted: (_) => submitLogin(),
-                      errorMaxLines: 5,
-                      validator: (value) {
-                        if ((value ?? "").isEmpty) {
-                          return AppStrings.PLS_ENTER_PASSWORD;
-                        }
-                        return null;
-                      },
-                      onSaved: (p0) {
-                        controller.password = p0 ?? "";
-                      },
-                    ),
-                  ),
-                  verticalSpaceSmall,
-                  ExcludeFocus(
-                    child: TextButton(
-                      statesController: WidgetStatesController(),
-                      iconAlignment: IconAlignment.end,
-                      onPressed: () {
-                        Get.offNamed(Routes.FORGET_PASSWORD);
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 20.ss,
-                        ),
-                        child: Text(
-                          AppStrings.FORGOT_PASSWORD,
-                          textAlign: TextAlign.center,
-                          style: TextThemeHelper.forgotPassword,
+                    verticalSpaceSmall,
+                    ExcludeFocus(
+                      child: TextButton(
+                        statesController: WidgetStatesController(),
+                        iconAlignment: IconAlignment.end,
+                        onPressed: () {
+                          Get.offNamed(Routes.FORGET_PASSWORD);
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 20.ss,
+                          ),
+                          child: Text(
+                            AppStrings.FORGOT_PASSWORD,
+                            textAlign: TextAlign.center,
+                            style: TextThemeHelper.forgotPassword,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  verticalSpaceMedium,
-                  customeAuthButton(
-                      lableName: AppStrings.LOGIN, onTap: submitLogin),
-                ],
+                    verticalSpaceMedium,
+                    customeAuthButton(
+                        lableName: AppStrings.LOGIN, onTap: submitLogin),
+                  ],
+                ),
               ),
             ),
             verticalSpaceRegular,

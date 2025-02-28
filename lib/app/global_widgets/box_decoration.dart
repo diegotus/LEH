@@ -41,14 +41,15 @@ BoxDecoration get borderBTN {
 
 BoxDecoration get appBarBoxDecoration {
   return BoxDecoration(
-      borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
-      gradient: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.topRight,
-        colors: [AppColors.APPBAR_PRIMARY1, AppColors.APPBAR_PRIMARY2],
-        stops: const [0, 1],
-      ));
+    borderRadius: const BorderRadius.only(
+        bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+    // gradient: LinearGradient(
+    //   begin: Alignment.topLeft,
+    //   end: Alignment.topRight,
+    //   colors: [AppColors.APPBAR_PRIMARY1, AppColors.APPBAR_PRIMARY2],
+    //   stops: const [0, 1],
+    // ),
+  );
 }
 
 BoxDecoration get desktopAppBarBoxDecoration {

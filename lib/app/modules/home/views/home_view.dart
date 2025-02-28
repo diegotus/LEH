@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -18,24 +19,21 @@ class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
   @override
   Widget build(BuildContext context) {
-    // controller.getUserDetails();
     return Scaffold(
       backgroundColor: AppColors.APP_BG,
       appBar: AppBarWidget(),
       drawer: Drawer(),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: [
-            accountDetailsCardWidget(
-              future: controller.appServiceController.getUserBalance,
-            ),
-            verticalSpaceRegular,
-            serviceListWidget(),
-            verticalSpaceRegular,
-            contactCardWidget()
-          ],
-        ),
+      body: ListView(
+        padding: EdgeInsets.only(left: 15.0, right: 15, top: 15, bottom: 75),
+        children: [
+          accountDetailsCardWidget(
+            future: controller.appServiceController.getUserBalance,
+          ),
+          verticalSpaceRegular,
+          serviceListWidget(),
+          verticalSpaceRegular,
+          contactCardWidget()
+        ],
       ),
     );
   }
@@ -128,9 +126,9 @@ class HomeView extends GetView<HomeController> {
           verticalSpaceSmall,
           GridView.builder(
             itemCount: controller.serviceListTmp.length,
+            padding: EdgeInsets.zero,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            padding: const EdgeInsets.fromLTRB(2, 0, 2, 0),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
@@ -194,7 +192,6 @@ class HomeView extends GetView<HomeController> {
 
   Widget contactCardWidget() {
     return Container(
-      margin: const EdgeInsets.only(bottom: 60),
       padding: const EdgeInsets.all(10),
       decoration: const BoxDecoration(
         image: DecorationImage(

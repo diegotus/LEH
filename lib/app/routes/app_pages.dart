@@ -87,6 +87,7 @@ class AppPages {
                   binding: PlayGameBinding(),
                   // inheritParentPath: false,
                   participatesInRootNavigator: true,
+                  transition: Transition.noTransition,
                 ),
               ],
             ),

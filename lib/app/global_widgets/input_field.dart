@@ -54,6 +54,7 @@ class CustomInputFormField extends StatelessWidget {
   final TextAlign textAlign;
   final TextStyle? errorStyle;
   final void Function()? onEditingComplete;
+  final Iterable<String>? autofillHints;
 
   CustomInputFormField({
     super.key,
@@ -96,12 +97,14 @@ class CustomInputFormField extends StatelessWidget {
     this.errorStyle,
     this.errorBorder,
     this.onEditingComplete,
+    this.autofillHints,
   });
   @override
   Widget build(BuildContext context) {
     if (obscureText == true && keyboardType == TextInputType.visiblePassword) {
       return ObxValue((isHidden) {
         return TextFormField(
+          autofillHints: autofillHints,
           cursorColor: AppColors.PRIMARY1,
           controller: controller,
           initialValue: initialValue,

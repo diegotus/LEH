@@ -245,29 +245,4 @@ class BoulJweModel {
         createdAt.hashCode ^
         updatedAt.hashCode;
   }
-
-  List<String> getboul(Gametype type) {
-    RegExp? exp;
-    switch (type) {
-      case Gametype.bolet:
-      case Gametype.lotto3:
-        return [boul];
-      case Gametype.mariaj:
-      case Gametype.lotto4:
-        exp = RegExp(r"\d{2}");
-        continue regExp;
-      regExp:
-      case Gametype.lotto5:
-        exp ??= RegExp(r"\d{2,3}");
-        Iterable<Match> matches = exp.allMatches(boul);
-        return [...matches.map((m) => m.group(0)!)];
-      case Gametype.lotto5p5:
-        // TODO: Handle this case.
-        throw UnimplementedError();
-      case Gametype.royal5:
-        // TODO: Handle this case.
-        throw UnimplementedError();
-    }
-    return [];
-  }
 }

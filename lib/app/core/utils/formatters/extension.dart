@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:haiti_lotri/app/data/models/ticket_model.dart';
 import 'package:intl/intl.dart';
 
+import '../../../data/models/game_model.dart';
+import '../custom_types.dart';
 import '../enums.dart';
 import 'format_number.dart';
 
@@ -39,6 +41,28 @@ extension StringExtention on String? {
 extension DateTimeExtention on DateTime {
   String format(String format, {String? locale}) {
     return DateFormat(format, locale).format(this);
+  }
+
+  DateTime get startOfDay {
+    return DateTime(year, month, day);
+  }
+
+  DateTime get endOfDay {
+    return DateTime(year, month, day, 23, 59, 59, 999, 999);
+  }
+
+  String dateToGTMFormat() {
+    // Get the current date and time
+    String formattedDate =
+        DateFormat("yyyy-MM-dd HH:mm:ss").format(this); // Format the date
+    String timeZoneOffset = this.timeZoneOffset.isNegative ? "-" : "+";
+
+    // Append GMT with offset (hours and minutes)
+    String localGmt = "$formattedDate GMT"
+        "$timeZoneOffset${this.timeZoneOffset.inHours.abs().toString().padLeft(2, '0')}:"
+        "${(this.timeZoneOffset.inMinutes.abs() % 60).toString().padLeft(2, '0')}";
+
+    return localGmt;
   }
 
   String since() {
@@ -110,9 +134,9 @@ extension TicketExtention on TicketModel {
 
       case Gametype.mariaj:
         var exp = RegExp(r'\d{2}');
-        if (exp
-            .allMatches(boul)
-            .every((el) => winningNumbers?.contains(el.group(0)) ?? false)) {
+        if (_areElementsInDifferentPositions(
+            [...exp.allMatches(boul).map((el) => el.group(0)!)],
+            winningNumbers!)) {
           return "x2000";
         }
 
@@ -139,5 +163,55 @@ extension TicketExtention on TicketModel {
         }
     }
     return null;
+  }
+
+  bool _areElementsInDifferentPositions(List<String> arr1, List<String> arr2) {
+    // Create a copy of arr2 to keep track of used elements
+    List<String> arr2Copy = List.from(arr2);
+
+    return arr1.every((element) {
+      int index = arr2Copy.indexOf(element);
+      if (index != -1) {
+        arr2Copy.removeAt(index);
+        return true;
+      }
+      return false;
+    });
+  }
+}
+
+extension BoulJweModelExtention on BoulJweModel {
+  List<String> getboul(Gametype type) {
+    return _getboul(boul, type);
+  }
+}
+
+extension GameTirageExtention on GameTirageModel {
+  List<String> get getboul {
+    return _getboul(boul, type);
+  }
+}
+
+List<String> _getboul(String boul, Gametype type) {
+  RegExp? exp;
+  switch (type) {
+    case Gametype.bolet:
+    case Gametype.lotto3:
+      return [boul];
+    case Gametype.mariaj:
+    case Gametype.lotto4:
+      exp = RegExp(r"\d{2}");
+      continue regExp;
+    regExp:
+    case Gametype.lotto5:
+      exp ??= RegExp(r"\d{2,3}");
+      Iterable<Match> matches = exp.allMatches(boul);
+      return [...matches.map((m) => m.group(0)!)];
+    case Gametype.lotto5p5:
+      // TODO: Handle this case.
+      throw UnimplementedError();
+    case Gametype.royal5:
+      // TODO: Handle this case.
+      throw UnimplementedError();
   }
 }

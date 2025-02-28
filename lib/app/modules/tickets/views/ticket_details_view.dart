@@ -70,7 +70,7 @@ class TicketDetailView extends GetView<TicketsController> {
                 subtitle: Text(item.amount.toHLG),
                 trailing: item.status.name == "win"
                     ? Text(
-                        "${getWinningMultiple(item.boul)}",
+                        "${ticket.getWinningMultiple(item.boul)}",
                         style: Get.textTheme.titleLarge
                             ?.copyWith(color: AppColors.PRIMARY),
                       )
@@ -81,40 +81,5 @@ class TicketDetailView extends GetView<TicketsController> {
         ),
       ],
     );
-  }
-
-  String? getWinningMultiple(boul) {
-    switch (ticket.type) {
-      case Gametype.bolet:
-        const price = ["x50", "x20", "x10"];
-        var index =
-            ticket.winningNumbers?.indexWhere((value) => value.endsWith(boul));
-        if (index != null && index - 1 > -1) return price[index];
-        break;
-      case Gametype.mariaj:
-        var exp = RegExp(r'\d{2}');
-
-        if (exp.allMatches(boul).every(
-            (el) => ticket.winningNumbers?.contains(el.group(0)) ?? false)) {
-          return "x2000";
-        }
-        break;
-      case Gametype.lotto3:
-        // TODO: Handle this case.
-        break;
-      case Gametype.lotto4:
-        // TODO: Handle this case.
-        break;
-      case Gametype.lotto5:
-        // TODO: Handle this case.
-        break;
-      case Gametype.lotto5p5:
-        // TODO: Handle this case.
-        break;
-      case Gametype.royal5:
-        // TODO: Handle this case.
-        break;
-    }
-    return null;
   }
 }

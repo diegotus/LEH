@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:haiti_lotri/app/core/utils/font_family.dart';
+import 'package:sizing/sizing_extension.dart';
 
 import 'app_colors.dart';
 
@@ -75,7 +77,38 @@ ThemeData get theme => ThemeData(
       colorScheme: ColorScheme.fromSwatch(
               primarySwatch: generateMaterialColor(AppColors.PRIMARY))
           .copyWith(surface: Colors.white),
-      appBarTheme:
-          const AppBarTheme(iconTheme: IconThemeData(color: Colors.white)),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: AppColors.WHITE,
+        elevation: 5,
+        type: BottomNavigationBarType.fixed,
+        selectedLabelStyle: TextStyle(
+          fontFamily: FontPoppins.REGULAR,
+          fontSize: 12.fss,
+          color: const Color.fromARGB(255, 26, 26, 26),
+          fontWeight: FontWeight.w400,
+        ),
+        unselectedLabelStyle: TextStyle(
+          fontFamily: FontPoppins.REGULAR,
+          fontSize: 12.fss,
+          color: const Color.fromARGB(255, 151, 151, 151),
+          fontWeight: FontWeight.w400,
+        ),
+        unselectedItemColor: const Color.fromARGB(255, 151, 151, 151),
+        selectedItemColor: Colors.black,
+        selectedIconTheme: IconThemeData(color: AppColors.PRIMARY2),
+        showUnselectedLabels: true,
+      ),
+      appBarTheme: AppBarTheme(
+        systemOverlayStyle:
+            SystemUiOverlayStyle(statusBarColor: AppColors.PRIMARY2),
+        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: AppColors.PRIMARY2,
+        shape: RoundedRectangleBorder(
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(20),
+            bottomRight: Radius.circular(20),
+          ),
+        ),
+      ),
       popupMenuTheme: PopupMenuThemeData(textStyle: unselectedStyle),
     );

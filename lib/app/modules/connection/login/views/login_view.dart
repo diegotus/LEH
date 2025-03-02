@@ -84,7 +84,7 @@ class LoginView extends GetView<LoginController> {
                     ExcludeFocus(
                       child: TextButton(
                         statesController: WidgetStatesController(),
-                        iconAlignment: IconAlignment.end,
+                        // iconAlignment: IconAlignment.end,
                         onPressed: () {
                           Get.offNamed(Routes.FORGET_PASSWORD);
                         },

@@ -13,7 +13,7 @@
 		<key>CFBundleInfoDictionaryVersion</key>
 		<string>6.0</string>
 		<key>CFBundleName</key>
-		<string>ayiti_lotri</string>
+		<string>ayiti-lotri</string>
 		<key>CFBundlePackageType</key>
 		<string>APPL</string>
 		<key>CFBundleShortVersionString</key>
@@ -47,5 +47,14 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>LSApplicationQueriesSchemes</key>
+		<array>
+			<string>sms</string>
+			<string>tel</string>
+		</array>
+		<key>NSCameraUsageDescription</key>
+		<string>Lotrie de l'etat Haiti wants to have access to your camera</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Lotrie de l'etat Haiti wants to have access to your photo library</string>
 	</dict>
 </plist>

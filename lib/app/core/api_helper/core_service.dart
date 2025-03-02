@@ -11,7 +11,8 @@ import 'urls.dart';
 class CoreService {
   static ServerResponseModel returnResponse(Response response) {
     debugPrint("API Request : ${response.statusText}");
-    debugPrint("API Response : ${response.body}");
+    debugPrint("API Response : ${response.body} ");
+    debugPrint("API Response url: ${response.request?.url} ");
     var body = response.body;
     switch (response.statusCode) {
       case 200:
@@ -30,7 +31,7 @@ class CoreService {
             error: response.statusText,
             message: [
               "Error occurred while Communication with Server",
-              'StatusCode :${response.statusCode}'
+              'StatusCode :${response.statusCode}',
             ]);
       case 401:
         // final StorageLocalService storageLocalService = StorageLocalService();

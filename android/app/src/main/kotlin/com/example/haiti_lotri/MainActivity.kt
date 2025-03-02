@@ -1,4 +1,4 @@
-package com.visionmis.haitilori.haiti_lotri
+package com.example.haiti_lotri
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -7,7 +7,7 @@ class Url {
       ? (kIsWeb ? "localhost" : "10.0.2.2")
       : kIsWeb
           ? Uri.base.origin + "/"
-          : "https://loto.ehaiti.ht";
+          : "https://loto.ehaiti.ht/";
   static final String BASE_URL = kDebugMode ? "http://$_url:3000/" : _url;
   static final String SOCKET_URL = "${BASE_URL}chat_socket";
   static const LOGIN = "auth/signin";

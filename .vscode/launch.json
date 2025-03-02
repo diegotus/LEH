@@ -8,6 +8,11 @@
             "name": "haiti_lotri",
             "request": "launch",
             "type": "dart",
+        },
+        {
+            "name": "haiti_lotri_web",
+            "request": "launch",
+            "type": "dart",
             "args": ["-d", "chrome","--web-port", "8000","--web-browser-flag=--disable-web-security"],
         },
         

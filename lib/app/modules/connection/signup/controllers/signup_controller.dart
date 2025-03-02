@@ -13,7 +13,6 @@ import '../../providers/connection_provider.dart';
 class SignupController extends GetxController {
   late final ConnectionProvider provider;
   final formKey = GlobalKey<FormState>();
-  var phoneFormatter = phoneFormateur();
   String name = "";
   String email = "";
   String phone = "";

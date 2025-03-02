@@ -8,6 +8,7 @@ import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/app_utility.dart';
 import '../../../../core/utils/formatters/validation.dart';
 import '../../../../core/utils/presentation_page_header.dart';
+import '../../../../core/utils/text_style.dart';
 import '../../../../core/utils/text_teme_helper.dart';
 import '../../../../global_widgets/app_button.dart';
 import '../../../../global_widgets/input_field.dart';
@@ -90,17 +91,23 @@ class SignupView extends GetView<SignupController> {
                       child: CustomInputFormField(
                         hintText: AppStrings.PHONE_NUMBER,
                         keyboardType: TextInputType.number,
-                        inputFormatters: [controller.phoneFormatter],
-                        counterText: "",
+                        prefixIcon: Center(
+                            widthFactor: 0.1,
+                            child: Text(
+                              "+",
+                              style: labelTextStyle.copyWith(
+                                  fontSize: 16.ss, fontWeight: FontWeight.bold),
+                            )),
+                        inputFormatters: [numberFormatter],
+                        // counterText: "",
                         textInputAction: TextInputAction.next,
                         onSaved: (value) {
-                          controller.phone =
-                              controller.phoneFormatter.unmaskText(value!);
+                          controller.phone = value!;
                         },
                         validator: (p0) {
                           if ((p0 ?? '').isEmpty) {
                             return AppStrings.PLS_ENTER_PHONE_NUMBER;
-                          } else if (!controller.phoneFormatter.isFill()) {
+                          } else if (p0?.isPhoneNumber == true) {
                             return AppStrings.PLS_ENTER_VALID_PHONE_NUMBER;
                           }
                           return null;

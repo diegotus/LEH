@@ -20,3 +20,6 @@ final dropDownTextStyle = TextStyle(
   color: FontColors.PRIMARY2,
   fontFamily: FontPoppins.REGULAR,
 );
+
+final labelTextStyle =
+    TextStyle(fontFamily: FontPoppins.REGULAR, fontSize: 10.fss);

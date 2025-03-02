@@ -4,22 +4,23 @@
 // ignore: avoid_classes_with_only_static_members
 class AppTranslation {
   static Map<String, Map<String, String>> translations = {
+    'fr_FR': Locales.fr_FR,
     'ht_HT': Locales.ht_HT,
   };
 }
 
 class LocaleKeys {
   LocaleKeys._();
-  static const buttons_login = 'buttons_login';
-  static const buttons_sign_in = 'buttons_sign_in';
-  static const buttons_logout = 'buttons_logout';
-  static const buttons_sign_in_fb = 'buttons_sign_in_fb';
-  static const buttons_sign_in_google = 'buttons_sign_in_google';
-  static const buttons_sign_in_apple = 'buttons_sign_in_apple';
+  static const boutons_login = 'boutons_login';
+  static const boutons_sign_in = 'boutons_sign_in';
+  static const boutons_logout = 'boutons_logout';
+  static const boutons_sign_in_fb = 'boutons_sign_in_fb';
+  static const boutons_sign_in_google = 'boutons_sign_in_google';
+  static const boutons_sign_in_apple = 'boutons_sign_in_apple';
   static const direction_inbound = 'direction_inbound';
-  static const direction_outbound = 'direction_outbound';
-  static const direPreposition_inbound = 'direPreposition_inbound';
-  static const direPreposition_outbound = 'direPreposition_outbound';
+  static const direction_sortant = 'direction_sortant';
+  static const direPreposition_entrant = 'direPreposition_entrant';
+  static const direPreposition_sortant = 'direPreposition_sortant';
   static const transactionStatus_failed = 'transactionStatus_failed';
   static const transactionStatus_success = 'transactionStatus_success';
   static const transactionStatus_adverbe_failed =
@@ -67,7 +68,7 @@ class LocaleKeys {
   static const PASSWORD_MIN_SYMBOLS = 'PASSWORD_MIN_SYMBOLS';
   static const PASSWORD_MAX_LENGTH = 'PASSWORD_MAX_LENGTH';
   static const APP_NAME = 'APP_NAME';
-  static const EASY_AFFORDABLE_BANKING = 'EASY_AFFORDABLE_BANKING';
+  static const SLOGAN = 'SLOGAN';
   static const WELCOME = 'WELCOME';
   static const FORGOT_PASSWORD = 'FORGOT_PASSWORD';
   static const FORGOT_PASSWORD2 = 'FORGOT_PASSWORD2';
@@ -131,6 +132,15 @@ class LocaleKeys {
   static const PLEASE_ENTER_NEW_PASSWORD = 'PLEASE_ENTER_NEW_PASSWORD';
   static const PLEASE_ENTER_CONFIRM_NEW_PASSWORD =
       'PLEASE_ENTER_CONFIRM_NEW_PASSWORD';
+  static const buttons_login = 'buttons_login';
+  static const buttons_sign_in = 'buttons_sign_in';
+  static const buttons_logout = 'buttons_logout';
+  static const buttons_sign_in_fb = 'buttons_sign_in_fb';
+  static const buttons_sign_in_google = 'buttons_sign_in_google';
+  static const buttons_sign_in_apple = 'buttons_sign_in_apple';
+  static const direction_outbound = 'direction_outbound';
+  static const direPreposition_inbound = 'direPreposition_inbound';
+  static const direPreposition_outbound = 'direPreposition_outbound';
   static const DOES_NOT_MATCH_CONFIRM_PASSWORD =
       'DOES_NOT_MATCH_CONFIRM_PASSWORD';
   static const PLS_MIN_AMOUNT = 'PLS_MIN_AMOUNT';
@@ -201,6 +211,139 @@ class LocaleKeys {
 }
 
 class Locales {
+  static const fr_FR = {
+    'boutons_login': 'Connexion',
+    'boutons_sign_in': 'Se connecter',
+    'boutons_logout': 'Déconnexion',
+    'boutons_sign_in_fb': 'Connectez-vous avec Facebook',
+    'boutons_sign_in_google': 'Connectez-vous avec Google',
+    'boutons_sign_in_apple': 'Se connecter avec Apple',
+    'direction_inbound': 'Reçu',
+    'direction_sortant': 'Envoyer',
+    'direPreposition_entrant': 'de',
+    'direPreposition_sortant': 'à',
+    'transactionStatus_failed': 'Échec',
+    'transactionStatus_success': 'Succès',
+    'transactionStatus_adverbe_failed': 'avec succès',
+    'transactionStatus_adverbe_success': 'avec succès',
+    'NOTIFICATION_TITLE_TRANSFER_RECEIVED': 'Argent reçu',
+    'NOTIFICATION_BODY_TRANSFER_RECEIVED':
+        'Vous avez reçu une somme de %s HLG de %s.',
+    'NOTIFICATION_TITLE_TRANSFER_SENT': 'Argent envoyé',
+    'NOTIFICATION_BODY_TRANSFER_SENT':
+        'Vous avez envoyé une somme de de %s HLG à %s.',
+    'NOTIFICATION_TITLE_WITHDRAW': 'Retrait',
+    'NOTIFICATION_BODY_WITHDRAW':
+        'Vous avez effectué un retrait de %s HLG de %s.',
+    'NOTIFICATION_TITLE_CASH_IN': 'Dépôt par %s.',
+    'NOTIFICATION_BODY_CASH_IN': 'Vous avez effectué un dépôt par %s.',
+    'NOTIFICATION_TITLE_CASH_OUT': 'Retrait par %s.',
+    'NOTIFICATION_BODY_CASH_OUT': 'Vous avez effectué un retrait par %s.',
+    'NOTIFICATION_TITLE_PAYMENT': 'Paiement de facture.',
+    'NOTIFICATION_BODY_PAYMENT': 'Vous avez payé une facture HLG %s pour %s.',
+    'NOTIFICATION_TITLE_LOTOPLAY': 'Billets achetés',
+    'NOTIFICATION_BODY_LOTOPLAY':
+        'Vous avez acheté un billet pour %s HLG à %s.',
+    'NOTIFICATION_TITLE_LOTOWIN': 'Vous avez gagné',
+    'NOTIFICATION_BODY_LOTOWIN':
+        'Vous avez reçu %s HLG parce que vous avez gagné à la loterie.',
+    'LOG_IN': 'Connectez-vous',
+    'REGISTER': 'S\'inscrire',
+    'RESET_PASSWORD': 'Réinitialiser le mot de passe',
+    'RESET': 'Réinitialiser',
+    'SIGN_UP_NOW': 'Inscrivez-vous maintenant',
+    'SIGN_UP': 'Inscrivez-vous',
+    'VERIFY_PHONE_NUMBER': 'Vérifier le numéro de téléphone',
+    'VERIFY_EMAIL': 'Vérifier l\'e-mail',
+    'CONTINUE': 'Continuer',
+    'RESEND_CODE_BTN': 'Renvoyer le code',
+    'CHAT_BTN': 'Discuter',
+    'ACCEPT': 'Accepter',
+    'REJECT': 'Rejeter',
+    'SAVE': 'Enregistrer',
+    'PASSWORD_INVALID':
+        'Le mot de passe doit contenir au moins une minuscule, une majuscule, un chiffre et un symbole',
+    'PASSWORD_MIN_LOWERCASE':
+        'Le mot de passe doit contenir au moins une lettre minuscule.',
+    'PASSWORD_MIN_UPPERCASE':
+        'Le mot de passe doit contenir au moins une lettre majuscule.',
+    'PASSWORD_MIN_NUMBERS':
+        'Le mot de passe doit contenir au moins un chiffre.',
+    'PASSWORD_MIN_SYMBOLS':
+        'Le mot de passe doit contenir au moins un symbole.',
+    'PASSWORD_MAX_LENGTH':
+        'Le mot de passe ne doit pas dépasser 12 caractères.',
+    'APP_NAME': 'Loterie haïtienne',
+    'SLOGAN': 'Jwe pou ou ka Genyen!!!',
+    'WELCOME': 'Bienvenue à la Loterie de l\'État haïtien LOTRI',
+    'FORGOT_PASSWORD': 'Mot de passe oublié ?',
+    'FORGOT_PASSWORD2': 'Mot de passe oublié',
+    'CREATE_NEW_PASSWORD': 'Créer un nouveau mot de passe',
+    'NEW_USER': 'Êtes-vous un nouvel utilisateur ?',
+    'BACK_TO': 'Retour à',
+    'REGISTER_HERE': 'Inscrivez-vous ici',
+    'ALREADY_HAVE_AN_ACCOUNT': 'Vous avez déjà un compte ?',
+    'LOGIN': 'Connexion',
+    'OTP': 'OTP',
+    'CODE_IS_SENT_TO': 'OTP envoyé à',
+    'RESEND_CODE': 'Renvoyer l\'OTP',
+    'SERVICE_AT_YOU_FINGERTIPS': 'Un service à portée de main',
+    'FOR_ANY_ASSISTANCE_PLEASE': 'Pour toute assistance s\'il vous plaît',
+    'CALL': 'Appeler',
+    'EMAIL': 'E-mail',
+    'PASSWORD': 'Mot de passe',
+    'NAME': 'Nom',
+    'PHONE_NUMBER': 'Numéro de téléphone',
+    'SEARCH': 'Rechercher..',
+    'ENTER_DURATION': 'Entrez la durée',
+    'ENTER_OLD_PASSWORD': 'Entrez l\'ancien mot de passe',
+    'ENTER_NEW_PASSWORD': 'Entrez un nouveau mot de passe',
+    'ENTER_CONFIRM_NEW_PASSWORD':
+        'Entrez pour confirmer le nouveau mot de passe',
+    'OLD_PASSWORD': 'Ancien mot de passe',
+    'NEW_PASSWORD': 'Nouveau mot de passe',
+    'CONFIRM_NEW_PASSWORD': 'Confirmer le nouveau mot de passe',
+    'PLS_ENTER_EMAILID': 'Veuillez saisir votre e-mail',
+    'PLS_ENTER_VALID_EMAILID': 'Veuillez saisir une adresse e-mail valide',
+    'PLS_ENTER_VALID_EMAIL': 'Veuillez saisir une adresse e-mail valide',
+    'PLS_ENTER_EMAIL': 'Veuillez saisir une adresse e-mail',
+    'PLS_ENTER_MESSAGE':
+        'Veuillez, la longueur du message doit être d\'au moins 50',
+    'PLS_ENTER_PASSWORD': 'Veuillez saisir un mot de passe',
+    'PLS_ENTER_CONFIRM_PASSWORD':
+        'Veuillez saisir un mot de passe de confirmation',
+    'PLS_ENTER_PASSWORD_MUST_BE_LONG':
+        'Veuillez, le mot de passe doit comporter entre 8 et 20 caractères',
+    'PLS_ENTER_PASSWORD_NOT_MATCH': 'Le mot de passe ne correspond pas',
+    'PLS_ENTER_NAME': 'Veuillez saisir un nom',
+    'PLS_ENTER_PHONE_NUMBER': 'Veuillez saisir un numéro de téléphone',
+    'PLS_ENTER_VALID_PHONE_NUMBER':
+        'Veuillez saisir un numéro de téléphone haïtien valide',
+    'PLS_ENTER_OTP': 'Veuillez saisir OTP',
+    'PLS_ENTER__VALID_OTP': 'Veuillez saisir un OTP valide',
+    'PLS_ENTER_PIN':
+        'Veuillez saisir votre code PIN pour terminer la transaction',
+    'onEmpty': 'Veuillez saisir une valeur.',
+    'STAR_SIGN': '* ',
+    'NO_DATA_FOUND': 'Aucune donnée trouvée',
+    'ENTER_AMOUNT': 'Entrez le montant (HLG)',
+    'ADDRESS_MARKET_DETAILS': 'Détails du marché des adresses',
+    'CONTACTS': 'Contacts',
+    'AMOUNT': 'Montant',
+    'E_G_8_OR_12': 'par exemple, 8 ou 12',
+    'E_G_12_OR_24': 'par exemple, 12 ou 24',
+    'SUBMIT': 'Soumettre',
+    'PAYMENT_REQUEST': 'Demande de paiement',
+    'SEND': 'Envoyer',
+    'SEND_EMAIL': 'Envoyer un e-mail',
+    'CREATE_PASSWORD': 'Créer un mot de passe',
+    'EDIT_PROFILE': 'Modifier le profil',
+    'PLS_ENTER_AMOUNT': 'Veuillez saisir le montant',
+    'PLEASE_ENTER_OLD_PASSWORD': 'Veuillez saisir l\'ancien mot de passe',
+    'PLEASE_ENTER_NEW_PASSWORD': 'Veuillez saisir un nouveau mot de passe',
+    'PLEASE_ENTER_CONFIRM_NEW_PASSWORD':
+        'Veuillez saisir votre nouveau mot de passe.',
+  };
   static const ht_HT = {
     'buttons_login': 'Login',
     'buttons_sign_in': 'Sign-in',
@@ -221,7 +364,7 @@ class Locales {
         'Ou te resevwa yon kantite %s HLG nan men %s.',
     'NOTIFICATION_TITLE_TRANSFER_SENT': 'Lajan Soti',
     'NOTIFICATION_BODY_TRANSFER_SENT': 'Ou voye yon kantite %s HLG bay %s.',
-    'NOTIFICATION_TITLE_WITHDRAW': ' Retire Lajan',
+    'NOTIFICATION_TITLE_WITHDRAW': ' Retrè',
     'NOTIFICATION_BODY_WITHDRAW': ' Ou retire yon kantite %s HLG nan %s.',
     'NOTIFICATION_TITLE_CASH_IN': 'Depot pa %s.',
     'NOTIFICATION_BODY_CASH_IN': ' Ou te fè depo pa %s.',
@@ -255,9 +398,9 @@ class Locales {
     'PASSWORD_MIN_NUMBERS': 'Modpas dwe genyen omwen yon nimewo.',
     'PASSWORD_MIN_SYMBOLS': 'Modpas dwe genyen omwen yon senbòl.',
     'PASSWORD_MAX_LENGTH': 'Modpas pa dwe depase 12 karaktè.',
-    'APP_NAME': 'AYITI LOTRI',
-    'EASY_AFFORDABLE_BANKING': 'Fasil ak Abòdab Banking',
-    'WELCOME': 'Byenvini nan AYITI LOTRI',
+    'APP_NAME': 'Loterie Haïtien',
+    'SLOGAN': 'Fasil ak Abòdab Banking',
+    'WELCOME': 'Byenvini nan lotri Leta Ayisyen LOTRI',
     'FORGOT_PASSWORD': 'ou Bliye Modpas ou?',
     'FORGOT_PASSWORD2': 'Bliye Modpa',
     'CREATE_NEW_PASSWORD': 'Kreye yon nouvo modpas',

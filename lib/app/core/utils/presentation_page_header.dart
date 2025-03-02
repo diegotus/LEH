@@ -26,7 +26,7 @@ class PresentationPageHeader extends GetWidget {
               Image.asset(ImgName.LOGO, width: 100.ss),
               verticalSpaceSmall,
               Text(
-                AppStrings.EASY_AFFORDABLE_BANKING,
+                AppStrings.SLOGAN,
                 textAlign: TextAlign.center,
                 style: TextThemeHelper.authTitle,
               ),

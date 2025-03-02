@@ -1,11 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage_pro/get_storage_pro.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:sizing/sizing.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'app/controllers/app_services_controller.dart';
 import 'app/core/utils/app_theme.dart';
@@ -39,17 +39,20 @@ class MyApp extends StatelessWidget {
         baseSize: const Size(430, 932),
         builder: () {
           return GetMaterialApp(
-            title: "Ayiti Lotri",
+            title: "Loterie de l'etat Haïtien",
             theme: theme,
             initialRoute: AppPages.INITIAL,
             getPages: AppPages.routes,
             scrollBehavior: MyCustomScrollBehavior(),
-            locale: const Locale('ht'),
-            supportedLocales: const <Locale>[Locale('ht')],
-            fallbackLocale: const Locale("en"),
+            locale: const Locale('fr'),
+            supportedLocales: const <Locale>[Locale('fr'), Locale('ht')],
+            fallbackLocale: const Locale("fr"),
             // defaultTransition: Transition.fade,
             translationsKeys: AppTranslation.translations,
-            localizationsDelegates: HTLocalizations.delegates,
+            localizationsDelegates: [
+              ...GlobalMaterialLocalizations.delegates,
+              ...HTLocalizations.delegates
+            ],
           );
         });
   }

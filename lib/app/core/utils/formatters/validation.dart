@@ -16,6 +16,12 @@ String? isValidEmail(String? string) {
 }
 
 MaskTextInputFormatter phoneFormateur() => MaskTextInputFormatter(
+      mask: r'+#',
+      filter: {"#": RegExp(r'[0-9]*')},
+      type: MaskAutoCompletionType.lazy,
+    );
+
+MaskTextInputFormatter haitiPhoneFormateur() => MaskTextInputFormatter(
       mask: r'509 $# ## ## ##',
       filter: {"#": RegExp(r'[0-9]'), r"$": RegExp(r'3|4')},
       type: MaskAutoCompletionType.lazy,

@@ -25,7 +25,7 @@ class AppStrings {
   static String PASSWORD_MIN_SYMBOLS = 'PASSWORD_MIN_SYMBOLS'.tr;
   static String PASSWORD_MAX_LENGTH = 'PASSWORD_MAX_LENGTH'.tr;
   static String APP_NAME = 'APP_NAME'.tr;
-  static String EASY_AFFORDABLE_BANKING = 'EASY_AFFORDABLE_BANKING'.tr;
+  static String SLOGAN = 'SLOGAN'.tr;
   static String WELCOME = 'WELCOME'.tr;
   static String FORGOT_PASSWORD = 'FORGOT_PASSWORD'.tr;
   static String FORGOT_PASSWORD2 = 'FORGOT_PASSWORD2'.tr;
@@ -67,6 +67,8 @@ class AppStrings {
   static String PLS_ENTER_PHONE_NUMBER = 'PLS_ENTER_PHONE_NUMBER'.tr;
   static String PLS_ENTER_VALID_PHONE_NUMBER =
       'PLS_ENTER_VALID_PHONE_NUMBER'.tr;
+  static String PLS_ENTER_VALID_H_PHONE_NUMBER =
+      'PLS_ENTER_VALID_H_PHONE_NUMBER'.tr;
   static String PLS_ENTER_OTP = 'PLS_ENTER_OTP'.tr;
   static String PLS_ENTER_VALID_OTP = 'PLS_ENTER__VALID_OTP'.tr;
   static String PLS_ENTER_PIN = 'PLS_ENTER_PIN'.tr;

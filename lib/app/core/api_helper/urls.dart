@@ -8,11 +8,7 @@ class Url {
       : kIsWeb
           ? Uri.base.origin + "/"
           : "https://loto.ehaiti.ht";
-  static final String BASE_URL = kDebugMode
-      ? "http://$_url:3000/"
-      : kIsWeb
-          ? _url
-          : "https://$_url/";
+  static final String BASE_URL = kDebugMode ? "http://$_url:3000/" : _url;
   static final String SOCKET_URL = "${BASE_URL}chat_socket";
   static const LOGIN = "auth/signin";
   static const REQUEST_AUTH = "auth/request_auth";

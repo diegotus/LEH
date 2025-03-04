@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/app_string.dart';
 
 import '../../../../core/utils/app_utility.dart';
 import '../../../../core/utils/enums.dart';
@@ -15,7 +16,7 @@ class CashInView extends GetView<CashInController> {
     return Scaffold(
       appBar: CustomAppBar(
         context,
-        "Cash In",
+        AppStrings.LABEL_CASH_IN,
         true,
         true,
         const [],
@@ -36,11 +37,11 @@ class CashInView extends GetView<CashInController> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: [
-            const Text("This Method is unvailable for now"),
+            Text(AppStrings.UNAVAILABLE_METHOD),
             verticalSpaceRegular,
             Center(
                 child: FilledButton(
-                    onPressed: Get.back, child: const Text("Back"))),
+                    onPressed: Get.back, child: Text(AppStrings.BACK))),
           ],
         );
     }

@@ -7,19 +7,21 @@
     "sign_in_google": "Connectez-vous avec Google",
     "sign_in_apple": "Se connecter avec Apple"
   },
+  "language": "Langue",
+
   "direction": {
     "inbound": "Reçu",
-    "sortant": "Envoyer"
+    "outbound": "Envoyer"
   },
   "direPreposition": {
-    "entrant": "de",
-    "sortant": "à"
+    "inbound": "de",
+    "outbound": "à"
   },
   "transactionStatus": {
     "failed": "Échec",
     "success": "Succès",
     "adverbe": {
-      "failed": "avec succès",
+      "failed": "sans succès",
       "success": "avec succès"
     }
   },
@@ -67,12 +69,14 @@
   "PASSWORD_MAX_LENGTH": "Le mot de passe ne doit pas dépasser 12 caractères.",
 
   "APP_NAME": "Loterie haïtienne",
-  "SLOGAN": "Jwe pou ou ka Genyen!!!",
-  "WELCOME": "Bienvenue à la Loterie de l'État haïtien LOTRI",
+  "SLOGAN": "Jouer pour gagner!!!",
+  "WELCOME_TO": "Bienvenue à la Loterie de l'État haïtien LOTRI",
   "FORGOT_PASSWORD": "Mot de passe oublié ?",
   "FORGOT_PASSWORD2": "Mot de passe oublié",
   "CREATE_NEW_PASSWORD": "Créer un nouveau mot de passe",
   "NEW_USER": "Êtes-vous un nouvel utilisateur ?",
+  "back": "Retour",
+  "next": "Suivant",
   "BACK_TO": "Retour à",
   "REGISTER_HERE": "Inscrivez-vous ici",
   "ALREADY_HAVE_AN_ACCOUNT": "Vous avez déjà un compte ?",
@@ -81,7 +85,7 @@
   "CODE_IS_SENT_TO": "OTP envoyé à",
   "RESEND_CODE": "Renvoyer l'OTP",
   "SERVICE_AT_YOU_FINGERTIPS": "Un service à portée de main",
-  "FOR_ANY_ASSISTANCE_PLEASE": "Pour toute assistance s'il vous plaît",
+  "FOR_ANY_ASSISTANCE_PLEASE": "Pour toute assistance s'il vous plaît appeler au",
   "CALL": "Appeler",
 
   "EMAIL": "E-mail",
@@ -135,11 +139,50 @@
   "SEND": "Envoyer",
   "SEND_EMAIL": "Envoyer un e-mail",
   "CREATE_PASSWORD": "Créer un mot de passe",
-  "EDIT_PROFILE": "Modifier le profil",
+  "EDIT_PROFILE": "Modifier mon profil",
 
   "PLS_ENTER_AMOUNT": "Veuillez saisir le montant",
 
   "PLEASE_ENTER_OLD_PASSWORD": "Veuillez saisir l'ancien mot de passe",
   "PLEASE_ENTER_NEW_PASSWORD": "Veuillez saisir un nouveau mot de passe",
-  "PLEASE_ENTER_CONFIRM_NEW_PASSWORD": "Veuillez saisir votre nouveau mot de passe."
+  "PLEASE_ENTER_CONFIRM_NEW_PASSWORD": "Veuillez saisir votre nouveau mot de passe.",
+
+  "label": {
+    "clickHere": "Cliquez ici",
+    "welcome": "Bienvenue",
+    "home": "Accueil",
+    "play": "Jouer",
+    "ticket": "Billet",
+    "result": "Résultat",
+    "send_receive_money": "Envoyer/Recevoir de l'argent",
+    "send_money": "Envoyer de l'argent",
+    "receive_money": "Recevoir de l'argent",
+    "cash_out": "Retrait",
+    "cash_in": "Dépôt",
+    "transaction_history": "Historique des transactions",
+    "local_branch": "Filiale locale",
+    "no_tirage_for_now": "Aucun Tirage pour le Moment",
+    "next_tirage": "Prochain tirage",
+    "Win_ticket": "Billet Gagnant",
+    "last_ticket": "Derniers billets",
+    "today": "AUjourd'hui",
+    "yesterday": "Hier",
+    "custom": "Personnaliser",
+    "settings": "Réglages",
+    "disable_account": "Désactiver mon compte",
+    "change_password": "Changer mon mot de passe",
+    "logout": "Se Déconnecter",
+    "Gallery_file": "Galerie/Fichier",
+    "take_photo": "Prendre une photo",
+    "crop_image": "Recadrer l'image",
+    "fullName": "Nom et prénom",
+    "cancel": "Annuler",
+    "choose_Option": "Choisissez une option",
+    "fee": "Frais",
+    "tax": "Taxe"
+  },
+  "message": {
+    "unavailable_method": "Cette méthode n'est pas disponible pour le moment!",
+    "not_implemented":"Cette page n'est pas encore prête!"
+  }
 }

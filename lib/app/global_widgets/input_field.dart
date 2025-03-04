@@ -704,6 +704,7 @@ Widget inputWithLabel(
     bool initValueWithController = false,
     void Function(String)? onFieldSubmitted,
     TextEditingController? controller,
+    Widget? prefixIcon,
     BoxConstraints? suffixIconConstraints}) {
   if (initValueWithController) {
     controller = TextEditingController(text: initialValue);
@@ -747,6 +748,7 @@ Widget inputWithLabel(
         suffixIconConstraints: suffixIconConstraints,
         obscureText: obscureText ?? false,
         errorMaxLines: 2,
+        prefixIcon: prefixIcon,
       ),
     ],
   );

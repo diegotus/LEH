@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/app_string.dart';
+import 'package:haiti_lotri/app/data/models/storage_box_model.dart';
 import 'package:sizing/sizing_extension.dart';
 
 import '../../../core/utils/app_colors.dart' show AppColors;
@@ -68,7 +70,7 @@ class LotoResultsView extends GetView<LotoResultsController> {
 
   Widget getResultaWidget(TirageName tirage) {
     return ListBuilderWidget.future(
-      onEmptyText: "Poko Gen tiraj",
+      onEmptyText: AppStrings.NO_TIRAGE,
       itemBuilder: (context, result, refreshFuture, [previous]) {
         return Column(
           mainAxisSize: MainAxisSize.min,
@@ -76,7 +78,7 @@ class LotoResultsView extends GetView<LotoResultsController> {
           children: [
             Text(
               result.createdAt
-                  .format("EEEE, dd MMMM, yyyy", locale: "fr")
+                  .format("EEEE, dd MMMM, yyyy", locale: StorageBox.locale.val)
                   .capitalize,
             ),
             verticalSpaceRegular,

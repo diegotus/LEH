@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/app_string.dart';
 
 import '../../../controllers/app_services_controller.dart';
 import '../../../core/utils/enums.dart';
@@ -18,7 +19,7 @@ class HomeController extends GetxController {
   List<Map<String, dynamic>> serviceListTmp = [
     {
       "id": 1,
-      "label": "Cash In",
+      "label": AppStrings.LABEL_CASH_IN,
       "icon": Kiwoo.cash_in,
       "MaterialIcon": "",
       "onTap": () {
@@ -46,18 +47,17 @@ class HomeController extends GetxController {
       }
     },
     {
-      "id": 2,
-      "label": "Send/Receive money",
+      "label": AppStrings.LABEL_SEND_RECEIVE_MONEY,
       "icon": Kiwoo.send_rece_money,
       "MaterialIcon": "",
       "onTap": () {
         boomSheetOptions<String>(options: [
           BottomSheetOption(
-              label: "Send Money",
+              label: AppStrings.LABEL_SEND_MONEY,
               value: Routes.SEND_MONEY,
               icon: Kiwoo.cash_out),
           BottomSheetOption(
-              label: "Receive Money",
+              label: AppStrings.LABEL_RECEIVE_MONEY,
               value: Routes.RECEIVE_MONEY,
               icon: Kiwoo.cash_in),
         ]).then((resp) {
@@ -68,28 +68,28 @@ class HomeController extends GetxController {
     },
     {
       "id": 3,
-      "label": "Cash-out",
+      "label": AppStrings.LABEL_CASH_OUT,
       "icon": Kiwoo.cash_out,
       "MaterialIcon": "",
       "onTap": () => Get.toNamed(Routes.CASH_OUT),
     },
     {
       "id": 4,
-      "label": "Transaction History",
+      "label": AppStrings.LABEL_TRANSACTION_HISTORY,
       "icon": Kiwoo.loan_market,
       "MaterialIcon": "",
       "onTap": () => Get.toNamed(Routes.TRANSACTIONS),
     },
     {
       "id": 5,
-      "label": "Profil",
+      "label": AppStrings.SETTINGS,
       "icon": Kiwoo.person_outline,
       "MaterialIcon": "",
-      "onTap": () => Get.toNamed(Routes.PROFILE),
+      "onTap": () => Get.toNamed(Routes.SETTINGS),
     },
     {
       "id": 6,
-      "label": "Address Market",
+      "label": AppStrings.LABEL_LOCAL_BRANCH,
       "icon": Kiwoo.market_address,
       "MaterialIcon": "",
     },

@@ -5,11 +5,13 @@ import 'package:custom_image_crop/custom_image_crop.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/app_string.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:mime/mime.dart';
 import 'package:sizing/sizing.dart';
 
+import '../../../../generated/locales.g.dart';
 import '../../../data/models/document_model.dart' show FileData;
 import '../app_colors.dart';
 import '../app_utility.dart' show horizontalSpaceMedium, verticalSpaceRegular;
@@ -202,7 +204,7 @@ class PickFile {
               ),
               horizontalSpaceMedium,
               FilledButton(
-                child: const Text('Cancel'),
+                child: Text(AppStrings.CANCEL),
                 onPressed: () => Get.back(),
               ),
             ],

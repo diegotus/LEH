@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:haiti_lotri/app/core/utils/app_colors.dart';
+import 'package:haiti_lotri/app/core/utils/app_string.dart';
 import 'package:haiti_lotri/app/core/utils/formatters/extension.dart';
 import 'package:haiti_lotri/app/data/models/tirage_model.dart';
 import 'package:haiti_lotri/app/global_widgets/count_down.dart';
@@ -39,14 +40,16 @@ class NextResultWidget extends GetView {
             child: ListTile(
               dense: true,
               title: Text(
-                "Prochen Tiraj",
+                AppStrings.NEXT_TIRAGE,
                 style: TextStyle(
                   color: FontColors.PRIMARY,
                   fontFamily: FontPoppins.BOLD,
                 ),
               ),
               subtitle: Text(
-                DateTime.now().format("dd MMMM yyyy", locale: "fr").capitalize!,
+                DateTime.now()
+                    .format("dd MMMM yyyy", locale: Get.locale?.toLanguageTag())
+                    .capitalize,
                 style: TextStyle(
                   color: FontColors.PRIMARY,
                   fontFamily: FontPoppins.LIGHT,

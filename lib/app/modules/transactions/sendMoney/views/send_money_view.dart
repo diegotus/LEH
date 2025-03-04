@@ -6,11 +6,13 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:sizing/sizing_extension.dart';
 
+import '../../../../core/utils/actions/overlay.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/app_utility.dart';
 import '../../../../core/utils/font_family.dart';
 import '../../../../core/utils/formatters/validation.dart';
+import '../../../../core/utils/text_style.dart';
 import '../../../../global_widgets/app_button.dart';
 import '../../../../global_widgets/custom_appbar.dart';
 import '../../../../global_widgets/input_field.dart';
@@ -25,13 +27,30 @@ final _titleStile = TextStyle(
 
 class SendMoneyView extends GetView<SendMoneyController> {
   const SendMoneyView({super.key});
+  submitTransaction(BuildContext context) {
+    if (controller.formKey.currentState!.validate()) {
+      controller.formKey.currentState!.save();
+      showOverlay(
+        asyncFunction: () => controller.getValidationInfo(
+            '+${controller.phone}', controller.amount),
+      ).then((val) {
+        if (val == null) return;
+        getValidationSheet(
+          context: context,
+          amount: controller.amount,
+          val: val,
+        );
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // final formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: CustomAppBar(
         context,
-        "Sending Money",
+        AppStrings.LABEL_SEND_MONEY,
         true,
         true,
         const [],
@@ -40,25 +59,8 @@ class SendMoneyView extends GetView<SendMoneyController> {
       persistentFooterAlignment: AlignmentDirectional.center,
       persistentFooterButtons: [
         AppButton(
-          buttonText: "Next",
-          onTap: () {
-            if (controller.formKey.currentState!.validate()) {
-              controller.formKey.currentState!.save();
-              controller
-                  .getValidationInfo(
-                      '509${controller.phoneNumberformatter.getUnmaskedText()}',
-                      controller.amount)
-                  .then((val) {
-                if (val == null) return;
-                getValidationSheet(
-                  context: context,
-                  amount: controller.amount,
-                  val: val,
-                );
-              });
-            } else {}
-          },
-        ),
+            buttonText: AppStrings.NEXT,
+            onTap: () => submitTransaction(context)),
       ],
       body: Container(
         margin: const EdgeInsets.only(top: 20, right: 20, left: 20),
@@ -73,17 +75,29 @@ class SendMoneyView extends GetView<SendMoneyController> {
                       inputWithLabel(
                         required: true,
                         label: AppStrings.PHONE_NUMBER,
-                        hintText: "xxx xx xx xx xx",
+                        hintText: AppStrings.PHONE_NUMBER,
                         keyboardType: TextInputType.phone,
-                        inputFormatters: [controller.phoneNumberformatter],
+                        textInputAction: TextInputAction.next,
+                        prefixIcon: Center(
+                          widthFactor: 0.1,
+                          child: Text(
+                            "+",
+                            style: labelTextStyle.copyWith(
+                                fontSize: 16.ss, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        inputFormatters: [numberFormatter],
                         validator: (value) {
                           if ((value ?? '').isEmpty) {
                             return AppStrings.PLS_ENTER_PHONE_NUMBER;
                           }
-                          if (!controller.phoneNumberformatter.isFill()) {
+                          if (value?.isPhoneNumber != true) {
                             return AppStrings.PLS_ENTER_VALID_PHONE_NUMBER;
                           }
                           return null;
+                        },
+                        onSaved: (value) {
+                          controller.phone = value!;
                         },
                       ),
                       verticalSpaceMedium,
@@ -93,6 +107,8 @@ class SendMoneyView extends GetView<SendMoneyController> {
                           hintText: AppStrings.AMOUNT,
                           inputFormatters: [decimalNumberFormatter],
                           keyboardType: TextInputType.number,
+                          onFieldSubmitted: (p0) => submitTransaction(context),
+                          textInputAction: TextInputAction.done,
                           onSaved: (val) {
                             controller.amount = double.parse(val!);
                           },
@@ -123,24 +139,24 @@ class SendMoneyView extends GetView<SendMoneyController> {
   }) {
     var listData = [
       {
-        "leading": "Amount",
+        "leading": AppStrings.AMOUNT,
         "title": amount.toHLG,
       },
       {
-        "leading": "Fee",
+        "leading": AppStrings.FEE,
         "title": val.fees.toHLG,
       },
       {
-        "leading": "Tax",
+        "leading": AppStrings.TAX,
         "title": (amount * 0.1).toHLG,
       },
       {
-        "leading": "From",
+        "leading": AppStrings.FROM,
         "title": val.senderInfo.name,
         "subtitle": val.senderInfo.phone
       },
       {
-        "leading": "To",
+        "leading": AppStrings.TO,
         "title": val.receiverInfo.name,
         "subtitle": val.receiverInfo.phone
       },
@@ -254,13 +270,13 @@ class SendMoneyView extends GetView<SendMoneyController> {
                     length: 4,
                     obscureText: true,
                     obscuringCharacter: "*",
-                    backgroundColor: AppColors.WHITE,
+                    // backgroundColor: AppColors.WHITE,
                     hapticFeedbackTypes: HapticFeedbackTypes.heavy,
                     useHapticFeedback: true,
                     pinTheme: PinTheme(
                       activeColor: AppColors.PRIMARY1,
                       selectedFillColor: AppColors.WHITE,
-                      selectedColor: Colors.grey.shade400,
+                      selectedColor: Colors.blueGrey,
                       activeFillColor: AppColors.WHITE,
                       inactiveFillColor: AppColors.WHITE,
                       shape: PinCodeFieldShape.box,
@@ -282,7 +298,7 @@ class SendMoneyView extends GetView<SendMoneyController> {
                   verticalSpaceMedium,
                   //footer
                   Obx(() => AppButton(
-                        buttonText: "Verify PIN",
+                        buttonText: AppStrings.SUBMIT,
                         onTap: pin.isEmpty || pin.value.length < 4
                             ? null
                             : () {

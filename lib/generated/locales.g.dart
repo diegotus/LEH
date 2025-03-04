@@ -17,10 +17,11 @@ class LocaleKeys {
   static const boutons_sign_in_fb = 'boutons_sign_in_fb';
   static const boutons_sign_in_google = 'boutons_sign_in_google';
   static const boutons_sign_in_apple = 'boutons_sign_in_apple';
+  static const language = 'language';
   static const direction_inbound = 'direction_inbound';
-  static const direction_sortant = 'direction_sortant';
-  static const direPreposition_entrant = 'direPreposition_entrant';
-  static const direPreposition_sortant = 'direPreposition_sortant';
+  static const direction_outbound = 'direction_outbound';
+  static const direPreposition_inbound = 'direPreposition_inbound';
+  static const direPreposition_outbound = 'direPreposition_outbound';
   static const transactionStatus_failed = 'transactionStatus_failed';
   static const transactionStatus_success = 'transactionStatus_success';
   static const transactionStatus_adverbe_failed =
@@ -69,11 +70,13 @@ class LocaleKeys {
   static const PASSWORD_MAX_LENGTH = 'PASSWORD_MAX_LENGTH';
   static const APP_NAME = 'APP_NAME';
   static const SLOGAN = 'SLOGAN';
-  static const WELCOME = 'WELCOME';
+  static const WELCOME_TO = 'WELCOME_TO';
   static const FORGOT_PASSWORD = 'FORGOT_PASSWORD';
   static const FORGOT_PASSWORD2 = 'FORGOT_PASSWORD2';
   static const CREATE_NEW_PASSWORD = 'CREATE_NEW_PASSWORD';
   static const NEW_USER = 'NEW_USER';
+  static const back = 'back';
+  static const next = 'next';
   static const BACK_TO = 'BACK_TO';
   static const REGISTER_HERE = 'REGISTER_HERE';
   static const ALREADY_HAVE_AN_ACCOUNT = 'ALREADY_HAVE_AN_ACCOUNT';
@@ -109,6 +112,8 @@ class LocaleKeys {
   static const PLS_ENTER_NAME = 'PLS_ENTER_NAME';
   static const PLS_ENTER_PHONE_NUMBER = 'PLS_ENTER_PHONE_NUMBER';
   static const PLS_ENTER_VALID_PHONE_NUMBER = 'PLS_ENTER_VALID_PHONE_NUMBER';
+  static const PLS_ENTER_VALID_H_PHONE_NUMBER =
+      'PLS_ENTER_VALID_H_PHONE_NUMBER';
   static const PLS_ENTER_OTP = 'PLS_ENTER_OTP';
   static const PLS_ENTER__VALID_OTP = 'PLS_ENTER__VALID_OTP';
   static const PLS_ENTER_PIN = 'PLS_ENTER_PIN';
@@ -132,82 +137,46 @@ class LocaleKeys {
   static const PLEASE_ENTER_NEW_PASSWORD = 'PLEASE_ENTER_NEW_PASSWORD';
   static const PLEASE_ENTER_CONFIRM_NEW_PASSWORD =
       'PLEASE_ENTER_CONFIRM_NEW_PASSWORD';
+  static const label_clickHere = 'label_clickHere';
+  static const label_welcome = 'label_welcome';
+  static const label_home = 'label_home';
+  static const label_play = 'label_play';
+  static const label_ticket = 'label_ticket';
+  static const label_result = 'label_result';
+  static const label_send_receive_money = 'label_send_receive_money';
+  static const label_send_money = 'label_send_money';
+  static const label_receive_money = 'label_receive_money';
+  static const label_cash_out = 'label_cash_out';
+  static const label_cash_in = 'label_cash_in';
+  static const label_transaction_history = 'label_transaction_history';
+  static const label_local_branch = 'label_local_branch';
+  static const label_no_tirage_for_now = 'label_no_tirage_for_now';
+  static const label_next_tirage = 'label_next_tirage';
+  static const label_Win_ticket = 'label_Win_ticket';
+  static const label_last_ticket = 'label_last_ticket';
+  static const label_today = 'label_today';
+  static const label_yesterday = 'label_yesterday';
+  static const label_custom = 'label_custom';
+  static const label_settings = 'label_settings';
+  static const label_disable_account = 'label_disable_account';
+  static const label_change_password = 'label_change_password';
+  static const label_logout = 'label_logout';
+  static const label_Gallery_file = 'label_Gallery_file';
+  static const label_take_photo = 'label_take_photo';
+  static const label_crop_image = 'label_crop_image';
+  static const label_fullName = 'label_fullName';
+  static const label_cancel = 'label_cancel';
+  static const label_choose_Option = 'label_choose_Option';
+  static const label_fee = 'label_fee';
+  static const label_tax = 'label_tax';
+  static const message_unavailable_method = 'message_unavailable_method';
+  static const message_not_implemented = 'message_not_implemented';
   static const buttons_login = 'buttons_login';
   static const buttons_sign_in = 'buttons_sign_in';
   static const buttons_logout = 'buttons_logout';
   static const buttons_sign_in_fb = 'buttons_sign_in_fb';
   static const buttons_sign_in_google = 'buttons_sign_in_google';
   static const buttons_sign_in_apple = 'buttons_sign_in_apple';
-  static const direction_outbound = 'direction_outbound';
-  static const direPreposition_inbound = 'direPreposition_inbound';
-  static const direPreposition_outbound = 'direPreposition_outbound';
-  static const DOES_NOT_MATCH_CONFIRM_PASSWORD =
-      'DOES_NOT_MATCH_CONFIRM_PASSWORD';
-  static const PLS_MIN_AMOUNT = 'PLS_MIN_AMOUNT';
-  static const PLS_ENTER_INCOME = 'PLS_ENTER_INCOME';
-  static const PLS_ENTER_OCCUPATION = 'PLS_ENTER_OCCUPATION';
-  static const PLS_ENTER_ADDRESS = 'PLS_ENTER_ADDRESS';
-  static const PLS_ENTER_STATE = 'PLS_ENTER_STATE';
-  static const PLS_ENTER_CITY = 'PLS_ENTER_CITY';
-  static const PLS_ENTER_COUNTRY = 'PLS_ENTER_COUNTRY';
-  static const PLS_ENTER_ZIPCODE = 'PLS_ENTER_ZIPCODE';
-  static const PASSWORD_NOT_MATCH = 'PASSWORD_NOT_MATCH';
-  static const GENERAL_CHAT = 'GENERAL_CHAT';
-  static const PROFILE = 'PROFILE';
-  static const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
-  static const ADDRESS = 'ADDRESS';
-  static const IDENTITY_VERIFICATION = 'IDENTITY_VERIFICATION';
-  static const INCOME_VERIFICATION = 'INCOME_VERIFICATION';
-  static const OCCUPATION_VERIFICATION = 'OCCUPATION_VERIFICATION';
-  static const TRANSACTIONS = 'TRANSACTIONS';
-  static const IS_TYPING = 'IS_TYPING';
-  static const CONNECTING = 'CONNECTING';
-  static const SUBMITTED_SUCCESSFULLY = 'SUBMITTED_SUCCESSFULLY';
-  static const RECEIVED_REQUEST = 'RECEIVED_REQUEST';
-  static const MONEY_THAT_YOU_HAVE_BORROWED_FROM_OTHERS =
-      'MONEY_THAT_YOU_HAVE_BORROWED_FROM_OTHERS';
-  static const MONEY_THAT_YOU_HAVE_LET_OTHER_PEOPLE_BORROW =
-      'MONEY_THAT_YOU_HAVE_LET_OTHER_PEOPLE_BORROW';
-  static const UPDATE_BALANCE = 'UPDATE_BALANCE';
-  static const ABOUT_US = 'ABOUT_US';
-  static const PRIVACY_POLICY = 'PRIVACY_POLICY';
-  static const TERMS_OF_USE = 'TERMS_OF_USE';
-  static const HELP_CENTER = 'HELP_CENTER';
-  static const MESAJ = 'MESAJ';
-  static const ENTER_MESSAGE = 'ENTER_MESSAGE';
-  static const ENTER_EMAIL = 'ENTER_EMAIL';
-  static const ENTER_NAME = 'ENTER_NAME';
-  static const ENTER_CITY = 'ENTER_CITY';
-  static const ENTER_STATE = 'ENTER_STATE';
-  static const ENTER_PINCODE = 'ENTER_PINCODE';
-  static const ENTER_ZIPCODE = 'ENTER_ZIPCODE';
-  static const ENTER_ADDRESS = 'ENTER_ADDRESS';
-  static const ENTER_COUNTRY = 'ENTER_COUNTRY';
-  static const ENTER_AGE = 'ENTER_AGE';
-  static const ENTER_OCCUPATION = 'ENTER_OCCUPATION';
-  static const ENTER_INCOME = 'ENTER_INCOME';
-  static const AGE = 'AGE';
-  static const OCCUPATION = 'OCCUPATION';
-  static const REVNI = 'REVNI';
-  static const CITY = 'CITY';
-  static const ETA = 'ETA';
-  static const COUNTRY = 'COUNTRY';
-  static const PINCODE = 'PINCODE';
-  static const ZIPCODE = 'ZIPCODE';
-  static const NOTIFICATION = 'NOTIFICATION';
-  static const transactionType_transfer = 'transactionType_transfer';
-  static const transactionType_lotoPlay = 'transactionType_lotoPlay';
-  static const transactionType_lotoWin = 'transactionType_lotoWin';
-  static const transactionType_payment = 'transactionType_payment';
-  static const transactionType_cash = 'transactionType_cash';
-  static const type = 'type';
-  static const fee = 'fee';
-  static const amount = 'amount';
-  static const tax = 'tax';
-  static const from = 'from';
-  static const to = 'to';
-  static const viewMore = 'viewMore';
-  static const clickHere = 'clickHere';
 }
 
 class Locales {
@@ -218,13 +187,14 @@ class Locales {
     'boutons_sign_in_fb': 'Connectez-vous avec Facebook',
     'boutons_sign_in_google': 'Connectez-vous avec Google',
     'boutons_sign_in_apple': 'Se connecter avec Apple',
+    'language': 'Langue',
     'direction_inbound': 'Reçu',
-    'direction_sortant': 'Envoyer',
-    'direPreposition_entrant': 'de',
-    'direPreposition_sortant': 'à',
+    'direction_outbound': 'Envoyer',
+    'direPreposition_inbound': 'de',
+    'direPreposition_outbound': 'à',
     'transactionStatus_failed': 'Échec',
     'transactionStatus_success': 'Succès',
-    'transactionStatus_adverbe_failed': 'avec succès',
+    'transactionStatus_adverbe_failed': 'sans succès',
     'transactionStatus_adverbe_success': 'avec succès',
     'NOTIFICATION_TITLE_TRANSFER_RECEIVED': 'Argent reçu',
     'NOTIFICATION_BODY_TRANSFER_RECEIVED':
@@ -274,12 +244,14 @@ class Locales {
     'PASSWORD_MAX_LENGTH':
         'Le mot de passe ne doit pas dépasser 12 caractères.',
     'APP_NAME': 'Loterie haïtienne',
-    'SLOGAN': 'Jwe pou ou ka Genyen!!!',
-    'WELCOME': 'Bienvenue à la Loterie de l\'État haïtien LOTRI',
+    'SLOGAN': 'Jouer pour gagner!!!',
+    'WELCOME_TO': 'Bienvenue à la Loterie de l\'État haïtien LOTRI',
     'FORGOT_PASSWORD': 'Mot de passe oublié ?',
     'FORGOT_PASSWORD2': 'Mot de passe oublié',
     'CREATE_NEW_PASSWORD': 'Créer un nouveau mot de passe',
     'NEW_USER': 'Êtes-vous un nouvel utilisateur ?',
+    'back': 'Retour',
+    'next': 'Suivant',
     'BACK_TO': 'Retour à',
     'REGISTER_HERE': 'Inscrivez-vous ici',
     'ALREADY_HAVE_AN_ACCOUNT': 'Vous avez déjà un compte ?',
@@ -288,7 +260,8 @@ class Locales {
     'CODE_IS_SENT_TO': 'OTP envoyé à',
     'RESEND_CODE': 'Renvoyer l\'OTP',
     'SERVICE_AT_YOU_FINGERTIPS': 'Un service à portée de main',
-    'FOR_ANY_ASSISTANCE_PLEASE': 'Pour toute assistance s\'il vous plaît',
+    'FOR_ANY_ASSISTANCE_PLEASE':
+        'Pour toute assistance s\'il vous plaît appeler au',
     'CALL': 'Appeler',
     'EMAIL': 'E-mail',
     'PASSWORD': 'Mot de passe',
@@ -318,6 +291,8 @@ class Locales {
     'PLS_ENTER_NAME': 'Veuillez saisir un nom',
     'PLS_ENTER_PHONE_NUMBER': 'Veuillez saisir un numéro de téléphone',
     'PLS_ENTER_VALID_PHONE_NUMBER':
+        'Veuillez saisir un numéro de téléphone valide',
+    'PLS_ENTER_VALID_H_PHONE_NUMBER':
         'Veuillez saisir un numéro de téléphone haïtien valide',
     'PLS_ENTER_OTP': 'Veuillez saisir OTP',
     'PLS_ENTER__VALID_OTP': 'Veuillez saisir un OTP valide',
@@ -337,12 +312,47 @@ class Locales {
     'SEND': 'Envoyer',
     'SEND_EMAIL': 'Envoyer un e-mail',
     'CREATE_PASSWORD': 'Créer un mot de passe',
-    'EDIT_PROFILE': 'Modifier le profil',
+    'EDIT_PROFILE': 'Modifier mon profil',
     'PLS_ENTER_AMOUNT': 'Veuillez saisir le montant',
     'PLEASE_ENTER_OLD_PASSWORD': 'Veuillez saisir l\'ancien mot de passe',
     'PLEASE_ENTER_NEW_PASSWORD': 'Veuillez saisir un nouveau mot de passe',
     'PLEASE_ENTER_CONFIRM_NEW_PASSWORD':
         'Veuillez saisir votre nouveau mot de passe.',
+    'label_clickHere': 'Cliquez ici',
+    'label_welcome': 'Bienvenue',
+    'label_home': 'Accueil',
+    'label_play': 'Jouer',
+    'label_ticket': 'Billet',
+    'label_result': 'Résultat',
+    'label_send_receive_money': 'Envoyer/Recevoir de l\'argent',
+    'label_send_money': 'Envoyer de l\'argent',
+    'label_receive_money': 'Recevoir de l\'argent',
+    'label_cash_out': 'Retrait',
+    'label_cash_in': 'Dépôt',
+    'label_transaction_history': 'Historique des transactions',
+    'label_local_branch': 'Filiale locale',
+    'label_no_tirage_for_now': 'Aucun Tirage pour le Moment',
+    'label_next_tirage': 'Prochain tirage',
+    'label_Win_ticket': 'Billet Gagnant',
+    'label_last_ticket': 'Derniers billets',
+    'label_today': 'AUjourd\'hui',
+    'label_yesterday': 'Hier',
+    'label_custom': 'Personnaliser',
+    'label_settings': 'Réglages',
+    'label_disable_account': 'Désactiver mon compte',
+    'label_change_password': 'Changer mon mot de passe',
+    'label_logout': 'Se Déconnecter',
+    'label_Gallery_file': 'Galerie/Fichier',
+    'label_take_photo': 'Prendre une photo',
+    'label_crop_image': 'Recadrer l\'image',
+    'label_fullName': 'Nom et prénom',
+    'label_cancel': 'Annuler',
+    'label_choose_Option': 'Choisissez une option',
+    'label_fee': 'Frais',
+    'label_tax': 'Taxe',
+    'message_unavailable_method':
+        'Cette méthode n\'est pas disponible pour le moment!',
+    'message_not_implemented': 'Cette page n\'est pas encore prête!',
   };
   static const ht_HT = {
     'buttons_login': 'Login',
@@ -351,14 +361,15 @@ class Locales {
     'buttons_sign_in_fb': 'Sign-in with Facebook',
     'buttons_sign_in_google': 'Sign-in with Google',
     'buttons_sign_in_apple': 'Sign-in with Apple',
-    'direction_inbound': 'Received',
-    'direction_outbound': 'Send',
-    'direPreposition_inbound': 'from',
-    'direPreposition_outbound': 'to',
-    'transactionStatus_failed': 'Failed',
-    'transactionStatus_success': 'Success',
-    'transactionStatus_adverbe_failed': 'successfully',
-    'transactionStatus_adverbe_success': 'successfully',
+    'language': 'Lang',
+    'direction_inbound': 'Resevwa',
+    'direction_outbound': 'Voye',
+    'direPreposition_inbound': 'soti nan',
+    'direPreposition_outbound': 'pou',
+    'transactionStatus_failed': 'Echwe',
+    'transactionStatus_success': 'Siksè',
+    'transactionStatus_adverbe_failed': 'san Siksè',
+    'transactionStatus_adverbe_success': 'Avec siksè',
     'NOTIFICATION_TITLE_TRANSFER_RECEIVED': 'Lajan antre',
     'NOTIFICATION_BODY_TRANSFER_RECEIVED':
         'Ou te resevwa yon kantite %s HLG nan men %s.',
@@ -400,18 +411,20 @@ class Locales {
     'PASSWORD_MAX_LENGTH': 'Modpas pa dwe depase 12 karaktè.',
     'APP_NAME': 'Loterie Haïtien',
     'SLOGAN': 'Fasil ak Abòdab Banking',
-    'WELCOME': 'Byenvini nan lotri Leta Ayisyen LOTRI',
+    'WELCOME_TO': 'Byenvini nan lotri Leta Ayisyen LOTRI',
     'FORGOT_PASSWORD': 'ou Bliye Modpas ou?',
-    'FORGOT_PASSWORD2': 'Bliye Modpa',
+    'FORGOT_PASSWORD2': 'Bliye Modpas',
     'CREATE_NEW_PASSWORD': 'Kreye yon nouvo modpas',
     'NEW_USER': 'ou se yon Nouvo itilizatè?',
+    'back': 'Retounen',
+    'next': 'Pwochen',
     'BACK_TO': 'Retounen nan',
     'REGISTER_HERE': 'Enskri isit la',
     'ALREADY_HAVE_AN_ACCOUNT': 'Deja gen yon kont?',
     'LOGIN': ' Konekte ',
     'OTP': 'OTP',
-    'CODE_IS_SENT_TO': 'Kòd yo voye bay',
-    'RESEND_CODE': 'Revoye kòd',
+    'CODE_IS_SENT_TO': 'OTP ale sou ',
+    'RESEND_CODE': 'Revoye OTP an',
     'SERVICE_AT_YOU_FINGERTIPS': 'Sèvis nan men ou',
     'FOR_ANY_ASSISTANCE_PLEASE': 'Pou nenpòt asistans tanpri',
     'CALL': 'Rele',
@@ -439,7 +452,8 @@ class Locales {
     'PLS_ENTER_PASSWORD_NOT_MATCH': 'Modpas pa matche',
     'PLS_ENTER_NAME': 'Tanpri antre non',
     'PLS_ENTER_PHONE_NUMBER': 'Tanpri antre nimewo telefòn',
-    'PLS_ENTER_VALID_PHONE_NUMBER': 'Tanpri antre nimewo telefòn valid Ayiti',
+    'PLS_ENTER_VALID_PHONE_NUMBER': 'Tanpri antre nimewo telefòn valid',
+    'PLS_ENTER_VALID_H_PHONE_NUMBER': 'Tanpri antre nimewo telefòn valid Ayiti',
     'PLS_ENTER_OTP': 'Tanpri antre otp',
     'PLS_ENTER__VALID_OTP': 'Tanpri antre valab otp',
     'PLS_ENTER_PIN': 'Tanpri antre PIN ou pou konplete tranzaksyon an',
@@ -462,72 +476,39 @@ class Locales {
     'PLEASE_ENTER_OLD_PASSWORD': 'Tanpri antre ansyen modpas',
     'PLEASE_ENTER_NEW_PASSWORD': 'Tanpri antre nouvo modpas',
     'PLEASE_ENTER_CONFIRM_NEW_PASSWORD': 'Tanpri antre nouvo modpas la anko.',
-    'DOES_NOT_MATCH_CONFIRM_PASSWORD':
-        'Pa matche ak nouvo modpas ak konfime modpas',
-    'PLS_MIN_AMOUNT': 'Tanpri antre yon minimòm de 100 HLG',
-    'PLS_ENTER_INCOME': 'Tanpri antre revni ou',
-    'PLS_ENTER_OCCUPATION': 'Tanpri Antre Okipasyon w',
-    'PLS_ENTER_ADDRESS': 'Tanpri antre adrès ou',
-    'PLS_ENTER_STATE': 'Tanpri Antre Eta ou',
-    'PLS_ENTER_CITY': 'Tanpri Antre Vil ou a',
-    'PLS_ENTER_COUNTRY': 'Tanpri Antre Peyi w',
-    'PLS_ENTER_ZIPCODE': 'Tanpri Antre Kòd Postal ou',
-    'PASSWORD_NOT_MATCH': 'Modpas yo pa koresponn.',
-    'GENERAL_CHAT': 'Chat jeneral',
-    'PROFILE': 'Pwofil',
-    'CHANGE_PASSWORD': 'Chanje modpas',
-    'ADDRESS': 'Adrès',
-    'IDENTITY_VERIFICATION': 'Verifikasyon idantite',
-    'INCOME_VERIFICATION': 'Verifikasyon revni',
-    'OCCUPATION_VERIFICATION': 'Verifikasyon Okipasyon',
-    'TRANSACTIONS': 'Tranzaksyon',
-    'IS_TYPING': 'Ap ekri...',
-    'CONNECTING': 'konekte...',
-    'SUBMITTED_SUCCESSFULLY': 'Submitted Successfully',
-    'RECEIVED_REQUEST': 'Received Request',
-    'MONEY_THAT_YOU_HAVE_BORROWED_FROM_OTHERS':
-        'Money that you have borrowed from others',
-    'MONEY_THAT_YOU_HAVE_LET_OTHER_PEOPLE_BORROW':
-        'Money that you have let other people borrow',
-    'UPDATE_BALANCE': 'Update Balance',
-    'ABOUT_US': 'Sou nou',
-    'PRIVACY_POLICY': 'Règleman sou enfòmasyon prive',
-    'TERMS_OF_USE': 'Kondisyon pou itilize',
-    'HELP_CENTER': 'Sant Èd',
-    'MESAJ': 'Mesaj',
-    'ENTER_MESSAGE': 'Antre Mesaj',
-    'ENTER_EMAIL': 'Antre Imèl',
-    'ENTER_NAME': 'Antre non',
-    'ENTER_CITY': 'Antre vil la',
-    'ENTER_STATE': 'Antre eta a',
-    'ENTER_PINCODE': 'Antre Pincode',
-    'ENTER_ZIPCODE': 'Antre Pincode',
-    'ENTER_ADDRESS': 'Antre adrès',
-    'ENTER_COUNTRY': 'Antre peyi a',
-    'ENTER_AGE': 'Antre laj',
-    'ENTER_OCCUPATION': 'Antre okipasyon',
-    'ENTER_INCOME': 'Antre revni',
-    'AGE': 'Laj',
-    'OCCUPATION': 'Okipasyon',
-    'REVNI': 'Revni',
-    'CITY': 'Vil',
-    'ETA': 'Eta',
-    'COUNTRY': 'peyi',
-    'PINCODE': 'Pinkod',
-    'ZIPCODE': 'Kod Postal',
-    'NOTIFICATION': 'Notifikasyon',
-    'transactionType_transfer': 'Transfè Lajan',
-    'transactionType_lotoPlay': 'Achte Biyè',
-    'transactionType_lotoWin': 'Genyen nan Jwet',
-    'transactionType_payment': 'Pèman',
-    'transactionType_cash': 'Cash',
-    'type': 'Kalite',
-    'fee': 'Frè',
-    'amount': 'kantite lajan',
-    'tax': 'Taks',
-    'from': 'De',
-    'to': 'Pou',
-    'viewMore': 'Gade plis',
-    'clickHere': 'Klike la a',
+    'label_clickHere': 'Klike la a',
+    'label_welcome': 'Byenvini',
+    'label_home': 'Akèy',
+    'label_play': 'Jwe',
+    'label_ticket': 'Tikè',
+    'label_result': 'Rezilta',
+    'label_send_receive_money': 'Voye/Resevwa Lajan',
+    'label_send_money': 'Voye lajan',
+    'label_receive_money': 'Resevwa lajan',
+    'label_cash_out': 'Retrè',
+    'label_cash_in': 'Depo',
+    'label_transaction_history': 'Istwa tranzaksyon',
+    'label_local_branch': 'Branch lokal',
+    'label_no_tirage_for_now': 'Poko gen tiraj',
+    'label_next_tirage': 'Pwochen tiraj',
+    'label_Win_ticket': 'Tikè genyen',
+    'label_last_ticket': 'Denye tikè yo',
+    'label_today': 'Jodi a',
+    'label_yesterday': 'Yè',
+    'label_custom': 'Pèsonalize',
+    'label_settings': 'Reglaj',
+    'label_disable_account': 'Dezaktive kont mwen an',
+    'label_change_password': 'Chanje modpas',
+    'label_logout': 'Dekonekte',
+    'label_Gallery_file': 'Galeri/Fichiye',
+    'label_take_photo': 'Pran yon foto',
+    'label_crop_image': 'Rekadre imaj la',
+    'label_fullName': 'Non konplè',
+    'label_cancel': 'Anile',
+    'label_choose_Option': 'Chwazi yon opsyon',
+    'label_fee': 'Frè',
+    'label_tax': 'Taks',
+    'message_unavailable_method': 'Metòd sa a pa disponib pou kounye a',
+    'message_not_implemented': 'Paj sa poko pare!',
   };
 }

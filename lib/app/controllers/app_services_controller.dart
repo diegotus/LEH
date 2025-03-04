@@ -24,12 +24,14 @@ class AppServicesController extends GetxService
   late final RxString errorMsg;
   late Rx<UserDetailModel?> userDetails;
   late Rx<UserDetailModel?> acountBalance;
+  late Locale appLocale;
 
   Worker? errorWorker;
   RxBool connectionStatus = false.obs;
 
   @override
   void onInit() {
+    appLocale = Locale("fr");
     provider = Get.put(AppServiceProvider(), permanent: true);
     errorMsg = ''.obs;
     errorWorker = ever(errorMsg, (msg) {

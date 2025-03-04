@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/app_string.dart';
 
 import '../../global_widgets/custom_appbar.dart';
 
@@ -18,10 +19,10 @@ class NotImplementedYetView extends GetView {
         const [],
         () {},
       ),
-      body: const Center(
+      body: Center(
         child: Text(
-          'Paj sa poko prè',
-          style: TextStyle(fontSize: 20),
+          AppStrings.NOT_IMPLEMENTED,
+          style: const TextStyle(fontSize: 20),
         ),
       ),
     );

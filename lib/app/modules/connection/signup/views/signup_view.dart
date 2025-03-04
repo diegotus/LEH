@@ -92,12 +92,13 @@ class SignupView extends GetView<SignupController> {
                         hintText: AppStrings.PHONE_NUMBER,
                         keyboardType: TextInputType.number,
                         prefixIcon: Center(
-                            widthFactor: 0.1,
-                            child: Text(
-                              "+",
-                              style: labelTextStyle.copyWith(
-                                  fontSize: 16.ss, fontWeight: FontWeight.bold),
-                            )),
+                          widthFactor: 0.1,
+                          child: Text(
+                            "+",
+                            style: labelTextStyle.copyWith(
+                                fontSize: 16.ss, fontWeight: FontWeight.bold),
+                          ),
+                        ),
                         inputFormatters: [numberFormatter],
                         // counterText: "",
                         textInputAction: TextInputAction.next,
@@ -107,7 +108,7 @@ class SignupView extends GetView<SignupController> {
                         validator: (p0) {
                           if ((p0 ?? '').isEmpty) {
                             return AppStrings.PLS_ENTER_PHONE_NUMBER;
-                          } else if (p0?.isPhoneNumber == true) {
+                          } else if (p0?.isPhoneNumber != true) {
                             return AppStrings.PLS_ENTER_VALID_PHONE_NUMBER;
                           }
                           return null;

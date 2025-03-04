@@ -1,5 +1,7 @@
 import 'package:flutter/services.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/get_utils/src/extensions/string_extensions.dart';
+import 'package:haiti_lotri/generated/locales.g.dart';
 import 'package:intl/intl.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
@@ -7,10 +9,10 @@ import '../app_string.dart';
 
 String? isValidEmail(String? string) {
   if ((string ?? '').isEmpty) {
-    return AppStrings.PLS_ENTER_EMAILID;
+    return AppStrings.PLS_ENTER_EMAILID.tr;
   }
   if (!string!.isEmail == true) {
-    return AppStrings.PLS_ENTER_VALID_EMAILID;
+    return AppStrings.PLS_ENTER_VALID_EMAILID.tr;
   }
   return null;
 }
@@ -63,13 +65,13 @@ checkYear(String value) {
 String? validPassword(String? value) {
   String patttern = r'(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&;]).{8,}$)';
   RegExp regExp = RegExp(patttern);
-  var error = isEmptyValidator(value, AppStrings.PLS_ENTER_PASSWORD);
+  var error = isEmptyValidator(value, AppStrings.PLS_ENTER_PASSWORD.tr);
   if (error != null) {
     return error;
   } else if (value!.length < 8 || value.length > 20) {
-    error = AppStrings.PLS_ENTER_PASSWORD_MUST_BE_LONG;
+    error = AppStrings.PLS_ENTER_PASSWORD_MUST_BE_LONG.tr;
   } else if (!regExp.hasMatch(value)) {
-    error = AppStrings.PASSWORD_INVALID;
+    error = AppStrings.PASSWORD_INVALID.tr;
   }
   return error;
 }
@@ -80,7 +82,7 @@ final numberFormatter = FilteringTextInputFormatter.allow(RegExp(r'[0-9]'));
 
 String? isEmptyValidator(String? value, [String? onEmpty]) {
   if ((value ?? '').isEmpty) {
-    return onEmpty ?? AppStrings.onEmpty;
+    return onEmpty ?? AppStrings.onEmpty.tr;
   }
   return null;
 }

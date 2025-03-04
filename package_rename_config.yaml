@@ -6,6 +6,6 @@ package_rename_config:
     # lang: # (Optional) (String) The android development language {kotlin(default) or java}
 
   ios:
-    app_name: AYITI LOTRI # (String) The display name of the ios app
+    app_name: Loterie Haitien # (String) The display name of the ios app
     bundle_name: ayiti-lotri # (String) The bundle name of the ios app
     package_name: com.vision.ayiti-lotri # (String) The product bundle identifier of the ios app

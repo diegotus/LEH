@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/app_string.dart';
 import 'package:haiti_lotri/app/data/models/ticket_model.dart';
 import 'package:intl/intl.dart';
 
@@ -75,7 +76,7 @@ extension DateTimeExtention on DateTime {
       return timeFormat.format(localDateTime);
     } else if (diffDays == 1) {
       // If the date is yesterday, show "Yesterday" and the time
-      return 'Yesterday';
+      return AppStrings.YESTERDAY;
     } else if (diffDays < 7) {
       // IF date is in te last 6 days show the day name
       return DateFormat.EEEE().format(localDateTime);
@@ -130,7 +131,8 @@ extension TicketExtention on TicketModel {
       case Gametype.bolet:
         const price = ["x50", "x20", "x10"];
         var index = winningNumbers?.indexWhere((value) => value.endsWith(boul));
-        if (index != null && index - 1 > -1) return price[index];
+        print("the index $index");
+        if (index != null && index > -1) return price[index];
 
       case Gametype.mariaj:
         var exp = RegExp(r'\d{2}');

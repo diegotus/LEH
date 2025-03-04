@@ -18,10 +18,12 @@ import '../modules/lotoGame/bindings/play_game_binding.dart';
 import '../modules/lotoGame/views/play_game_view.dart';
 import '../modules/lotoResults/bindings/loto_results_binding.dart';
 import '../modules/lotoResults/views/loto_results_view.dart';
-import '../modules/profile/bindings/profile_binding.dart';
-import '../modules/profile/changePassword/bindings/change_password_binding.dart';
-import '../modules/profile/changePassword/views/change_password_view.dart';
-import '../modules/profile/views/profile_view.dart';
+import '../modules/settings/profile/bindings/profile_binding.dart';
+import '../modules/settings/profile/changePassword/bindings/change_password_binding.dart';
+import '../modules/settings/profile/changePassword/views/change_password_view.dart';
+import '../modules/settings/profile/views/profile_view.dart';
+import '../modules/settings/bindings/settings_binding.dart';
+import '../modules/settings/views/settings_view.dart';
 import '../modules/tickets/bindings/tickets_binding.dart';
 import '../modules/tickets/views/tickets_view.dart';
 import '../modules/transactions/bindings/transactions_binding.dart';
@@ -106,15 +108,21 @@ class AppPages {
           ],
         ),
         GetPage(
-            name: _Paths.PROFILE,
-            page: () => const ProfileView(),
-            binding: ProfileBinding(),
+            name: _Paths.SETTINGS,
+            page: () => const SettingsView(),
+            binding: SettingsBinding(),
             children: [
+              GetPage(
+                name: _Paths.PROFILE,
+                page: () => const ProfileView(),
+                binding: ProfileBinding(),
+              ),
               GetPage(
                 name: _Paths.CHANGE_PASSWORD,
                 page: () => const ChangePasswordView(),
                 binding: ChangePasswordBinding(),
-                participatesInRootNavigator: true,
+
+                // participatesInRootNavigator: true,
               )
             ]),
         GetPage(

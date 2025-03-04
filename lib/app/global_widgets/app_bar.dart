@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:haiti_lotri/app/core/utils/app_string.dart';
 import 'package:sizing/sizing_extension.dart';
 
+import '../../generated/locales.g.dart';
 import '../controllers/app_services_controller.dart';
 import '../core/utils/app_colors.dart';
 import '../core/utils/app_utility.dart';
@@ -26,7 +27,7 @@ class AppBarWidget extends GetResponsiveView<AppServicesController>
       toolbarHeight: 90.ss,
       flexibleSpace: Container(decoration: desktopAppBarBoxDecoration),
       title: Text(
-        AppStrings.APP_NAME,
+        AppStrings.APP_NAME.tr,
         overflow: TextOverflow.ellipsis,
         maxLines: 1,
         style: TextStyle(
@@ -101,7 +102,7 @@ class AppBarWidget extends GetResponsiveView<AppServicesController>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Welcome",
+                    AppStrings.WELCOME.tr,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: TextStyle(
@@ -189,7 +190,7 @@ class AppBarWidget extends GetResponsiveView<AppServicesController>
                 SizedBox(
                   width: 270.s,
                   child: Text(
-                    "Welcome",
+                    AppStrings.WELCOME,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: TextStyle(
@@ -298,7 +299,7 @@ class AppBarWidget extends GetResponsiveView<AppServicesController>
                 SizedBox(
                   width: 270.s,
                   child: Text(
-                    "Welcome",
+                    AppStrings.WELCOME,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: TextStyle(

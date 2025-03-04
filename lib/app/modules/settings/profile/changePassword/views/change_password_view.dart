@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizing/sizing_extension.dart';
 
-import '../../../../core/utils/actions/overlay.dart';
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/utils/app_utility.dart';
-import '../../../../core/utils/font_family.dart';
-import '../../../../core/utils/formatters/validation.dart';
-import '../../../../global_widgets/app_bar.dart';
-import '../../../../global_widgets/app_button.dart';
-import '../../../../global_widgets/input_field.dart';
+import '../../../../../core/utils/actions/overlay.dart';
+import '../../../../../core/utils/app_string.dart';
+import '../../../../../core/utils/app_utility.dart';
+import '../../../../../core/utils/font_family.dart';
+import '../../../../../core/utils/formatters/validation.dart';
+import '../../../../../global_widgets/app_bar.dart';
+import '../../../../../global_widgets/app_button.dart';
+import '../../../../../global_widgets/input_field.dart';
 import '../controllers/change_password_controller.dart';
 
 class ChangePasswordView extends GetView<ChangePasswordController> {

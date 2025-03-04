@@ -39,7 +39,8 @@ Widget lableWidget({String? lbl, String? val, Color? color}) {
   );
 }
 
-Widget lableWidgetTitle({String? title, IconData? icon, VoidCallback? ontap}) {
+Widget lableWidgetTitle(
+    {String? title, IconData? icon, VoidCallback? ontap, Widget? trailing}) {
   return ListTile(
     onTap: ontap,
     leading: Icon(
@@ -54,8 +55,9 @@ Widget lableWidgetTitle({String? title, IconData? icon, VoidCallback? ontap}) {
           fontFamily: FontPoppins.MEDIUM,
           color: const Color(0xff181D27)),
     ),
-    trailing: const Icon(
-      Kiwoo.angle_right,
-    ),
+    trailing: trailing ??
+        const Icon(
+          Kiwoo.angle_right,
+        ),
   );
 }

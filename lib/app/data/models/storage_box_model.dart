@@ -4,6 +4,7 @@ mixin StorageBox {
   static GetStorage boxKeys() => GetStorage('appKeys');
   static final token = ''.val("token", getBox: boxKeys);
   static final fmcToken = ''.val("fmcToken", getBox: boxKeys);
+  static final locale = 'fr'.val("locale", getBox: boxKeys);
   static Future<void> removeToken() async {
     await boxKeys().remove('token');
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/app_string.dart';
 import 'package:sizing/sizing_extension.dart';
 
 import '../../core/utils/app_colors.dart';
@@ -50,11 +51,11 @@ class LotriView extends GetView {
                     return BottomNavigationBar(
                       iconSize: 26.ss,
                       items: <BottomNavigationBarItem>[
-                        const BottomNavigationBarItem(
-                          icon: Icon(
+                        BottomNavigationBarItem(
+                          icon: const Icon(
                             Icons.home,
                           ),
-                          label: 'Akey',
+                          label: AppStrings.HOME,
                         ),
                         // const BottomNavigationBarItem(
                         //   icon: Icon(
@@ -62,23 +63,23 @@ class LotriView extends GetView {
                         //   ),
                         //   label: 'Bous',
                         // ),
-                        const BottomNavigationBarItem(
-                          icon: Icon(
+                        BottomNavigationBarItem(
+                          icon: const Icon(
                             Icons.wallet,
                           ),
-                          label: 'Jwe',
+                          label: AppStrings.PLAY,
                         ),
-                        const BottomNavigationBarItem(
-                          icon: Icon(
+                        BottomNavigationBarItem(
+                          icon: const Icon(
                             Icons.airplane_ticket,
                           ),
-                          label: 'Biyè',
+                          label: AppStrings.TICKERT,
                         ),
-                        const BottomNavigationBarItem(
-                          icon: Icon(
+                        BottomNavigationBarItem(
+                          icon: const Icon(
                             Icons.dangerous,
                           ),
-                          label: 'Rezilta',
+                          label: AppStrings.RESULT,
                         ),
                       ],
                       currentIndex: index,

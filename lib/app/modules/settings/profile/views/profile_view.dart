@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/app_utility.dart';
+import 'package:haiti_lotri/app/data/models/storage_box_model.dart';
 import 'package:sizing/sizing.dart';
 
-import '../../../controllers/app_services_controller.dart';
-import '../../../core/utils/actions/overlay.dart';
-import '../../../core/utils/app_colors.dart';
-import '../../../core/utils/app_string.dart';
-import '../../../core/utils/cache_manager.dart';
-import '../../../core/utils/font_family.dart';
-import '../../../core/utils/kiwoo_icons.dart';
-import '../../../global_widgets/app_bar.dart';
-import '../../../global_widgets/avatar_network_image.dart';
-import '../../../global_widgets/label_widget.dart' show lableWidgetTitle;
-import '../../../global_widgets/progress_indicator.dart';
-import '../../../routes/app_pages.dart';
+import '../../../../../generated/locales.g.dart';
+import '../../../../controllers/app_services_controller.dart';
+import '../../../../core/utils/actions/overlay.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_string.dart';
+import '../../../../core/utils/cache_manager.dart';
+import '../../../../core/utils/font_family.dart';
+import '../../../../core/utils/kiwoo_icons.dart';
+import '../../../../global_widgets/app_bar.dart';
+import '../../../../global_widgets/avatar_network_image.dart';
+import '../../../../global_widgets/label_widget.dart' show lableWidgetTitle;
+import '../../../../global_widgets/modal/bottom_sheet.dart';
+import '../../../../global_widgets/progress_indicator.dart';
+import '../../../../routes/app_pages.dart';
 import '../controllers/profile_controller.dart';
 import 'profile_edit_view.dart';
 
@@ -22,7 +26,10 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidgetTitle(title: AppStrings.PROFILE, homeIfCantPop: true),
+      appBar: AppBarWidgetTitle(
+          key: ObjectKey(AppStrings.SETTINGS),
+          title: AppStrings.SETTINGS,
+          homeIfCantPop: true),
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: 20.0.ss,
@@ -43,6 +50,7 @@ class ProfileView extends GetView<ProfileController> {
                   var avatar = controller.userDetails.value?.avatar;
                   var email = controller.userDetails.value?.email ?? '';
                   var userName = controller.userDetails.value?.name;
+                  var phone = controller.userDetails.value?.phone;
                   var userScore =
                       controller.userDetails.value?.extraInfo?.score;
                   return ListTile(
@@ -69,60 +77,78 @@ class ProfileView extends GetView<ProfileController> {
                         fontFamily: FontPoppins.BOLD,
                       ),
                     ),
-                    subtitle: Text(
-                      (email.isNotEmpty)
-                          ? email
-                          : "vishal.chauhan@yopmail.co.in",
+                    subtitle: Text.rich(
+                      TextSpan(
+                          text: (email.isNotEmpty)
+                              ? email
+                              : "vishal.chauhan@yopmail.co.in",
+                          children: [
+                            TextSpan(
+                                text: phone?.isNotEmpty == true
+                                    ? '\n$phone'
+                                    : "+(509) 3000-0000")
+                          ]),
                       style: TextStyle(
                         color: AppColors.BLACK.withOpacity(.6),
                         fontSize: 11.22.fss,
                         fontFamily: FontPoppins.REGULAR,
                       ),
                     ),
-                    trailing: SizedBox(
-                      height: 85,
-                      width: 45,
-                      child: RadialGaugeProgressBar2(
-                        inContainer: false,
-                        scoreTextSize: 6,
-                        scoreStatusTextSize: 4,
-                        progress: (userScore ?? 0) /
-                            850, // Progress based on credit score
-                        creditScore: userScore,
-                        height: 85,
-                        width: 45,
-                      ),
-                    ),
+                    isThreeLine: true,
                   );
                 },
               ),
             ),
-            Container(
-              height: 20.ss,
-            ),
+            verticalSpaceMedium,
             lableWidgetTitle(
-              title: "Edit Profile",
+              title: AppStrings.EDIT_PROFILE,
               icon: Kiwoo.user_edit,
               ontap: () {
                 Get.to(
                   () => const EditProfileView(),
                   fullscreenDialog: true,
-                  routeName: "/profile/edit_profil",
+                  routeName: "/settings/edit_profil",
                 );
               },
             ),
-            Container(height: 15.ss),
-            Padding(
-              padding: const EdgeInsets.only(left: 2),
-              child: lableWidgetTitle(
-                title: "Change Password",
-                icon: Kiwoo.lock,
-                ontap: () {
-                  Get.toNamed(Routes.CHANGE_PASSWORD);
-                },
+            verticalSpaceRegular,
+            lableWidgetTitle(
+              title: AppStrings.CHANGE_PASSWORD,
+              icon: Kiwoo.lock,
+              ontap: () {
+                Get.toNamed(Routes.CHANGE_PASSWORD);
+              },
+            ),
+            verticalSpaceRegular,
+            lableWidgetTitle(
+              title: AppStrings.language.tr,
+              icon: Icons.language,
+              ontap: () {
+                boomSheetOptions<Locale>(options: [
+                  BottomSheetOption(label: "Francais", value: Locale("fr")),
+                  BottomSheetOption(label: "Créole", value: Locale("ht")),
+                ]).then(
+                  (value) {
+                    if (value != null) {
+                      Get.updateLocale(value).then((val) {
+                        StorageBox.locale.val = value.languageCode;
+                      });
+                      ;
+                    }
+                  },
+                );
+              },
+              trailing: Text(
+                "${Get.locale?.languageCode.toUpperCase()}",
+                style: TextStyle(
+                  fontSize: 16.fss,
+                  fontFamily: FontPoppins.MEDIUM,
+                  color: AppColors.PRIMARY,
+                ),
               ),
             ),
-            Container(height: 15.ss),
+            verticalSpaceRegular,
+
             // lableWidgetTitle(
             //   title: AppStrings.ABOUT_US,
             //   icon: Kiwoo.info_square_outline,
@@ -161,11 +187,12 @@ class ProfileView extends GetView<ProfileController> {
                 color: Color(0xFFF75555),
               ),
               title: Text(
-                "Deactivate My Account",
+                AppStrings.label_disable_account,
                 style: TextStyle(
-                    fontSize: 16.fss,
-                    fontFamily: FontPoppins.MEDIUM,
-                    color: const Color(0xFFF75555)),
+                  fontSize: 16.fss,
+                  fontFamily: FontPoppins.MEDIUM,
+                  color: const Color(0xFFF75555),
+                ),
               ),
               onTap: () {},
             ),
@@ -183,7 +210,7 @@ class ProfileView extends GetView<ProfileController> {
                 size: 20.ss,
               ),
               title: Text(
-                "Logout",
+                AppStrings.LOGOUT,
                 style: TextStyle(
                     fontSize: 16.fss,
                     fontFamily: FontPoppins.MEDIUM,

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:sizing/sizing_extension.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_string.dart';
@@ -200,7 +202,8 @@ class HomeView extends GetView<HomeController> {
         ),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
+        spacing: 10,
         children: [
           CircleAvatar(
             backgroundColor: AppColors.PRIMARY3,
@@ -208,40 +211,42 @@ class HomeView extends GetView<HomeController> {
             radius: 30,
             child: Icon(Kiwoo.head_phone, size: 40.fss),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                AppStrings.FOR_ANY_ASSISTANCE_PLEASE,
-                style: TextStyle(
-                  fontSize: 17.fss,
-                  fontFamily: FontPoppins.SEMIBOLD,
-                  color: FontColors.BLACK,
+          Flexible(
+            child: Text.rich(
+              TextSpan(children: [
+                TextSpan(
+                  text: "${AppStrings.FOR_ANY_ASSISTANCE_PLEASE} ",
                 ),
-              ),
-              SizedBox(
-                height: 5.ss,
-              ),
-              Row(
-                children: [
-                  Text(
-                    AppStrings.CALL,
-                    style: TextStyle(
+                WidgetSpan(
+                  child: InkWell(
+                    onTap: () {
+                      var uri = Uri.parse("tel:+50944168552");
+                      canLaunchUrl(uri).then((resp) {
+                        if (resp) {
+                          launchUrl(uri);
+                        }
+                      });
+                    },
+                    child: Text(
+                      "+509 4416-8552",
+                      style: TextStyle(
                         fontSize: 17.fss,
                         fontFamily: FontPoppins.MEDIUM,
-                        color: FontColors.BLACK),
+                        color: const Color.fromARGB(255, 49, 173, 0),
+                      ),
+                    ),
                   ),
-                  Text(
-                    "+1 8328 737 5343",
-                    style: TextStyle(
-                        fontSize: 17.fss,
-                        fontFamily: FontPoppins.MEDIUM,
-                        color: const Color.fromARGB(255, 49, 173, 0)),
-                  ),
-                ],
+                )
+              ]),
+              style: TextStyle(
+                fontSize: 17.fss,
+                fontFamily: FontPoppins.SEMIBOLD,
+                color: FontColors.BLACK,
+                // overflow: TextOverflow.clip,
               ),
-            ],
-          )
+              overflow: TextOverflow.clip,
+            ),
+          ),
         ],
       ),
     );

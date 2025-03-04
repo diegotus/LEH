@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage_pro/get_storage_pro.dart';
 import 'package:haiti_lotri/app/core/utils/app_colors.dart';
+import 'package:haiti_lotri/app/core/utils/app_string.dart';
 import 'package:haiti_lotri/app/core/utils/app_utility.dart';
 import 'package:haiti_lotri/app/core/utils/datetime_utility.dart';
 import 'package:haiti_lotri/app/core/utils/font_family.dart';
@@ -33,7 +34,7 @@ class TicketsView extends GetView<TicketsController> {
           children: [
             Obx(
               () => FilterButton.checkBox(
-                title: "Biyè Genyen",
+                title: AppStrings.WIN_TICKET,
                 value: controller.winTickets.isTrue,
                 onPressedChecked: (val) {
                   controller.winTickets(val);
@@ -44,12 +45,15 @@ class TicketsView extends GetView<TicketsController> {
               var filter = controller.dateFilter.value;
               return DropdownFilterButton(
                   items: [
-                    DropdownMenuItem(value: null, child: Text("Denye Biyè yo")),
-                    DropdownMenuItem(value: "Today", child: Text("Jodia")),
-                    DropdownMenuItem(value: "Yesterday", child: Text("Yè")),
+                    DropdownMenuItem(
+                        value: null, child: Text(AppStrings.LAST_TICKETS)),
+                    DropdownMenuItem(
+                        value: "Today", child: Text(AppStrings.TODAY)),
+                    DropdownMenuItem(
+                        value: "Yesterday", child: Text(AppStrings.YESTERDAY)),
                     DropdownMenuItem(
                       value: "Custom",
-                      child: Text("pèsonalize"),
+                      child: Text(AppStrings.CUSTOM),
                     ),
                   ],
                   value: filter.selectedFilter,

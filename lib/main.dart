@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage_pro/get_storage_pro.dart';
+import 'package:haiti_lotri/app/data/models/storage_box_model.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:sizing/sizing.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
             initialRoute: AppPages.INITIAL,
             getPages: AppPages.routes,
             scrollBehavior: MyCustomScrollBehavior(),
-            locale: const Locale('fr'),
+            locale: Locale(StorageBox.locale.val),
             supportedLocales: const <Locale>[Locale('fr'), Locale('ht')],
             fallbackLocale: const Locale("fr"),
             // defaultTransition: Transition.fade,

@@ -12,7 +12,7 @@ class SendMoneyController extends GetxController {
 
   final canNext = false.obs;
   final formKey = GlobalKey<FormState>();
-  final phoneNumberformatter = phoneFormateur();
+  String phone = "";
   double amount = 0;
   @override
   void onInit() {

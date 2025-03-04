@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:haiti_lotri/app/core/utils/image_name.dart';
 import 'package:sizing/sizing_extension.dart';
 
+import '../../../generated/locales.g.dart';
 import 'app_colors.dart';
 import 'app_string.dart';
 import 'app_utility.dart';
@@ -26,7 +27,7 @@ class PresentationPageHeader extends GetWidget {
               Image.asset(ImgName.LOGO, width: 100.ss),
               verticalSpaceSmall,
               Text(
-                AppStrings.SLOGAN,
+                AppStrings.SLOGAN.tr,
                 textAlign: TextAlign.center,
                 style: TextThemeHelper.authTitle,
               ),

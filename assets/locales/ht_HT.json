@@ -7,20 +7,21 @@
     "sign_in_google": "Sign-in with Google",
     "sign_in_apple": "Sign-in with Apple"
   },
+  "language": "Lang",
   "direction": {
-    "inbound": "Received",
-    "outbound": "Send"
+    "inbound": "Resevwa",
+    "outbound": "Voye"
   },
   "direPreposition": {
-    "inbound": "from",
-    "outbound": "to"
+    "inbound": "soti nan",
+    "outbound": "pou"
   },
   "transactionStatus": {
-    "failed": "Failed",
-    "success": "Success",
+    "failed": "Echwe",
+    "success": "Siksè",
     "adverbe": {
-      "failed": "successfully",
-      "success": "successfully"
+      "failed": "san Siksè",
+      "success": "Avec siksè"
     }
   },
 
@@ -68,11 +69,13 @@
 
   "APP_NAME": "Loterie Haïtien",
   "SLOGAN": "Fasil ak Abòdab Banking",
-  "WELCOME": "Byenvini nan lotri Leta Ayisyen LOTRI",
+  "WELCOME_TO": "Byenvini nan lotri Leta Ayisyen LOTRI",
   "FORGOT_PASSWORD": "ou Bliye Modpas ou?",
   "FORGOT_PASSWORD2": "Bliye Modpas",
   "CREATE_NEW_PASSWORD": "Kreye yon nouvo modpas",
   "NEW_USER": "ou se yon Nouvo itilizatè?",
+  "back": "Retounen",
+  "next": "Pwochen",
   "BACK_TO": "Retounen nan",
   "REGISTER_HERE": "Enskri isit la",
   "ALREADY_HAVE_AN_ACCOUNT": "Deja gen yon kont?",
@@ -142,84 +145,43 @@
   "PLEASE_ENTER_OLD_PASSWORD": "Tanpri antre ansyen modpas",
   "PLEASE_ENTER_NEW_PASSWORD": "Tanpri antre nouvo modpas",
   "PLEASE_ENTER_CONFIRM_NEW_PASSWORD": "Tanpri antre nouvo modpas la anko.",
-  "DOES_NOT_MATCH_CONFIRM_PASSWORD": "Pa matche ak nouvo modpas ak konfime modpas",
-  "PLS_MIN_AMOUNT": "Tanpri antre yon minimòm de 100 HLG",
-  "PLS_ENTER_INCOME": "Tanpri antre revni ou",
-  "PLS_ENTER_OCCUPATION": "Tanpri Antre Okipasyon w",
-  "PLS_ENTER_ADDRESS": "Tanpri antre adrès ou",
-  "PLS_ENTER_STATE": "Tanpri Antre Eta ou",
-  "PLS_ENTER_CITY": "Tanpri Antre Vil ou a",
-  "PLS_ENTER_COUNTRY": "Tanpri Antre Peyi w",
-  "PLS_ENTER_ZIPCODE": "Tanpri Antre Kòd Postal ou",
-  "PASSWORD_NOT_MATCH": "Modpas yo pa koresponn.",
 
-  "GENERAL_CHAT": "Chat jeneral",
-  "PROFILE": "Pwofil",
-
-  "CHANGE_PASSWORD": "Chanje modpas",
-  "ADDRESS": "Adrès",
-  "IDENTITY_VERIFICATION": "Verifikasyon idantite",
-  "INCOME_VERIFICATION": "Verifikasyon revni",
-  "OCCUPATION_VERIFICATION": "Verifikasyon Okipasyon",
-  "TRANSACTIONS": "Tranzaksyon",
-  "IS_TYPING": "Ap ekri...",
-  "CONNECTING": "konekte...",
-
-  "SUBMITTED_SUCCESSFULLY": "Submitted Successfully",
-
-  "RECEIVED_REQUEST": "Received Request",
-
-  "MONEY_THAT_YOU_HAVE_BORROWED_FROM_OTHERS": "Money that you have borrowed from others",
-
-  "MONEY_THAT_YOU_HAVE_LET_OTHER_PEOPLE_BORROW": "Money that you have let other people borrow",
-
-  "UPDATE_BALANCE": "Update Balance",
-
-  "ABOUT_US": "Sou nou",
-  "PRIVACY_POLICY": "Règleman sou enfòmasyon prive",
-  "TERMS_OF_USE": "Kondisyon pou itilize",
-  "HELP_CENTER": "Sant Èd",
-
-  "MESAJ": "Mesaj",
-  "ENTER_MESSAGE": "Antre Mesaj",
-  "ENTER_EMAIL": "Antre Imèl",
-  "ENTER_NAME": "Antre non",
-  "ENTER_CITY": "Antre vil la",
-  "ENTER_STATE": "Antre eta a",
-  "ENTER_PINCODE": "Antre Pincode",
-  "ENTER_ZIPCODE": "Antre Pincode",
-  "ENTER_ADDRESS": "Antre adrès",
-  "ENTER_COUNTRY": "Antre peyi a",
-
-  "ENTER_AGE": "Antre laj",
-  "ENTER_OCCUPATION": "Antre okipasyon",
-  "ENTER_INCOME": "Antre revni",
-
-  "AGE": "Laj",
-  "OCCUPATION": "Okipasyon",
-  "REVNI": "Revni",
-
-  "CITY": "Vil",
-  "ETA": "Eta",
-  "COUNTRY": "peyi",
-  "PINCODE": "Pinkod",
-  "ZIPCODE": "Kod Postal",
-
-  "NOTIFICATION": "Notifikasyon",
-
-  "transactionType": {
-    "transfer": "Transfè Lajan",
-    "lotoPlay": "Achte Biyè",
-    "lotoWin": "Genyen nan Jwet",
-    "payment": "Pèman",
-    "cash": "Cash"
+  "label": {
+    "clickHere": "Klike la a",
+    "welcome": "Byenvini",
+    "home": "Akèy",
+    "play": "Jwe",
+    "ticket": "Tikè",
+    "result": "Rezilta",
+    "send_receive_money": "Voye/Resevwa Lajan",
+    "send_money": "Voye lajan",
+    "receive_money": "Resevwa lajan",
+    "cash_out": "Retrè",
+    "cash_in": "Depo",
+    "transaction_history": "Istwa tranzaksyon",
+    "local_branch": "Branch lokal",
+    "no_tirage_for_now": "Poko gen tiraj",
+    "next_tirage": "Pwochen tiraj",
+    "Win_ticket": "Tikè genyen",
+    "last_ticket": "Denye tikè yo",
+    "today": "Jodi a",
+    "yesterday": "Yè",
+    "custom": "Pèsonalize",
+    "settings": "Reglaj",
+    "disable_account": "Dezaktive kont mwen an",
+    "change_password": "Chanje modpas",
+    "logout": "Dekonekte",
+    "Gallery_file": "Galeri/Fichiye",
+    "take_photo": "Pran yon foto",
+    "crop_image": "Rekadre imaj la",
+    "fullName": "Non konplè",
+    "cancel": "Anile",
+    "choose_Option": "Chwazi yon opsyon",
+    "fee": "Frè",
+    "tax": "Taks"
   },
-  "type": "Kalite",
-  "fee": "Frè",
-  "amount": "kantite lajan",
-  "tax": "Taks",
-  "from": "De",
-  "to": "Pou",
-  "viewMore": "Gade plis",
-  "clickHere": "Klike la a"
+  "message": {
+    "unavailable_method": "Metòd sa a pa disponib pou kounye a",
+    "not_implemented": "Paj sa poko pare!"
+  }
 }

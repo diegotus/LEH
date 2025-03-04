@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizing/sizing_extension.dart';
 
-import '../../../core/utils/actions/overlay.dart';
-import '../../../core/utils/app_colors.dart';
-import '../../../core/utils/app_string.dart';
-import '../../../core/utils/app_utility.dart' show TypeMessage, showMsg;
-import '../../../core/utils/cache_manager.dart';
-import '../../../core/utils/device_manager/screen_constants.dart';
-import '../../../core/utils/font_family.dart';
-import '../../../core/utils/kiwoo_icons.dart';
-import '../../../core/utils/pick_files.dart/pick_image.dart';
-import '../../../global_widgets/app_bar.dart';
-import '../../../global_widgets/avatar_network_image.dart';
-import '../../../global_widgets/modal/bottom_sheet.dart';
+import '../../../../core/utils/actions/overlay.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_string.dart';
+import '../../../../core/utils/app_utility.dart' show TypeMessage, showMsg;
+import '../../../../core/utils/cache_manager.dart';
+import '../../../../core/utils/device_manager/screen_constants.dart';
+import '../../../../core/utils/font_family.dart';
+import '../../../../core/utils/kiwoo_icons.dart';
+import '../../../../core/utils/pick_files.dart/pick_image.dart';
+import '../../../../global_widgets/app_bar.dart';
+import '../../../../global_widgets/avatar_network_image.dart';
+import '../../../../global_widgets/modal/bottom_sheet.dart';
 import '../controllers/profile_controller.dart';
 
 class EditProfileView extends GetView<ProfileController> {
@@ -78,13 +78,13 @@ class EditProfileView extends GetView<ProfileController> {
                       var imagesource =
                           await boomSheetOptions<ImageSources>(options: [
                         BottomSheetOption(
-                            label: 'Upload from Gallery/File',
+                            label: AppStrings.GALLERY_FILE,
                             icon: Kiwoo.image,
                             onPressed: () {
                               return ImageSources.gallery;
                             }),
                         BottomSheetOption(
-                            label: 'Take a Photo',
+                            label: AppStrings.TAKE_PHOTO,
                             icon: Kiwoo.image,
                             onPressed: () {
                               return ImageSources.camera;
@@ -96,7 +96,7 @@ class EditProfileView extends GetView<ProfileController> {
                           maxFileSizeInMb: 2,
                           source: imagesource,
                           crop: true,
-                          cropperToolbarTitle: "Crop Profil Picture",
+                          cropperToolbarTitle: AppStrings.CROP_IMAGE,
                         ).onError((error, s) {
                           showMsg(error as String, type: TypeMessage.error);
                           return null;
@@ -117,7 +117,7 @@ class EditProfileView extends GetView<ProfileController> {
               height: 48.ss,
             ),
             Text(
-              'Full Name',
+              AppStrings.FULL_NAME,
               style: TextStyle(
                 color: const Color(0xFF111A24),
                 fontSize: 14.fss,
@@ -150,7 +150,7 @@ class EditProfileView extends GetView<ProfileController> {
                 filled: true,
                 fillColor: AppColors.WHITE,
                 errorMaxLines: 2,
-                hintText: "Full Name",
+                hintText: AppStrings.FULL_NAME,
                 hintStyle: TextStyle(
                     color: const Color(0xFF6C7E8E),
                     fontSize: 14.fss,
@@ -205,7 +205,7 @@ class EditProfileView extends GetView<ProfileController> {
               height: 16.ss,
             ),
             Text(
-              'Email',
+              AppStrings.EMAIL,
               style: TextStyle(
                 color: const Color(0xFF111A24),
                 fontSize: 14.fss,
@@ -283,7 +283,7 @@ class EditProfileView extends GetView<ProfileController> {
               height: 16.ss,
             ),
             Text(
-              'Contact Number',
+              AppStrings.PHONE_NUMBER,
               style: TextStyle(
                 color: const Color(0xFF111A24),
                 fontSize: 14.fss,
@@ -309,7 +309,7 @@ class EditProfileView extends GetView<ProfileController> {
                 filled: true,
                 fillColor: AppColors.WHITE,
                 errorMaxLines: 2,
-                hintText: "Contact Number",
+                hintText: AppStrings.PHONE_NUMBER,
                 hintStyle: TextStyle(
                     color: const Color(0xFF6C7E8E),
                     fontSize: 14.fss,

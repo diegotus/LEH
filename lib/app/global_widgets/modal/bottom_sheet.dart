@@ -7,6 +7,7 @@ import 'package:haiti_lotri/app/core/utils/formatters/extension.dart';
 import 'package:sizing/sizing_extension.dart';
 
 import '../../core/utils/app_colors.dart';
+import '../../core/utils/app_string.dart';
 import '../../core/utils/app_utility.dart';
 import '../../core/utils/font_family.dart';
 import '../label_widget.dart';
@@ -61,66 +62,63 @@ Future<T?> boomSheetOptions<T>({
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            "Choose an option",
+            AppStrings.CHOOSE_OPTION,
             style: _textStyleButton.copyWith(
               fontSize: 20.fss,
               fontFamily: FontPoppins.BOLD,
             ),
           ),
           verticalSpaceMedium,
-          Expanded(
-            child: ListView.separated(
-              shrinkWrap: true,
-              itemCount: options.length,
-              separatorBuilder: (context, index) => verticalSpaceSmall,
-              itemBuilder: (context, index) {
-                var option = options[index];
-                onPressed() async {
-                  if (option.onPressed != null) {
-                    if (option.returnOnpressed) {
-                      var resp = await option.onPressed!();
-                      Get.backLegacy(result: resp);
-                    } else {
-                      Get.backLegacy();
-                      option.onPressed!();
-                    }
+          ListView.separated(
+            shrinkWrap: true,
+            itemCount: options.length,
+            separatorBuilder: (context, index) => verticalSpaceSmall,
+            itemBuilder: (context, index) {
+              var option = options[index];
+              onPressed() async {
+                if (option.onPressed != null) {
+                  if (option.returnOnpressed) {
+                    var resp = await option.onPressed!();
+                    Get.backLegacy(result: resp);
                   } else {
-                    Get.backLegacy(result: option.value ?? index);
+                    Get.backLegacy();
+                    option.onPressed!();
                   }
+                } else {
+                  Get.backLegacy(result: option.value ?? index);
                 }
+              }
 
-                return SizedBox(
-                  width: 0.8.sw,
-                  child: buildWidget != null
-                      ? buildWidget(option)
-                      : option.buildWidget?.call(option.value, onPressed) ??
-                          FilledButton.icon(
-                              style: _buttonFilledStyle.copyWith(
-                                  iconColor: WidgetStateProperty.all<Color?>(
-                                      option.iconColor)),
-                              onPressed: onPressed,
-                              icon: option.icon == null
-                                  ? null
-                                  : Icon(option.icon),
-                              label: ListTile(
-                                dense: true,
-                                titleAlignment: ListTileTitleAlignment.center,
-                                title: Text(
-                                  option.label,
-                                  style: _textStyleButton,
-                                  textAlign: TextAlign.center,
-                                ),
-                              )),
-                );
-              },
-            ),
+              return buildWidget != null
+                  ? buildWidget(option)
+                  : option.buildWidget?.call(option.value, onPressed) ??
+                      FilledButton.icon(
+                        style: _buttonFilledStyle.copyWith(
+                          iconColor: WidgetStateProperty.all<Color?>(
+                            option.iconColor,
+                          ),
+                        ),
+                        onPressed: onPressed,
+                        icon: option.icon == null ? null : Icon(option.icon),
+                        label: ListTile(
+                          dense: true,
+                          titleAlignment: ListTileTitleAlignment.center,
+                          title: Text(
+                            option.label,
+                            style: _textStyleButton,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      );
+            },
           ),
+          verticalSpaceSmall,
           TextButton(
               onPressed: () {
                 Get.closeOverlay();
               },
               child: Text(
-                'Cancel',
+                AppStrings.CANCEL,
                 style: _textStyleButton.copyWith(
                   color: Colors.red,
                 ),

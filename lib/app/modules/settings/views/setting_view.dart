@@ -4,25 +4,25 @@ import 'package:haiti_lotri/app/core/utils/app_utility.dart';
 import 'package:haiti_lotri/app/data/models/storage_box_model.dart';
 import 'package:sizing/sizing.dart';
 
-import '../../../../../generated/locales.g.dart';
-import '../../../../controllers/app_services_controller.dart';
-import '../../../../core/utils/actions/overlay.dart';
-import '../../../../core/utils/app_colors.dart';
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/utils/cache_manager.dart';
-import '../../../../core/utils/font_family.dart';
-import '../../../../core/utils/kiwoo_icons.dart';
-import '../../../../global_widgets/app_bar.dart';
-import '../../../../global_widgets/avatar_network_image.dart';
-import '../../../../global_widgets/label_widget.dart' show lableWidgetTitle;
-import '../../../../global_widgets/modal/bottom_sheet.dart';
-import '../../../../global_widgets/progress_indicator.dart';
-import '../../../../routes/app_pages.dart';
-import '../controllers/profile_controller.dart';
+import '../../../../generated/locales.g.dart';
+import '../../../controllers/app_services_controller.dart';
+import '../../../core/utils/actions/overlay.dart';
+import '../../../core/utils/app_colors.dart';
+import '../../../core/utils/app_string.dart';
+import '../../../core/utils/cache_manager.dart';
+import '../../../core/utils/font_family.dart';
+import '../../../core/utils/kiwoo_icons.dart';
+import '../../../global_widgets/app_bar.dart';
+import '../../../global_widgets/avatar_network_image.dart';
+import '../../../global_widgets/label_widget.dart' show lableWidgetTitle;
+import '../../../global_widgets/modal/bottom_sheet.dart';
+import '../../../global_widgets/progress_indicator.dart';
+import '../../../routes/app_pages.dart';
+import '../controllers/setting_controller.dart';
 import 'profile_edit_view.dart';
 
-class ProfileView extends GetView<ProfileController> {
-  const ProfileView({super.key});
+class SettingView extends GetView<SettingController> {
+  const SettingView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,25 +38,21 @@ class ProfileView extends GetView<ProfileController> {
           physics: const BouncingScrollPhysics(),
           shrinkWrap: true,
           children: [
-            Container(
-              height: 23.ss,
-            ),
+            verticalSpaceRegular,
             Container(
               decoration: BoxDecoration(
                   color: const Color(0xFFE8FFE2),
-                  borderRadius: BorderRadius.circular(5)),
+                  borderRadius: BorderRadius.circular(15)),
               child: Obx(
                 () {
                   var avatar = controller.userDetails.value?.avatar;
                   var email = controller.userDetails.value?.email ?? '';
                   var userName = controller.userDetails.value?.name;
                   var phone = controller.userDetails.value?.phone;
-                  var userScore =
-                      controller.userDetails.value?.extraInfo?.score;
                   return ListTile(
-                    leading: ClipOval(
-                      child: AspectRatio(
-                        aspectRatio: 1,
+                    leading: AspectRatio(
+                      aspectRatio: 1,
+                      child: ClipOval(
                         child: avatarImage(
                           avatar,
                           cacheManager: CustomCacheManager.profilCacheManager,
@@ -86,7 +82,7 @@ class ProfileView extends GetView<ProfileController> {
                             TextSpan(
                                 text: phone?.isNotEmpty == true
                                     ? '\n$phone'
-                                    : "+(509) 3000-0000")
+                                    : '\n+(509) 3000-0000')
                           ]),
                       style: TextStyle(
                         color: AppColors.BLACK.withOpacity(.6),
@@ -94,7 +90,6 @@ class ProfileView extends GetView<ProfileController> {
                         fontFamily: FontPoppins.REGULAR,
                       ),
                     ),
-                    isThreeLine: true,
                   );
                 },
               ),
@@ -125,21 +120,23 @@ class ProfileView extends GetView<ProfileController> {
               icon: Icons.language,
               ontap: () {
                 boomSheetOptions<Locale>(options: [
-                  BottomSheetOption(label: "Francais", value: Locale("fr")),
-                  BottomSheetOption(label: "Créole", value: Locale("ht")),
+                  BottomSheetOption(
+                      label: AppStrings.languageCode('fr'),
+                      value: Locale("fr")),
+                  BottomSheetOption(
+                      label: AppStrings.languageCode('ht'),
+                      value: Locale("ht")),
                 ]).then(
                   (value) {
                     if (value != null) {
-                      Get.updateLocale(value).then((val) {
-                        StorageBox.locale.val = value.languageCode;
-                      });
-                      ;
+                      StorageBox.locale.val = value.languageCode;
+                      Get.updateLocale(value);
                     }
                   },
                 );
               },
               trailing: Text(
-                "${Get.locale?.languageCode.toUpperCase()}",
+                AppStrings.languageCode(StorageBox.locale.val),
                 style: TextStyle(
                   fontSize: 16.fss,
                   fontFamily: FontPoppins.MEDIUM,

@@ -5,21 +5,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizing/sizing_extension.dart';
 
-import '../../../../core/utils/actions/overlay.dart';
-import '../../../../core/utils/app_colors.dart';
-import '../../../../core/utils/app_string.dart';
-import '../../../../core/utils/app_utility.dart' show TypeMessage, showMsg;
-import '../../../../core/utils/cache_manager.dart';
-import '../../../../core/utils/device_manager/screen_constants.dart';
-import '../../../../core/utils/font_family.dart';
-import '../../../../core/utils/kiwoo_icons.dart';
-import '../../../../core/utils/pick_files.dart/pick_image.dart';
-import '../../../../global_widgets/app_bar.dart';
-import '../../../../global_widgets/avatar_network_image.dart';
-import '../../../../global_widgets/modal/bottom_sheet.dart';
-import '../controllers/profile_controller.dart';
+import '../../../core/utils/actions/overlay.dart';
+import '../../../core/utils/app_colors.dart';
+import '../../../core/utils/app_string.dart';
+import '../../../core/utils/app_utility.dart' show TypeMessage, showMsg;
+import '../../../core/utils/cache_manager.dart';
+import '../../../core/utils/device_manager/screen_constants.dart';
+import '../../../core/utils/font_family.dart';
+import '../../../core/utils/kiwoo_icons.dart';
+import '../../../core/utils/pick_files.dart/pick_image.dart';
+import '../../../global_widgets/app_bar.dart';
+import '../../../global_widgets/avatar_network_image.dart';
+import '../../../global_widgets/modal/bottom_sheet.dart';
+import '../controllers/setting_controller.dart';
 
-class EditProfileView extends GetView<ProfileController> {
+class EditProfileView extends GetView<SettingController> {
   const EditProfileView({super.key});
   String get fullName => controller.userDetails.value!.name!;
   String get email => controller.userDetails.value!.email!;

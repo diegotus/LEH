@@ -1,14 +1,14 @@
 import 'package:get/get.dart';
 
-import '../../../../controllers/app_services_controller.dart';
-import '../../../../controllers/def_controller.dart';
+import '../../../controllers/app_services_controller.dart';
+import '../../../controllers/def_controller.dart';
 
-import '../../../../data/models/document_model.dart';
-import '../../../../data/models/user_detail_model.dart';
-import '../../../../data/models/user_profil_update_model.dart';
-import '../../../../providers/app_service_provider.dart';
+import '../../../data/models/document_model.dart';
+import '../../../data/models/user_detail_model.dart';
+import '../../../data/models/user_profil_update_model.dart';
+import '../../../providers/app_service_provider.dart';
 
-class ProfileController extends GetxController with DefController {
+class SettingController extends GetxController with DefController {
   final provider = Get.find<AppServiceProvider>();
 
   Future<void> uploadFile(FileData file) async {

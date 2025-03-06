@@ -57,7 +57,7 @@ class AppServicesController extends GetxService
   @override
   void onClose() async {
     errorWorker?.dispose();
-    await Get.delete<AppServiceProvider>(force: true);
+    Get.delete<AppServiceProvider>(force: true);
     super.onClose();
   }
 
@@ -71,12 +71,14 @@ class AppServicesController extends GetxService
 
   void addKeysListenter() {
     StorageBox.boxKeys().listenKey("token", (value) {
-      //  string currentRoute=Get.rootController.rootDelegate.pageSettings;
+      var currentRoute = Get.rootController.rootDelegate.pageSettings?.name ??
+          Get.currentRoute;
+
       if (value == null) {
-        if (Get.currentRoute != Routes.CONNECTION) {
+        if (currentRoute != Routes.CONNECTION) {
           Get.offAllNamed(Routes.CONNECTION);
         }
-      } else if (Get.currentRoute.contains(Routes.CONNECTION)) {
+      } else if (currentRoute.contains(Routes.CONNECTION)) {
         Get.offAllNamed(Routes.HOME);
       }
     });

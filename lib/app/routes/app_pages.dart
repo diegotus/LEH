@@ -1,4 +1,7 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/modules/connection/bindings/otp_binding.dart';
+import 'package:haiti_lotri/app/modules/connection/views/otp_view.dart';
 
 import '../data/middleware/auth_gard.dart';
 import '../data/middleware/transaction_detail_gard.dart';
@@ -18,12 +21,10 @@ import '../modules/lotoGame/bindings/play_game_binding.dart';
 import '../modules/lotoGame/views/play_game_view.dart';
 import '../modules/lotoResults/bindings/loto_results_binding.dart';
 import '../modules/lotoResults/views/loto_results_view.dart';
-import '../modules/settings/profile/bindings/profile_binding.dart';
-import '../modules/settings/profile/changePassword/bindings/change_password_binding.dart';
-import '../modules/settings/profile/changePassword/views/change_password_view.dart';
-import '../modules/settings/profile/views/profile_view.dart';
-import '../modules/settings/bindings/settings_binding.dart';
-import '../modules/settings/views/settings_view.dart';
+import '../modules/settings/bindings/setting_binding.dart';
+import '../modules/settings/changePassword/bindings/change_password_binding.dart';
+import '../modules/settings/changePassword/views/change_password_view.dart';
+import '../modules/settings/views/setting_view.dart';
 import '../modules/tickets/bindings/tickets_binding.dart';
 import '../modules/tickets/views/tickets_view.dart';
 import '../modules/transactions/bindings/transactions_binding.dart';
@@ -31,8 +32,6 @@ import '../modules/transactions/cashIn/bindings/cash_in_binding.dart';
 import '../modules/transactions/cashIn/views/cash_in_view.dart';
 import '../modules/transactions/cashOut/bindings/cash_out_binding.dart';
 import '../modules/transactions/cashOut/views/cash_out_view.dart';
-import '../modules/transactions/receipt/bindings/receipt_binding.dart';
-import '../modules/transactions/receipt/views/receipt_view.dart';
 import '../modules/transactions/receiveMoney/bindings/receive_money_binding.dart';
 import '../modules/transactions/receiveMoney/views/receive_money_view.dart';
 import '../modules/transactions/sendMoney/bindings/send_money_binding.dart';
@@ -57,7 +56,10 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.ROOT,
-      page: () => RootView(),
+      page: () => RootView(
+        initialRoute: Routes.CONNECTION,
+        anchorRoute: Routes.ROOT,
+      ),
       participatesInRootNavigator: true,
       preventDuplicates: true,
       middlewares: [EnsureNotAuthentificated()],
@@ -109,13 +111,19 @@ class AppPages {
         ),
         GetPage(
             name: _Paths.SETTINGS,
-            page: () => const SettingsView(),
+            page: () => const RootView(
+                  initialRoute: Routes.SETTINGHOME,
+                  anchorRoute: Routes.SETTINGS,
+                ),
             binding: SettingsBinding(),
+            middlewares: [
+              EnsureAuthentificated()
+            ],
             children: [
               GetPage(
-                name: _Paths.PROFILE,
-                page: () => const ProfileView(),
-                binding: ProfileBinding(),
+                name: _Paths.SETTINGHOME,
+                page: () => const SettingView(),
+                binding: SettingsBinding(),
               ),
               GetPage(
                 name: _Paths.CHANGE_PASSWORD,
@@ -129,6 +137,7 @@ class AppPages {
           name: _Paths.TRANSACTIONS,
           page: () => const TransactionsView(),
           binding: TransactionsBinding(),
+          middlewares: [EnsureAuthentificated()],
           preventDuplicates: true,
           participatesInRootNavigator: false,
           children: [
@@ -179,31 +188,49 @@ class AppPages {
         ),
         GetPage(
           name: _Paths.CONNECTION,
-          page: () => const ConnectionView(),
+          page: () => const RootView(
+            initialRoute: Routes.CONNECTIONHOME,
+            anchorRoute: Routes.CONNECTION,
+          ),
           binding: ConnectionBinding(),
           middlewares: [EnsureNotAuthentificated()],
-          // participatesInRootNavigator: true,
+          preventDuplicates: true,
           children: [
+            GetPage(
+              name: _Paths.CONNECTIONHOME,
+              page: () => const ConnectionView(),
+              binding: ConnectionBinding(),
+              preventDuplicates: true,
+            ),
             GetPage(
               name: _Paths.LOGIN,
               page: () => const LoginView(),
               binding: LoginBinding(),
-              participatesInRootNavigator: true,
+              preventDuplicates: true,
             ),
             GetPage(
-              participatesInRootNavigator: true,
               name: _Paths.SIGNUP,
               page: () => const SignupView(),
               binding: SignupBinding(),
             ),
-            GetPage(
-              name: _Paths.FORGET_PASSWORD,
-              participatesInRootNavigator: true,
-              page: () => const ForgetPasswordView(),
-              binding: ForgetPasswordBinding(),
-            ),
           ],
         ),
+        GetPage(
+            name: _Paths.FORGET_PASSWORD_ROOT,
+            page: () => const RootView(
+                  key: ValueKey("Forget_PAss"),
+                  initialRoute: Routes.FORGET_PASSWORD,
+                  anchorRoute: Routes.FORGET_PASSWORD_ROOT,
+                ),
+            binding: ForgetPasswordBinding(),
+            preventDuplicates: true,
+            children: [
+              GetPage(
+                name: _Paths.FORGET_PASSWORD,
+                page: () => const ForgetPasswordView(),
+                preventDuplicates: true,
+              ),
+            ]),
       ],
     ),
   ];

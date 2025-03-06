@@ -14,19 +14,21 @@ import '../../../../global_widgets/app_button.dart';
 import '../../../../global_widgets/input_field.dart';
 import '../../../../routes/app_pages.dart';
 import '../controllers/forget_password_controller.dart';
+import '../controllers/new_password_controller.dart';
 
-class NewPasswordView extends GetView<ForgetPasswordController> {
-  NewPasswordView({super.key}) {
-    controller.formKeyNewPass = GlobalKey<FormState>();
-  }
+class NewPasswordView extends GetView<NewPasswordController> {
+  const NewPasswordView({super.key});
   void submitRegistration([_]) async {
-    //Get.toNamed(otpScreen, arguments: {"email": ""});
-    if (controller.formKeyNewPass.currentState?.validate() == true) {
-      controller.formKeyNewPass.currentState?.save();
+    print("validate 1 ${controller.formKey.currentState}");
+    if (controller.formKey.currentState?.validate() == true) {
+      controller.formKey.currentState?.save();
+      print("validate 2");
+
       showOverlay(
         asyncFunction: controller.resetPassword,
       );
     }
+    print("validate 3");
   }
 
   @override
@@ -40,7 +42,7 @@ class NewPasswordView extends GetView<ForgetPasswordController> {
             ),
             verticalSpaceRegular,
             Form(
-              key: controller.formKeyNewPass,
+              key: controller.formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -50,7 +52,7 @@ class NewPasswordView extends GetView<ForgetPasswordController> {
                     ),
                     child: CustomInputFormField(
                       obscureText: true,
-                      label: AppStrings.NEW_PASSWORD,
+                      keyboardType: TextInputType.visiblePassword,
                       hintText: AppStrings.ENTER_NEW_PASSWORD,
                       style: TextStyle(
                         color: const Color(0xFF111A24),
@@ -62,7 +64,10 @@ class NewPasswordView extends GetView<ForgetPasswordController> {
                       onSaved: (value) {
                         controller.newPassword = value!;
                       },
-                      validator: (value) => validPassword(value),
+                      validator: (value) {
+                        print("the validator msg ${validPassword(value)}");
+                        return validPassword(value);
+                      },
                     ),
                   ),
                   verticalSpaceMedium,
@@ -72,7 +77,6 @@ class NewPasswordView extends GetView<ForgetPasswordController> {
                     ),
                     child: CustomInputFormField(
                       obscureText: true,
-                      label: AppStrings.CONFIRM_NEW_PASSWORD,
                       hintText: AppStrings.ENTER_CONFIRM_NEW_PASSWORD,
                       style: TextStyle(
                         color: const Color(0xFF111A24),

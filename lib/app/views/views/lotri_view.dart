@@ -12,7 +12,6 @@ class LotriView extends GetView {
   const LotriView({super.key});
   @override
   Widget build(BuildContext context) {
-    print("the rooutes ${Get.rootController.rootDelegate.pageSettings?.name}");
     return GetRouterOutlet.builder(
         route: Routes.LOTRI,
         builder: (context) {

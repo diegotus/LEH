@@ -5,9 +5,15 @@ abstract class Routes {
   Routes._();
   static const ROOT = _Paths.ROOT;
   static const CONNECTION = _Paths.CONNECTION;
+  static const CONNECTIONHOME = _Paths.CONNECTION + _Paths.CONNECTIONHOME;
   static const LOGIN = _Paths.CONNECTION + _Paths.LOGIN;
   static const SIGNUP = _Paths.CONNECTION + _Paths.SIGNUP;
-  static const FORGET_PASSWORD = _Paths.CONNECTION + _Paths.FORGET_PASSWORD;
+
+  static const FORGET_PASSWORD_ROOT = _Paths.FORGET_PASSWORD_ROOT;
+  static const FORGET_PASSWORD =
+      _Paths.FORGET_PASSWORD_ROOT + _Paths.FORGET_PASSWORD;
+  static const FORGET_PASSWORD_OTP =
+      _Paths.FORGET_PASSWORD_ROOT + _Paths.FORGET_PASSWORD_OTP;
   static const LOTRI = _Paths.LOTRI;
   static const HOME = _Paths.LOTRI + _Paths.HOME;
   static const GAMES = _Paths.LOTRI + _Paths.GAMES;
@@ -26,7 +32,7 @@ abstract class Routes {
   static const TRANSACTION_DETAILS =
       _Paths.TRANSACTIONS + _Paths.TRANSACTION_DETAILS;
   static const SETTINGS = _Paths.SETTINGS;
-  static const PROFILE = _Paths.SETTINGS + _Paths.PROFILE;
+  static const SETTINGHOME = _Paths.SETTINGS + _Paths.SETTINGHOME;
   static const CHANGE_PASSWORD = _Paths.SETTINGS + _Paths.CHANGE_PASSWORD;
 }
 
@@ -34,9 +40,12 @@ abstract class _Paths {
   _Paths._();
   static const ROOT = '/';
   static const CONNECTION = '/connection';
+  static const CONNECTIONHOME = '/connection';
   static const LOGIN = '/login';
   static const SIGNUP = '/signup';
-  static const FORGET_PASSWORD = '/forget-password';
+  static const FORGET_PASSWORD_ROOT = '/forget-password';
+  static const FORGET_PASSWORD = '/page';
+  static const FORGET_PASSWORD_OTP = '/OTP';
   static const LOTRI = '/lotri';
   static const HOME = '/home';
   static const GAMES = '/games';
@@ -51,7 +60,7 @@ abstract class _Paths {
   static const TRANSACTION_RECEIPT = '/receipt';
   static const TRANSACTION_HISTORY = '/history';
   static const TRANSACTION_DETAILS = '/details';
-  static const PROFILE = '/profil';
+  static const SETTINGHOME = '/1';
   static const CHANGE_PASSWORD = '/change-password';
   static const SETTINGS = '/settings';
 }

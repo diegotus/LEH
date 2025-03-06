@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/actions/overlay.dart';
+import 'package:haiti_lotri/app/modules/connection/controllers/otp_controller.dart';
+import 'package:haiti_lotri/app/modules/connection/forgetPassword/bindings/new_password_binding.dart';
 import 'package:sizing/sizing_extension.dart';
 
 import '../../../../core/utils/app_string.dart';
@@ -22,18 +25,29 @@ class ForgetPasswordView extends GetView<ForgetPasswordController> {
     //Get.toNamed(otpScreen, arguments: {"email": ""});
     if (controller.formKey.currentState?.validate() == true) {
       controller.formKey.currentState?.save();
-      Get.to(
-        () {
-          return OTPView(
-            onAuthentificated: () {
-              Get.off(() => NewPasswordView());
-              return;
-            },
-          );
-        },
-        opaque: false,
-        bindings: [OTPBinding.forgotPassword(controller.email)],
-      );
+      var otp = await showOverlay(asyncFunction: controller.requestOtp);
+      var email = controller.email;
+      if (otp != null) {
+        Get.to(
+          () {
+            return OTPView(
+              onAuthentificated: () {
+                Get.off(
+                  () => NewPasswordView(),
+                  routeName: "/forget-password/newPassword",
+                  arguments: email,
+                  bindings: [NewPasswordBinding()],
+                );
+              },
+            );
+          },
+          // opaque: false,
+          // fullscreenDialog: true,
+          routeName: "/forget-password/OTP",
+          arguments: otp,
+          bindings: [OTPBinding.forgotPassword(email)],
+        );
+      }
     }
   }
 

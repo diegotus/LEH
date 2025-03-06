@@ -23,7 +23,7 @@ class ConnectionView extends GetView<ConnectionController> {
           Image.asset(ImgName.LOGO, width: 150.ss),
           verticalSpaceRegular,
           Text(
-            AppStrings.WELCOME,
+            AppStrings.WELCOME_TO,
             textAlign: TextAlign.center,
             style: TextThemeHelper.welcomeTitle,
           ),

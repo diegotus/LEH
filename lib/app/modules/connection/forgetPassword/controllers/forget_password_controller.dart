@@ -2,7 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/enums.dart';
 
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_utility.dart';
+import '../../../../data/models/signup_model.dart';
 import '../../../../routes/app_pages.dart';
 import '../../providers/connection_provider.dart';
 
@@ -20,23 +24,27 @@ class ForgetPasswordController extends GetxController {
   int remainingSecoends = 1;
   final time = '00:00'.obs;
 
-  void startTimer(int secoends) {
-    debugPrint("In Timer");
-    const duration = Duration(seconds: 1);
-    remainingSecoends = secoends;
-    timer = Timer.periodic(duration, (Timer timer) {
-      if (remainingSecoends == 0) {
-        enableResend.value = true;
-        timer.cancel();
+  Future<double?> requestOtp() async {
+    try {
+      var response =
+          await provider.askForOtpApi(email, OTPType.forgotPassword.name);
+      if (response?.isSuccess == true) {
+        var otpData = OTPModel.fromMap(response!.data!);
+        response.showMessage(message: ["Otp sent to successfully"]);
+
+        return otpData.otpValidity;
       } else {
-        int minute = remainingSecoends ~/ 60;
-        minute = minute % 60;
-        int secoends = remainingSecoends % 60;
-        time.value =
-            "${minute.toString().padLeft(2, "0")}:${secoends.toString().padLeft(2, "0")}";
-        remainingSecoends--;
+        response?.showMessage();
+        if ((response?.error ?? '').isNotEmpty) {
+          return OTPModel.fromMap({
+            'otpValidity': response!.error!,
+          }).otpValidity;
+        }
+        return null;
       }
-    });
+    } catch (e) {
+      return null;
+    }
   }
 
   @override

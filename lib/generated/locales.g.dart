@@ -169,6 +169,8 @@ class LocaleKeys {
   static const label_choose_Option = 'label_choose_Option';
   static const label_fee = 'label_fee';
   static const label_tax = 'label_tax';
+  static const label_language_fr = 'label_language_fr';
+  static const label_language_ht = 'label_language_ht';
   static const message_unavailable_method = 'message_unavailable_method';
   static const message_not_implemented = 'message_not_implemented';
   static const buttons_login = 'buttons_login';
@@ -244,12 +246,12 @@ class Locales {
     'PASSWORD_MAX_LENGTH':
         'Le mot de passe ne doit pas dépasser 12 caractères.',
     'APP_NAME': 'Loterie haïtienne',
-    'SLOGAN': 'Jouer pour gagner!!!',
-    'WELCOME_TO': 'Bienvenue à la Loterie de l\'État haïtien LOTRI',
+    'SLOGAN': 'Jouez pour gagner!!!',
+    'WELCOME_TO': 'Bienvenue à la Loterie de l\'État Haïtien',
     'FORGOT_PASSWORD': 'Mot de passe oublié ?',
     'FORGOT_PASSWORD2': 'Mot de passe oublié',
     'CREATE_NEW_PASSWORD': 'Créer un nouveau mot de passe',
-    'NEW_USER': 'Êtes-vous un nouvel utilisateur ?',
+    'NEW_USER': 'Nouvel utilisateur ?',
     'back': 'Retour',
     'next': 'Suivant',
     'BACK_TO': 'Retour à',
@@ -261,7 +263,7 @@ class Locales {
     'RESEND_CODE': 'Renvoyer l\'OTP',
     'SERVICE_AT_YOU_FINGERTIPS': 'Un service à portée de main',
     'FOR_ANY_ASSISTANCE_PLEASE':
-        'Pour toute assistance s\'il vous plaît appeler au',
+        'Pour toute assistance, s\'il vous plaît appeler au:',
     'CALL': 'Appeler',
     'EMAIL': 'E-mail',
     'PASSWORD': 'Mot de passe',
@@ -286,8 +288,8 @@ class Locales {
     'PLS_ENTER_CONFIRM_PASSWORD':
         'Veuillez saisir un mot de passe de confirmation',
     'PLS_ENTER_PASSWORD_MUST_BE_LONG':
-        'Veuillez, le mot de passe doit comporter entre 8 et 20 caractères',
-    'PLS_ENTER_PASSWORD_NOT_MATCH': 'Le mot de passe ne correspond pas',
+        'Le mot de passe doit comporter entre 8 et 20 caractères',
+    'PLS_ENTER_PASSWORD_NOT_MATCH': 'Les mots de passe ne correspondent pas',
     'PLS_ENTER_NAME': 'Veuillez saisir un nom',
     'PLS_ENTER_PHONE_NUMBER': 'Veuillez saisir un numéro de téléphone',
     'PLS_ENTER_VALID_PHONE_NUMBER':
@@ -340,7 +342,7 @@ class Locales {
     'label_custom': 'Personnaliser',
     'label_settings': 'Réglages',
     'label_disable_account': 'Désactiver mon compte',
-    'label_change_password': 'Changer mon mot de passe',
+    'label_change_password': 'Changer de mot de passe',
     'label_logout': 'Se Déconnecter',
     'label_Gallery_file': 'Galerie/Fichier',
     'label_take_photo': 'Prendre une photo',
@@ -350,6 +352,8 @@ class Locales {
     'label_choose_Option': 'Choisissez une option',
     'label_fee': 'Frais',
     'label_tax': 'Taxe',
+    'label_language_fr': 'Français',
+    'label_language_ht': 'Créole',
     'message_unavailable_method':
         'Cette méthode n\'est pas disponible pour le moment!',
     'message_not_implemented': 'Cette page n\'est pas encore prête!',
@@ -411,11 +415,11 @@ class Locales {
     'PASSWORD_MAX_LENGTH': 'Modpas pa dwe depase 12 karaktè.',
     'APP_NAME': 'Loterie Haïtien',
     'SLOGAN': 'Fasil ak Abòdab Banking',
-    'WELCOME_TO': 'Byenvini nan lotri Leta Ayisyen LOTRI',
+    'WELCOME_TO': 'Byenvini nan lotri Leta Ayisyen',
     'FORGOT_PASSWORD': 'ou Bliye Modpas ou?',
     'FORGOT_PASSWORD2': 'Bliye Modpas',
     'CREATE_NEW_PASSWORD': 'Kreye yon nouvo modpas',
-    'NEW_USER': 'ou se yon Nouvo itilizatè?',
+    'NEW_USER': 'Nouvo itilizatè?',
     'back': 'Retounen',
     'next': 'Pwochen',
     'BACK_TO': 'Retounen nan',
@@ -426,7 +430,7 @@ class Locales {
     'CODE_IS_SENT_TO': 'OTP ale sou ',
     'RESEND_CODE': 'Revoye OTP an',
     'SERVICE_AT_YOU_FINGERTIPS': 'Sèvis nan men ou',
-    'FOR_ANY_ASSISTANCE_PLEASE': 'Pou nenpòt asistans tanpri',
+    'FOR_ANY_ASSISTANCE_PLEASE': 'Pou nenpòt asistans, tanpri rele nan: ',
     'CALL': 'Rele',
     'EMAIL': 'Imel',
     'PASSWORD': 'Modpas',
@@ -449,7 +453,7 @@ class Locales {
     'PLS_ENTER_CONFIRM_PASSWORD': 'Tanpri antre konfime modpas',
     'PLS_ENTER_PASSWORD_MUST_BE_LONG':
         'Tanpri, modpas la dwe gen 8 a 20 karaktè',
-    'PLS_ENTER_PASSWORD_NOT_MATCH': 'Modpas pa matche',
+    'PLS_ENTER_PASSWORD_NOT_MATCH': 'Modpas yo pa menm.',
     'PLS_ENTER_NAME': 'Tanpri antre non',
     'PLS_ENTER_PHONE_NUMBER': 'Tanpri antre nimewo telefòn',
     'PLS_ENTER_VALID_PHONE_NUMBER': 'Tanpri antre nimewo telefòn valid',
@@ -471,7 +475,7 @@ class Locales {
     'SEND': 'Voye',
     'SEND_EMAIL': 'Voye imel',
     'CREATE_PASSWORD': 'Kreye modpas',
-    'EDIT_PROFILE': 'Edit Profile',
+    'EDIT_PROFILE': 'Modifye Pwofil',
     'PLS_ENTER_AMOUNT': 'Tanpri antre kantite lajan',
     'PLEASE_ENTER_OLD_PASSWORD': 'Tanpri antre ansyen modpas',
     'PLEASE_ENTER_NEW_PASSWORD': 'Tanpri antre nouvo modpas',
@@ -508,6 +512,8 @@ class Locales {
     'label_choose_Option': 'Chwazi yon opsyon',
     'label_fee': 'Frè',
     'label_tax': 'Taks',
+    'label_language_fr': 'Fransè',
+    'label_language_ht': 'Kreyòl',
     'message_unavailable_method': 'Metòd sa a pa disponib pou kounye a',
     'message_not_implemented': 'Paj sa poko pare!',
   };

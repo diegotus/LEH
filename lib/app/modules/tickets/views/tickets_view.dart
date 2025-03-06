@@ -6,6 +6,7 @@ import 'package:haiti_lotri/app/core/utils/app_colors.dart';
 import 'package:haiti_lotri/app/core/utils/app_string.dart';
 import 'package:haiti_lotri/app/core/utils/app_utility.dart';
 import 'package:haiti_lotri/app/core/utils/datetime_utility.dart';
+import 'package:haiti_lotri/app/core/utils/enums.dart';
 import 'package:haiti_lotri/app/core/utils/font_family.dart';
 import 'package:haiti_lotri/app/core/utils/formatters/extension.dart';
 import 'package:haiti_lotri/app/global_widgets/app_button.dart';
@@ -113,6 +114,18 @@ class TicketsView extends GetView<TicketsController> {
                 return ListBuilderWidget<TicketModel>.future(
                   future: () => controller.callGetTicketsApi(filter, windOnly),
                   itemBuilder: (context, ticket, refreshFuture, [previous]) {
+                    var icon = Icon(
+                      Kiwoo.sun,
+                      size: 20.fs,
+                      color: AppColors.YELLOW_CARD,
+                    );
+                    if (ticket.dayTime == DayTime.soir) {
+                      icon = Icon(
+                        Kiwoo.moon,
+                        size: 20.fs,
+                        color: AppColors.SUBTITLE,
+                      );
+                    }
                     return Card(
                       color: getTicketColor(ticket),
                       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -137,11 +150,7 @@ class TicketsView extends GetView<TicketsController> {
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 8.0),
-                                    child: Icon(
-                                      Kiwoo.moon,
-                                      size: 20.fs,
-                                      color: AppColors.SUBTITLE,
-                                    ),
+                                    child: icon,
                                   ),
                                 ),
                                 TextSpan(

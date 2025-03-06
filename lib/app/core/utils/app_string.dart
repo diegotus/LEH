@@ -67,7 +67,8 @@ class AppStrings {
       'PLS_ENTER_CONFIRM_PASSWORD'.tr;
   static String get PLS_ENTER_PASSWORD_MUST_BE_LONG =>
       'PLS_ENTER_PASSWORD_MUST_BE_LONG'.tr;
-  static String get PLS_ENTER_PASSWORD_NOT_MATCH => 'PLS_ENTER_OT_MATCH'.tr;
+  static String get PLS_ENTER_PASSWORD_NOT_MATCH =>
+      LocaleKeys.PLS_ENTER_PASSWORD_NOT_MATCH.tr;
   static String get PLS_ENTER_NAME => 'PLS_ENTER_NAME'.tr;
   static String get PLS_ENTER_PHONE_NUMBER => 'PLS_ENTER_PHONE_NUMBER'.tr;
   static String get PLS_ENTER_VALID_PHONE_NUMBER =>
@@ -201,4 +202,6 @@ class AppStrings {
 
   static String get NOT_IMPLEMENTED => LocaleKeys.message_not_implemented.tr;
   static String get language => LocaleKeys.language.tr;
+  static String Function(dynamic code) get languageCode =>
+      (code) => 'label_language_$code'.tr;
 }

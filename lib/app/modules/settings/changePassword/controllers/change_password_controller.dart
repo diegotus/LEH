@@ -2,9 +2,9 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:haiti_lotri/app/routes/app_pages.dart';
 
-import '../../../../../controllers/app_services_controller.dart';
-import '../../../../../controllers/def_controller.dart';
-import '../../../../../data/models/user_profil_update_model.dart';
+import '../../../../controllers/app_services_controller.dart';
+import '../../../../controllers/def_controller.dart';
+import '../../../../data/models/user_profil_update_model.dart';
 
 class ChangePasswordController extends GetxController with DefController {
   final GlobalKey<FormState> formKey = GlobalKey();

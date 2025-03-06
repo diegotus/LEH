@@ -69,12 +69,12 @@
   "PASSWORD_MAX_LENGTH": "Le mot de passe ne doit pas dépasser 12 caractères.",
 
   "APP_NAME": "Loterie haïtienne",
-  "SLOGAN": "Jouer pour gagner!!!",
-  "WELCOME_TO": "Bienvenue à la Loterie de l'État haïtien LOTRI",
+  "SLOGAN": "Jouez pour gagner!!!",
+  "WELCOME_TO": "Bienvenue à la Loterie de l'État Haïtien",
   "FORGOT_PASSWORD": "Mot de passe oublié ?",
   "FORGOT_PASSWORD2": "Mot de passe oublié",
   "CREATE_NEW_PASSWORD": "Créer un nouveau mot de passe",
-  "NEW_USER": "Êtes-vous un nouvel utilisateur ?",
+  "NEW_USER": "Nouvel utilisateur ?",
   "back": "Retour",
   "next": "Suivant",
   "BACK_TO": "Retour à",
@@ -85,7 +85,7 @@
   "CODE_IS_SENT_TO": "OTP envoyé à",
   "RESEND_CODE": "Renvoyer l'OTP",
   "SERVICE_AT_YOU_FINGERTIPS": "Un service à portée de main",
-  "FOR_ANY_ASSISTANCE_PLEASE": "Pour toute assistance s'il vous plaît appeler au",
+  "FOR_ANY_ASSISTANCE_PLEASE": "Pour toute assistance, s'il vous plaît appeler au:",
   "CALL": "Appeler",
 
   "EMAIL": "E-mail",
@@ -110,8 +110,8 @@
     "MESSAGE": "Veuillez, la longueur du message doit être d'au moins 50",
     "PASSWORD": "Veuillez saisir un mot de passe",
     "CONFIRM_PASSWORD": "Veuillez saisir un mot de passe de confirmation",
-    "PASSWORD_MUST_BE_LONG": "Veuillez, le mot de passe doit comporter entre 8 et 20 caractères",
-    "PASSWORD_NOT_MATCH": "Le mot de passe ne correspond pas",
+    "PASSWORD_MUST_BE_LONG": "Le mot de passe doit comporter entre 8 et 20 caractères",
+    "PASSWORD_NOT_MATCH": "Les mots de passe ne correspondent pas",
     "NAME": "Veuillez saisir un nom",
     "PHONE_NUMBER": "Veuillez saisir un numéro de téléphone",
     "VALID_PHONE_NUMBER": "Veuillez saisir un numéro de téléphone valide",
@@ -170,7 +170,7 @@
     "custom": "Personnaliser",
     "settings": "Réglages",
     "disable_account": "Désactiver mon compte",
-    "change_password": "Changer mon mot de passe",
+    "change_password": "Changer de mot de passe",
     "logout": "Se Déconnecter",
     "Gallery_file": "Galerie/Fichier",
     "take_photo": "Prendre une photo",
@@ -179,10 +179,14 @@
     "cancel": "Annuler",
     "choose_Option": "Choisissez une option",
     "fee": "Frais",
-    "tax": "Taxe"
+    "tax": "Taxe",
+    "language": {
+      "fr": "Français",
+      "ht": "Créole"
+    }
   },
   "message": {
     "unavailable_method": "Cette méthode n'est pas disponible pour le moment!",
-    "not_implemented":"Cette page n'est pas encore prête!"
+    "not_implemented": "Cette page n'est pas encore prête!"
   }
 }

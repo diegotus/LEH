@@ -239,7 +239,7 @@ class HomeView extends GetView<HomeController> {
                 )
               ]),
               style: TextStyle(
-                fontSize: 17.fss,
+                fontSize: 16.fss,
                 fontFamily: FontPoppins.SEMIBOLD,
                 color: FontColors.BLACK,
                 // overflow: TextOverflow.clip,

@@ -10,7 +10,7 @@ import '../../../core/utils/enums.dart';
 import '../../../data/models/signup_model.dart';
 import '../providers/connection_provider.dart';
 
-class OTPController extends GetxController with StateMixin<bool> {
+class OTPController extends GetxController {
   OTPController({required this.otpContacted}) : type = OTPType.register;
   OTPController.forgotPassword({required this.otpContacted})
       : type = OTPType.forgotPassword;
@@ -22,15 +22,15 @@ class OTPController extends GetxController with StateMixin<bool> {
   late final StreamController<ErrorAnimationType> pinErrorController;
   final OTPType type;
   final String otpContacted;
-  final duration = const Duration(minutes: 3).obs;
+  late final Rx<Duration> duration;
 
   @override
   onInit() {
+    duration = Rx<Duration>(_getDuration(Get.arguments ?? 3));
     provider = Get.find<ConnectionProvider>();
     pinErrorController = StreamController<ErrorAnimationType>();
     pin = RxString("");
     secondsRemaining = 0.obs;
-    requestOtp();
     super.onInit();
   }
 
@@ -68,12 +68,9 @@ class OTPController extends GetxController with StateMixin<bool> {
           registerData.message ?? "Otp sent to successfully",
           color: AppColors.SUCCESS,
         );
-        change(SuccessStatus(true));
       } else {
         if ((response?.error ?? '').isNotEmpty) {
           updateDuration(double.parse(response!.error!));
-
-          change(SuccessStatus(true));
         }
       }
     } catch (e) {
@@ -82,8 +79,12 @@ class OTPController extends GetxController with StateMixin<bool> {
     }
   }
 
-  void updateDuration(double value) {
-    duration.value = Duration(
+  updateDuration(double value) {
+    duration.value = _getDuration(value);
+  }
+
+  Duration _getDuration(double value) {
+    return Duration(
       milliseconds: (value * Duration.millisecondsPerMinute).toInt(),
     );
   }

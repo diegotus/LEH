@@ -69,11 +69,11 @@
 
   "APP_NAME": "Loterie Haïtien",
   "SLOGAN": "Fasil ak Abòdab Banking",
-  "WELCOME_TO": "Byenvini nan lotri Leta Ayisyen LOTRI",
+  "WELCOME_TO": "Byenvini nan lotri Leta Ayisyen",
   "FORGOT_PASSWORD": "ou Bliye Modpas ou?",
   "FORGOT_PASSWORD2": "Bliye Modpas",
   "CREATE_NEW_PASSWORD": "Kreye yon nouvo modpas",
-  "NEW_USER": "ou se yon Nouvo itilizatè?",
+  "NEW_USER": "Nouvo itilizatè?",
   "back": "Retounen",
   "next": "Pwochen",
   "BACK_TO": "Retounen nan",
@@ -84,7 +84,7 @@
   "CODE_IS_SENT_TO": "OTP ale sou ",
   "RESEND_CODE": "Revoye OTP an",
   "SERVICE_AT_YOU_FINGERTIPS": "Sèvis nan men ou",
-  "FOR_ANY_ASSISTANCE_PLEASE": "Pou nenpòt asistans tanpri",
+  "FOR_ANY_ASSISTANCE_PLEASE": "Pou nenpòt asistans, tanpri rele nan: ",
   "CALL": "Rele",
 
   "EMAIL": "Imel",
@@ -110,7 +110,7 @@
     "PASSWORD": "Tanpri antre modpas",
     "CONFIRM_PASSWORD": "Tanpri antre konfime modpas",
     "PASSWORD_MUST_BE_LONG": "Tanpri, modpas la dwe gen 8 a 20 karaktè",
-    "PASSWORD_NOT_MATCH": "Modpas pa matche",
+    "PASSWORD_NOT_MATCH": "Modpas yo pa menm.",
     "NAME": "Tanpri antre non",
     "PHONE_NUMBER": "Tanpri antre nimewo telefòn",
     "VALID_PHONE_NUMBER": "Tanpri antre nimewo telefòn valid",
@@ -138,7 +138,7 @@
   "SEND": "Voye",
   "SEND_EMAIL": "Voye imel",
   "CREATE_PASSWORD": "Kreye modpas",
-  "EDIT_PROFILE": "Edit Profile",
+  "EDIT_PROFILE": "Modifye Pwofil",
 
   "PLS_ENTER_AMOUNT": "Tanpri antre kantite lajan",
 
@@ -178,7 +178,11 @@
     "cancel": "Anile",
     "choose_Option": "Chwazi yon opsyon",
     "fee": "Frè",
-    "tax": "Taks"
+    "tax": "Taks",
+    "language": {
+      "fr": "Fransè",
+      "ht": "Kreyòl"
+    }
   },
   "message": {
     "unavailable_method": "Metòd sa a pa disponib pou kounye a",

@@ -154,7 +154,7 @@ class AppStrings {
 
   static String get PASSWORD_NOT_MATCH => "PASSWORD_NOT_MATCH".tr;
 
-  static String LABEL_SEND_RECEIVE_MONEY = "label_send_receive_money".tr;
+  static String get LABEL_SEND_RECEIVE_MONEY => "label_send_receive_money".tr;
   static String get LABEL_SEND_MONEY => "label_send_money".tr;
   static String get LABEL_RECEIVE_MONEY => "label_receive_money".tr;
   static String get LABEL_CASH_OUT => "label_cash_out".tr;

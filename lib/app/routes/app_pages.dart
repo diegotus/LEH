@@ -62,7 +62,6 @@ class AppPages {
       ),
       participatesInRootNavigator: true,
       preventDuplicates: true,
-      middlewares: [EnsureNotAuthentificated()],
       children: [
         GetPage(
           name: _Paths.LOTRI,

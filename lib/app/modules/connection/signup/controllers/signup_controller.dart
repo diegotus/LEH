@@ -22,7 +22,7 @@ class SignupController extends GetxController {
   @override
   void onInit() {
     isLoading = RxBool(false);
-    provider = Get.find<ConnectionProvider>();
+    provider = Get.putOrFind<ConnectionProvider>(() => ConnectionProvider());
     super.onInit();
   }
 

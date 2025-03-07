@@ -44,103 +44,112 @@ class SignupView extends GetView<SignupController> {
                 pageTitle: AppStrings.SIGN_UP_NOW,
               ),
               verticalSpaceRegular,
-              Form(
-                key: controller.formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20.ss,
-                      ),
-                      child: CustomInputFormField(
-                        hintText: AppStrings.NAME,
-                        keyboardType: TextInputType.streetAddress,
-                        textInputAction: TextInputAction.next,
-                        onSaved: (value) {
-                          controller.name = value!;
-                        },
-                        validator: (p0) {
-                          if ((p0 ?? '').isEmpty) {
-                            return AppStrings.PLS_ENTER_NAME;
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                    verticalSpaceRegular,
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20.ss,
-                      ),
-                      child: CustomInputFormField(
-                        hintText: AppStrings.EMAIL,
-                        keyboardType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
-                        onSaved: (value) {
-                          controller.email = value!;
-                        },
-                        validator: isValidEmail,
-                      ),
-                    ),
-                    verticalSpaceRegular,
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20.ss,
-                      ),
-                      child: CustomInputFormField(
-                        hintText: AppStrings.PHONE_NUMBER,
-                        keyboardType: TextInputType.number,
-                        prefixIcon: Center(
-                          widthFactor: 0.1,
-                          child: Text(
-                            "+",
-                            style: labelTextStyle.copyWith(
-                                fontSize: 16.ss, fontWeight: FontWeight.bold),
-                          ),
+              AutofillGroup(
+                child: Form(
+                  key: controller.formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20.ss,
                         ),
-                        inputFormatters: [numberFormatter],
-                        // counterText: "",
-                        textInputAction: TextInputAction.next,
-                        onSaved: (value) {
-                          controller.phone = value!;
-                        },
-                        validator: (p0) {
-                          if ((p0 ?? '').isEmpty) {
-                            return AppStrings.PLS_ENTER_PHONE_NUMBER;
-                          } else if (p0?.isPhoneNumber != true) {
-                            return AppStrings.PLS_ENTER_VALID_PHONE_NUMBER;
-                          }
-                          return null;
-                        },
+                        child: CustomInputFormField(
+                          hintText: AppStrings.NAME,
+                          autofillHints: [AutofillHints.name],
+                          keyboardType: TextInputType.name,
+                          textInputAction: TextInputAction.next,
+                          onSaved: (value) {
+                            controller.name = value!;
+                          },
+                          validator: (p0) {
+                            if ((p0 ?? '').isEmpty) {
+                              return AppStrings.PLS_ENTER_NAME;
+                            }
+                            return null;
+                          },
+                        ),
                       ),
-                    ),
-                    verticalSpaceRegular,
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20.ss,
+                      verticalSpaceRegular,
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20.ss,
+                        ),
+                        child: CustomInputFormField(
+                          autofillHints: [AutofillHints.email],
+                          hintText: AppStrings.EMAIL,
+                          keyboardType: TextInputType.emailAddress,
+                          textInputAction: TextInputAction.next,
+                          onSaved: (value) {
+                            controller.email = value!;
+                          },
+                          validator: isValidEmail,
+                        ),
                       ),
-                      child: CustomInputFormField(
-                        keyboardType: TextInputType.visiblePassword,
-                        errorMaxLines: 5,
-                        hintText: AppStrings.PASSWORD,
-                        obscureText: true,
-                        textInputAction: TextInputAction.done,
-                        onFieldSubmitted: submitRegistration,
-                        onSaved: (value) {
-                          controller.password = value!;
-                        },
-                        validator: validPassword,
-                      ),
-                    ),
-                    SizedBox(height: 40.vs),
-                    controller.isLoading.value
-                        ? customeAuthButtonLoading()
-                        : customeAuthButton(
-                            lableName: AppStrings.SIGN_UP,
-                            onTap: submitRegistration,
+                      verticalSpaceRegular,
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20.ss,
+                        ),
+                        child: CustomInputFormField(
+                          hintText: AppStrings.PHONE_NUMBER,
+                          keyboardType: TextInputType.number,
+                          autofillHints: [
+                            AutofillHints.telephoneNumberNational
+                          ],
+
+                          prefixIcon: Center(
+                            widthFactor: 0.1,
+                            child: Text(
+                              "+",
+                              style: labelTextStyle.copyWith(
+                                  fontSize: 16.ss, fontWeight: FontWeight.bold),
+                            ),
                           ),
-                  ],
+                          inputFormatters: [numberFormatter],
+                          // counterText: "",
+                          textInputAction: TextInputAction.next,
+                          onSaved: (value) {
+                            controller.phone = value!;
+                          },
+                          validator: (p0) {
+                            if ((p0 ?? '').isEmpty) {
+                              return AppStrings.PLS_ENTER_PHONE_NUMBER;
+                            } else if (p0?.isPhoneNumber != true) {
+                              return AppStrings.PLS_ENTER_VALID_PHONE_NUMBER;
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      verticalSpaceRegular,
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20.ss,
+                        ),
+                        child: CustomInputFormField(
+                          keyboardType: TextInputType.visiblePassword,
+                          autofillHints: [AutofillHints.newPassword],
+                          errorMaxLines: 5,
+                          hintText: AppStrings.PASSWORD,
+                          obscureText: true,
+                          textInputAction: TextInputAction.done,
+                          onFieldSubmitted: submitRegistration,
+                          onSaved: (value) {
+                            controller.password = value!;
+                          },
+                          validator: validPassword,
+                        ),
+                      ),
+                      SizedBox(height: 40.vs),
+                      controller.isLoading.value
+                          ? customeAuthButtonLoading()
+                          : customeAuthButton(
+                              lableName: AppStrings.SIGN_UP,
+                              onTap: submitRegistration,
+                            ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: 50.ss),

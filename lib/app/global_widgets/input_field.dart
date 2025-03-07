@@ -194,6 +194,7 @@ class CustomInputFormField extends StatelessWidget {
         cursorColor: AppColors.PRIMARY1,
         controller: controller,
         initialValue: initialValue,
+        autofillHints: autofillHints,
         style: style ?? TextThemeHelper.textFormField,
         obscureText: obscureText,
         onChanged: onChanged,

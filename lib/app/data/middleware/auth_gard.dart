@@ -27,17 +27,11 @@ class EnsureNotAuthentificated extends GetMiddleware {
 
   @override
   Future<RouteDecoder?> redirectDelegate(RouteDecoder route) async {
+    //NEVER navigate to auth screen, when user is already authed
+    String? routeName = route.pageSettings?.name;
+    print("the route name $routeName");
     if (StorageBox.token.val.isNotEmpty) {
-      //NEVER navigate to auth screen, when user is already authed
-      String? routeName = route.pageSettings?.name;
-      if (routeName == Routes.ROOT ||
-          (routeName?.contains(Routes.CONNECTION) ?? false)) {
-        return RouteDecoder.fromRoute(Routes.HOME);
-      }
-      return route;
-
-      //OR redirect user to another screen
-      //return RouteDecoder.fromRoute(Routes.PROFILE);
+      return RouteDecoder.fromRoute(Routes.HOME);
     }
     return await super.redirectDelegate(route);
   }

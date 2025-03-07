@@ -63,38 +63,41 @@ class ForgetPasswordView extends GetView<ForgetPasswordController> {
             verticalSpaceRegular,
             Form(
               key: controller.formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20.ss,
+              child: AutofillGroup(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20.ss,
+                      ),
+                      child: CustomInputFormField(
+                        hintText: AppStrings.EMAIL,
+                        keyboardType: TextInputType.emailAddress,
+                        autofillHints: [AutofillHints.email],
+                        textInputAction: TextInputAction.done,
+                        onFieldSubmitted: submitRegistration,
+                        validator: (value) {
+                          if ((value ?? "").isEmpty) {
+                            return AppStrings.PLS_ENTER_EMAILID;
+                          } else if (!value!.isEmail) {
+                            return AppStrings.PLS_ENTER_VALID_EMAILID;
+                          } else {
+                            return null;
+                          }
+                        },
+                        onSaved: (p0) {
+                          controller.email = p0 ?? "";
+                        },
+                      ),
                     ),
-                    child: CustomInputFormField(
-                      hintText: AppStrings.EMAIL,
-                      keyboardType: TextInputType.emailAddress,
-                      textInputAction: TextInputAction.next,
-                      onFieldSubmitted: submitRegistration,
-                      validator: (value) {
-                        if ((value ?? "").isEmpty) {
-                          return AppStrings.PLS_ENTER_EMAILID;
-                        } else if (!value!.isEmail) {
-                          return AppStrings.PLS_ENTER_VALID_EMAILID;
-                        } else {
-                          return null;
-                        }
-                      },
-                      onSaved: (p0) {
-                        controller.email = p0 ?? "";
-                      },
+                    verticalSpaceLarge,
+                    customeAuthButton(
+                      lableName: AppStrings.RESET,
+                      onTap: submitRegistration,
                     ),
-                  ),
-                  verticalSpaceLarge,
-                  customeAuthButton(
-                    lableName: AppStrings.RESET,
-                    onTap: submitRegistration,
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             verticalSpaceRegular,

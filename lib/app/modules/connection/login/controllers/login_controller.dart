@@ -14,7 +14,7 @@ class LoginController extends GetxController {
   final formKey = GlobalKey<FormState>();
   @override
   onInit() {
-    provider = Get.find<ConnectionProvider>();
+    provider = Get.putOrFind<ConnectionProvider>(() => ConnectionProvider());
     super.onInit();
   }
 

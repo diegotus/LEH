@@ -337,7 +337,7 @@ class Locales {
     'label_next_tirage': 'Prochain tirage',
     'label_Win_ticket': 'Billet Gagnant',
     'label_last_ticket': 'Derniers billets',
-    'label_today': 'AUjourd\'hui',
+    'label_today': 'Aujourd\'hui',
     'label_yesterday': 'Hier',
     'label_custom': 'Personnaliser',
     'label_settings': 'Réglages',

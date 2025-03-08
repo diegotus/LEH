@@ -28,11 +28,37 @@ class EnsureNotAuthentificated extends GetMiddleware {
   @override
   Future<RouteDecoder?> redirectDelegate(RouteDecoder route) async {
     //NEVER navigate to auth screen, when user is already authed
-    String? routeName = route.pageSettings?.name;
-    print("the route name $routeName");
+    String? routeName = route.pageSettings?.path;
     if (StorageBox.token.val.isNotEmpty) {
-      return RouteDecoder.fromRoute(Routes.HOME);
+      if (routeName?.isEmpty == true ||
+          routeName == Routes.ROOT ||
+          (routeName?.contains(Routes.CONNECTION) ?? false)) {
+        return RouteDecoder.fromRoute(Routes.HOME);
+      }
+      return route;
+
+      //OR redirect user to another screen
+      //return RouteDecoder.fromRoute(Routes.PROFILE);
     }
     return await super.redirectDelegate(route);
+  }
+}
+
+class CheckAuthentificated extends GetMiddleware {
+  @override
+  int get priority => 0;
+  AppServicesController get appService => Get.find<AppServicesController>();
+
+  @override
+  RouteSettings? redirect(String? route) {
+    //NEVER navigate to auth screen, when user is already authed
+    print("is not empu");
+    if (StorageBox.token.val.isEmpty) {
+      return RouteSettings(name: Routes.HOME);
+
+      //OR redirect user to another screen
+      //return RouteDecoder.fromRoute(Routes.PROFILE);
+    }
+    return null;
   }
 }

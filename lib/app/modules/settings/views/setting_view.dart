@@ -99,10 +99,8 @@ class SettingView extends GetView<SettingController> {
               title: AppStrings.EDIT_PROFILE,
               icon: Kiwoo.user_edit,
               ontap: () {
-                Get.to(
-                  () => const EditProfileView(),
-                  fullscreenDialog: true,
-                  routeName: "/settings/edit_profil",
+                Get.toNamed(
+                  Routes.EDIT_PROFIL,
                 );
               },
             ),

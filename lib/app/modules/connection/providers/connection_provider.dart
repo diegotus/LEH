@@ -8,6 +8,7 @@ class ConnectionProvider extends DefaultProvider {
   Future<ServerResponseModel?> signIn(
       String email, String password, String? token) async {
     var response = await tryCatch(() async {
+      print("its kdegu ${super.httpClient.baseUrl} $baseUrl");
       var response = await post(
         Url.LOGIN,
         {

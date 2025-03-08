@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:haiti_lotri/app/core/utils/actions/overlay.dart';
-import 'package:haiti_lotri/app/modules/connection/controllers/otp_controller.dart';
 import 'package:haiti_lotri/app/modules/connection/forgetPassword/bindings/new_password_binding.dart';
 import 'package:sizing/sizing_extension.dart';
 

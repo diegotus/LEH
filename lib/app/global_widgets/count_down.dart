@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:haiti_lotri/app/core/utils/app_utility.dart';
 
 class CountDownWidget extends StatefulWidget {
   const CountDownWidget(
@@ -81,6 +78,7 @@ class CountDownWidgetState extends State<CountDownWidget>
 
 abstract class CountDownAnimationBuilder extends AnimatedWidget {
   const CountDownAnimationBuilder({
+    super.key,
     required this.animation,
     this.style,
   }) : super(listenable: animation);
@@ -103,58 +101,6 @@ class _Countdown extends CountDownAnimationBuilder {
     return Text(
       timerText,
       style: style,
-    );
-  }
-}
-
-class _CountdownInBox extends AnimatedWidget {
-  const _CountdownInBox({required this.animation, this.style})
-      : super(listenable: animation);
-  final Animation<int> animation;
-  final TextStyle? style;
-  @override
-  build(BuildContext context) {
-    Duration clockTimer = Duration(seconds: animation.value);
-    String hour = clockTimer.inHours.remainder(24).toString().padLeft(2, '0');
-    ;
-    String minutes =
-        clockTimer.inMinutes.remainder(60).toString().padLeft(2, '0');
-    String seconde =
-        clockTimer.inSeconds.remainder(60).toString().padLeft(2, '0');
-    ;
-
-    String timerText =
-        '${clockTimer.inMinutes.remainder(60).toString()}:${clockTimer.inSeconds.remainder(60).toString().padLeft(2, '0')}';
-
-    return Row(
-      children: [
-        box(hour),
-        horizontalSpaceTiny,
-        Text(":"),
-        horizontalSpaceTiny,
-        box(minutes),
-        horizontalSpaceTiny,
-        Text(":"),
-        horizontalSpaceTiny,
-        box(seconde),
-      ],
-    );
-  }
-
-  Widget box(String text) {
-    return Container(
-      width: 30,
-      height: 30,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
-      ),
-      child: Center(
-        child: Text(
-          text,
-          style: style,
-        ),
-      ),
     );
   }
 }

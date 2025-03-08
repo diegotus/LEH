@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 import '../core/utils/app_colors.dart';
@@ -446,10 +445,8 @@ class FutureBuilderWithSearch<T>
   final bool Function(T?) isEmpty;
 
   late final Rx<Future<T?>> futureData;
-  bool _eraseAll = true;
 
   Future refreshFuture([bool reset = true]) async {
-    _eraseAll = reset;
     final search = controller.searchValue.value;
     futureData.value = future(search);
     return futureData.value;
@@ -493,8 +490,6 @@ class FutureBuilderWithSearch<T>
               Widget? custom;
 
               var data = snapshot.data;
-              bool isEmptyData =
-                  !snapshot.hasData || data == null || isEmpty(data);
 
               // if (custom == null && isEmptyData) {
               //   custom = Center(child: Text(onEmptyText));

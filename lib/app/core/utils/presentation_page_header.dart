@@ -3,11 +3,8 @@ import 'package:get/get.dart';
 import 'package:haiti_lotri/app/core/utils/image_name.dart';
 import 'package:sizing/sizing_extension.dart';
 
-import '../../../generated/locales.g.dart';
-import 'app_colors.dart';
 import 'app_string.dart';
 import 'app_utility.dart';
-import 'kiwoo_icons.dart';
 import 'text_teme_helper.dart';
 
 class PresentationPageHeader extends GetWidget {

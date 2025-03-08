@@ -11,7 +11,6 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:mime/mime.dart';
 import 'package:sizing/sizing.dart';
 
-import '../../../../generated/locales.g.dart';
 import '../../../data/models/document_model.dart' show FileData;
 import '../app_colors.dart';
 import '../app_utility.dart' show horizontalSpaceMedium, verticalSpaceRegular;
@@ -198,14 +197,14 @@ class PickFile {
                         ),
                       ));
 
-                  Get.back(result: image?.bytes);
+                  Get.backLegacy(result: image?.bytes);
                   // Delete file here
                 },
               ),
               horizontalSpaceMedium,
               FilledButton(
                 child: Text(AppStrings.CANCEL),
-                onPressed: () => Get.back(),
+                onPressed: () => Get.close(),
               ),
             ],
           ),

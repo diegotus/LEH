@@ -6,6 +6,7 @@ import '../providers/connection_provider.dart';
 class ConnectionBinding extends Bindings {
   @override
   void dependencies() {
+    print("its not empty biding");
     Get.lazyPut<ConnectionProvider>(
       () => ConnectionProvider(),
     );

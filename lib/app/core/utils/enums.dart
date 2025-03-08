@@ -2,8 +2,6 @@
 
 import 'package:get/get.dart';
 
-import 'app_string.dart';
-
 enum OTPType {
   register,
   forgotPassword,

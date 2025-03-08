@@ -52,8 +52,11 @@ class AppServiceProvider extends DefaultWithAuthProvider {
     });
     var response = await tryCatch(() async {
       var response = await post<ServerResponseModel>(
-          Url.UPLOAD_PROFILE_IMAGE, data,
-          contentType: 'multipart/form-data', uploadProgress: uploadProgress);
+        Url.UPLOAD_PROFILE_IMAGE,
+        data,
+        contentType: 'multipart/form-data',
+        uploadProgress: uploadProgress,
+      );
       return CoreService.returnResponse(response);
     });
     return response;

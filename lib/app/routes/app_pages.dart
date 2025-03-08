@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:haiti_lotri/app/modules/connection/bindings/otp_binding.dart';
 import 'package:haiti_lotri/app/modules/connection/views/otp_view.dart';
+import 'package:haiti_lotri/app/modules/settings/views/profile_edit_view.dart';
 
 import '../data/middleware/auth_gard.dart';
 import '../data/middleware/transaction_detail_gard.dart';
@@ -62,6 +63,7 @@ class AppPages {
       ),
       participatesInRootNavigator: true,
       preventDuplicates: true,
+      middlewares: [EnsureNotAuthentificated()],
       children: [
         GetPage(
           name: _Paths.LOTRI,
@@ -125,11 +127,13 @@ class AppPages {
                 binding: SettingsBinding(),
               ),
               GetPage(
+                name: _Paths.EDIT_PROFIL,
+                page: () => const EditProfileView(),
+              ),
+              GetPage(
                 name: _Paths.CHANGE_PASSWORD,
                 page: () => const ChangePasswordView(),
                 binding: ChangePasswordBinding(),
-
-                // participatesInRootNavigator: true,
               )
             ]),
         GetPage(
@@ -192,14 +196,15 @@ class AppPages {
             anchorRoute: Routes.CONNECTION,
           ),
           binding: ConnectionBinding(),
-          middlewares: [EnsureNotAuthentificated()],
-          preventDuplicates: true,
+          // middlewares: [EnsureNotAuthentificated()],
+          // preventDuplicates: true,
           children: [
             GetPage(
               name: _Paths.CONNECTIONHOME,
               page: () => const ConnectionView(),
-              binding: ConnectionBinding(),
-              preventDuplicates: true,
+              // binding: ConnectionBinding(),
+              // preventDuplicates: true,
+              // middlewares: [EnsureNotAuthentificated()],
             ),
             GetPage(
               name: _Paths.LOGIN,

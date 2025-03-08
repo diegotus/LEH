@@ -1,11 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:haiti_lotri/app/core/utils/app_string.dart';
 import 'package:haiti_lotri/app/data/models/ticket_model.dart';
 import 'package:intl/intl.dart';
 
 import '../../../data/models/game_model.dart';
-import '../custom_types.dart';
 import '../enums.dart';
 import 'format_number.dart';
 
@@ -131,7 +129,6 @@ extension TicketExtention on TicketModel {
       case Gametype.bolet:
         const price = ["x50", "x20", "x10"];
         var index = winningNumbers?.indexWhere((value) => value.endsWith(boul));
-        print("the index $index");
         if (index != null && index > -1) return price[index];
 
       case Gametype.mariaj:

@@ -93,7 +93,7 @@ class LedgerModel {
   }
 
   Map<String, String> getTitle(Direction direction) {
-    final method = this.method.name.capitalize!;
+    final method = this.method.name.capitalize;
     final type = this.type.name.toUpperCase();
     final titleLockKey = 'NOTIFICATION_TITLE_$type';
     final bodyLockKey = 'NOTIFICATION_BODY_$type';

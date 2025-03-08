@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart' show kDebugMode, kIsWeb;
 
 class Url {
   static final String _url = kDebugMode
-      ? (kIsWeb || Platform.isAndroid
+      ? ((kIsWeb || Platform.isAndroid)
           ? "http://localhost:3000/"
           : "http://10.0.2.2:3000/")
       : kIsWeb

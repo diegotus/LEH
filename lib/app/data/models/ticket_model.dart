@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 
 import '../../core/utils/datetime_utility.dart';
 import '../../core/utils/enums.dart';
-import 'game_model.dart';
 
 List<TicketModel> listTicketModel(List str) {
   return str.map((el) => TicketModel.fromMap(el)).toList();

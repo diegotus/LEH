@@ -1,7 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/get_utils/src/extensions/string_extensions.dart';
-import 'package:haiti_lotri/generated/locales.g.dart';
 import 'package:intl/intl.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 

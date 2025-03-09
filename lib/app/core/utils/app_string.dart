@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/enums.dart';
 
 import '../../../generated/locales.g.dart';
 
@@ -162,7 +163,7 @@ class AppStrings {
   static String get LABEL_LOCAL_BRANCH => "label_local_branch".tr;
   static String get HOME => "label_home".tr;
   static String get PLAY => "label_play".tr;
-  static String get TICKERT => "label_ticket".tr;
+  static String get TICKET => "label_ticket".tr;
   static String get RESULT => "label_result".tr;
   static String get NO_TIRAGE => "label_no_tirage_for_now".tr;
 
@@ -203,4 +204,31 @@ class AppStrings {
   static String get language => LocaleKeys.language.tr;
   static String Function(dynamic code) get languageCode =>
       (code) => 'label_language_$code'.tr;
+
+  static String get ACCOUNT_BALANCE => LocaleKeys.label_account_balance.tr;
+  static String get IN_US_DOLLARS => LocaleKeys.label_in_us_dollars.tr;
+  static String get ADD => LocaleKeys.label_add.tr;
+  static String get PICK => LocaleKeys.label_pick.tr;
+  static String get BET => LocaleKeys.label_bet.tr;
+  static String get TRANSACTION_TYPE => LocaleKeys.label_transaction_type.tr;
+  static String Function(TransactionType name) get TRANSACTION_TYPE_NAMED =>
+      (TransactionType type) {
+        switch (type) {
+          case TransactionType.transfer:
+            return LocaleKeys.label_transaction_type_named_transfer.tr;
+          case TransactionType.lotoPlay:
+            return LocaleKeys.label_transaction_type_named_lotoPlay.tr;
+          case TransactionType.lotoWin:
+            return LocaleKeys.label_transaction_type_named_lotoWin.tr;
+          case TransactionType.cash:
+            return LocaleKeys.label_transaction_type_named_cash.tr;
+          case TransactionType.payment:
+            return LocaleKeys.label_transaction_type_named_payment.tr;
+        }
+      };
+  static String get TRANSACTION_DETAIL =>
+      LocaleKeys.label_transaction_details.tr;
+  static String get MORE_INFO => LocaleKeys.label_more_info.tr;
+  static String Function(String? name) get DRAW =>
+      (String? name) => LocaleKeys.label_draw.trParams({'name': name ?? ''});
 }

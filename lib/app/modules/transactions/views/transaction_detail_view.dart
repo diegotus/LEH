@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/app_string.dart';
 import 'package:haiti_lotri/app/core/utils/enums.dart';
 import 'package:haiti_lotri/app/core/utils/formatters/extension.dart';
 import 'package:sizing/sizing_extension.dart';
@@ -60,10 +61,13 @@ class TransactionDetailView extends GetView<TransactionsController> {
             },
             futureBuilder: (context, item, _) {
               List<Map<String, dynamic>> listMap = [
-                {'title': "type".tr, "value": item.type.translate},
-                {'title': "amount".tr, "value": item.amount.toHLG},
-                {'title': "fee".tr, "value": item.fees.toHLG},
-                {'title': "tax".tr, "value": item.tax.toHLG},
+                {
+                  'title': "AppStrings.TRANSACTION_TYPE",
+                  "value": item.type.translate
+                },
+                {'title': AppStrings.AMOUNT, "value": item.amount.toHLG},
+                {'title': AppStrings.FEE, "value": item.fees.toHLG},
+                {'title': AppStrings.TAX, "value": item.tax.toHLG},
               ];
 
               IconData? icon;
@@ -79,7 +83,7 @@ class TransactionDetailView extends GetView<TransactionsController> {
                   iconSize = 0.15.sw;
                   icon ??= Kiwoo.win;
                   listMap.add({
-                    "title": "viewMore".tr,
+                    "title": AppStrings.MORE_INFO,
                     "value": () {
                       bottomSheetWidget(
                         backgroundColor: AppColors.APP_BG,
@@ -88,7 +92,7 @@ class TransactionDetailView extends GetView<TransactionsController> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Center(
-                                child: Text("Biyè",
+                                child: Text(AppStrings.TICKET,
                                     style: Get.textTheme.titleLarge),
                               ),
                             ),
@@ -199,12 +203,12 @@ class TransactionDetailView extends GetView<TransactionsController> {
                 default:
                   listMap.addAll([
                     {
-                      'title': "from".tr,
+                      'title': AppStrings.FROM,
                       "value": item.senderInfo.name,
                       'subtitle': item.senderInfo.phone
                     },
                     {
-                      'title': "To".tr,
+                      'title': AppStrings.TO,
                       "value": item.receiverInfo.name,
                       'subtitle': item.receiverInfo.phone
                     },
@@ -232,7 +236,7 @@ class TransactionDetailView extends GetView<TransactionsController> {
                             children: [
                               verticalSpaceLarge,
                               Text(
-                                "Transaction Details",
+                                AppStrings.TRANSACTION_DETAIL,
                                 style: titleDetailStyle.copyWith(
                                   fontFamily: FontPoppins.BOLD,
                                   fontSize: 17.fss,

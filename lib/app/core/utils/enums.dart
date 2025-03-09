@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/app_string.dart';
 
 enum OTPType {
   register,
@@ -53,7 +54,7 @@ enum TransactionType {
   }
 
   String toMap() => name;
-  String get translate => "transactionType_$name".tr;
+  String get translate => AppStrings.TRANSACTION_TYPE_NAMED(this);
 }
 
 enum TransactionMethod {

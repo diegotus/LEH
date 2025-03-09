@@ -5,6 +5,7 @@ import 'package:haiti_lotri/app/core/utils/formatters/extension.dart';
 import 'package:sizing/sizing_extension.dart';
 
 import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/app_utility.dart';
 import '../../../../core/utils/enums.dart';
 import '../../../../core/utils/font_family.dart';
@@ -12,6 +13,7 @@ import '../../../../core/utils/function.dart';
 import '../../../../core/utils/kiwoo_icons.dart';
 import '../../../../core/utils/text_style.dart';
 import '../../../../data/models/payment_receipt_model.dart';
+import '../../../../data/models/transaction_model.dart';
 import '../../../../global_widgets/app_bar.dart';
 import '../../../../global_widgets/app_button.dart';
 import '../../../../global_widgets/list_builder_widget.dart';
@@ -45,7 +47,7 @@ class TransactionDetailsView extends GetView<TransactionDetailsController> {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 0.03.sw),
-        child: FutureDataBuilder<PaymentReceiptData>(
+        child: FutureDataBuilder<TransactionModel>(
             isEmpty: (p0) => p0 == null,
             future: () {
               return controller.getTransactionDetail().then((val) {
@@ -56,32 +58,36 @@ class TransactionDetailsView extends GetView<TransactionDetailsController> {
               });
             },
             futureBuilder: (context, item, _) {
+              var direction = item.direction(controller.phone);
               List<Map<String, dynamic>> listMap = [
-                {'title': "type".tr, "value": item.type.translate},
-                {'title': "amount".tr, "value": item.amount.toHLG},
-                {'title': "fee".tr, "value": item.fees.toHLG},
-                {'title': "tax".tr, "value": item.tax.toHLG},
+                {
+                  'title': AppStrings.TRANSACTION_TYPE,
+                  "value": item.type.translate
+                },
+                {'title': "Method", "value": item.method.name},
+                {
+                  'title': "Direction",
+                  "value": "directionName_${direction.name}".tr,
+                },
+                {'title': AppStrings.AMOUNT, "value": item.amount.toHLG},
+                {'title': AppStrings.FEE, "value": item.fees.toHLG},
+                {'title': AppStrings.TAX, "value": item.tax.toHLG},
               ];
 
               IconData? icon;
               double? iconSize;
-              bool addViewMore = true;
 
               switch (item.type) {
                 case TransactionType.lotoPlay:
                   icon = Kiwoo.dice;
                   // iconSize = 0.1.sw;
                   continue transactionIcon;
-                case TransactionType.cash:
-                  icon = Kiwoo.moncash;
-                  iconSize = 0.08.sw;
-                  break;
                 transactionIcon:
                 case TransactionType.lotoWin:
-                  iconSize ??= 0.15.sw;
+                  iconSize = 0.15.sw;
                   icon ??= Kiwoo.win;
                   listMap.add({
-                    "title": "viewMore".tr,
+                    "title": AppStrings.MORE_INFO,
                     "value": () {
                       bottomSheetWidget(
                         backgroundColor: AppColors.APP_BG,
@@ -90,7 +96,7 @@ class TransactionDetailsView extends GetView<TransactionDetailsController> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Center(
-                                child: Text("Biyè",
+                                child: Text(AppStrings.TICKET,
                                     style: Get.textTheme.titleLarge),
                               ),
                             ),
@@ -115,7 +121,7 @@ class TransactionDetailsView extends GetView<TransactionDetailsController> {
                                             borderRadius:
                                                 BorderRadius.circular(10)),
                                         title: Text(
-                                            "Biyè #${ticket.id.toString().padLeft(8, "0")}"),
+                                            "${AppStrings.TICKET} #${ticket.id.toString().padLeft(8, "0")}"),
                                         subtitle:
                                             Text(ticket.getAmountTotal.toHLG),
                                         // backgroundColor: AppColors.WHITE,
@@ -199,17 +205,30 @@ class TransactionDetailsView extends GetView<TransactionDetailsController> {
                     },
                   });
                   break;
+                case TransactionType.cash:
+                  {
+                    if (item.method == TransactionMethod.p2p) {
+                      var receiver = direction == Direction.inbound
+                          ? item.contact
+                          : item.user;
+                      listMap.add({
+                        "title": 'direPreposition_${direction.name}'.tr,
+                        "value": receiver.name,
+                        'subtitle': receiver.phone
+                      });
+                    }
+                  }
                 default:
                   listMap.addAll([
                     {
-                      'title': "from".tr,
-                      "value": item.senderInfo.name,
-                      'subtitle': item.senderInfo.phone
+                      'title': AppStrings.FROM,
+                      "value": item.user.name,
+                      'subtitle': item.user.phone
                     },
                     {
-                      'title': "To".tr,
-                      "value": item.receiverInfo.name,
-                      'subtitle': item.receiverInfo.phone
+                      'title': AppStrings.TO,
+                      "value": item.contact.name,
+                      'subtitle': item.contact.phone
                     },
                   ]);
                   break;
@@ -235,7 +254,7 @@ class TransactionDetailsView extends GetView<TransactionDetailsController> {
                             children: [
                               verticalSpaceLarge,
                               Text(
-                                "Transaction Details",
+                                AppStrings.TRANSACTION_DETAIL,
                                 style: titleDetailStyle.copyWith(
                                   fontFamily: FontPoppins.BOLD,
                                   fontSize: 17.fss,
@@ -280,7 +299,8 @@ class TransactionDetailsView extends GetView<TransactionDetailsController> {
                                         currentVal['value'] is Function
                                             ? TextButton(
                                                 onPressed: currentVal['value'],
-                                                child: Text("clickHere".tr))
+                                                child:
+                                                    Text(AppStrings.CLICK_HERE))
                                             : Text.rich(
                                                 TextSpan(
                                                   text: currentVal['value'],
@@ -327,7 +347,7 @@ class TransactionDetailsView extends GetView<TransactionDetailsController> {
                   verticalSpaceLarge,
                   //footer
                   AppButton(
-                    buttonText: "Back",
+                    buttonText: AppStrings.BACK,
                     onTap: Get.back,
                   ),
                 ],

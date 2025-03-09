@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:haiti_lotri/app/core/utils/app_string.dart';
 import 'package:sizing/sizing_extension.dart';
 
 import 'package:haiti_lotri/app/core/utils/formatters/extension.dart';
@@ -39,7 +40,7 @@ Widget accountDetailsCardWidget(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Account Balance",
+                      AppStrings.ACCOUNT_BALANCE,
                       style: TextStyle(
                           fontSize: 17.fss,
                           color: const Color.fromARGB(255, 122, 122, 122)),
@@ -76,7 +77,7 @@ Widget accountDetailsCardWidget(
                     ),
                     SizedBox(height: 15.ss),
                     Text(
-                      "In US Dollars",
+                      AppStrings.IN_US_DOLLARS,
                       style: TextStyle(
                           fontSize: 17.fss,
                           color: const Color.fromARGB(255, 122, 122, 122)),

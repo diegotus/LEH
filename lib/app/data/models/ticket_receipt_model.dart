@@ -12,16 +12,18 @@ import 'transaction_model.dart';
 
 class TicketReceiptModel extends TransactionModel {
   final List<TicketModel> billets;
-  TicketReceiptModel(
-      {required this.billets,
-      required super.id,
-      required super.type,
-      required super.contact,
-      required super.user,
-      required super.amount,
-      required super.fees,
-      required super.createdAt,
-      required super.method});
+  TicketReceiptModel({
+    required this.billets,
+    required super.id,
+    required super.type,
+    required super.contact,
+    required super.user,
+    required super.amount,
+    required super.fees,
+    required super.tax,
+    required super.createdAt,
+    required super.method,
+  });
 
   @override
   TicketReceiptModel copyWith({
@@ -32,6 +34,7 @@ class TicketReceiptModel extends TransactionModel {
     ContactData? user,
     double? amount,
     double? fees,
+    double? tax,
     DateTime? createdAt,
     List<TicketModel>? billets,
   }) {
@@ -42,6 +45,7 @@ class TicketReceiptModel extends TransactionModel {
       user: user ?? this.user,
       amount: amount ?? this.amount,
       fees: fees ?? this.fees,
+      tax: tax ?? this.tax,
       method: method ?? this.method,
       createdAt: createdAt ?? this.createdAt,
       billets: billets ?? this.billets,
@@ -64,6 +68,7 @@ class TicketReceiptModel extends TransactionModel {
       contact: ContactData.fromMap(map['contact'] ?? {}),
       user: ContactData.fromMap(map['user'] ?? {}),
       fees: double.parse(map['fees'].toString()),
+      tax: double.tryParse("${map['tax']}") ?? 0,
       amount: double.parse(map['amount'].toString()),
       createdAt: DateTimeUtility.convertDateFromString(map['created_at']),
       billets: List<TicketModel>.from(
@@ -82,7 +87,7 @@ class TicketReceiptModel extends TransactionModel {
 
   @override
   String toString() =>
-      'TicketReceiptModel(id: $id, type: $type, method:$method, contact: $contact, user: $user, amount: $amount, fees: $fees, createdAt: $createdAt, billets: $billets)';
+      'TicketReceiptModel(id: $id, type: $type, method:$method, contact: $contact, user: $user, amount: $amount, fees: $fees, tax: $tax, createdAt: $createdAt, billets: $billets)';
 
   @override
   bool operator ==(covariant TicketReceiptModel other) {

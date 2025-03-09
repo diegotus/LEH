@@ -22,6 +22,7 @@ class ListBuilderWidget<T> extends GetView {
     this.separatorBuilder,
     this.pullRefresh = true,
     this.shrinkWrap = true,
+    this.padding,
   })  : future = null,
         futureSearch = null,
         futureBuilder = null,
@@ -39,6 +40,7 @@ class ListBuilderWidget<T> extends GetView {
     required this.future,
     this.pullRefresh = true,
     this.shrinkWrap = true,
+    this.padding,
   })  : items = initialData ?? [],
         futureSearch = null,
         onSearch = null;
@@ -56,6 +58,7 @@ class ListBuilderWidget<T> extends GetView {
     required this.onSearch,
     this.pullRefresh = true,
     this.shrinkWrap = true,
+    this.padding,
   })  : future = null,
         items = initialData ?? [];
 
@@ -73,12 +76,13 @@ class ListBuilderWidget<T> extends GetView {
   final Widget Function(
     BuildContext,
     List<T>,
-    Widget Function(List<T>, [RefreshData refreshFuture]),
+    Widget Function(List<T>, {RefreshData? refreshFuture, bool shrinkWrap}),
   )? futureBuilder;
   final List<T> Function(List<T>)? onItems;
   final ScrollPhysics? physics;
   final bool pullRefresh;
   final bool shrinkWrap;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +100,7 @@ class ListBuilderWidget<T> extends GetView {
         onEmptyText: onEmptyText,
         futureBuilder: (BuildContext context, List<T> data, refreshData) {
           if (futureBuilder == null) {
-            return listViewBuilder(data, refreshData);
+            return listViewBuilder(data, refreshFuture: refreshData);
           }
           return futureBuilder!(context, data, listViewBuilder);
         },
@@ -113,7 +117,10 @@ class ListBuilderWidget<T> extends GetView {
       pullRefresh: pullRefresh,
       futureBuilder: (BuildContext context, List<T> data, refreshData) {
         if (futureBuilder == null) {
-          return listViewBuilder(data, refreshData, shrinkWrap);
+          return listViewBuilder(data,
+              refreshFuture: refreshData,
+              shrinkWrap: shrinkWrap,
+              padding: padding);
         }
         return futureBuilder!(context, data, listViewBuilder);
       },
@@ -124,7 +131,9 @@ class ListBuilderWidget<T> extends GetView {
   }
 
   Widget listViewBuilder(List<T> items,
-      [RefreshData? refreshFuture, bool shrinkWrap = true]) {
+      {RefreshData? refreshFuture,
+      bool shrinkWrap = true,
+      EdgeInsets? padding}) {
     builder(context, index) {
       T value = items[index];
 
@@ -138,15 +147,17 @@ class ListBuilderWidget<T> extends GetView {
           return separatorBuilder!(context, index, items[index]);
         },
         itemCount: items.length,
-        shrinkWrap: shrinkWrap,
+        shrinkWrap: true,
         physics: physics,
         itemBuilder: builder,
       );
     }
     return ListView.builder(
       itemCount: items.length,
+      padding: padding,
       shrinkWrap: true,
       physics: physics,
+      // children: [Text("hello"), Text("nonono")],
       itemBuilder: builder,
     );
   }

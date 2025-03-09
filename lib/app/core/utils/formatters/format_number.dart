@@ -5,15 +5,15 @@ NumberFormat toHLGCurrency([bool compact = false]) {
   if (compact) {
     return NumberFormat.compactCurrency(
       locale: "fr",
-      name: "HLG",
-      symbol: "HLG",
+      name: "HTG",
+      symbol: "HTG",
       decimalDigits: 2,
     );
   }
   return NumberFormat.currency(
     locale: "fr",
-    symbol: "HLG",
-    name: "HLG",
+    symbol: "HTG",
+    name: "HTG",
     decimalDigits: 2,
     customPattern: _CURRENCY_PATTERN,
   );

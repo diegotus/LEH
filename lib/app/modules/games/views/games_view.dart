@@ -13,12 +13,14 @@ class GamesView extends GetView<GamesController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidgetTitle(title: "Haiti Loto"),
+      appBar: AppBarWidget(),
       body: ListView(
         padding: EdgeInsets.only(left: 8, right: 8),
         children: [
           verticalSpaceSmall,
-          NextResultWidget(future: controller.callNextTiragesAPI),
+          NextResultWidget(
+            key: ValueKey("nextresult"),
+          ),
           verticalSpaceSmall,
           GridView.builder(
               primary: true,

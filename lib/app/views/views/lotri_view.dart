@@ -72,7 +72,7 @@ class LotriView extends GetView {
                           icon: const Icon(
                             Icons.airplane_ticket,
                           ),
-                          label: AppStrings.TICKERT,
+                          label: AppStrings.TICKET,
                         ),
                         BottomNavigationBarItem(
                           icon: const Icon(

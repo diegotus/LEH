@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:haiti_lotri/app/core/utils/formatters/extension.dart';
 import 'package:sizing/sizing_extension.dart';
+
+import 'package:haiti_lotri/app/core/utils/formatters/extension.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_string.dart';
@@ -15,7 +15,6 @@ import '../../../../global_widgets/list_builder_widget.dart';
 import '../../../../global_widgets/list_tile_card.dart';
 import '../../../../routes/app_pages.dart';
 import '../../controllers/transactions_controller.dart';
-import '../../views/transaction_detail_view.dart';
 
 class TransactionHistoryView extends GetView<TransactionsController> {
   const TransactionHistoryView({super.key});
@@ -62,7 +61,6 @@ class TransactionHistoryView extends GetView<TransactionsController> {
               ListTileCard(
                 onTap: () => Get.toNamed(
                   Routes.TRANSACTION_DETAILS,
-                  arguments: "hey hey",
                   parameters: {"id": item.id.toString()},
                 ),
                 isThreeLine: true,

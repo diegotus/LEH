@@ -39,7 +39,7 @@ extension StringExtention on String? {
 
 extension DateTimeExtention on DateTime {
   String format(String format, {String? locale}) {
-    return DateFormat(format, locale).format(this);
+    return DateFormat(format, locale ?? Get.locale?.countryCode).format(this);
   }
 
   DateTime get startOfDay {

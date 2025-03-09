@@ -26,23 +26,23 @@
   },
 
   "NOTIFICATION_TITLE_TRANSFER_RECEIVED": "Lajan antre",
-  "NOTIFICATION_BODY_TRANSFER_RECEIVED": "Ou te resevwa yon kantite %s HLG nan men %s.",
+  "NOTIFICATION_BODY_TRANSFER_RECEIVED": "Ou te resevwa yon kantite %s HTG nan men %s.",
   "NOTIFICATION_TITLE_TRANSFER_SENT": "Lajan Soti",
-  "NOTIFICATION_BODY_TRANSFER_SENT": "Ou voye yon kantite %s HLG bay %s.",
+  "NOTIFICATION_BODY_TRANSFER_SENT": "Ou voye yon kantite %s HTG bay %s.",
 
   "NOTIFICATION_TITLE_WITHDRAW": " Retrè",
-  "NOTIFICATION_BODY_WITHDRAW": " Ou retire yon kantite %s HLG nan %s.",
+  "NOTIFICATION_BODY_WITHDRAW": " Ou retire yon kantite %s HTG nan %s.",
   "NOTIFICATION_TITLE_CASH_IN": "Depot pa %s.",
   "NOTIFICATION_BODY_CASH_IN": " Ou te fè depo pa %s.",
   "NOTIFICATION_TITLE_CASH_OUT": "Retrè pa %s.",
   "NOTIFICATION_BODY_CASH_OUT": "Ou fè yn retrè pa %s.",
   "NOTIFICATION_TITLE_PAYMENT": " Peman bòdwo.",
-  "NOTIFICATION_BODY_PAYMENT": " Ou peye yon bòdwo %s HLG pou %s.",
+  "NOTIFICATION_BODY_PAYMENT": " Ou peye yon bòdwo %s HTG pou %s.",
 
   "NOTIFICATION_TITLE_LOTOPLAY": "Biyè Achte",
-  "NOTIFICATION_BODY_LOTOPLAY": " Ou achte yon biyè pou %s HLG nan %s.",
+  "NOTIFICATION_BODY_LOTOPLAY": " Ou achte yon biyè pou %s HTG nan %s.",
   "NOTIFICATION_TITLE_LOTOWIN": " Ou Genyen",
-  "NOTIFICATION_BODY_LOTOWIN": " Ou resevwa %s HLG paske ou genyen nan yon tiraj.",
+  "NOTIFICATION_BODY_LOTOWIN": " Ou resevwa %s HTG paske ou genyen nan yon tiraj.",
 
   "LOG_IN": "Konekte",
   "REGISTER": "Enskri",
@@ -125,7 +125,7 @@
   "STAR_SIGN": "* ",
   "NO_DATA_FOUND": "Pa jwenn done",
 
-  "ENTER_AMOUNT": "Antre kantite lajan (HLG)",
+  "ENTER_AMOUNT": "Antre kantite lajan (HTG)",
 
   "ADDRESS_MARKET_DETAILS": "Detay sou mache adrès",
   "CONTACTS": "Kontak",
@@ -159,6 +159,15 @@
     "cash_out": "Retrè",
     "cash_in": "Depo",
     "transaction_history": "Istwa tranzaksyon",
+    "transaction_details": "Detay tranzaksyon an",
+    "transaction_type":"Tip tranzaksyon",
+    "transaction_type_named":{
+      "transfer":"Transfè",
+      "lotoPlay":"tikè Achte",
+      "lotoWin":"Benefis nan lotri",
+      "cash":"Espès",
+      "payment":"Pèman"
+    },
     "local_branch": "Branch lokal",
     "no_tirage_for_now": "Poko gen tiraj",
     "next_tirage": "Pwochen tiraj",
@@ -179,6 +188,13 @@
     "choose_Option": "Chwazi yon opsyon",
     "fee": "Frè",
     "tax": "Taks",
+    "add":"Ajoute",
+    "draw": "Tiraj @name",
+    "pick":"Boul",
+    "bet":"Miz",
+    "more_info":"Plis detay",
+    "account_balance":"Balans kont",
+    "in_us_dollars":"An dola ameriken",
     "language": {
       "fr": "Fransè",
       "ht": "Kreyòl"

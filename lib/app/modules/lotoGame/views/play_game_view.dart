@@ -1,9 +1,8 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/app_string.dart';
 import 'package:sizing/sizing_extension.dart';
 
 import '../../../core/utils/actions/overlay.dart';
@@ -14,8 +13,8 @@ import '../../../core/utils/formatters/validation.dart';
 import '../../../core/utils/kiwoo_icons.dart';
 import '../../../core/utils/text_style.dart';
 import '../../../data/models/game_model.dart';
+import '../../../global_widgets/app_bar.dart';
 import '../../../global_widgets/app_button.dart';
-import '../../../global_widgets/custom_appbar.dart';
 import '../../../global_widgets/input_field.dart';
 import '../../../global_widgets/list_played_game.dart';
 import '../../../global_widgets/next_result_widget.dart';
@@ -25,18 +24,11 @@ class PlayGame extends GetView<PlayGameController> {
   const PlayGame({super.key});
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(
-          context,
-          "Jwe",
-          true,
-          true,
-          const [],
-          () {},
-        ),
+        appBar: AppBarWidgetTitle(title: AppStrings.PLAY),
         persistentFooterAlignment: AlignmentDirectional.center,
         persistentFooterButtons: [
           AppButton(
-              buttonText: "Jwe",
+              buttonText: AppStrings.PLAY,
               onTap: () {
                 showOverlay(asyncFunction: controller.callJweGameApi);
               })
@@ -45,8 +37,7 @@ class PlayGame extends GetView<PlayGameController> {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Column(
             children: [
-              //TODO prevent this api to be caled because its called on home already and use the controller in home
-              NextResultWidget(future: controller.callNextTiragesAPI),
+              NextResultWidget(key: ValueKey("nextresult")),
               verticalSpaceSmall,
               SizedBox(
                 height: 190.ss,
@@ -214,7 +205,7 @@ class PlayGame extends GetView<PlayGameController> {
         dimension: 60.ss,
         child: CustomInputFormField(
           contentPadding: EdgeInsets.all(8),
-          hintText: "Boul",
+          hintText: AppStrings.PICK,
           onChanged: (mk) {
             changeFocus(mk, length, context);
           },
@@ -252,7 +243,7 @@ class PlayGame extends GetView<PlayGameController> {
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(color: Colors.grey),
         ),
-        hintText: "Miz",
+        hintText: AppStrings.BET,
         style: TextStyle(
           height: 2.ss,
         ),
@@ -318,21 +309,22 @@ class PlayGame extends GetView<PlayGameController> {
             mainAxisSize: MainAxisSize.min,
             spacing: 20.ss,
             children: [
-              typeGame("Tiraj NY", initialValue: true, onSaved: (value) {
+              typeGame(AppStrings.DRAW("NY"), initialValue: true,
+                  onSaved: (value) {
                 if (value == true) {
                   listTirage.add(TirageName.NY);
                 } else {
                   listTirage.remove(TirageName.NY);
                 }
               }),
-              typeGame("Tiraj FL", onSaved: (value) {
+              typeGame(AppStrings.DRAW("FL"), onSaved: (value) {
                 if (value == true) {
                   listTirage.add(TirageName.FL);
                 } else {
                   listTirage.remove(TirageName.FL);
                 }
               }),
-              typeGame("Tiraj GA", onSaved: (value) {
+              typeGame(AppStrings.DRAW("GA"), onSaved: (value) {
                 if (value == true) {
                   listTirage.add(TirageName.GA);
                 } else {
@@ -362,7 +354,7 @@ class PlayGame extends GetView<PlayGameController> {
                       }
                     },
               child: Text(
-                "Ajoute",
+                AppStrings.ADD,
                 style: TextStyle(
                   fontFamily: FontPoppins.BOLD,
                   fontSize: 15.fs,

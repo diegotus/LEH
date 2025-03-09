@@ -189,7 +189,7 @@ class SendMoneyView extends GetView<SendMoneyController> {
                       ),
                     ),
                     subtitle: Text(
-                      "Transfer HLG",
+                      "Transfer HTG",
                       textAlign: TextAlign.center,
                       style: _titleStile.copyWith(
                         fontSize: 15.fss,

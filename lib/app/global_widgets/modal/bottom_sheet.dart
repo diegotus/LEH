@@ -192,7 +192,7 @@ Future<T?> loanDetailsBottomSHet<T>({
             SizedBox(height: 8.ss),
             lableWidget(
               lbl: "Amount",
-              val: "$amount HLG",
+              val: "$amount HTG",
             ),
             SizedBox(height: 8.ss),
             lableWidget(

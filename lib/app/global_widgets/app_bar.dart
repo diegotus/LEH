@@ -379,12 +379,14 @@ class AppBarWidgetTitle extends GetWidget<AppServicesController>
       flexibleSpace: Container(decoration: appBarBoxDecoration),
       titleSpacing: 0,
       leading: Navigator.canPop(context) ||
-              Get.rootController.rootDelegate.canBack ||
+              Get.searchDelegate(null).canBack ||
               homeIfCantPop
           ? IconButton(
               icon: const Icon(Kiwoo.arrow_left),
               onPressed: () {
-                if (!Navigator.canPop(context) && homeIfCantPop) {
+                if (!Navigator.canPop(context) &&
+                    !Get.searchDelegate(null).canBack &&
+                    homeIfCantPop) {
                   Get.offAndToNamed(Routes.HOME);
                   return;
                 } else {
@@ -438,11 +440,15 @@ class AppBarWithWidgetTitle extends GetWidget<AppServicesController>
       centerTitle: true,
       toolbarHeight: toolbarHeight ?? 90.ss,
       flexibleSpace: Container(decoration: appBarBoxDecoration),
-      leading: Navigator.canPop(context) || homeIfCantPop
+      leading: Navigator.canPop(context) ||
+              !Get.searchDelegate(null).canBack ||
+              homeIfCantPop
           ? IconButton(
               icon: const Icon(Kiwoo.arrow_left),
               onPressed: () {
-                if (!Navigator.canPop(context) && homeIfCantPop) {
+                if (!Navigator.canPop(context) &&
+                    !Get.searchDelegate(null).canBack &&
+                    homeIfCantPop) {
                   Get.offAndToNamed(Routes.HOME);
                   return;
                 } else {

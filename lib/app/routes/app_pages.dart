@@ -77,6 +77,8 @@ class AppPages {
               name: _Paths.HOME,
               page: () => const HomeView(),
               // participatesInRootNavigator: false,
+              transition: Transition.noTransition,
+
               binding: HomeBinding(),
               preventDuplicates: true,
             ),
@@ -92,7 +94,7 @@ class AppPages {
                   binding: PlayGameBinding(),
                   // inheritParentPath: false,
                   participatesInRootNavigator: true,
-                  transition: Transition.noTransition,
+                  transition: Transition.rightToLeft,
                 ),
               ],
             ),

@@ -17,16 +17,19 @@ class TransactionModel {
   TransactionMethod method;
   double fees;
   DateTime createdAt;
+  final double tax;
 
-  TransactionModel(
-      {required this.id,
-      required this.type,
-      required this.contact,
-      required this.user,
-      required this.amount,
-      required this.fees,
-      required this.createdAt,
-      required this.method});
+  TransactionModel({
+    required this.id,
+    required this.type,
+    required this.contact,
+    required this.user,
+    required this.amount,
+    required this.fees,
+    required this.tax,
+    required this.createdAt,
+    required this.method,
+  });
 
   TransactionModel copyWith({
     int? id,
@@ -35,6 +38,7 @@ class TransactionModel {
     ContactData? user,
     double? amount,
     double? fees,
+    double? tax,
     DateTime? createdAt,
     TransactionMethod? method,
   }) {
@@ -45,6 +49,7 @@ class TransactionModel {
       user: user ?? this.user,
       amount: amount ?? this.amount,
       fees: fees ?? this.fees,
+      tax: tax ?? this.tax,
       createdAt: createdAt ?? this.createdAt,
       method: method ?? this.method,
     );
@@ -58,6 +63,7 @@ class TransactionModel {
       'user': user.toMap(),
       'amount': amount,
       'fees': fees,
+      'tax': tax,
       'createdAt': createdAt.millisecondsSinceEpoch,
       "method": method,
     };
@@ -70,6 +76,7 @@ class TransactionModel {
         contact: ContactData.fromMap(map['contact']),
         user: ContactData.fromMap(map['user']),
         fees: double.parse(map['fees'].toString()),
+        tax: double.tryParse("${map['tax']}") ?? 0,
         amount: double.parse(map['amount'].toString()),
         createdAt: DateTimeUtility.convertDateFromString(map['created_at']),
         method: TransactionMethod.fromMap(map['method']));
@@ -80,6 +87,7 @@ class TransactionModel {
   }
 
   Direction direction(String? id) {
+    // if (type == TransactionType.lotoPlay) return Direction.outbound;
     if (contact.phone == id) {
       return Direction.inbound;
     } else {
@@ -93,15 +101,19 @@ class TransactionModel {
     var bodyLocArgs = <String>[];
     var titleLocArgs = <String>[];
     var directionText = '';
-
+    print("the direction 1");
     if (type == TransactionType.transfer) {
       directionText = direction == Direction.inbound ? '_RECEIVED' : '_SENT';
     } else if (type == TransactionType.cash) {
       directionText = direction == Direction.inbound ? '_IN' : '_OUT';
     }
+    print("the direction 2");
+
     if ([TransactionType.lotoPlay, TransactionType.lotoWin].contains(type)) {
       bodyLocArgs.addAll([amount.toString(), "${contact.name}"]);
     }
+    print("the direction 3");
+
     if (type == TransactionType.cash) {
       titleLocArgs.add(method.name.toUpperCase());
       bodyLocArgs.add(method.name.toUpperCase());
@@ -112,6 +124,7 @@ class TransactionModel {
         bodyLocArgs.add('${contact.name} - ${contact.phone}');
       }
     }
+    print("the direction 4");
 
     return {
       'title': '$titleLockKey$directionText'.trArgs(titleLocArgs),
@@ -126,7 +139,7 @@ class TransactionModel {
 
   @override
   String toString() {
-    return 'TransactionModel(id: $id, type: $type, method: $method, contact: $contact, user: $user, amount: $amount, fees: $fees, createdAt: $createdAt)';
+    return 'TransactionModel(id: $id, type: $type, method: $method, contact: $contact, user: $user, amount: $amount, fees: $fees,  tax: $tax, createdAt: $createdAt)';
   }
 
   @override
@@ -140,6 +153,7 @@ class TransactionModel {
         other.user == user &&
         other.amount == amount &&
         other.fees == fees &&
+        other.tax == tax &&
         other.createdAt == createdAt;
   }
 
@@ -152,6 +166,7 @@ class TransactionModel {
         user.hashCode ^
         amount.hashCode ^
         fees.hashCode ^
+        tax.hashCode ^
         createdAt.hashCode;
   }
 }

@@ -20,6 +20,8 @@ class LocaleKeys {
   static const language = 'language';
   static const direction_inbound = 'direction_inbound';
   static const direction_outbound = 'direction_outbound';
+  static const directionName_inbound = 'directionName_inbound';
+  static const directionName_outbound = 'directionName_outbound';
   static const direPreposition_inbound = 'direPreposition_inbound';
   static const direPreposition_outbound = 'direPreposition_outbound';
   static const transactionStatus_failed = 'transactionStatus_failed';
@@ -149,6 +151,18 @@ class LocaleKeys {
   static const label_cash_out = 'label_cash_out';
   static const label_cash_in = 'label_cash_in';
   static const label_transaction_history = 'label_transaction_history';
+  static const label_transaction_details = 'label_transaction_details';
+  static const label_transaction_type = 'label_transaction_type';
+  static const label_transaction_type_named_transfer =
+      'label_transaction_type_named_transfer';
+  static const label_transaction_type_named_lotoPlay =
+      'label_transaction_type_named_lotoPlay';
+  static const label_transaction_type_named_lotoWin =
+      'label_transaction_type_named_lotoWin';
+  static const label_transaction_type_named_cash =
+      'label_transaction_type_named_cash';
+  static const label_transaction_type_named_payment =
+      'label_transaction_type_named_payment';
   static const label_local_branch = 'label_local_branch';
   static const label_no_tirage_for_now = 'label_no_tirage_for_now';
   static const label_next_tirage = 'label_next_tirage';
@@ -169,6 +183,13 @@ class LocaleKeys {
   static const label_choose_Option = 'label_choose_Option';
   static const label_fee = 'label_fee';
   static const label_tax = 'label_tax';
+  static const label_add = 'label_add';
+  static const label_draw = 'label_draw';
+  static const label_pick = 'label_pick';
+  static const label_bet = 'label_bet';
+  static const label_more_info = 'label_more_info';
+  static const label_account_balance = 'label_account_balance';
+  static const label_in_us_dollars = 'label_in_us_dollars';
   static const label_language_fr = 'label_language_fr';
   static const label_language_ht = 'label_language_ht';
   static const message_unavailable_method = 'message_unavailable_method';
@@ -192,6 +213,8 @@ class Locales {
     'language': 'Langue',
     'direction_inbound': 'Reçu',
     'direction_outbound': 'Envoyer',
+    'directionName_inbound': 'Entrant',
+    'directionName_outbound': 'Sortant',
     'direPreposition_inbound': 'de',
     'direPreposition_outbound': 'à',
     'transactionStatus_failed': 'Échec',
@@ -200,25 +223,25 @@ class Locales {
     'transactionStatus_adverbe_success': 'avec succès',
     'NOTIFICATION_TITLE_TRANSFER_RECEIVED': 'Argent reçu',
     'NOTIFICATION_BODY_TRANSFER_RECEIVED':
-        'Vous avez reçu une somme de %s HLG de %s.',
+        'Vous avez reçu une somme de %s HTG de %s.',
     'NOTIFICATION_TITLE_TRANSFER_SENT': 'Argent envoyé',
     'NOTIFICATION_BODY_TRANSFER_SENT':
-        'Vous avez envoyé une somme de de %s HLG à %s.',
+        'Vous avez envoyé une somme de de %s HTG à %s.',
     'NOTIFICATION_TITLE_WITHDRAW': 'Retrait',
     'NOTIFICATION_BODY_WITHDRAW':
-        'Vous avez effectué un retrait de %s HLG de %s.',
+        'Vous avez effectué un retrait de %s HTG de %s.',
     'NOTIFICATION_TITLE_CASH_IN': 'Dépôt par %s.',
     'NOTIFICATION_BODY_CASH_IN': 'Vous avez effectué un dépôt par %s.',
     'NOTIFICATION_TITLE_CASH_OUT': 'Retrait par %s.',
     'NOTIFICATION_BODY_CASH_OUT': 'Vous avez effectué un retrait par %s.',
     'NOTIFICATION_TITLE_PAYMENT': 'Paiement de facture.',
-    'NOTIFICATION_BODY_PAYMENT': 'Vous avez payé une facture HLG %s pour %s.',
+    'NOTIFICATION_BODY_PAYMENT': 'Vous avez payé une facture HTG %s pour %s.',
     'NOTIFICATION_TITLE_LOTOPLAY': 'Billets achetés',
     'NOTIFICATION_BODY_LOTOPLAY':
-        'Vous avez acheté un billet pour %s HLG à %s.',
+        'Vous avez acheté un billet pour %s HTG à %s.',
     'NOTIFICATION_TITLE_LOTOWIN': 'Vous avez gagné',
     'NOTIFICATION_BODY_LOTOWIN':
-        'Vous avez reçu %s HLG parce que vous avez gagné à la loterie.',
+        'Vous avez reçu %s HTG parce que vous avez gagné à la loterie.',
     'LOG_IN': 'Connectez-vous',
     'REGISTER': 'S\'inscrire',
     'RESET_PASSWORD': 'Réinitialiser le mot de passe',
@@ -303,7 +326,7 @@ class Locales {
     'onEmpty': 'Veuillez saisir une valeur.',
     'STAR_SIGN': '* ',
     'NO_DATA_FOUND': 'Aucune donnée trouvée',
-    'ENTER_AMOUNT': 'Entrez le montant (HLG)',
+    'ENTER_AMOUNT': 'Entrez le montant (HTG)',
     'ADDRESS_MARKET_DETAILS': 'Détails du marché des adresses',
     'CONTACTS': 'Contacts',
     'AMOUNT': 'Montant',
@@ -332,6 +355,13 @@ class Locales {
     'label_cash_out': 'Retrait',
     'label_cash_in': 'Dépôt',
     'label_transaction_history': 'Historique des transactions',
+    'label_transaction_details': 'Détail de la transaction',
+    'label_transaction_type': 'Type de transaction',
+    'label_transaction_type_named_transfer': 'Transfer',
+    'label_transaction_type_named_lotoPlay': 'Achat De Billet',
+    'label_transaction_type_named_lotoWin': 'Gain Loterie',
+    'label_transaction_type_named_cash': 'Espèces',
+    'label_transaction_type_named_payment': 'Paiment',
     'label_local_branch': 'Filiale locale',
     'label_no_tirage_for_now': 'Aucun Tirage pour le Moment',
     'label_next_tirage': 'Prochain tirage',
@@ -352,6 +382,13 @@ class Locales {
     'label_choose_Option': 'Choisissez une option',
     'label_fee': 'Frais',
     'label_tax': 'Taxe',
+    'label_add': 'Ajouter',
+    'label_draw': 'Tirage @name',
+    'label_pick': 'Boule',
+    'label_bet': 'Mise',
+    'label_more_info': 'Plus Info',
+    'label_account_balance': 'Solde du compte',
+    'label_in_us_dollars': 'En dollars américains',
     'label_language_fr': 'Français',
     'label_language_ht': 'Créole',
     'message_unavailable_method':
@@ -376,22 +413,22 @@ class Locales {
     'transactionStatus_adverbe_success': 'Avec siksè',
     'NOTIFICATION_TITLE_TRANSFER_RECEIVED': 'Lajan antre',
     'NOTIFICATION_BODY_TRANSFER_RECEIVED':
-        'Ou te resevwa yon kantite %s HLG nan men %s.',
+        'Ou te resevwa yon kantite %s HTG nan men %s.',
     'NOTIFICATION_TITLE_TRANSFER_SENT': 'Lajan Soti',
-    'NOTIFICATION_BODY_TRANSFER_SENT': 'Ou voye yon kantite %s HLG bay %s.',
+    'NOTIFICATION_BODY_TRANSFER_SENT': 'Ou voye yon kantite %s HTG bay %s.',
     'NOTIFICATION_TITLE_WITHDRAW': ' Retrè',
-    'NOTIFICATION_BODY_WITHDRAW': ' Ou retire yon kantite %s HLG nan %s.',
+    'NOTIFICATION_BODY_WITHDRAW': ' Ou retire yon kantite %s HTG nan %s.',
     'NOTIFICATION_TITLE_CASH_IN': 'Depot pa %s.',
     'NOTIFICATION_BODY_CASH_IN': ' Ou te fè depo pa %s.',
     'NOTIFICATION_TITLE_CASH_OUT': 'Retrè pa %s.',
     'NOTIFICATION_BODY_CASH_OUT': 'Ou fè yn retrè pa %s.',
     'NOTIFICATION_TITLE_PAYMENT': ' Peman bòdwo.',
-    'NOTIFICATION_BODY_PAYMENT': ' Ou peye yon bòdwo %s HLG pou %s.',
+    'NOTIFICATION_BODY_PAYMENT': ' Ou peye yon bòdwo %s HTG pou %s.',
     'NOTIFICATION_TITLE_LOTOPLAY': 'Biyè Achte',
-    'NOTIFICATION_BODY_LOTOPLAY': ' Ou achte yon biyè pou %s HLG nan %s.',
+    'NOTIFICATION_BODY_LOTOPLAY': ' Ou achte yon biyè pou %s HTG nan %s.',
     'NOTIFICATION_TITLE_LOTOWIN': ' Ou Genyen',
     'NOTIFICATION_BODY_LOTOWIN':
-        ' Ou resevwa %s HLG paske ou genyen nan yon tiraj.',
+        ' Ou resevwa %s HTG paske ou genyen nan yon tiraj.',
     'LOG_IN': 'Konekte',
     'REGISTER': 'Enskri',
     'RESET_PASSWORD': 'Reyajiste modpas',
@@ -464,7 +501,7 @@ class Locales {
     'onEmpty': 'Tanpri antre yon valè.',
     'STAR_SIGN': '* ',
     'NO_DATA_FOUND': 'Pa jwenn done',
-    'ENTER_AMOUNT': 'Antre kantite lajan (HLG)',
+    'ENTER_AMOUNT': 'Antre kantite lajan (HTG)',
     'ADDRESS_MARKET_DETAILS': 'Detay sou mache adrès',
     'CONTACTS': 'Kontak',
     'AMOUNT': 'Kantite',
@@ -492,6 +529,13 @@ class Locales {
     'label_cash_out': 'Retrè',
     'label_cash_in': 'Depo',
     'label_transaction_history': 'Istwa tranzaksyon',
+    'label_transaction_details': 'Detay tranzaksyon an',
+    'label_transaction_type': 'Tip tranzaksyon',
+    'label_transaction_type_named_transfer': 'Transfè',
+    'label_transaction_type_named_lotoPlay': 'tikè Achte',
+    'label_transaction_type_named_lotoWin': 'Benefis nan lotri',
+    'label_transaction_type_named_cash': 'Espès',
+    'label_transaction_type_named_payment': 'Pèman',
     'label_local_branch': 'Branch lokal',
     'label_no_tirage_for_now': 'Poko gen tiraj',
     'label_next_tirage': 'Pwochen tiraj',
@@ -512,6 +556,13 @@ class Locales {
     'label_choose_Option': 'Chwazi yon opsyon',
     'label_fee': 'Frè',
     'label_tax': 'Taks',
+    'label_add': 'Ajoute',
+    'label_draw': 'Tiraj @name',
+    'label_pick': 'Boul',
+    'label_bet': 'Miz',
+    'label_more_info': 'Plis detay',
+    'label_account_balance': 'Balans kont',
+    'label_in_us_dollars': 'An dola ameriken',
     'label_language_fr': 'Fransè',
     'label_language_ht': 'Kreyòl',
     'message_unavailable_method': 'Metòd sa a pa disponib pou kounye a',

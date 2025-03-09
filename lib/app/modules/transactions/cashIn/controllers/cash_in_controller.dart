@@ -33,7 +33,7 @@ class CashInController extends GetxController {
     return {};
   }
 
-  Future<Map<String, dynamic>> cashIn([currency = "HLG"]) async {
+  Future<Map<String, dynamic>> cashIn([currency = "HTG"]) async {
     var response = await provider.cashInApi(
         amount: amount, currency: currency, method: method!.name);
     if (response?.isSuccess == true) {

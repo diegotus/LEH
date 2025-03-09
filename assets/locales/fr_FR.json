@@ -13,6 +13,10 @@
     "inbound": "Reçu",
     "outbound": "Envoyer"
   },
+  "directionName": {
+    "inbound": "Entrant",
+    "outbound": "Sortant"
+  },
   "direPreposition": {
     "inbound": "de",
     "outbound": "à"
@@ -27,23 +31,23 @@
   },
 
   "NOTIFICATION_TITLE_TRANSFER_RECEIVED": "Argent reçu",
-  "NOTIFICATION_BODY_TRANSFER_RECEIVED": "Vous avez reçu une somme de %s HLG de %s.",
+  "NOTIFICATION_BODY_TRANSFER_RECEIVED": "Vous avez reçu une somme de %s HTG de %s.",
   "NOTIFICATION_TITLE_TRANSFER_SENT": "Argent envoyé",
-  "NOTIFICATION_BODY_TRANSFER_SENT": "Vous avez envoyé une somme de de %s HLG à %s.",
+  "NOTIFICATION_BODY_TRANSFER_SENT": "Vous avez envoyé une somme de de %s HTG à %s.",
 
   "NOTIFICATION_TITLE_WITHDRAW": "Retrait",
-  "NOTIFICATION_BODY_WITHDRAW": "Vous avez effectué un retrait de %s HLG de %s.",
+  "NOTIFICATION_BODY_WITHDRAW": "Vous avez effectué un retrait de %s HTG de %s.",
   "NOTIFICATION_TITLE_CASH_IN": "Dépôt par %s.",
   "NOTIFICATION_BODY_CASH_IN": "Vous avez effectué un dépôt par %s.",
   "NOTIFICATION_TITLE_CASH_OUT": "Retrait par %s.",
   "NOTIFICATION_BODY_CASH_OUT": "Vous avez effectué un retrait par %s.",
   "NOTIFICATION_TITLE_PAYMENT": "Paiement de facture.",
-  "NOTIFICATION_BODY_PAYMENT": "Vous avez payé une facture HLG %s pour %s.",
+  "NOTIFICATION_BODY_PAYMENT": "Vous avez payé une facture HTG %s pour %s.",
 
   "NOTIFICATION_TITLE_LOTOPLAY": "Billets achetés",
-  "NOTIFICATION_BODY_LOTOPLAY": "Vous avez acheté un billet pour %s HLG à %s.",
+  "NOTIFICATION_BODY_LOTOPLAY": "Vous avez acheté un billet pour %s HTG à %s.",
   "NOTIFICATION_TITLE_LOTOWIN": "Vous avez gagné",
-  "NOTIFICATION_BODY_LOTOWIN": "Vous avez reçu %s HLG parce que vous avez gagné à la loterie.",
+  "NOTIFICATION_BODY_LOTOWIN": "Vous avez reçu %s HTG parce que vous avez gagné à la loterie.",
 
   "LOG_IN": "Connectez-vous",
   "REGISTER": "S'inscrire",
@@ -126,7 +130,7 @@
   "STAR_SIGN": "* ",
   "NO_DATA_FOUND": "Aucune donnée trouvée",
 
-  "ENTER_AMOUNT": "Entrez le montant (HLG)",
+  "ENTER_AMOUNT": "Entrez le montant (HTG)",
 
   "ADDRESS_MARKET_DETAILS": "Détails du marché des adresses",
   "CONTACTS": "Contacts",
@@ -160,6 +164,15 @@
     "cash_out": "Retrait",
     "cash_in": "Dépôt",
     "transaction_history": "Historique des transactions",
+    "transaction_details": "Détail de la transaction",
+    "transaction_type":"Type de transaction",
+    "transaction_type_named":{
+      "transfer":"Transfer",
+      "lotoPlay":"Achat De Billet",
+      "lotoWin":"Gain Loterie",
+      "cash":"Espèces",
+      "payment":"Paiment"
+    },
     "local_branch": "Filiale locale",
     "no_tirage_for_now": "Aucun Tirage pour le Moment",
     "next_tirage": "Prochain tirage",
@@ -180,6 +193,13 @@
     "choose_Option": "Choisissez une option",
     "fee": "Frais",
     "tax": "Taxe",
+    "add":"Ajouter",
+    "draw": "Tirage @name",
+    "pick":"Boule",
+    "bet":"Mise",
+    "more_info":"Plus Info",
+    "account_balance":"Solde du compte",
+    "in_us_dollars":"En dollars américains",
     "language": {
       "fr": "Français",
       "ht": "Créole"

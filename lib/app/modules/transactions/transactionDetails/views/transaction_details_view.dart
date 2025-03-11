@@ -80,6 +80,7 @@ class TransactionDetailsView extends GetView<TransactionDetailsController> {
               switch (item.type) {
                 case TransactionType.lotoPlay:
                   icon = Kiwoo.dice;
+                  listMap.removeRange(1, 3);
                   // iconSize = 0.1.sw;
                   continue transactionIcon;
                 transactionIcon:

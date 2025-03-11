@@ -50,6 +50,7 @@ class BottomSheetOption<T> {
 Future<T?> boomSheetOptions<T>({
   required List<BottomSheetOption<T>> options,
   Widget Function(BottomSheetOption<T>)? buildWidget,
+  FutureOr<T?> Function(T?)? onItemPressedPressed,
 }) {
   return Get.bottomSheet<T>(
     Container(
@@ -76,7 +77,10 @@ Future<T?> boomSheetOptions<T>({
             itemBuilder: (context, index) {
               var option = options[index];
               onPressed() async {
-                if (option.onPressed != null) {
+                if (onItemPressedPressed != null) {
+                  await onItemPressedPressed(option.value);
+                  Get.close();
+                } else if (option.onPressed != null) {
                   if (option.returnOnpressed) {
                     var resp = await option.onPressed!();
                     Get.backLegacy(result: resp);

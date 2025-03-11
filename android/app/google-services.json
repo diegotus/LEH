@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "883573169106",
+    "project_id": "lotterie-de-l-etat-haitien",
+    "storage_bucket": "lotterie-de-l-etat-haitien.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883573169106:android:f518f80f9960021a81c60b",
+        "android_client_info": {
+          "package_name": "com.vision.ayiti_lotri"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAA913X2NkZJy9DiKjrW0RAJhvaAZsT2-8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

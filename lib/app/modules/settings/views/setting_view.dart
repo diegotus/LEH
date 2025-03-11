@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/controllers/firebase_services.dart';
 import 'package:haiti_lotri/app/core/utils/app_utility.dart';
 import 'package:haiti_lotri/app/data/models/storage_box_model.dart';
 import 'package:sizing/sizing.dart';
@@ -117,21 +118,25 @@ class SettingView extends GetView<SettingController> {
               title: AppStrings.language.tr,
               icon: Icons.language,
               ontap: () {
-                boomSheetOptions<Locale>(options: [
-                  BottomSheetOption(
-                      label: AppStrings.languageCode('fr'),
-                      value: Locale("fr")),
-                  BottomSheetOption(
-                      label: AppStrings.languageCode('ht'),
-                      value: Locale("ht")),
-                ]).then(
-                  (value) {
-                    if (value != null) {
-                      StorageBox.locale.val = value.languageCode;
-                      Get.updateLocale(value);
-                    }
-                  },
-                );
+                boomSheetOptions<Locale>(
+                    options: [
+                      BottomSheetOption(
+                          label: AppStrings.languageCode('fr'),
+                          value: Locale("fr")),
+                      BottomSheetOption(
+                          label: AppStrings.languageCode('ht'),
+                          value: Locale("ht")),
+                    ],
+                    onItemPressedPressed: (value) async {
+                      if (value != null) {
+                        await showOverlay(asyncFunction: () async {
+                          if (StorageBox.locale.val != value.languageCode) {
+                            StorageBox.locale.val = value.languageCode;
+                          }
+                          //await 1.delay();
+                        });
+                      }
+                    });
               },
               trailing: Text(
                 AppStrings.languageCode(StorageBox.locale.val),

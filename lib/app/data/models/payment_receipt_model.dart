@@ -67,10 +67,8 @@ class PaymentReceiptData {
       amount: double.tryParse("${map['amount']}") ?? 0,
       fees: double.tryParse("${map['fees']}") ?? 0,
       tax: double.tryParse("${map['tax']}") ?? 0,
-      senderInfo:
-          ContactData.fromMap(map['senderInfo'] as Map<String, dynamic>),
-      receiverInfo:
-          ContactData.fromMap(map['receiverInfo'] as Map<String, dynamic>),
+      senderInfo: ContactData.fromMap(map['user'] as Map<String, dynamic>),
+      receiverInfo: ContactData.fromMap(map['contact'] as Map<String, dynamic>),
       createdAt: DateTimeUtility.convertDateFromString(map['created_at']),
     );
   }

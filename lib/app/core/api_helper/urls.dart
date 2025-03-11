@@ -10,7 +10,7 @@ class Url {
           ? "http://localhost:3000/"
           : "http://10.0.2.2:3000/")
       : kIsWeb
-          ? Uri.base.origin + "/"
+          ? "${Uri.base.origin}/"
           : "https://leh.ht/";
   static final String BASE_URL = _url;
   static final String SOCKET_URL = "${BASE_URL}chat_socket";

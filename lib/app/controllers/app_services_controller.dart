@@ -13,6 +13,7 @@ import '../data/models/user_detail_model.dart';
 import '../data/models/user_model.dart';
 import '../providers/app_service_provider.dart';
 import '../routes/app_pages.dart';
+import 'firebase_services.dart';
 
 class AppServicesController extends GetxService
     with WidgetsBindingObserver, StorageBox {
@@ -68,6 +69,13 @@ class AppServicesController extends GetxService
   }
 
   void addKeysListenter() {
+    StorageBox.boxKeys().listenKey("locale", (value) async {
+      await Get.updateLocale(Locale(value));
+      await Get.find<FirebaseServices>().unsubscribeFromTopics();
+      if (userDetails.value?.id != null) {
+        Get.find<FirebaseServices>().subscribeToTopic(userDetails.value!.id!);
+      }
+    });
     StorageBox.boxKeys().listenKey("token", (value) {
       var currentRoute = Get.rootController.rootDelegate.pageSettings?.name ??
           Get.currentRoute;
@@ -87,6 +95,12 @@ class AppServicesController extends GetxService
       id: 'currentUser',
       onData: (model) {
         userDetails.value = model?.userDetails;
+        if (userDetails.value != null) {
+          if (StorageBox.currentSubscriveTopic.val.isEmpty) {
+            StorageBox.locale.val =
+                userDetails.value!.extraInfo!.locale.languageCode;
+          }
+        }
       },
     );
   }
@@ -94,7 +108,8 @@ class AppServicesController extends GetxService
   void saveUserData(UserDetailModel? userDetails) {
     var currentUser = CurrentUser(userDetails: this.userDetails.value);
     GetStoragePro.saveObject<CurrentUser>(
-        currentUser.copyWith(userDetails: userDetails));
+        currentUser.copyWith(userDetails: userDetails?.copyWith()));
+
     if (this.userDetails.value == null) {
       addCurrentUserListener();
     }
@@ -112,6 +127,7 @@ class AppServicesController extends GetxService
     try {
       GetStoragePro.saveObject<CurrentUser>(CurrentUser());
       await StorageBox.removeToken();
+      await Get.find<FirebaseServices>().unsubscribeFromTopics();
     } catch (e) {
       Get.log("the error >>> $e", isError: true);
     }

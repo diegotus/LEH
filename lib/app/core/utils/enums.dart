@@ -53,6 +53,11 @@ enum TransactionType {
     );
   }
 
+  static bool exist(String? name) {
+    int index = TransactionType.values.indexWhere((el) => el.name == name);
+    return index > -1;
+  }
+
   String toMap() => name;
   String get translate => AppStrings.TRANSACTION_TYPE_NAMED(this);
 }

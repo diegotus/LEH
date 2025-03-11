@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+import 'dart:ui';
 
 import '../../core/utils/enums.dart';
 import 'contact_list_model.dart';
@@ -118,119 +119,40 @@ class UserDetailModel extends ContactData {
 }
 
 class ExtraInfo {
-  int? score;
-  IdDoc? idDoc;
-  VerificationStatus? idVerified;
-  VerificationStatus? addressVerified;
-  int? userId;
-  String? addressDoc;
   AddressData? address;
   String? dob;
-  int? income;
-  String? incomeDoc;
-  VerificationStatus? incomeVerified;
-  VerificationStatus? occupationVerified;
-  String? occupation;
-  String? occupationDoc;
+  Locale locale;
   ExtraInfo({
-    this.score,
-    this.idDoc,
-    this.idVerified,
-    this.addressVerified,
-    this.userId,
-    this.addressDoc,
     this.address,
     this.dob,
-    this.income,
-    this.incomeDoc,
-    this.incomeVerified,
-    this.occupationVerified,
-    this.occupation,
-    this.occupationDoc,
+    this.locale = const Locale('fr'),
   });
 
   ExtraInfo copyWith({
-    int? score,
-    IdDoc? idDoc,
-    VerificationStatus? idVerified,
-    VerificationStatus? addressVerified,
-    int? userId,
-    String? addressDoc,
     AddressData? address,
     String? dob,
-    int? income,
-    String? incomeDoc,
-    VerificationStatus? incomeVerified,
-    VerificationStatus? occupationVerified,
-    String? occupation,
-    String? occupationDoc,
+    Locale? locale,
   }) {
     return ExtraInfo(
-      score: score ?? this.score,
-      idDoc: idDoc ?? this.idDoc,
-      idVerified: idVerified ?? this.idVerified,
-      addressVerified: addressVerified ?? this.addressVerified,
-      userId: userId ?? this.userId,
-      addressDoc: addressDoc ?? this.addressDoc,
-      address: address ?? this.address,
-      dob: dob ?? this.dob,
-      income: income ?? this.income,
-      incomeDoc: incomeDoc ?? this.incomeDoc,
-      incomeVerified: incomeVerified ?? this.incomeVerified,
-      occupationVerified: occupationVerified ?? this.occupationVerified,
-      occupation: occupation ?? this.occupation,
-      occupationDoc: occupationDoc ?? this.occupationDoc,
-    );
+        address: address ?? this.address,
+        dob: dob ?? this.dob,
+        locale: locale ?? this.locale);
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'score': score,
-      'id_doc': idDoc?.toMap(),
-      'id_verified': idVerified?.name,
-      'address_verified': addressVerified?.name,
-      'user_id': userId,
-      'address_doc': addressDoc,
       'address': address?.toMap(),
       'dob': dob,
-      'income': income,
-      'income_doc': incomeDoc,
-      'income_verified': incomeVerified?.name,
-      'occupation_verified': occupationVerified?.name,
-      'occupation': occupation,
-      'occupation_doc': occupationDoc,
+      'locale': locale.languageCode,
     };
   }
 
   factory ExtraInfo.fromMap(Map<String, dynamic> map) {
     return ExtraInfo(
-      userId: map['user_id'] != null ? map['user_id'] as int : null,
-      score: map['score'] != null ? map['score'] as int : null,
-      idDoc: map['id_doc'] != null ? IdDoc.fromMap(map['id_doc']) : null,
-      idVerified: map['id_verified'] != null
-          ? VerificationStatus.fromString(map['id_verified'])
-          : null,
-      addressVerified: map['address_verified'] != null
-          ? VerificationStatus.fromString(map['address_verified'])
-          : null,
-      addressDoc:
-          map['address_doc'] != null ? map['address_doc'] as String : null,
       address:
           map['address'] != null ? AddressData.fromMap(map['address']) : null,
       dob: map['dob'] != null ? map['dob'] as String : null,
-      income: map['income'] != null ? map['income'] as int : null,
-      incomeDoc: map['income_doc'] != null ? map['income_doc'] as String : null,
-      incomeVerified: map['income_verified'] != null
-          ? VerificationStatus.fromString(map['income_verified'])
-          : null,
-      occupationVerified: map['occupation_verified'] != null
-          ? VerificationStatus.fromString(map['occupation_verified'])
-          : null,
-      occupation:
-          map['occupation'] != null ? map['occupation'] as String : null,
-      occupationDoc: map['occupation_doc'] != null
-          ? map['occupation_doc'] as String
-          : null,
+      locale: Locale(map['locale'] ?? 'fr'),
     );
   }
 
@@ -241,45 +163,21 @@ class ExtraInfo {
 
   @override
   String toString() {
-    return 'ExtraInfo(score: $score, idDoc: $idDoc, idVerified: $idVerified, addressVerified: $addressVerified, userId: $userId, addressDoc: $addressDoc, address: $address, dob: $dob, income: $income, incomeDoc: $incomeDoc, incomeVerified: $incomeVerified, occupationVerified: $occupationVerified, occupation: $occupation, occupationDoc: $occupationDoc)';
+    return 'ExtraInfo( address: $address, dob: $dob, locale: ${locale.languageCode})';
   }
 
   @override
   bool operator ==(covariant ExtraInfo other) {
     if (identical(this, other)) return true;
 
-    return other.score == score &&
-        other.idDoc == idDoc &&
-        other.idVerified == idVerified &&
-        other.addressVerified == addressVerified &&
-        other.userId == userId &&
-        other.addressDoc == addressDoc &&
-        other.address == address &&
+    return other.address == address &&
         other.dob == dob &&
-        other.income == income &&
-        other.incomeDoc == incomeDoc &&
-        other.incomeVerified == incomeVerified &&
-        other.occupationVerified == occupationVerified &&
-        other.occupation == occupation &&
-        other.occupationDoc == occupationDoc;
+        other.locale == locale;
   }
 
   @override
   int get hashCode {
-    return score.hashCode ^
-        idDoc.hashCode ^
-        idVerified.hashCode ^
-        addressVerified.hashCode ^
-        userId.hashCode ^
-        addressDoc.hashCode ^
-        address.hashCode ^
-        dob.hashCode ^
-        income.hashCode ^
-        incomeDoc.hashCode ^
-        incomeVerified.hashCode ^
-        occupationVerified.hashCode ^
-        occupation.hashCode ^
-        occupationDoc.hashCode;
+    return address.hashCode ^ dob.hashCode ^ locale.hashCode;
   }
 }
 

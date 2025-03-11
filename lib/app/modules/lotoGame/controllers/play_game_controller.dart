@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:haiti_lotri/app/modules/games/controllers/games_controller.dart';
 import 'package:haiti_lotri/app/modules/lotoGame/views/play_game_receipt_view.dart';
 import 'package:haiti_lotri/app/modules/transactions/views/transaction_detail_view.dart';
+import 'package:haiti_lotri/app/routes/app_pages.dart';
 
 import '../../../data/models/game_model.dart';
 import '../../../data/models/ticket_receipt_model.dart';
@@ -25,9 +26,9 @@ class PlayGameController extends GamesController {
   Future<void> callJweGameApi() async {
     var response = await provider.jweGameApi([...game.map((el) => el.toMap())]);
     if (response?.isSuccess == true) {
-      Get.to(
-        () => TransactionDetailView(id: response!.data['transactionId']),
-      );
+      Get.toNamed(Routes.TRANSACTION_DETAILS,
+          parameters: {"id": response!.data['transactionId'].toString()});
+
       game.clear();
     }
     response?.showMessage();

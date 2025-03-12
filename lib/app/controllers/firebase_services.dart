@@ -9,13 +9,22 @@ import 'package:haiti_lotri/app/data/models/storage_box_model.dart';
 import 'package:haiti_lotri/app/routes/app_pages.dart';
 
 import '../../firebase_options.dart';
+import '../core/utils/web_js_function.dart';
 
 class FirebaseServices extends GetxService {
   FirebaseServices._onInit({this.token});
   String? token;
   String get currentSubscriveTopic => StorageBox.currentSubscriveTopic.val;
-  void onFcmTokenInitialize(String? value) {}
-  void onFcmTokenUpdate(String value) {}
+  void onFcmTokenInitialize(String? value) {
+    StorageBox.fmcToken.val = value ?? '';
+    token = value ?? '';
+  }
+
+  void onFcmTokenUpdate(String value) {
+    StorageBox.fmcToken.val = value;
+    token = value;
+  }
+
   static RemoteMessage messageModifier(RemoteMessage message) {
     return message;
   }
@@ -120,11 +129,14 @@ class FirebaseServices extends GetxService {
 
   Future<void> subscribeToTopic(int id) async {
     String newTopic = "_${Get.locale!.languageCode}_$id";
-
-    if (!kIsWeb && newTopic != currentSubscriveTopic) {
+    if (newTopic != currentSubscriveTopic) {
       StorageBox.currentSubscriveTopic.val = newTopic;
-      await FirebaseMessaging.instance
-          .subscribeToTopic("loterie$currentSubscriveTopic");
+      if (kIsWeb) {
+        callServiceWorkerFunction("loterie$currentSubscriveTopic");
+      } else {
+        await FirebaseMessaging.instance
+            .subscribeToTopic("loterie$currentSubscriveTopic");
+      }
     }
   }
 

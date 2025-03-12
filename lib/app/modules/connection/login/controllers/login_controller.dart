@@ -14,7 +14,7 @@ class LoginController extends GetxController {
   final formKey = GlobalKey<FormState>();
   @override
   onInit() {
-    provider = Get.putOrFind<ConnectionProvider>(() => ConnectionProvider());
+    provider = Get.find<ConnectionProvider>();
     super.onInit();
   }
 
@@ -29,14 +29,10 @@ class LoginController extends GetxController {
       if (response?.isSuccess == true) {
         var userData = UserData.fromMap(response!.data!);
         var appservice = Get.find<AppServicesController>();
+        appservice.saveUserData(userData.userDetails);
         StorageBox.token.val = userData.authToken ?? '';
-        var userDetailsResponse = await appservice.getUserDetails();
-        if (userDetailsResponse?.isSuccess == true) {
-          userDetailsResponse!.showMessage();
-        } else {
-          // showMsg((response.message).isNotEmpty ? response.message[0] : 'Error',
-          //     color: Colors.red);
-        }
+
+        response.showMessage();
       } else {
         // response?.showMessage();
       }

@@ -7,12 +7,13 @@ import '../data/models/server_response_model.dart';
 class DefaultProvider extends GetConnect {
   @override
   void onInit() {
-    print("is kdebug $kDebugMode ${Url.BASE_URL}");
-    httpClient.baseUrl = Url.BASE_URL + 'api/';
+    httpClient.baseUrl = '${Url.BASE_URL}api/';
     httpClient.defaultDecoder = (body) {
       return ServerResponseModel.fromMap(body ?? {"statusCode": 404});
     };
     httpClient.timeout = const Duration(seconds: 15);
+    print("is kdebug $kDebugMode ${httpClient.baseUrl}");
+
     super.onInit();
   }
 

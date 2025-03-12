@@ -18,14 +18,16 @@ CachedNetworkImageProvider? avatarImageProvider(String id, token) {
   });
 }
 
-CachedNetworkImage avatarImage(
+Widget avatarImage(
   String? id, {
   required Widget Function(BuildContext, ImageProvider) imageBuilder,
   required Widget placeHolder,
   CacheManager? cacheManager,
 }) {
+  print("the image url $id ${id == null}");
   var imageUrl = id == null ? '' : "${Url.BASE_URL}api/files?id=$id";
   var token = StorageBox.token.val;
+  if (kIsWeb && imageUrl.isEmpty) return placeHolder;
   return CachedNetworkImage(
     cacheManager: cacheManager,
     imageRenderMethodForWeb: kIsWeb
@@ -45,6 +47,7 @@ CachedNetworkImage avatarImage(
       );
     },
     errorWidget: (context, url, error) {
+      print("the image we got error here $placeHolder");
       return placeHolder;
     },
     errorListener: (error) {

@@ -31,6 +31,21 @@ class AppServiceProvider extends DefaultWithAuthProvider {
     return response;
   }
 
+  Future<ServerResponseModel?> updateUserInfo(
+      {String? locale, String? dob}) async {
+    if (locale == null && dob == null) return null;
+    Map<String, String> param = {};
+    param.addIf(locale != null, 'locale', locale ?? '');
+    param.addIf(dob != null, 'dob', dob ?? '');
+
+    var response = await tryCatch(() async {
+      var response =
+          await patch<ServerResponseModel>(Url.UPDATE_USERINFO, param);
+      return CoreService.returnResponse(response);
+    });
+    return response;
+  }
+
   Future<ServerResponseModel?> getUserBalance() async {
     var response = await tryCatch(() async {
       var response = await get<ServerResponseModel>(

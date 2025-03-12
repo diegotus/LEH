@@ -5,17 +5,21 @@ import '../../../data/models/server_response_model.dart';
 import '../../../providers/default_provider.dart';
 
 class ConnectionProvider extends DefaultProvider {
+  @override
+  onInit() {
+    super.onInit();
+  }
+
   Future<ServerResponseModel?> signIn(
-      String email, String password, String? token) async {
+      String email, String password, String token) async {
     var response = await tryCatch(() async {
-      print("its kdegu ${super.httpClient.baseUrl} $baseUrl");
       var response = await post(
         Url.LOGIN,
         {
           'email': email,
           'password': password,
-          "notification_token": token,
         },
+        headers: {"fcm_token": token},
         contentType: 'application/json',
       );
       var data = CoreService.returnResponse(response);

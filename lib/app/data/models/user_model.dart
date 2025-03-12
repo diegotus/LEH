@@ -72,57 +72,35 @@ class CurrentUser extends CommonDataClass<CurrentUser> {
 }
 
 class UserData {
-  int? id;
   String? authToken;
-  String? name;
-  String? email;
-  List<Balance>? balances;
+  UserDetailModel? userDetails;
 
   UserData({
-    this.id,
     this.authToken,
-    this.name,
-    this.email,
-    this.balances,
+    this.userDetails,
   });
 
   UserData copyWith({
-    int? id,
     String? authToken,
-    String? name,
-    String? email,
-    List<Balance>? balances,
+    UserDetailModel? userDetails,
   }) {
     return UserData(
-      id: id ?? this.id,
       authToken: authToken ?? this.authToken,
-      name: name ?? this.name,
-      email: email ?? this.email,
-      balances: balances ?? this.balances,
+      userDetails: userDetails ?? this.userDetails,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      "id": id,
       'auth_token': authToken,
-      'name': name,
-      'email': email,
-      'balances': balances?.map((x) => x.toMap()).toList(),
+      'userDetails': userDetails?.toMap()
     };
   }
 
   factory UserData.fromMap(Map<String, dynamic> map) {
     return UserData(
-      id: map["id"],
       authToken: map['auth_token'] != null ? map['auth_token'] as String : null,
-      name: map['name'] != null ? map['name'] as String : null,
-      email: map['email'] != null ? map['email'] as String : null,
-      balances: List.from(map['balances'] ?? [])
-          .map(
-            (x) => Balance.fromMap(x as Map<String, dynamic>),
-          )
-          .toList(),
+      userDetails: UserDetailModel.fromMap(map),
     );
   }
 
@@ -133,27 +111,19 @@ class UserData {
 
   @override
   String toString() {
-    return 'UserData(id: $id, authToken: $authToken, name: $name, email: $email, balances: $balances)';
+    return 'UserData(authToken: $authToken, userDetails: $userDetails)';
   }
 
   @override
   bool operator ==(covariant UserData other) {
     if (identical(this, other)) return true;
 
-    return other.id == id &&
-        other.authToken == authToken &&
-        other.name == name &&
-        other.email == email &&
-        listEquals(other.balances, balances);
+    return other.authToken == authToken && other.userDetails == userDetails;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^
-        authToken.hashCode ^
-        name.hashCode ^
-        email.hashCode ^
-        balances.hashCode;
+    return authToken.hashCode ^ userDetails.hashCode;
   }
 }
 

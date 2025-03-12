@@ -4,6 +4,7 @@ import '../../../controllers/app_services_controller.dart';
 import '../../../controllers/def_controller.dart';
 
 import '../../../data/models/document_model.dart';
+import '../../../data/models/storage_box_model.dart';
 import '../../../data/models/user_detail_model.dart';
 import '../../../data/models/user_profil_update_model.dart';
 import '../../../providers/app_service_provider.dart';
@@ -29,5 +30,15 @@ class SettingController extends GetxController with DefController {
       }
     }
     response?.showMessage();
+  }
+
+  Future<void> updateUserInfo(String newLangage) async {
+    if (StorageBox.locale.val != newLangage) {
+      var response = await provider.updateUserInfo(locale: newLangage);
+      if (response?.isSuccess == true) {
+        await Get.find<AppServicesController>().getUserDetails();
+        response?.showMessage();
+      }
+    }
   }
 }

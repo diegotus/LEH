@@ -49,6 +49,7 @@ class Url {
   static const GET_PROFILE_DETAILS = "user/profile";
   static const UPLOAD_PROFILE_IMAGE = "files/avatar";
   static const UPDATE_PROFILE = "user";
+  static const UPDATE_USERINFO = "user/userInfo";
   static const UPDATE_USER_DOCS = "user/updateDocs";
   static const UPLOAD_IDENTITY = "files/identity";
   static const UPLOAD_ADDRESS = "files/documents/address/";

@@ -70,10 +70,8 @@ class AppServicesController extends GetxService
 
   void addKeysListenter() {
     StorageBox.boxKeys().listenKey("locale", (value) async {
-      await Get.updateLocale(Locale(value));
-      await Get.find<FirebaseServices>().unsubscribeFromTopics();
-      if (userDetails.value?.id != null) {
-        Get.find<FirebaseServices>().subscribeToTopic(userDetails.value!.id!);
+      if (value != Get.locale?.languageCode) {
+        await Get.updateLocale(Locale(value));
       }
     });
     StorageBox.boxKeys().listenKey("token", (value) {
@@ -96,10 +94,8 @@ class AppServicesController extends GetxService
       onData: (model) {
         userDetails.value = model?.userDetails;
         if (userDetails.value != null) {
-          if (StorageBox.currentSubscriveTopic.val.isEmpty) {
-            StorageBox.locale.val =
-                userDetails.value!.extraInfo!.locale.languageCode;
-          }
+          StorageBox.locale.val =
+              userDetails.value!.extraInfo!.locale.languageCode;
         }
       },
     );

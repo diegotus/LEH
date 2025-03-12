@@ -1,5 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_notifications_handler/firebase_notifications_handler.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -8,29 +6,15 @@ import 'package:get/get.dart';
 import 'package:get_storage_pro/get_storage_pro.dart';
 import 'package:haiti_lotri/app/controllers/firebase_services.dart';
 import 'package:haiti_lotri/app/data/models/storage_box_model.dart';
-import 'package:intl/date_symbol_data_custom.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:intl/intl.dart';
 import 'package:sizing/sizing.dart';
 
 import 'app/controllers/app_services_controller.dart';
 import 'app/core/utils/app_theme.dart';
 import 'app/routes/app_pages.dart';
-import 'firebase_options.dart';
 import 'generated/locales.g.dart';
 import 'ht_localisations/delegates.dart';
 import 'main.reflectable.dart';
-
-@pragma('vm:entry-point')
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  // If you're going to use other Firebase services in the background, such as Firestore,
-  // make sure you call `initializeApp` before using other Firebase services.
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
-  print("Handling a background message: ${message.messageId}");
-}
 
 Future<void> _onInit() async {
   initializeReflectable();

@@ -16,7 +16,6 @@ firebase.initializeApp(
 
 const messaging = firebase.messaging();
 messaging.setBackgroundMessageHandler(function (payload) {
-    console.log("new notificaiton", payload)
     const promiseChain = clients
         .matchAll({
             type: "window",

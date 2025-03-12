@@ -130,9 +130,8 @@ class SettingView extends GetView<SettingController> {
                     onItemPressedPressed: (value) async {
                       if (value != null) {
                         await showOverlay(asyncFunction: () async {
-                          if (StorageBox.locale.val != value.languageCode) {
-                            StorageBox.locale.val = value.languageCode;
-                          }
+                          await controller.updateUserInfo(value.languageCode);
+
                           //await 1.delay();
                         });
                       }

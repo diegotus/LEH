@@ -87,4 +87,12 @@ class AppServiceProvider extends DefaultWithAuthProvider {
     });
     return response;
   }
+
+  Future<ServerResponseModel?> signOutApi() async {
+    var response = await tryCatch(() async {
+      var response = await post<ServerResponseModel>(Url.SIGN_OUT, null);
+      return CoreService.returnResponse(response);
+    });
+    return response;
+  }
 }

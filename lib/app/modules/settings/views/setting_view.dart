@@ -199,8 +199,7 @@ class SettingView extends GetView<SettingController> {
             ListTile(
               onTap: () {
                 showOverlay(
-                  asyncFunction:
-                      Get.find<AppServicesController>().clearCurrentUser,
+                  asyncFunction: controller.signOut,
                 );
               },
               leading: Icon(

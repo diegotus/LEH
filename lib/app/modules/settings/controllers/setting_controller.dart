@@ -41,4 +41,13 @@ class SettingController extends GetxController with DefController {
       }
     }
   }
+
+  Future<void> signOut() async {
+    var response = await provider.signOutApi();
+    if (response?.isSuccess == true) {
+      print("success loging");
+      Get.find<AppServicesController>().clearCurrentUser();
+      response?.showMessage();
+    }
+  }
 }

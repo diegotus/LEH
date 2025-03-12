@@ -19,6 +19,7 @@ class Url {
   static const VERIFY_AUTH = "auth/verify_auth";
 
   static const REGISTER = "auth/signup";
+  static const SIGN_OUT = "auth/signout";
   static const VERIFY_REGISTER = "auth/verifysignup";
   static const RESEND_OTP = "auth/resend_otp";
   static const LOAN_REQUEST = "loan";

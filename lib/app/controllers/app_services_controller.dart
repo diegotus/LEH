@@ -13,7 +13,6 @@ import '../data/models/user_detail_model.dart';
 import '../data/models/user_model.dart';
 import '../providers/app_service_provider.dart';
 import '../routes/app_pages.dart';
-import 'firebase_services.dart';
 
 class AppServicesController extends GetxService
     with WidgetsBindingObserver, StorageBox {
@@ -123,7 +122,6 @@ class AppServicesController extends GetxService
     try {
       GetStoragePro.saveObject<CurrentUser>(CurrentUser());
       await StorageBox.removeToken();
-      await Get.find<FirebaseServices>().unsubscribeFromTopics();
     } catch (e) {
       Get.log("the error >>> $e", isError: true);
     }

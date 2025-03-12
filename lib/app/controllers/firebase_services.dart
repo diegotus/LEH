@@ -9,7 +9,6 @@ import 'package:haiti_lotri/app/data/models/storage_box_model.dart';
 import 'package:haiti_lotri/app/routes/app_pages.dart';
 
 import '../../firebase_options.dart';
-import '../core/utils/web_js_function.dart';
 
 class FirebaseServices extends GetxService {
   FirebaseServices._onInit({this.token});
@@ -124,27 +123,6 @@ class FirebaseServices extends GetxService {
           importance: Importance.high,
         ),
       ]);
-    }
-  }
-
-  Future<void> subscribeToTopic(int id) async {
-    String newTopic = "_${Get.locale!.languageCode}_$id";
-    if (newTopic != currentSubscriveTopic) {
-      StorageBox.currentSubscriveTopic.val = newTopic;
-      if (kIsWeb) {
-        callServiceWorkerFunction("loterie$currentSubscriveTopic");
-      } else {
-        await FirebaseMessaging.instance
-            .subscribeToTopic("loterie$currentSubscriveTopic");
-      }
-    }
-  }
-
-  Future<void> unsubscribeFromTopics() async {
-    if (!kIsWeb && currentSubscriveTopic.isNotEmpty) {
-      await FirebaseMessaging.instance
-          .unsubscribeFromTopic("loterie$currentSubscriveTopic");
-      StorageBox.currentSubscriveTopic.val = '';
     }
   }
 

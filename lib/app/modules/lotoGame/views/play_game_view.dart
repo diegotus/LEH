@@ -27,11 +27,16 @@ class PlayGame extends GetView<PlayGameController> {
         appBar: AppBarWidgetTitle(title: AppStrings.PLAY),
         persistentFooterAlignment: AlignmentDirectional.center,
         persistentFooterButtons: [
-          AppButton(
-              buttonText: AppStrings.PLAY,
-              onTap: () {
-                showOverlay(asyncFunction: controller.callJweGameApi);
-              })
+          Obx(() {
+            var isEmpty = controller.game.isEmpty;
+            return AppButton(
+                buttonText: AppStrings.PLAY,
+                onTap: isEmpty
+                    ? null
+                    : () {
+                        showOverlay(asyncFunction: controller.callJweGameApi);
+                      });
+          })
         ],
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),

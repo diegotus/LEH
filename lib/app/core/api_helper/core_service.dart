@@ -17,7 +17,6 @@ class CoreService {
     switch (response.statusCode) {
       case 200:
       case 201:
-      case 400:
       case 422:
       case 403:
         if (body != null) {
@@ -33,6 +32,8 @@ class CoreService {
               "Error occurred while Communication with Server",
               'StatusCode :${response.statusCode}',
             ]);
+      case 400:
+        throw BadRequestException((body as ServerResponseModel).getMessage());
       case 401:
         // final StorageLocalService storageLocalService = StorageLocalService();
 

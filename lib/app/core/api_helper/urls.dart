@@ -36,7 +36,7 @@ class Url {
   static const ADDRESS_APPROVAL = "user/addressapproval";
   static const TRANSACTIONS = "transactions/";
   static const RECENT_TRANSACTIONS = "transactions/recentTransactions";
-  static const TRANSFER_MONEY = "transactions/transferMoney";
+  static const TRANSFER_MONEY = "transactions/validate_transfer";
   static const GET_VALIDATION_INFO = "transactions/getValidationInfo";
   static const GET_BILLET_TRANS_DETAILS = "transactions/getBilletTransDetail";
 

@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/request/request.dart' show Request;
+import 'package:haiti_lotri/app/data/models/storage_box_model.dart';
 
 import '../core/api_helper/urls.dart';
 import '../data/models/server_response_model.dart';
@@ -11,10 +13,14 @@ class DefaultProvider extends GetConnect {
     httpClient.defaultDecoder = (body) {
       return ServerResponseModel.fromMap(body ?? {"statusCode": 404});
     };
+    httpClient.addRequestModifier(requestModifier);
     httpClient.timeout = const Duration(seconds: 15);
-    print("is kdebug $kDebugMode ${httpClient.baseUrl}");
-
     super.onInit();
+  }
+
+  Request requestModifier(Request request) {
+    request.headers['x-custom-lang'] = StorageBox.locale.val;
+    return request;
   }
 
   @override

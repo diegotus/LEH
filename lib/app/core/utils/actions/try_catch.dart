@@ -21,6 +21,8 @@ FutureOr<T?> tryCatch<T>(FutureOr<T> Function() doaction) async {
     // showMsg(e.getMessage(), color: Colors.red);
     // print("the response 2 ${e.getMessage()}");
     // throw e;
+  } on BadRequestException catch (e) {
+    appService.errorMsg.value = e.getMessage();
   } on UnauthorisedException catch (e) {
     if (e.getPrefix() == 0) {
       await appService.clearCurrentUser();

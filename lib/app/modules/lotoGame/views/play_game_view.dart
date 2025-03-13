@@ -22,6 +22,7 @@ import '../controllers/play_game_controller.dart';
 
 class PlayGame extends GetView<PlayGameController> {
   const PlayGame({super.key});
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBarWidgetTitle(title: AppStrings.PLAY),

@@ -50,22 +50,26 @@ class GamesController extends GetxController {
       "id": 5,
       "label": "lotto5",
       "description": "25,000X",
+      "image": ImgName.LOTTO5_GAME_IMG,
       "MaterialIcon": "",
-      // "onTap": () => Get.toNamed(Routes.PLAY_LOTO, arguments: Gametype.lotto5),
+      "onTap": () => Get.toNamed(Routes.LOTO_GAME, arguments: Gametype.lotto5),
     },
     {
       "id": 6,
       "label": "lotto5/5",
       "description": "200,464G",
+      "image": ImgName.LOTTO55_GAME_IMG,
       "MaterialIcon": "",
-      // "onTap": () => Get.toNamed(Routes.PLAY_LOTO, arguments: Gametype.lotto5p5),
+      "onTap": () =>
+          Get.toNamed(Routes.LOTO_GAME, arguments: Gametype.lotto5p5),
     },
     {
       "id": 7,
       "label": "royal5",
       "description": "1,021,649G",
+      "image": ImgName.ROYAL5_GAME_IMG,
       "MaterialIcon": "",
-      // "onTap": () => Get.toNamed(Routes.PLAY_LOTO, arguments: Gametype.royal5),
+      "onTap": () => Get.toNamed(Routes.LOTO_GAME, arguments: Gametype.royal5),
     },
   ];
 

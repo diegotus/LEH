@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:haiti_lotri/app/core/utils/app_string.dart';
 import 'package:sizing/sizing_extension.dart';
 
-import '../../core/utils/app_colors.dart';
-import '../../core/utils/font_family.dart';
 import '../../routes/app_pages.dart';
 
 class LotriView extends GetView {

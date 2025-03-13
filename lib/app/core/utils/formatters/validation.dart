@@ -100,3 +100,22 @@ String? isBetweenValidator(
   }
   return null;
 }
+
+String? isLength(
+  String? value, {
+  num? min,
+  num? equal,
+  num? max,
+  String? label,
+}) {
+  var isEmpty = isEmptyValidator(value);
+  if (isEmpty != null) return isEmpty;
+  if (equal != null && value!.length != equal) {
+    return "lengh should be $equal";
+  } else if (min != null && value!.length < min) {
+    return "Length be al list $min charartor";
+  } else if (max != null && value!.length > max) {
+    return "Length should at max $max";
+  }
+  return null;
+}

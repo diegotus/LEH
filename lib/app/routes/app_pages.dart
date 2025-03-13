@@ -93,7 +93,7 @@ class AppPages {
                   page: () => const PlayGame(),
                   binding: PlayGameBinding(),
                   // inheritParentPath: false,
-                  participatesInRootNavigator: true,
+                  // participatesInRootNavigator: true,
                   transition: Transition.rightToLeft,
                 ),
               ],

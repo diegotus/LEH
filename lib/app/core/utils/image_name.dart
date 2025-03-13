@@ -9,4 +9,7 @@ class ImgName {
   static const MARYAJ_GAME_IMG = "maryaj_game.jpg";
   static const LOTTO3_GAME_IMG = "lotto3_game.png";
   static const LOTTO4_GAME_IMG = "lotto4_game.jpg";
+  static const LOTTO5_GAME_IMG = "lotto5_game.png";
+  static const LOTTO55_GAME_IMG = "lotto55_game.png";
+  static const ROYAL5_GAME_IMG = "royal5_game.png";
 }

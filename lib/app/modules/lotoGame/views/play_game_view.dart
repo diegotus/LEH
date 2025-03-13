@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -170,6 +172,7 @@ class PlayGame extends GetView<PlayGameController> {
           controller.tempGameTirage = tirage;
         },
       ),
+      horizontalSpaceTiny,
       boulInput(
         length: 2,
         onSaved: (value) {
@@ -188,15 +191,79 @@ class PlayGame extends GetView<PlayGameController> {
   }
 
   Widget lotto5Widget() {
-    return customBoletWidget("Lotto 5", "25,000X", []);
+    GameTirageModel tirage =
+        GameTirageModel(type: Gametype.lotto5, boul: '', amount: 0);
+    return customBoletWidget("Lotto 5", "25,000X", [
+      boulInput(
+        length: 3,
+        onSaved: (value) {
+          tirage.boul = value!;
+          controller.tempGameTirage = tirage;
+        },
+      ),
+      horizontalSpaceTiny,
+      boulInput(
+        length: 2,
+        onSaved: (value) {
+          tirage.boul += value!;
+          controller.tempGameTirage = tirage;
+        },
+      ),
+      horizontalSpaceMedium,
+      mizInput(
+        onSaved: (value) {
+          tirage.amount = double.parse(value!);
+          controller.tempGameTirage = tirage;
+        },
+      ),
+    ]);
   }
 
   Widget lotto5p5Widget() {
-    return customBoletWidget("Lotto 5P5", "200,464G", []);
+    GameTirageModel tirage =
+        GameTirageModel(type: Gametype.lotto5p5, boul: '', amount: 5);
+
+    return customBoletWidget("Lotto 5P5", "200,464G", [
+      boulInput(
+        length: 3,
+        onSaved: (value) {
+          tirage.boul = value!;
+          controller.tempGameTirage = tirage;
+        },
+      ),
+      horizontalSpaceTiny,
+      boulInput(
+        length: 2,
+        onSaved: (value) {
+          tirage.boul += value!;
+          controller.tempGameTirage = tirage;
+        },
+        autoFocus: false,
+      ),
+    ]);
   }
 
   Widget royal5Widget() {
-    return customBoletWidget("Royal 5", "1,021,649G", []);
+    GameTirageModel tirage =
+        GameTirageModel(type: Gametype.royal5, boul: '', amount: 25);
+    return customBoletWidget("Royal 5", "1,021,649G", [
+      boulInput(
+        length: 3,
+        onSaved: (value) {
+          tirage.boul = value!;
+          controller.tempGameTirage = tirage;
+        },
+      ),
+      horizontalSpaceTiny,
+      boulInput(
+        length: 2,
+        onSaved: (value) {
+          tirage.boul += value!;
+          controller.tempGameTirage = tirage;
+        },
+        autoFocus: false,
+      ),
+    ]);
   }
 
   Future changeFocus(
@@ -205,7 +272,11 @@ class PlayGame extends GetView<PlayGameController> {
     if (inputValue.length == length) focus.nextFocus();
   }
 
-  Widget boulInput({required void Function(String?) onSaved, int length = 2}) {
+  Widget boulInput(
+      {required void Function(String?) onSaved,
+      int length = 2,
+      TextInputAction? textInputAction,
+      bool autoFocus = true}) {
     return Builder(builder: (context) {
       return SizedBox.square(
         dimension: 60.ss,
@@ -213,20 +284,22 @@ class PlayGame extends GetView<PlayGameController> {
           contentPadding: EdgeInsets.all(8),
           hintText: AppStrings.PICK,
           onChanged: (mk) {
-            changeFocus(mk, length, context);
+            if (autoFocus) changeFocus(mk, length, context);
           },
+          textInputAction: textInputAction ?? TextInputAction.done,
           style: TextStyle(
             height: 2.ss,
           ),
           errorStyle: TextStyle(fontSize: 0),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),
-            borderSide: const BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(
+                color: Color.fromARGB(255, 134, 61, 61), width: 2),
           ),
           textAlign: TextAlign.center,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
           validator: (p0) {
-            return isEmptyValidator(p0);
+            return isLength(p0, equal: length);
           },
           onSaved: onSaved,
           inputFormatters: [
@@ -308,6 +381,7 @@ class PlayGame extends GetView<PlayGameController> {
           Expanded(
             child: Row(
               mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: children,
             ),
           ),

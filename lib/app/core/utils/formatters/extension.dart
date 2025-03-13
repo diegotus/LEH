@@ -192,6 +192,7 @@ extension GameTirageExtention on GameTirageModel {
 }
 
 List<String> _getboul(String boul, Gametype type) {
+  print("the bpudl $boul $type");
   RegExp? exp;
   switch (type) {
     case Gametype.bolet:
@@ -203,14 +204,12 @@ List<String> _getboul(String boul, Gametype type) {
       continue regExp;
     regExp:
     case Gametype.lotto5:
+    case Gametype.lotto5p5:
+    case Gametype.royal5:
       exp ??= RegExp(r"\d{2,3}");
       Iterable<Match> matches = exp.allMatches(boul);
-      return [...matches.map((m) => m.group(0)!)];
-    case Gametype.lotto5p5:
-      // TODO: Handle this case.
-      throw UnimplementedError();
-    case Gametype.royal5:
-      // TODO: Handle this case.
-      throw UnimplementedError();
+      var boules = [...matches.map((m) => m.group(0)!)];
+
+      return boules;
   }
 }

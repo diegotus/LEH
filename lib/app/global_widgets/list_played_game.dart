@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/app_colors.dart';
 import 'package:haiti_lotri/app/core/utils/formatters/extension.dart';
 import 'package:sizing/sizing_extension.dart';
 
@@ -47,6 +48,28 @@ class ListPlayedGame extends StatelessWidget {
                     baseline: TextBaseline.alphabetic,
                     child: SizedBox(width: 35),
                   ),
+                  if (item.option != null)
+                    WidgetSpan(
+                      alignment: PlaceholderAlignment.baseline,
+                      baseline: TextBaseline.alphabetic,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 8.ss),
+                        decoration: ShapeDecoration(
+                          color: AppColors.PRIMARY3,
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(20), // Adds BorderRadius
+                          ),
+                        ),
+                        child: Text(
+                          item.option!.miniName,
+                          style: TextStyle(
+                              color: FontColors.PRIMARY,
+                              fontFamily: FontPoppins.BOLD,
+                              fontSize: 18.fs),
+                        ),
+                      ),
+                    ),
                   WidgetSpan(
                     alignment: PlaceholderAlignment.baseline,
                     baseline: TextBaseline.alphabetic,

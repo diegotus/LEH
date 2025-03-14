@@ -229,6 +229,7 @@ class AppStrings {
   static String get TRANSACTION_DETAIL =>
       LocaleKeys.label_transaction_details.tr;
   static String get MORE_INFO => LocaleKeys.label_more_info.tr;
+  static String get option => LocaleKeys.label_option.tr;
   static String Function(String? name) get DRAW =>
       (String? name) => LocaleKeys.label_draw.trParams({'name': name ?? ''});
 }

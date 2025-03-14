@@ -166,6 +166,44 @@ class TransactionDetailsView extends GetView<TransactionDetailsController> {
                                                         child:
                                                             SizedBox(width: 35),
                                                       ),
+                                                      if (el.option != null)
+                                                        WidgetSpan(
+                                                          alignment:
+                                                              PlaceholderAlignment
+                                                                  .baseline,
+                                                          baseline: TextBaseline
+                                                              .alphabetic,
+                                                          child: Container(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                                    horizontal:
+                                                                        8.ss),
+                                                            decoration:
+                                                                ShapeDecoration(
+                                                              color: AppColors
+                                                                  .PRIMARY3,
+                                                              shape:
+                                                                  RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20), // Adds BorderRadius
+                                                              ),
+                                                            ),
+                                                            child: Text(
+                                                              el.option!
+                                                                  .miniName,
+                                                              style: TextStyle(
+                                                                  color: FontColors
+                                                                      .PRIMARY,
+                                                                  fontFamily:
+                                                                      FontPoppins
+                                                                          .BOLD,
+                                                                  fontSize:
+                                                                      18.fs),
+                                                            ),
+                                                          ),
+                                                        ),
                                                       WidgetSpan(
                                                         alignment:
                                                             PlaceholderAlignment

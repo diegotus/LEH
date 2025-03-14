@@ -126,14 +126,18 @@ enum VerificationStatus {
 }
 
 enum Gametype {
-  bolet,
-  mariaj,
-  lotto3,
-  lotto4,
-  lotto5,
-  lotto5p5,
-  royal5;
+  bolet("Bolet"),
+  mariaj("Maryaj"),
+  lotto3("Lotto 3"),
+  lotto4("Lotto 4"),
+  lotto5("Lotto 5"),
+  lotto5p5("Lotoo 5/5"),
+  royal5("Royal 5");
 
+  final String description;
+
+  // Constructor for the enum
+  const Gametype(this.description);
   static Gametype fromString(String name) {
     return Gametype.values.firstWhereOrNull((el) => el.name == name) ?? bolet;
   }
@@ -146,6 +150,23 @@ enum TirageName {
 
   static TirageName fromString(String name) {
     return TirageName.values.firstWhereOrNull((el) => el.name == name) ?? NY;
+  }
+}
+
+enum BoulOption {
+  option1("OPS1", '1'),
+  option2("OPS2", '2'),
+  option3("OPS3", '3');
+
+  final String miniName;
+  final String number;
+
+  // Constructor for the enum
+  const BoulOption(this.miniName, this.number);
+
+  static BoulOption? fromString(String? name) {
+    if (name == null) return null;
+    return BoulOption.values.firstWhereOrNull((el) => el.name == name);
   }
 }
 

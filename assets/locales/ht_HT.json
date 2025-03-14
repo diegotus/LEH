@@ -160,13 +160,13 @@
     "cash_in": "Depo",
     "transaction_history": "Istwa tranzaksyon",
     "transaction_details": "Detay tranzaksyon an",
-    "transaction_type":"Tip tranzaksyon",
-    "transaction_type_named":{
-      "transfer":"Transfè",
-      "lotoPlay":"tikè Achte",
-      "lotoWin":"Benefis nan lotri",
-      "cash":"Espès",
-      "payment":"Pèman"
+    "transaction_type": "Tip tranzaksyon",
+    "transaction_type_named": {
+      "transfer": "Transfè",
+      "lotoPlay": "tikè Achte",
+      "lotoWin": "Benefis nan lotri",
+      "cash": "Espès",
+      "payment": "Pèman"
     },
     "local_branch": "Branch lokal",
     "no_tirage_for_now": "Poko gen tiraj",
@@ -188,13 +188,14 @@
     "choose_Option": "Chwazi yon opsyon",
     "fee": "Frè",
     "tax": "Taks",
-    "add":"Ajoute",
+    "add": "Ajoute",
     "draw": "Tiraj @name",
-    "pick":"Boul",
-    "bet":"Miz",
-    "more_info":"Plis detay",
-    "account_balance":"Balans kont",
-    "in_us_dollars":"An dola ameriken",
+    "pick": "Boul",
+    "bet": "Miz",
+    "more_info": "Plis detay",
+    "account_balance": "Balans kont",
+    "in_us_dollars": "An dola ameriken",
+    "option": "Opsyon",
     "language": {
       "fr": "Fransè",
       "ht": "Kreyòl"

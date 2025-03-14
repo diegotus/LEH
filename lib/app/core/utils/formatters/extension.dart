@@ -122,6 +122,7 @@ extension DateTimeExtention on DateTime {
   }
 }
 
+//TODO dont forget to create a list boul view widget on details
 extension TicketExtention on TicketModel {
   String? getWinningMultiple(String boul) {
     String? returnString;
@@ -130,24 +131,13 @@ extension TicketExtention on TicketModel {
         const price = ["x50", "x20", "x10"];
         var index = winningNumbers?.indexWhere((value) => value.endsWith(boul));
         if (index != null && index > -1) return price[index];
-
+        break;
       case Gametype.mariaj:
-        var exp = RegExp(r'\d{2}');
-        if (_areElementsInDifferentPositions(
-            [...exp.allMatches(boul).map((el) => el.group(0)!)],
-            winningNumbers!)) {
-          return "x2000";
-        }
-
+        return "x2000";
       case Gametype.lotto3:
-        if (winningNumbers?[0] == boul) {
-          return "500X";
-        }
+        return "500X";
       case Gametype.lotto4:
-        if (winningNumbers?.skip(1).join() == boul) {
-          return "5,000X";
-        }
-
+        return "5,000X";
       case Gametype.lotto5:
         returnString = "25,000X";
         continue returnString;
@@ -157,9 +147,7 @@ extension TicketExtention on TicketModel {
       returnString:
       case Gametype.royal5:
         returnString ??= "1,021,649G";
-        if (winningNumbers?.sublist(0, 2).join() == boul) {
-          return returnString;
-        }
+        return returnString;
     }
     return null;
   }

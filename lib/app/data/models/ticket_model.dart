@@ -153,6 +153,7 @@ class BoulJweModel {
   final int billetId;
   final String boul;
   final double amount;
+  final BoulOption? option;
   final GameStatus status;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -165,6 +166,7 @@ class BoulJweModel {
     required this.status,
     required this.createdAt,
     required this.updatedAt,
+    this.option,
   });
 
   BoulJweModel copyWith({
@@ -175,6 +177,7 @@ class BoulJweModel {
     GameStatus? status,
     DateTime? createdAt,
     DateTime? updatedAt,
+    BoulOption? option,
   }) {
     return BoulJweModel(
       id: id ?? this.id,
@@ -182,6 +185,7 @@ class BoulJweModel {
       boul: boul ?? this.boul,
       amount: amount ?? this.amount,
       status: status ?? this.status,
+      option: option ?? this.option,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );
@@ -194,6 +198,7 @@ class BoulJweModel {
       'boul': boul,
       'amount': amount,
       'status': status.name,
+      'option': option?.name,
       'createdAt': createdAt.millisecondsSinceEpoch,
       'updatedAt': updatedAt.millisecondsSinceEpoch,
     };
@@ -206,6 +211,7 @@ class BoulJweModel {
       boul: map['boul'] as String,
       amount: double.parse("${map['amount'] ?? 0}"),
       status: GameStatus.fromString(map['status']),
+      option: BoulOption.fromString(map['option']),
       createdAt: DateTimeUtility.convertDateFromString(map['createdAt']),
       updatedAt: DateTimeUtility.convertDateFromString(map['updatedAt']),
     );
@@ -218,7 +224,7 @@ class BoulJweModel {
 
   @override
   String toString() {
-    return 'BoulJweModel(id: $id, billetId: $billetId, boul: $boul, amount: $amount, status: $status, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'BoulJweModel(id: $id, billetId: $billetId, boul: $boul, amount: $amount, status: $status, status: $option, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -230,6 +236,7 @@ class BoulJweModel {
         other.boul == boul &&
         other.amount == amount &&
         other.status == status &&
+        other.option == option &&
         other.createdAt == createdAt &&
         other.updatedAt == updatedAt;
   }
@@ -241,6 +248,7 @@ class BoulJweModel {
         boul.hashCode ^
         amount.hashCode ^
         status.hashCode ^
+        option.hashCode ^
         createdAt.hashCode ^
         updatedAt.hashCode;
   }

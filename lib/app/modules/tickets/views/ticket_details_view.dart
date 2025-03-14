@@ -5,7 +5,9 @@ import 'package:haiti_lotri/app/core/utils/app_colors.dart';
 import 'package:haiti_lotri/app/core/utils/enums.dart';
 import 'package:haiti_lotri/app/core/utils/formatters/extension.dart';
 import 'package:haiti_lotri/app/global_widgets/list_builder_widget.dart';
+import 'package:sizing/sizing_extension.dart';
 
+import '../../../core/utils/font_family.dart';
 import '../../../data/models/ticket_model.dart';
 import '../controllers/tickets_controller.dart';
 
@@ -59,6 +61,28 @@ class TicketDetailView extends GetView<TicketsController> {
                       baseline: TextBaseline.alphabetic,
                       child: SizedBox(width: 35),
                     ),
+                    if (item.option != null)
+                      WidgetSpan(
+                        alignment: PlaceholderAlignment.baseline,
+                        baseline: TextBaseline.alphabetic,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 8.ss),
+                          decoration: ShapeDecoration(
+                            color: AppColors.PRIMARY3,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  20), // Adds BorderRadius
+                            ),
+                          ),
+                          child: Text(
+                            item.option!.miniName,
+                            style: TextStyle(
+                                color: FontColors.PRIMARY,
+                                fontFamily: FontPoppins.BOLD,
+                                fontSize: 18.fs),
+                          ),
+                        ),
+                      ),
                     WidgetSpan(
                       alignment: PlaceholderAlignment.baseline,
                       baseline: TextBaseline.alphabetic,

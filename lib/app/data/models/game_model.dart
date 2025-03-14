@@ -12,12 +12,13 @@ class GameTirageModel {
   TirageName? tirageName;
   String boul;
   double amount;
-  GameTirageModel({
-    required this.type,
-    this.tirageName,
-    required this.boul,
-    required this.amount,
-  });
+  BoulOption? option;
+  GameTirageModel(
+      {required this.type,
+      this.tirageName,
+      required this.boul,
+      required this.amount,
+      this.option});
   static empty() => GameTirageModel(
         type: Gametype.bolet,
         tirageName: TirageName.FL,
@@ -25,18 +26,18 @@ class GameTirageModel {
         boul: '',
       );
 
-  GameTirageModel copyWith({
-    Gametype? type,
-    TirageName? tirageName,
-    String? boul,
-    double? amount,
-  }) {
+  GameTirageModel copyWith(
+      {Gametype? type,
+      TirageName? tirageName,
+      String? boul,
+      double? amount,
+      BoulOption? option}) {
     return GameTirageModel(
-      type: type ?? this.type,
-      tirageName: tirageName ?? this.tirageName,
-      boul: boul ?? this.boul,
-      amount: amount ?? this.amount,
-    );
+        type: type ?? this.type,
+        tirageName: tirageName ?? this.tirageName,
+        boul: boul ?? this.boul,
+        amount: amount ?? this.amount,
+        option: option ?? this.option);
   }
 
   Map<String, dynamic> toMap() {
@@ -45,6 +46,7 @@ class GameTirageModel {
       'tirageName': tirageName?.name,
       'boul': boul,
       'amount': amount,
+      'option': option?.name
     };
   }
 
@@ -53,6 +55,7 @@ class GameTirageModel {
       type: Gametype.fromString(map['type']),
       tirageName: TirageName.fromString(map['tirageName']),
       boul: map['boul'],
+      option: BoulOption.fromString(map['option']),
       amount: double.parse("${map['amount']}"),
     );
   }
@@ -64,7 +67,7 @@ class GameTirageModel {
 
   @override
   String toString() {
-    return 'GameTirageModel(type: $type, tirageName: $tirageName, boul: $boul, amount: $amount)';
+    return 'GameTirageModel(type: $type, tirageName: $tirageName, boul: $boul, amount: $amount, option: $option)';
   }
 
   @override
@@ -74,6 +77,7 @@ class GameTirageModel {
     return other.type == type &&
         other.tirageName == tirageName &&
         other.boul == boul &&
+        other.option == option &&
         other.amount == amount;
   }
 
@@ -82,6 +86,7 @@ class GameTirageModel {
     return type.hashCode ^
         tirageName.hashCode ^
         boul.hashCode ^
+        option.hashCode ^
         amount.hashCode;
   }
 }

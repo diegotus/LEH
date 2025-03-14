@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:get_storage_pro/get_storage_pro.dart';
+import 'package:sizing/sizing_extension.dart';
+
 import 'package:haiti_lotri/app/core/utils/app_colors.dart';
 import 'package:haiti_lotri/app/core/utils/app_string.dart';
-import 'package:haiti_lotri/app/core/utils/app_utility.dart';
 import 'package:haiti_lotri/app/core/utils/datetime_utility.dart';
 import 'package:haiti_lotri/app/core/utils/enums.dart';
 import 'package:haiti_lotri/app/core/utils/font_family.dart';
 import 'package:haiti_lotri/app/core/utils/formatters/extension.dart';
 import 'package:haiti_lotri/app/global_widgets/app_button.dart';
 import 'package:haiti_lotri/app/global_widgets/list_builder_widget.dart';
-import 'package:intl/intl.dart';
-import 'package:sizing/sizing_extension.dart';
 
 import '../../../core/utils/function.dart';
 import '../../../core/utils/kiwoo_icons.dart';

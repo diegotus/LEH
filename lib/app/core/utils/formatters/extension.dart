@@ -15,8 +15,9 @@ extension NumberFormat on num {
 
   String get toUS => toUsCurrency.format(this / 138);
   String get formatNumber => numberFormater.format(this);
+  String get formatDecimal => decimalFormater.format(this);
   String get formatNumberCompact {
-    var formater = numberFormater;
+    var formater = decimalFormater;
     if (this > 100000) {
       formater = numberFormaterCompact;
     }
@@ -26,11 +27,13 @@ extension NumberFormat on num {
 }
 
 extension NumberStringFormat on String? {
-  double get _toDouble => (double.tryParse(this ?? '0') ?? 0);
+  double get _toDouble => (double.tryParse("$this") ?? 0);
+  int get _toInt => (int.tryParse('$this') ?? 0);
   String get toHLG => _toDouble.toHLG;
   String get toHLGCompact => _toDouble.toHLGCompact;
   String get toUS => _toDouble.toUS;
-  String get formatNumber => _toDouble.formatNumber;
+  String get formatDouble => _toDouble.formatDecimal;
+  String get formatNumber => _toInt.formatNumber;
 }
 
 extension StringExtention on String? {
@@ -124,30 +127,45 @@ extension DateTimeExtention on DateTime {
 
 //TODO dont forget to create a list boul view widget on details
 extension TicketExtention on TicketModel {
-  String? getWinningMultiple(String boul) {
+  String? getWinningMultiple(String boul, GameStatus status) {
     String? returnString;
-    switch (type) {
-      case Gametype.bolet:
-        const price = ["x50", "x20", "x10"];
-        var index = winningNumbers?.indexWhere((value) => value.endsWith(boul));
-        if (index != null && index > -1) return price[index];
-        break;
-      case Gametype.mariaj:
-        return "x2000";
-      case Gametype.lotto3:
-        return "500X";
-      case Gametype.lotto4:
-        return "5,000X";
-      case Gametype.lotto5:
-        returnString = "25,000X";
-        continue returnString;
-      case Gametype.lotto5p5:
-        returnString = "200,464G";
-        continue returnString;
-      returnString:
-      case Gametype.royal5:
-        returnString ??= "1,021,649G";
-        return returnString;
+    if (status == GameStatus.win) {
+      switch (type) {
+        case Gametype.bolet:
+          const price = ["X50", "X20", "X10"];
+          var index =
+              winningNumbers?.indexWhere((value) => value.endsWith(boul));
+          if (index != null && index > -1) return price[index];
+          break;
+        case Gametype.mariaj:
+          return "x2000";
+        case Gametype.lotto3:
+          return "500X";
+        case Gametype.lotto4:
+          return "5,000X";
+        case Gametype.lotto5:
+          returnString = "25,000X";
+          continue returnString;
+        case Gametype.lotto5p5:
+          returnString = "200,464G";
+          continue returnString;
+        returnString:
+        case Gametype.royal5:
+          returnString ??= "1,021,649G";
+          return returnString;
+      }
+    } else {
+      switch (type) {
+        case Gametype.bolet:
+        case Gametype.mariaj:
+        case Gametype.lotto3:
+        case Gametype.lotto4:
+        case Gametype.lotto5:
+          return status == GameStatus.lost ? "X0" : "...";
+        case Gametype.lotto5p5:
+        case Gametype.royal5:
+          return status == GameStatus.lost ? '0G' : "...";
+      }
     }
     return null;
   }

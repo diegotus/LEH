@@ -71,7 +71,6 @@ class PlayGame extends GetView<PlayGameController> {
                 child: SingleChildScrollView(
                   child: Card(
                     child: Obx(() {
-                      print("game length ${controller.game.length}");
                       return ListPlayedGame(
                         games: [...controller.game],
                         onDelete: (game) => controller.game.remove(game),
@@ -88,7 +87,7 @@ class PlayGame extends GetView<PlayGameController> {
   Widget boletWidget() {
     GameTirageModel tirage =
         GameTirageModel(type: Gametype.bolet, boul: '', amount: 0);
-    return customBoletWidget(tirage.type, "50X 20X 10X", [
+    return customBoletWidget(tirage.type, [
       boulInput(
         length: 2,
         onSaved: (value) {
@@ -110,7 +109,7 @@ class PlayGame extends GetView<PlayGameController> {
     GameTirageModel tirage =
         GameTirageModel(type: Gametype.mariaj, boul: '', amount: 0);
 
-    return customBoletWidget(tirage.type, "1000X", [
+    return customBoletWidget(tirage.type, [
       boulInput(
         length: 2,
         onSaved: (value) {
@@ -142,7 +141,7 @@ class PlayGame extends GetView<PlayGameController> {
   Widget lotto3Widget() {
     GameTirageModel tirage =
         GameTirageModel(type: Gametype.lotto3, boul: '', amount: 0);
-    return customBoletWidget(tirage.type, "500X", [
+    return customBoletWidget(tirage.type, [
       boulInput(
         length: 3,
         onSaved: (value) {
@@ -163,7 +162,7 @@ class PlayGame extends GetView<PlayGameController> {
   Widget lotto4Widget() {
     GameTirageModel tirage =
         GameTirageModel(type: Gametype.lotto4, boul: '', amount: 0);
-    return customBoletWidget(tirage.type, "5,000X", [
+    return customBoletWidget(tirage.type, [
       boulInput(
         length: 2,
         onSaved: (value) {
@@ -192,7 +191,7 @@ class PlayGame extends GetView<PlayGameController> {
   Widget lotto5Widget() {
     GameTirageModel tirage =
         GameTirageModel(type: Gametype.lotto5, boul: '', amount: 0);
-    return customBoletWidget(tirage.type, "25,000X", [
+    return customBoletWidget(tirage.type, [
       boulInput(
         length: 3,
         onSaved: (value) {
@@ -222,7 +221,7 @@ class PlayGame extends GetView<PlayGameController> {
     GameTirageModel tirage =
         GameTirageModel(type: Gametype.lotto5p5, boul: '', amount: 5);
 
-    return customBoletWidget(tirage.type, "200,464G", [
+    return customBoletWidget(tirage.type, [
       boulInput(
         length: 3,
         onSaved: (value) {
@@ -245,7 +244,7 @@ class PlayGame extends GetView<PlayGameController> {
   Widget royal5Widget() {
     GameTirageModel tirage =
         GameTirageModel(type: Gametype.royal5, boul: '', amount: 25);
-    return customBoletWidget(tirage.type, "1,021,649G", [
+    return customBoletWidget(tirage.type, [
       boulInput(
         length: 3,
         onSaved: (value) {
@@ -278,7 +277,7 @@ class PlayGame extends GetView<PlayGameController> {
       bool autoFocus = true}) {
     return Builder(builder: (context) {
       return SizedBox(
-        height: 50.ss,
+        height: 40.ss,
         width: 60.ss,
         child: CustomInputFormField(
           contentPadding: EdgeInsets.all(8),
@@ -288,7 +287,7 @@ class PlayGame extends GetView<PlayGameController> {
           },
           textInputAction: textInputAction ?? TextInputAction.done,
           style: TextStyle(
-            height: 2.ss,
+            height: 1.5.ss,
           ),
           errorStyle: TextStyle(fontSize: 0),
           errorBorder: OutlineInputBorder(
@@ -314,7 +313,7 @@ class PlayGame extends GetView<PlayGameController> {
   Widget mizInput({required void Function(String?) onSaved}) {
     return SizedBox(
       width: 85,
-      height: 50.ss,
+      height: 40.ss,
       child: CustomInputFormField(
         contentPadding: EdgeInsets.all(8),
         textAlign: TextAlign.center,
@@ -324,7 +323,7 @@ class PlayGame extends GetView<PlayGameController> {
         ),
         hintText: AppStrings.BET,
         style: TextStyle(
-          height: 2.ss,
+          height: 1.5.ss,
         ),
         errorStyle: TextStyle(fontSize: 0),
         inputFormatters: [decimalNumberFormatter],
@@ -337,8 +336,7 @@ class PlayGame extends GetView<PlayGameController> {
     );
   }
 
-  Widget customBoletWidget(
-      Gametype type, String description, List<Widget> children) {
+  Widget customBoletWidget(Gametype type, List<Widget> children) {
     final formKey = GlobalKey<FormState>();
     List<TirageName> listTirage = [];
     List<BoulOption> listOptions = [];
@@ -347,12 +345,12 @@ class PlayGame extends GetView<PlayGameController> {
       child: Column(
         children: [
           Container(
-            color: Colors.red,
+            color: Colors.redAccent,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  type.description,
+                  type.title,
                   style: titleDetailStyle.copyWith(
                     color: Colors.white,
                     fontSize: 40.fss,
@@ -361,25 +359,25 @@ class PlayGame extends GetView<PlayGameController> {
                 ),
                 horizontalSpaceMedium,
                 Card(
-                  // padding: EdgeInsets.all(5),
-                  color: Colors.white30,
+                  color: Colors.white38,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      description,
+                      type.getSubtitle(),
                       style: TextStyle(
-                          fontFamily: FontPoppins.ITALIC,
-                          fontSize: 13.fs,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                        fontFamily: FontPoppins.ITALIC,
+                        fontSize: 13.fs,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 )
               ],
             ),
           ),
-          verticalSpaceSmall,
           Expanded(
+            flex: 2,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -387,57 +385,72 @@ class PlayGame extends GetView<PlayGameController> {
             ),
           ),
           if ([Gametype.lotto4, Gametype.lotto5].contains(type))
-            Row(
+            Flexible(
+              flex: 1,
+              child: Row(
+                children: [
+                  typeGame(
+                    '${AppStrings.option} 1',
+                    initialValue: true,
+                    onSaved: (value) {
+                      if (value == true) {
+                        listOptions.add(BoulOption.option1);
+                      } else {
+                        listOptions.remove(BoulOption.option1);
+                      }
+                    },
+                  ),
+                  typeGame(
+                    '${AppStrings.option} 2',
+                    onSaved: (value) {
+                      if (value == true) {
+                        listOptions.add(BoulOption.option2);
+                      } else {
+                        listOptions.remove(BoulOption.option2);
+                      }
+                    },
+                  ),
+                  typeGame(
+                    '${AppStrings.option} 3',
+                    onSaved: (value) {
+                      if (value == true) {
+                        listOptions.add(BoulOption.option3);
+                      } else {
+                        listOptions.remove(BoulOption.option3);
+                      }
+                    },
+                  ),
+                ],
+              ),
+            ),
+          Flexible(
+            flex: 1,
+            child: Row(
               children: [
-                typeGame('${AppStrings.option} 1', initialValue: true,
+                typeGame(AppStrings.DRAW("NY"), initialValue: true,
                     onSaved: (value) {
                   if (value == true) {
-                    listOptions.add(BoulOption.option1);
+                    listTirage.add(TirageName.NY);
                   } else {
-                    listOptions.remove(BoulOption.option1);
+                    listTirage.remove(TirageName.NY);
                   }
                 }),
-                typeGame('${AppStrings.option} 2', onSaved: (value) {
+                typeGame(AppStrings.DRAW("FL"), onSaved: (value) {
                   if (value == true) {
-                    listOptions.add(BoulOption.option2);
+                    listTirage.add(TirageName.FL);
                   } else {
-                    listOptions.remove(BoulOption.option2);
+                    listTirage.remove(TirageName.FL);
                   }
                 }),
-                typeGame('${AppStrings.option} 3', onSaved: (value) {
+                typeGame(AppStrings.DRAW("GA"), onSaved: (value) {
                   if (value == true) {
-                    listOptions.add(BoulOption.option3);
+                    listTirage.add(TirageName.GA);
                   } else {
-                    listOptions.remove(BoulOption.option3);
+                    listTirage.remove(TirageName.GA);
                   }
                 }),
               ],
             ),
-          Row(
-            children: [
-              typeGame(AppStrings.DRAW("NY"), initialValue: true,
-                  onSaved: (value) {
-                if (value == true) {
-                  listTirage.add(TirageName.NY);
-                } else {
-                  listTirage.remove(TirageName.NY);
-                }
-              }),
-              typeGame(AppStrings.DRAW("FL"), onSaved: (value) {
-                if (value == true) {
-                  listTirage.add(TirageName.FL);
-                } else {
-                  listTirage.remove(TirageName.FL);
-                }
-              }),
-              typeGame(AppStrings.DRAW("GA"), onSaved: (value) {
-                if (value == true) {
-                  listTirage.add(TirageName.GA);
-                } else {
-                  listTirage.remove(TirageName.GA);
-                }
-              }),
-            ],
           ),
           SizedBox(
             width: double.infinity,
@@ -455,12 +468,9 @@ class PlayGame extends GetView<PlayGameController> {
                         formKey.currentState?.save();
                         for (var el in listTirage) {
                           if (listOptions.isEmpty) {
-                            print(
-                                "game length adding ${controller.game.length}");
                             controller.game.add(controller.tempGameTirage!
                                 .copyWith(tirageName: el));
                           } else {
-                            print("option length ${listOptions.length}");
                             for (var op in listOptions) {
                               controller.game.add(controller.tempGameTirage!
                                   .copyWith(tirageName: el, option: op));
@@ -485,8 +495,11 @@ class PlayGame extends GetView<PlayGameController> {
     );
   }
 
-  Widget typeGame(String name,
-      {void Function(bool?)? onSaved, bool initialValue = false}) {
+  Widget typeGame(
+    String name, {
+    void Function(bool?)? onSaved,
+    bool initialValue = false,
+  }) {
     return Expanded(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

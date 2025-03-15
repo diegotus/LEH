@@ -2,6 +2,7 @@
 
 import 'package:get/get.dart';
 import 'package:haiti_lotri/app/core/utils/app_string.dart';
+import 'package:haiti_lotri/app/core/utils/formatters/extension.dart';
 
 enum OTPType {
   register,
@@ -126,18 +127,30 @@ enum VerificationStatus {
 }
 
 enum Gametype {
-  bolet("Bolet"),
-  mariaj("Maryaj"),
-  lotto3("Lotto 3"),
-  lotto4("Lotto 4"),
-  lotto5("Lotto 5"),
-  lotto5p5("Lotoo 5/5"),
-  royal5("Royal 5");
+  bolet("Bolet", "50X 20X 10X"),
+  mariaj("Maryaj", '1000X'),
+  lotto3("Lotto 3", '500X'),
+  lotto4("Lotto 4", '5000X'),
+  lotto5("Lotto 5", '25000X'),
+  lotto5p5("Lotoo 5/5", '200464G'),
+  royal5("Royal 5", '1021649G');
 
-  final String description;
+  final String title;
+  final String _subtitle;
+  getSubtitle() {
+    var numberValue = RegExp(r"(X\s?)|G");
+
+    var maches = _subtitle.splitMapJoin(numberValue, onMatch: (val) {
+      return "${val[0]}";
+    }, onNonMatch: (string) {
+      if (string.isEmpty) return string;
+      return string.formatNumber;
+    });
+    return maches;
+  }
 
   // Constructor for the enum
-  const Gametype(this.description);
+  const Gametype(this.title, this._subtitle);
   static Gametype fromString(String name) {
     return Gametype.values.firstWhereOrNull((el) => el.name == name) ?? bolet;
   }

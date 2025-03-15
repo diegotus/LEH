@@ -18,6 +18,7 @@ import '../../../../global_widgets/app_bar.dart';
 import '../../../../global_widgets/app_button.dart';
 import '../../../../global_widgets/list_builder_widget.dart';
 import '../../../../global_widgets/modal/bottom_sheet.dart';
+import '../../../../global_widgets/ticket_widget.dart';
 import '../controllers/transaction_details_controller.dart';
 
 class TransactionDetailsView extends GetView<TransactionDetailsController> {
@@ -91,156 +92,10 @@ class TransactionDetailsView extends GetView<TransactionDetailsController> {
                     "title": AppStrings.MORE_INFO,
                     "value": () {
                       bottomSheetWidget(
-                        backgroundColor: AppColors.APP_BG,
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Center(
-                                child: Text(AppStrings.TICKET,
-                                    style: Get.textTheme.titleLarge),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: ListBuilderWidget.future(
-                                  onEmptyText: "No Billet Found",
-                                  shrinkWrap: false,
-                                  future: () =>
-                                      controller.callTicketApi(item.id),
-                                  itemBuilder: (context, ticket, _, [__]) {
-                                    return Card(
-                                      color: getTicketColor(ticket),
-                                      child: ExpansionTile(
-                                        dense: true,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        maintainState: true,
-                                        collapsedShape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        title: Text(
-                                            "${AppStrings.TICKET} #${ticket.id.toString().padLeft(8, "0")}"),
-                                        subtitle:
-                                            Text(ticket.getAmountTotal.toHLG),
-                                        // backgroundColor: AppColors.WHITE,
-                                        children: [
-                                          ...ticket.boulJwe.map((el) {
-                                            var color = el.status.name == "win"
-                                                ? AppColors.PRIMARY
-                                                : el.status.name == "lost"
-                                                    ? FontColors.RED
-                                                    : Colors.grey.shade400;
-
-                                            return ListTile(
-                                              dense: true,
-                                              tileColor: Colors.white,
-                                              leading: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  ...el
-                                                      .getboul(ticket.type)
-                                                      .map(
-                                                        (el) => CircleAvatar(
-                                                          backgroundColor:
-                                                              color,
-                                                          radius: 15,
-                                                          child: Text(el),
-                                                        ),
-                                                      )
-                                                ],
-                                              ),
-                                              title: Text.rich(
-                                                TextSpan(
-                                                    text: ticket
-                                                        .type.name.capitalize,
-                                                    children: [
-                                                      WidgetSpan(
-                                                        alignment:
-                                                            PlaceholderAlignment
-                                                                .baseline,
-                                                        baseline: TextBaseline
-                                                            .alphabetic,
-                                                        child:
-                                                            SizedBox(width: 35),
-                                                      ),
-                                                      if (el.option != null)
-                                                        WidgetSpan(
-                                                          alignment:
-                                                              PlaceholderAlignment
-                                                                  .baseline,
-                                                          baseline: TextBaseline
-                                                              .alphabetic,
-                                                          child: Container(
-                                                            padding: EdgeInsets
-                                                                .symmetric(
-                                                                    horizontal:
-                                                                        8.ss),
-                                                            decoration:
-                                                                ShapeDecoration(
-                                                              color: AppColors
-                                                                  .PRIMARY3,
-                                                              shape:
-                                                                  RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            20), // Adds BorderRadius
-                                                              ),
-                                                            ),
-                                                            child: Text(
-                                                              el.option!
-                                                                  .miniName,
-                                                              style: TextStyle(
-                                                                  color: FontColors
-                                                                      .PRIMARY,
-                                                                  fontFamily:
-                                                                      FontPoppins
-                                                                          .BOLD,
-                                                                  fontSize:
-                                                                      18.fs),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      WidgetSpan(
-                                                        alignment:
-                                                            PlaceholderAlignment
-                                                                .baseline,
-                                                        baseline: TextBaseline
-                                                            .alphabetic,
-                                                        child:
-                                                            SizedBox(width: 45),
-                                                      ),
-                                                      TextSpan(
-                                                          text: ticket
-                                                              .tirageName.name),
-                                                    ]),
-                                              ),
-                                              subtitle: Text(el.amount.toHLG),
-                                              trailing: el.status.name == "win"
-                                                  ? Text(
-                                                      "${ticket.getWinningMultiple(el.boul)}",
-                                                      style: Get
-                                                          .textTheme.titleLarge
-                                                          ?.copyWith(
-                                                              color: AppColors
-                                                                  .PRIMARY),
-                                                    )
-                                                  : null,
-                                            );
-                                          })
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
+                          backgroundColor: AppColors.APP_BG,
+                          child: TicketWidget(
+                            future: () => controller.callTicketApi(item.id),
+                          ));
                     },
                   });
                   break;

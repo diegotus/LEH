@@ -50,7 +50,7 @@ Widget accountDetailsCardWidget(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          balance?.formatNumber ?? "--",
+                          balance?.formatDouble ?? "--",
                           style: TextStyle(
                             fontSize: 25.fss,
                             fontFamily: FontPoppins.BOLD,

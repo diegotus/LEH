@@ -2,11 +2,13 @@ import 'package:get/get.dart';
 
 import '../controllers/transactions_controller.dart';
 
-class TransactionsBinding extends Bindings {
+class TransactionsBinding extends Binding {
   @override
-  void dependencies() {
-    Get.lazyPut<TransactionsController>(
-      () => TransactionsController(),
-    );
+  List<Bind> dependencies() {
+    return [
+      Bind.lazyPut<TransactionsController>(
+        () => TransactionsController(),
+      )
+    ];
   }
 }

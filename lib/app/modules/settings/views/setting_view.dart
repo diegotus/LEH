@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:haiti_lotri/app/controllers/firebase_services.dart';
 import 'package:haiti_lotri/app/core/utils/app_utility.dart';
 import 'package:haiti_lotri/app/data/models/storage_box_model.dart';
 import 'package:sizing/sizing.dart';
 
-import '../../../../generated/locales.g.dart';
-import '../../../controllers/app_services_controller.dart';
 import '../../../core/utils/actions/overlay.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_string.dart';
@@ -17,10 +14,8 @@ import '../../../global_widgets/app_bar.dart';
 import '../../../global_widgets/avatar_network_image.dart';
 import '../../../global_widgets/label_widget.dart' show lableWidgetTitle;
 import '../../../global_widgets/modal/bottom_sheet.dart';
-import '../../../global_widgets/progress_indicator.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/setting_controller.dart';
-import 'profile_edit_view.dart';
 
 class SettingView extends GetView<SettingController> {
   const SettingView({super.key});

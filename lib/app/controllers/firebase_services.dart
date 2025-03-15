@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_notifications_handler/firebase_notifications_handler.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/app_utility.dart';
 import 'package:haiti_lotri/app/core/utils/enums.dart';
 import 'package:haiti_lotri/app/data/models/storage_box_model.dart';
 import 'package:haiti_lotri/app/routes/app_pages.dart';
@@ -79,11 +80,18 @@ class FirebaseServices extends GetxService {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    if (!kIsWeb) {
-      await FirebaseMessaging.instance.requestPermission();
-      if (Platform.isAndroid) await _createChanel();
-    }
+    if (!kIsWeb && Platform.isAndroid) await _createChanel();
     return FirebaseServices._onInit(token: '');
+  }
+
+  static Future<void> permissionGetter(FirebaseMessaging fcMsg) async {
+    var fcmStatus = await fcMsg.getNotificationSettings();
+    if (fcmStatus.authorizationStatus == AuthorizationStatus.notDetermined) {
+      fcmStatus = await fcMsg.requestPermission();
+    }
+    if (fcmStatus.authorizationStatus == AuthorizationStatus.authorized) {
+      if (!kIsWeb && Platform.isAndroid) await _createChanel();
+    }
   }
 
   static Future<void> _createChanel() async {
@@ -128,6 +136,7 @@ class FirebaseServices extends GetxService {
 
   @override
   void onInit() {
+    StorageBox.fmcToken.val = token ?? '';
     super.onInit();
   }
 

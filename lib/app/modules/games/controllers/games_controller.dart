@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/modules/games/model/game_widget_model.dart';
 
 import '../../../core/utils/enums.dart';
 import '../../../core/utils/image_name.dart';
@@ -9,68 +10,35 @@ import '../providers/lotto_game_provider.dart';
 class GamesController extends GetxController {
   late LottoGameProvider provider;
 
-  List<Map<String, dynamic>> listGame = [
-    {
-      "id": 1,
-      "label": "Bolèt",
-      "image": ImgName.BOLET_GAME_IMG,
-      "description": "50X 20X 10X",
-      "MaterialIcon": "",
-      "onTap": () {
-        Get.toNamed(Routes.LOTO_GAME, arguments: Gametype.bolet);
-      }
-    },
-    {
-      "id": 2,
-      "label": "maryaj",
-      "image": ImgName.MARYAJ_GAME_IMG,
-      "description": "1000X",
-      "MaterialIcon": "",
-      "onTap": () {
-        Get.toNamed(Routes.LOTO_GAME, arguments: Gametype.mariaj);
-      }
-    },
-    {
-      "id": 3,
-      "label": "lotto3",
-      "image": ImgName.LOTTO3_GAME_IMG,
-      "description": "500X",
-      "MaterialIcon": "",
-      "onTap": () => Get.toNamed(Routes.LOTO_GAME, arguments: Gametype.lotto3),
-    },
-    {
-      "id": 4,
-      "label": "lotto4",
-      "description": "5,000X",
-      "image": ImgName.LOTTO4_GAME_IMG,
-      "MaterialIcon": "",
-      "onTap": () => Get.toNamed(Routes.LOTO_GAME, arguments: Gametype.lotto4),
-    },
-    {
-      "id": 5,
-      "label": "lotto5",
-      "description": "25,000X",
-      "image": ImgName.LOTTO5_GAME_IMG,
-      "MaterialIcon": "",
-      "onTap": () => Get.toNamed(Routes.LOTO_GAME, arguments: Gametype.lotto5),
-    },
-    {
-      "id": 6,
-      "label": "lotto5/5",
-      "description": "200,464G",
-      "image": ImgName.LOTTO55_GAME_IMG,
-      "MaterialIcon": "",
-      "onTap": () =>
-          Get.toNamed(Routes.LOTO_GAME, arguments: Gametype.lotto5p5),
-    },
-    {
-      "id": 7,
-      "label": "royal5",
-      "description": "1,021,649G",
-      "image": ImgName.ROYAL5_GAME_IMG,
-      "MaterialIcon": "",
-      "onTap": () => Get.toNamed(Routes.LOTO_GAME, arguments: Gametype.royal5),
-    },
+  List<GameWidgetModel> listGame = [
+    GameWidgetModel(
+      type: Gametype.bolet,
+      image: ImgName.BOLET_GAME_IMG,
+    ),
+    GameWidgetModel(
+      type: Gametype.mariaj,
+      image: ImgName.MARYAJ_GAME_IMG,
+    ),
+    GameWidgetModel(
+      type: Gametype.lotto3,
+      image: ImgName.LOTTO3_GAME_IMG,
+    ),
+    GameWidgetModel(
+      type: Gametype.lotto4,
+      image: ImgName.LOTTO4_GAME_IMG,
+    ),
+    GameWidgetModel(
+      type: Gametype.lotto5,
+      image: ImgName.LOTTO5_GAME_IMG,
+    ),
+    GameWidgetModel(
+      type: Gametype.lotto5p5,
+      image: ImgName.LOTTO55_GAME_IMG,
+    ),
+    GameWidgetModel(
+      type: Gametype.royal5,
+      image: ImgName.ROYAL5_GAME_IMG,
+    ),
   ];
 
   @override

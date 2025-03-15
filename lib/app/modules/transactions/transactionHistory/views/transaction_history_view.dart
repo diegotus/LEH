@@ -21,11 +21,9 @@ class TransactionHistoryView extends GetView<TransactionsController> {
   @override
   Widget build(BuildContext context) {
     DateTime? lastCreate;
-
     return Scaffold(
       appBar: AppBarWidgetTitle(
         title: AppStrings.TRANSACTIONS,
-        homeIfCantPop: true,
       ),
       body: ListBuilderWidget<TransactionModel>.future(
         future: controller.futureRequest,
@@ -59,10 +57,12 @@ class TransactionHistoryView extends GetView<TransactionsController> {
                   ),
                 ),
               ListTileCard(
-                onTap: () => Get.toNamed(
-                  Routes.TRANSACTION_DETAILS,
-                  parameters: {"id": item.id.toString()},
-                ),
+                onTap: () {
+                  Get.toNamed(
+                    Routes.TRANSACTION_DETAILS,
+                    parameters: {"id": item.id.toString()},
+                  );
+                },
                 isThreeLine: true,
                 leading: AspectRatio(
                   aspectRatio: 0.6,

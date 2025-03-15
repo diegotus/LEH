@@ -49,6 +49,7 @@ class MyApp extends StatelessWidget {
       onFcmTokenInitialize: firebaseServices.onFcmTokenInitialize,
       shouldHandleNotification: firebaseServices.shouldHandleNotification,
       onOpenNotificationArrive: firebaseServices.onOpenNotificationArrive,
+      // permissionGetter: FirebaseServices.permissionGetter,
       onTap: (val) =>
           firebaseServices.onOpenNotificationArrive(val, taped: true),
       child: SizingBuilder(

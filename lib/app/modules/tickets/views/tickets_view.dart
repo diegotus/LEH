@@ -130,6 +130,8 @@ class TicketsView extends GetView<TicketsController> {
                         onTap: () {
                           bottomSheetWidget(
                             // isScrollControlled: true,
+                            clipBehavior: Clip.antiAlias,
+                            backgroundColor: AppColors.APP_BG,
                             child: TicketDetailView(ticket: ticket),
                           );
                           // Get.to(() => TicketDetailView(idTicket: ticket.id),

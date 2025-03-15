@@ -103,7 +103,7 @@ class PlayGameReceiptView extends GetView<PlayGameController> {
                       subtitle: Text(el.amount.toHLG),
                       trailing: el.status.name == "win"
                           ? Text(
-                              "${ticket.getWinningMultiple(el.boul)}",
+                              "${ticket.getWinningMultiple(el.boul, el.status)}",
                               style: Get.textTheme.titleLarge
                                   ?.copyWith(color: AppColors.PRIMARY),
                             )

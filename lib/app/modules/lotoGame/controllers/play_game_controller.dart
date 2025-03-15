@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:haiti_lotri/app/modules/games/controllers/games_controller.dart';
-import 'package:haiti_lotri/app/modules/lotoGame/views/play_game_receipt_view.dart';
-import 'package:haiti_lotri/app/modules/transactions/views/transaction_detail_view.dart';
 import 'package:haiti_lotri/app/routes/app_pages.dart';
 
 import '../../../data/models/game_model.dart';

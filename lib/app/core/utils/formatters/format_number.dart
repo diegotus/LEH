@@ -26,7 +26,10 @@ final toUsCurrency = NumberFormat.currency(
   decimalDigits: 2,
   customPattern: _CURRENCY_PATTERN,
 );
-final numberFormater = NumberFormat(
+final decimalFormater = NumberFormat(
   '#,##0.00#',
+);
+final numberFormater = NumberFormat(
+  '#,##0',
 );
 final numberFormaterCompact = NumberFormat.compact(locale: 'fr');

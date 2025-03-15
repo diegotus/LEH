@@ -1,7 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:haiti_lotri/app/modules/connection/bindings/otp_binding.dart';
-import 'package:haiti_lotri/app/modules/connection/views/otp_view.dart';
 import 'package:haiti_lotri/app/modules/settings/views/profile_edit_view.dart';
 
 import '../data/middleware/auth_gard.dart';
@@ -39,11 +37,9 @@ import '../modules/transactions/sendMoney/bindings/send_money_binding.dart';
 import '../modules/transactions/sendMoney/views/send_money_view.dart';
 import '../modules/transactions/transactionDetails/bindings/transaction_details_binding.dart';
 import '../modules/transactions/transactionDetails/views/transaction_details_view.dart';
-import '../modules/transactions/transactionHistory/bindings/transaction_history_binding.dart';
 import '../modules/transactions/transactionHistory/views/transaction_history_view.dart';
 import '../modules/transactions/transactionReceipt/bindings/transaction_receipt_binding.dart';
 import '../modules/transactions/transactionReceipt/views/transaction_receipt_view.dart';
-import '../modules/transactions/views/transactions_view.dart';
 import '../views/views/lotri_view.dart';
 import '../views/views/root_view.dart';
 
@@ -77,7 +73,7 @@ class AppPages {
               name: _Paths.HOME,
               page: () => const HomeView(),
               // participatesInRootNavigator: false,
-              transition: Transition.noTransition,
+              transition: Transition.cupertino,
 
               binding: HomeBinding(),
               preventDuplicates: true,
@@ -86,15 +82,18 @@ class AppPages {
               name: _Paths.GAMES,
               page: () => const GamesView(),
               binding: GamesBinding(),
-              transition: Transition.noTransition,
+              transition: Transition.cupertino,
               children: [
                 GetPage(
                   name: _Paths.LOTO_GAME,
                   page: () => const PlayGame(),
                   binding: PlayGameBinding(),
+                  participatesInRootNavigator: true,
+
                   // inheritParentPath: false,
                   // participatesInRootNavigator: true,
-                  transition: Transition.rightToLeft,
+                  transition: Transition.cupertino,
+                  // customTransition: ScaleTransitions(),
                 ),
               ],
             ),
@@ -102,7 +101,7 @@ class AppPages {
               name: _Paths.TICKETS,
               page: () => const TicketsView(),
               binding: TicketsBinding(),
-              transition: Transition.noTransition,
+              transition: Transition.cupertino,
             ),
             GetPage(
               name: _Paths.LOTO_RESULTS,
@@ -114,43 +113,48 @@ class AppPages {
         ),
         GetPage(
             name: _Paths.SETTINGS,
-            page: () => const RootView(
-                  initialRoute: Routes.SETTINGHOME,
-                  anchorRoute: Routes.SETTINGS,
-                ),
+            page: () => const SettingView(),
             binding: SettingsBinding(),
             middlewares: [
               EnsureAuthentificated()
             ],
             children: [
               GetPage(
-                name: _Paths.SETTINGHOME,
-                page: () => const SettingView(),
-                binding: SettingsBinding(),
-              ),
-              GetPage(
                 name: _Paths.EDIT_PROFIL,
                 page: () => const EditProfileView(),
+                participatesInRootNavigator: true,
               ),
               GetPage(
                 name: _Paths.CHANGE_PASSWORD,
                 page: () => const ChangePasswordView(),
                 binding: ChangePasswordBinding(),
+                participatesInRootNavigator: true,
               )
             ]),
         GetPage(
           name: _Paths.TRANSACTIONS,
-          page: () => const TransactionsView(),
-          binding: TransactionsBinding(),
+          page: () => RootView(
+            initialRoute: Routes.TRANSACTION_HISTORY,
+            anchorRoute: Routes.TRANSACTIONS,
+          ),
           middlewares: [EnsureAuthentificated()],
-          preventDuplicates: true,
-          participatesInRootNavigator: false,
           children: [
             GetPage(
-              name: _Paths.TRANSACTION_HISTORY,
-              page: () => const TransactionHistoryView(),
-              binding: TransactionHistoryBinding(),
-            ),
+                name: _Paths.TRANSACTION_HISTORY,
+                page: () => const TransactionHistoryView(),
+                binding: TransactionsBinding(),
+                transition: Transition.leftToRight,
+                children: [
+                  GetPage(
+                    name: _Paths.TRANSACTION_DETAILS,
+                    page: () => const TransactionDetailsView(),
+                    binding: TransactionDetailsBinding(),
+                    middlewares: [TransactionDetailGard()],
+                    transition: Transition.rightToLeft,
+                    preventDuplicates: true,
+                    participatesInRootNavigator: true,
+                  ),
+                ]),
             GetPage(
               name: _Paths.CASH_IN,
               page: () => const CashInView(),
@@ -184,11 +188,6 @@ class AppPages {
               // participatesInRootNavigator: true,
               preventDuplicates: true,
             ),
-            GetPage(
-                name: _Paths.TRANSACTION_DETAILS,
-                page: () => const TransactionDetailsView(),
-                binding: TransactionDetailsBinding(),
-                middlewares: [TransactionDetailGard()]),
           ],
         ),
         GetPage(
@@ -240,4 +239,26 @@ class AppPages {
       ],
     ),
   ];
+}
+
+class ScaleTransitions extends CustomTransition {
+  @override
+  Widget buildTransition(
+      BuildContext context,
+      Curve? curve,
+      Alignment? alignment,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child) {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: ScaleTransition(
+        scale: CurvedAnimation(
+          parent: animation,
+          curve: curve!,
+        ),
+        child: child,
+      ),
+    );
+  }
 }

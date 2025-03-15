@@ -64,8 +64,7 @@ class ReceiptDetail extends StatelessWidget {
             verticalSpaceSmall,
             rowTable(
               "Status",
-              status.name.capitalize ??
-                  TransactionStatus.failed.name.capitalize!,
+              status.name.capitalize,
             ),
           ],
         ),

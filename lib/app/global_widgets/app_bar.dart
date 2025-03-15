@@ -250,54 +250,58 @@ class AppBarWidget extends GetResponsiveView<AppServicesController>
       toolbarHeight: 90.ss,
       flexibleSpace: Container(decoration: appBarBoxDecoration),
       titleSpacing: 0,
-      title: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 0, 2, 15),
-        child: Row(
-          children: [
-            Obx(
-              () {
-                var avatar = controller.userDetails.value?.avatar;
-                // avatar = "18tCBcK1_BjZpu_vXdhoRJXzr3KwNvy_C";
-                return Container(
-                  height: 55.0,
-                  width: 50.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.white,
-                  ),
-                  child: avatarImage(
-                    avatar,
-                    cacheManager: CustomCacheManager.profilCacheManager,
-                    placeHolder: const Center(
-                      child: Icon(
-                        Kiwoo.person,
-                        size: 40,
-                        color: Colors.green,
-                      ),
+      title: InkWell(
+        focusColor: Colors.transparent,
+        hoverColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        onTap: () => Get.toNamed(Routes.SETTINGS),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 2, 15),
+          child: Row(
+            children: [
+              Obx(
+                () {
+                  var avatar = controller.userDetails.value?.avatar;
+                  // avatar = "18tCBcK1_BjZpu_vXdhoRJXzr3KwNvy_C";
+                  return Container(
+                    height: 55.0,
+                    width: 50.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
                     ),
-                    imageBuilder: (context, imageProvider) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                            image: imageProvider,
-                            fit: BoxFit.cover,
-                          ),
-                          shape: BoxShape.rectangle,
+                    child: avatarImage(
+                      avatar,
+                      cacheManager: CustomCacheManager.profilCacheManager,
+                      placeHolder: const Center(
+                        child: Icon(
+                          Kiwoo.person,
+                          size: 40,
+                          color: Colors.green,
                         ),
-                      );
-                    },
-                  ),
-                );
-              },
-            ),
-            horizontalSpaceSmall,
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: 270.s,
-                  child: Text(
+                      ),
+                      imageBuilder: (context, imageProvider) {
+                        return Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            image: DecorationImage(
+                              image: imageProvider,
+                              fit: BoxFit.cover,
+                            ),
+                            shape: BoxShape.rectangle,
+                          ),
+                        );
+                      },
+                    ),
+                  );
+                },
+              ),
+              horizontalSpaceSmall,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
                     AppStrings.WELCOME,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
@@ -307,11 +311,8 @@ class AppBarWidget extends GetResponsiveView<AppServicesController>
                       fontFamily: FontPoppins.LIGHT,
                     ),
                   ),
-                ),
-                verticalSpaceTiny,
-                SizedBox(
-                  width: 270.s,
-                  child: Obx(() {
+                  verticalSpaceTiny,
+                  Obx(() {
                     var userDetails = controller.userDetails.value;
                     return Text(
                       "${userDetails?.name!}",
@@ -324,10 +325,10 @@ class AppBarWidget extends GetResponsiveView<AppServicesController>
                       ),
                     );
                   }),
-                ),
-              ],
-            )
-          ],
+                ],
+              )
+            ],
+          ),
         ),
       ),
       actions: [
@@ -355,6 +356,20 @@ class AppBarWidget extends GetResponsiveView<AppServicesController>
   @override
   Size get preferredSize => Size.square(90.ss);
 }
+
+//TODO route to do for back
+//  RouterListener(builder: (context) {
+//         final delegate = context.delegate;
+//         if (delegate.canBack) {
+//           return BackButton(
+//             onPressed: () {
+//               delegate.back();
+//             },
+//           );
+//         } else {
+//           return const DrawerButton();
+//         }
+//       }),
 
 class AppBarWidgetTitle extends GetWidget<AppServicesController>
     implements PreferredSizeWidget {

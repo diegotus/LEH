@@ -35,26 +35,25 @@ class GamesView extends GetView<GamesController> {
               itemBuilder: (context, index) {
                 var item = controller.listGame[index];
                 return InkWell(
-                  onTap: item['onTap'],
+                  onTap: item.onTap,
                   child: Card(
                     clipBehavior: Clip.antiAlias,
                     color: AppColors.APPBAR_PRIMARY1,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (item['image'] != null)
-                          Expanded(
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: imageFromAssets(
-                                    item['image'],
-                                  ),
+                        Expanded(
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: imageFromAssets(
+                                  item.image,
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        Text(item['description']),
+                        ),
+                        Text(item.type.getSubtitle()),
                       ],
                     ),
                   ),

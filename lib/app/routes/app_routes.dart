@@ -30,9 +30,8 @@ abstract class Routes {
   static const TRANSACTION_HISTORY =
       _Paths.TRANSACTIONS + _Paths.TRANSACTION_HISTORY;
   static const TRANSACTION_DETAILS =
-      _Paths.TRANSACTIONS + _Paths.TRANSACTION_DETAILS;
+      TRANSACTION_HISTORY + _Paths.TRANSACTION_DETAILS;
   static const SETTINGS = _Paths.SETTINGS;
-  static const SETTINGHOME = _Paths.SETTINGS + _Paths.SETTINGHOME;
   static const CHANGE_PASSWORD = _Paths.SETTINGS + _Paths.CHANGE_PASSWORD;
   static const EDIT_PROFIL = _Paths.SETTINGS + _Paths.EDIT_PROFIL;
 }
@@ -61,7 +60,6 @@ abstract class _Paths {
   static const TRANSACTION_RECEIPT = '/receipt';
   static const TRANSACTION_HISTORY = '/history';
   static const TRANSACTION_DETAILS = '/details';
-  static const SETTINGHOME = '/1';
   static const CHANGE_PASSWORD = '/change-password';
   static const SETTINGS = '/settings';
   static const EDIT_PROFIL = "/edit_profil";

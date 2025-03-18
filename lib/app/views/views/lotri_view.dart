@@ -17,6 +17,14 @@ class LotriView extends GetView {
             body: GetRouterOutlet(
               anchorRoute: Routes.LOTRI,
               initialRoute: Routes.HOME,
+              filterPages: (pages) {
+                var ret = pages.toList();
+                ret = ret
+                    .where((e) => e.participatesInRootNavigator != true)
+                    .toList();
+                Get.log('Home real pages: ${ret.map((e) => e.name)}');
+                return ret;
+              },
             ),
             extendBody: true,
             backgroundColor: Colors.white,

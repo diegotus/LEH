@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/enums.dart';
 import 'package:haiti_lotri/app/modules/games/controllers/games_controller.dart';
 import 'package:haiti_lotri/app/routes/app_pages.dart';
 
@@ -16,8 +17,9 @@ class PlayGameController extends GamesController {
   @override
   void onInit() {
     provider = Get.put<LottoGameProvider>(LottoGameProvider());
-    carouselController =
-        CarouselController(initialItem: Get.arguments?.index ?? 0);
+    carouselController = CarouselController(
+        initialItem:
+            Gametype.fromString(Get.parameters['type_game']).index ?? 0);
     super.onInit();
   }
 

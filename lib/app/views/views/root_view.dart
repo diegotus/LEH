@@ -11,6 +11,11 @@ class RootView extends GetView {
     return GetRouterOutlet(
       initialRoute: initialRoute,
       anchorRoute: anchorRoute,
+      filterPages: (pages) {
+        var ret = pages.toList();
+        ret = ret.where((e) => e.participatesInRootNavigator != true).toList();
+        return ret;
+      },
     );
   }
 }

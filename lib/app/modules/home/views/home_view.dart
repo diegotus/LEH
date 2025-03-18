@@ -1,10 +1,8 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:sizing/sizing_extension.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_string.dart';
@@ -14,7 +12,6 @@ import '../../../core/utils/image_name.dart';
 import '../../../core/utils/kiwoo_icons.dart';
 import '../../../global_widgets/account_balance_widget.dart';
 import '../../../global_widgets/app_bar.dart';
-import '../../../global_widgets/progress_indicator.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {

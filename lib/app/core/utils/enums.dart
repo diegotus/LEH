@@ -151,7 +151,7 @@ enum Gametype {
 
   // Constructor for the enum
   const Gametype(this.title, this._subtitle);
-  static Gametype fromString(String name) {
+  static Gametype fromString(String? name) {
     return Gametype.values.firstWhereOrNull((el) => el.name == name) ?? bolet;
   }
 }

@@ -19,7 +19,7 @@ abstract class Routes {
   static const GAMES = _Paths.LOTRI + _Paths.GAMES;
   static const TICKETS = _Paths.LOTRI + _Paths.TICKETS;
   static const LOTO_RESULTS = _Paths.LOTRI + _Paths.LOTO_RESULTS;
-  static const LOTO_GAME = _Paths.LOTRI + _Paths.GAMES + _Paths.LOTO_GAME;
+  static String LOTO_GAME(String productId) => "$GAMES/$productId";
   static const TRANSACTIONS = _Paths.TRANSACTIONS;
   static const CASH_IN = _Paths.TRANSACTIONS + _Paths.CASH_IN;
   static const CASH_OUT = _Paths.TRANSACTIONS + _Paths.CASH_OUT;
@@ -27,10 +27,8 @@ abstract class Routes {
   static const SEND_MONEY = _Paths.TRANSACTIONS + _Paths.SEND_MONEY;
   static const TRANSACTION_RECEIPT =
       _Paths.TRANSACTIONS + _Paths.TRANSACTION_RECEIPT;
-  static const TRANSACTION_HISTORY =
-      _Paths.TRANSACTIONS + _Paths.TRANSACTION_HISTORY;
   static const TRANSACTION_DETAILS =
-      TRANSACTION_HISTORY + _Paths.TRANSACTION_DETAILS;
+      _Paths.TRANSACTIONS + _Paths.TRANSACTION_DETAILS;
   static const SETTINGS = _Paths.SETTINGS;
   static const CHANGE_PASSWORD = _Paths.SETTINGS + _Paths.CHANGE_PASSWORD;
   static const EDIT_PROFIL = _Paths.SETTINGS + _Paths.EDIT_PROFIL;
@@ -51,14 +49,13 @@ abstract class _Paths {
   static const GAMES = '/games';
   static const TICKETS = '/tickets';
   static const LOTO_RESULTS = '/loto-results';
-  static const LOTO_GAME = '/loto-game';
+  static const LOTO_GAME = '/:type_game';
   static const TRANSACTIONS = '/transactions';
   static const CASH_IN = '/cash-in';
   static const CASH_OUT = '/cash-out';
   static const RECEIVE_MONEY = '/receive-money';
   static const SEND_MONEY = '/send-money';
   static const TRANSACTION_RECEIPT = '/receipt';
-  static const TRANSACTION_HISTORY = '/history';
   static const TRANSACTION_DETAILS = '/details';
   static const CHANGE_PASSWORD = '/change-password';
   static const SETTINGS = '/settings';

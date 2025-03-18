@@ -66,7 +66,7 @@ class TicketsController extends GetxController {
   late final LottoGameProvider provider;
   final count = 0.obs;
   final winTickets = false.obs;
-  final dateFilter = TicketFilter(dateSelected: DateTime.now()).obs;
+  final dateFilter = TicketFilter().obs;
 
   Future<List<TicketModel>> callGetTicketsApi(
       TicketFilter value, bool winOnly) async {

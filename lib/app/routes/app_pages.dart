@@ -40,6 +40,7 @@ import '../modules/transactions/transactionDetails/views/transaction_details_vie
 import '../modules/transactions/transactionHistory/views/transaction_history_view.dart';
 import '../modules/transactions/transactionReceipt/bindings/transaction_receipt_binding.dart';
 import '../modules/transactions/transactionReceipt/views/transaction_receipt_view.dart';
+import '../modules/transactions/views/transactions_view.dart';
 import '../views/views/lotri_view.dart';
 import '../views/views/root_view.dart';
 
@@ -83,11 +84,14 @@ class AppPages {
               page: () => const GamesView(),
               binding: GamesBinding(),
               transition: Transition.cupertino,
+              showCupertinoParallax: true,
+              participatesInRootNavigator: false,
               children: [
                 GetPage(
                   name: _Paths.LOTO_GAME,
                   page: () => const PlayGame(),
                   binding: PlayGameBinding(),
+                  showCupertinoParallax: true,
                   participatesInRootNavigator: true,
 
                   // inheritParentPath: false,
@@ -133,59 +137,52 @@ class AppPages {
             ]),
         GetPage(
           name: _Paths.TRANSACTIONS,
-          page: () => RootView(
-            initialRoute: Routes.TRANSACTION_HISTORY,
-            anchorRoute: Routes.TRANSACTIONS,
-          ),
+          page: () => const TransactionsView(),
+          binding: TransactionsBinding(),
+          transition: Transition.cupertino,
           middlewares: [EnsureAuthentificated()],
           children: [
             GetPage(
-                name: _Paths.TRANSACTION_HISTORY,
-                page: () => const TransactionHistoryView(),
-                binding: TransactionsBinding(),
-                transition: Transition.leftToRight,
-                children: [
-                  GetPage(
-                    name: _Paths.TRANSACTION_DETAILS,
-                    page: () => const TransactionDetailsView(),
-                    binding: TransactionDetailsBinding(),
-                    middlewares: [TransactionDetailGard()],
-                    transition: Transition.rightToLeft,
-                    preventDuplicates: true,
-                    participatesInRootNavigator: true,
-                  ),
-                ]),
+              name: _Paths.TRANSACTION_DETAILS,
+              page: () => const TransactionDetailsView(),
+              binding: TransactionDetailsBinding(),
+              middlewares: [TransactionDetailGard()],
+              transition: Transition.rightToLeft,
+              preventDuplicates: true,
+              participatesInRootNavigator: true,
+            ),
             GetPage(
               name: _Paths.CASH_IN,
               page: () => const CashInView(),
               binding: CashInBinding(),
+              participatesInRootNavigator: true,
               // participatesInRootNavigator: true,chi
             ),
             GetPage(
               name: _Paths.CASH_OUT,
               page: () => const CashOutView(),
               binding: CashOutBinding(),
-              // participatesInRootNavigator: true,
+              participatesInRootNavigator: true,
             ),
             GetPage(
               name: _Paths.RECEIVE_MONEY,
               page: () => const ReceiveMoneyView(),
               middlewares: [EnsureAuthentificated()],
               binding: ReceiveMoneyBinding(),
-              // participatesInRootNavigator: true,
+              participatesInRootNavigator: true,
             ),
             GetPage(
               name: _Paths.SEND_MONEY,
               page: () => const SendMoneyView(),
               binding: SendMoneyBinding(),
-              // participatesInRootNavigator: true,
+              participatesInRootNavigator: true,
               preventDuplicates: true,
             ),
             GetPage(
               name: "${_Paths.TRANSACTION_RECEIPT}/:method",
               page: () => const TransactionReceiptView(),
               binding: TransactionReceiptBinding(),
-              // participatesInRootNavigator: true,
+              participatesInRootNavigator: true,
               preventDuplicates: true,
             ),
           ],

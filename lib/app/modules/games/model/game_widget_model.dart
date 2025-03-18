@@ -15,7 +15,7 @@ class GameWidgetModel {
     required this.image,
   });
   void onTap() {
-    Get.toNamed(Routes.LOTO_GAME, arguments: type);
+    Get.toNamed(Routes.LOTO_GAME(type.name));
   }
 
   GameWidgetModel copyWith({

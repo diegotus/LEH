@@ -113,6 +113,7 @@ class Kiwoo {
   static const IconData win_filled = IconData(0xe831, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData dice = IconData(0xe832, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData person_outline = IconData(0xe833, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData tchala = IconData(0xe834, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData arrow_left = IconData(0xe879, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData arrow_right = IconData(0xe87a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData search = IconData(0xf002, fontFamily: _kFontFam, fontPackage: _kFontPkg);

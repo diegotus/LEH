@@ -17,16 +17,18 @@ class ServerResponseModel {
   String? error;
   List<String> message;
   dynamic data;
+  final int? total;
+
   bool get isSuccess =>
       statusCode == StatusResponse.SUCCESS ||
       statusCode == StatusResponse.SUCCESS_201;
 
-  ServerResponseModel({
-    required this.statusCode,
-    this.error,
-    required this.message,
-    this.data,
-  });
+  ServerResponseModel(
+      {required this.statusCode,
+      this.error,
+      required this.message,
+      this.data,
+      this.total});
   SnackbarController? showMessage({List<String>? message}) {
     var msg = (message ?? this.message);
     if (msg.isNotEmpty) {
@@ -50,12 +52,14 @@ class ServerResponseModel {
     String? error,
     List<String>? message,
     Map<String, dynamic>? data,
+    int? total,
   }) {
     return ServerResponseModel(
       statusCode: statusCode ?? this.statusCode,
       error: error ?? this.error,
       message: message ?? this.message,
       data: data ?? this.data,
+      total: total ?? this.total,
     );
   }
 
@@ -65,18 +69,19 @@ class ServerResponseModel {
       'error': error,
       'message': message,
       'data': data,
+      'total': total,
     };
   }
 
   factory ServerResponseModel.fromMap(Map<String, dynamic> map) {
     return ServerResponseModel(
-      statusCode: map['statusCode'] as int,
-      error: map['error'] != null ? map['error'] as String : null,
-      message: List<String>.from(((map['message'] is String
-          ? [map['message']]
-          : map['message'] ?? []))),
-      data: map['data'],
-    );
+        statusCode: map['statusCode'] as int,
+        error: map['error'] != null ? map['error'] as String : null,
+        message: List<String>.from(((map['message'] is String
+            ? [map['message']]
+            : map['message'] ?? []))),
+        data: map['data'],
+        total: map['total']);
   }
 
   String toJson() => json.encode(toMap());
@@ -86,7 +91,7 @@ class ServerResponseModel {
 
   @override
   String toString() {
-    return 'ServerResponseModel(statusCode: $statusCode, error: $error, message: $message, data: $data)';
+    return 'ServerResponseModel(statusCode: $statusCode, error: $error, message: $message, data: $data, total: $total)';
   }
 
   @override
@@ -95,6 +100,7 @@ class ServerResponseModel {
 
     return other.statusCode == statusCode &&
         other.error == error &&
+        other.total == total &&
         listEquals(other.message, message) &&
         mapEquals(other.data, data);
   }
@@ -104,6 +110,7 @@ class ServerResponseModel {
     return statusCode.hashCode ^
         error.hashCode ^
         message.hashCode ^
+        total.hashCode ^
         data.hashCode;
   }
 }

@@ -32,6 +32,7 @@ abstract class Routes {
   static const SETTINGS = _Paths.SETTINGS;
   static const CHANGE_PASSWORD = _Paths.SETTINGS + _Paths.CHANGE_PASSWORD;
   static const EDIT_PROFIL = _Paths.SETTINGS + _Paths.EDIT_PROFIL;
+  static const TCHALA = _Paths.TCHALA;
 }
 
 abstract class _Paths {
@@ -60,4 +61,5 @@ abstract class _Paths {
   static const CHANGE_PASSWORD = '/change-password';
   static const SETTINGS = '/settings';
   static const EDIT_PROFIL = "/edit_profil";
+  static const TCHALA = '/tchala';
 }

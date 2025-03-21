@@ -176,6 +176,7 @@ class AppStrings {
   static String get WIN_TICKET => LocaleKeys.label_Win_ticket.tr;
 
   static String get SETTINGS => LocaleKeys.label_settings.tr;
+  static String get TCHALA => LocaleKeys.label_tchala.tr;
   static String get label_disable_account =>
       LocaleKeys.label_disable_account.tr;
   static String get LOGOUT => LocaleKeys.label_logout.tr;

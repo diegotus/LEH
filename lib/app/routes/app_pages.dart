@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
+
 import 'package:get/get.dart';
-import 'package:haiti_lotri/app/modules/settings/views/profile_edit_view.dart';
 
 import '../data/middleware/auth_gard.dart';
 import '../data/middleware/transaction_detail_gard.dart';
@@ -23,7 +23,10 @@ import '../modules/lotoResults/views/loto_results_view.dart';
 import '../modules/settings/bindings/setting_binding.dart';
 import '../modules/settings/changePassword/bindings/change_password_binding.dart';
 import '../modules/settings/changePassword/views/change_password_view.dart';
+import '../modules/settings/views/profile_edit_view.dart';
 import '../modules/settings/views/setting_view.dart';
+import '../modules/tchala/bindings/tchala_binding.dart';
+import '../modules/tchala/views/tchala_view.dart';
 import '../modules/tickets/bindings/tickets_binding.dart';
 import '../modules/tickets/views/tickets_view.dart';
 import '../modules/transactions/bindings/transactions_binding.dart';
@@ -186,6 +189,12 @@ class AppPages {
               preventDuplicates: true,
             ),
           ],
+        ),
+        GetPage(
+          name: _Paths.TCHALA,
+          page: () => const TchalaView(),
+          binding: TchalaBinding(),
+          middlewares: [EnsureAuthentificated()],
         ),
         GetPage(
           name: _Paths.CONNECTION,

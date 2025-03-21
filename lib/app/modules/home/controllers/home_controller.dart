@@ -82,10 +82,10 @@ class HomeController extends GetxController {
     },
     {
       "id": 5,
-      "label": AppStrings.SETTINGS,
-      "icon": Kiwoo.person_outline,
+      "label": AppStrings.TCHALA,
+      "icon": Kiwoo.tchala,
       "MaterialIcon": "",
-      "onTap": () => Get.toNamed(Routes.SETTINGS),
+      "onTap": () => Get.toNamed(Routes.TCHALA),
     },
     {
       "id": 6,

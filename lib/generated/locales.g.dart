@@ -191,6 +191,7 @@ class LocaleKeys {
   static const label_account_balance = 'label_account_balance';
   static const label_in_us_dollars = 'label_in_us_dollars';
   static const label_option = 'label_option';
+  static const label_tchala = 'label_tchala';
   static const label_language_fr = 'label_language_fr';
   static const label_language_ht = 'label_language_ht';
   static const message_unavailable_method = 'message_unavailable_method';
@@ -391,6 +392,7 @@ class Locales {
     'label_account_balance': 'Solde du compte',
     'label_in_us_dollars': 'En dollars américains',
     'label_option': 'Option',
+    'label_tchala': 'Tchala',
     'label_language_fr': 'Français',
     'label_language_ht': 'Créole',
     'message_unavailable_method':
@@ -566,6 +568,7 @@ class Locales {
     'label_account_balance': 'Balans kont',
     'label_in_us_dollars': 'An dola ameriken',
     'label_option': 'Opsyon',
+    'label_tchala': 'Tyala',
     'label_language_fr': 'Fransè',
     'label_language_ht': 'Kreyòl',
     'message_unavailable_method': 'Metòd sa a pa disponib pou kounye a',

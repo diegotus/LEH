@@ -39,6 +39,7 @@ class Url {
   static const TRANSFER_MONEY = "transactions/validate_transfer";
   static const GET_VALIDATION_INFO = "transactions/getValidationInfo";
   static const GET_BILLET_TRANS_DETAILS = "transactions/getBilletTransDetail";
+  static const TCHALA = "tyala/";
 
   static const LOAN_ACCEPT_OFFER = "loan/accept_offer/";
   static const LOAN_REJECT_OFFER = "loan/reject_offer/";

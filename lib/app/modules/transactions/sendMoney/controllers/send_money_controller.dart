@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/utils/formatters/validation.dart';
 import '../../../../data/models/payment_receipt_model.dart';
 import '../../../../data/models/validation_info_model.dart';
 import '../../providers/transactions_provider.dart';

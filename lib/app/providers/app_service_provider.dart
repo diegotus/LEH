@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 
 import '../core/api_helper/core_service.dart';
@@ -14,6 +16,30 @@ class AppServiceProvider extends DefaultWithAuthProvider {
       var response = await get<ServerResponseModel>(
         Url.GET_PROFILE_DETAILS,
       );
+      return CoreService.returnResponse(response);
+    });
+    return response;
+  }
+
+  Future<ServerResponseModel?> getTchalaList(
+      {required int page, required int perPage, String? search}) async {
+    var params = {
+      "pagination": jsonEncode({
+        'skip': perPage * (page - 1),
+        'take': perPage,
+        if ((search ?? '').isNotEmpty)
+          "columns": [
+            {"name": "label", "search": "%$search%"},
+          ],
+      }),
+      "options": jsonEncode({
+        "orderBy": {
+          "created_at": 'desc',
+        }
+      })
+    };
+    var response = await tryCatch(() async {
+      var response = await get<ServerResponseModel>(Url.TCHALA, query: params);
       return CoreService.returnResponse(response);
     });
     return response;

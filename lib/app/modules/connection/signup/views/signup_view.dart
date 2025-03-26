@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/actions/overlay.dart';
 import 'package:haiti_lotri/app/modules/connection/signup/controllers/signup_controller.dart';
 import 'package:sizing/sizing.dart';
 
@@ -21,13 +22,17 @@ class SignupView extends GetView<SignupController> {
 
   void submitRegistration([_]) async {
     //Get.toNamed(otpScreen, arguments: {"email": ""});
+
     if (controller.formKey.currentState?.validate() == true) {
       controller.formKey.currentState?.save();
-      Get.to(() {
-        return OTPView(
-          onAuthentificated: controller.signupApiCall,
-        );
-      }, opaque: false, bindings: [OTPBinding(controller.email)]);
+      var otp = await showOverlay(asyncFunction: controller.requestOtp);
+      if (otp != null) {
+        Get.to(() {
+          return OTPView(
+            onAuthentificated: controller.signupApiCall,
+          );
+        }, opaque: false, bindings: [OTPBinding(controller.email)]);
+      }
     }
   }
 

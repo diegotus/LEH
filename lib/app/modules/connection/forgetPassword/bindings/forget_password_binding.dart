@@ -3,16 +3,16 @@ import 'package:haiti_lotri/app/modules/connection/providers/connection_provider
 
 import '../controllers/forget_password_controller.dart';
 
-class ForgetPasswordBinding extends Bindings {
+class ForgetPasswordBinding extends Binding {
   @override
-  void dependencies() {
-    Get.lazyPut<ForgetPasswordController>(
-      () => ForgetPasswordController(),
-      fenix: true,
-    );
-    Get.lazyPut<ConnectionProvider>(
-      () => ConnectionProvider(),
-      fenix: true,
-    );
+  List<Bind> dependencies() {
+    return [
+      Bind.lazyPut<ConnectionProvider>(
+        () => ConnectionProvider(),
+      ),
+      Bind.lazyPut<ForgetPasswordController>(
+        () => ForgetPasswordController(),
+      ),
+    ];
   }
 }

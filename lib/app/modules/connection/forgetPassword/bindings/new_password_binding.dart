@@ -3,16 +3,16 @@ import 'package:haiti_lotri/app/modules/connection/providers/connection_provider
 
 import '../controllers/new_password_controller.dart';
 
-class NewPasswordBinding extends Bindings {
+class NewPasswordBinding extends Binding {
   @override
-  void dependencies() {
-    Get.lazyPut<ConnectionProvider>(
-      () => ConnectionProvider(),
-      fenix: true,
-    );
-    Get.lazyPut<NewPasswordController>(
-      () => NewPasswordController(),
-      fenix: true,
-    );
+  List<Bind> dependencies() {
+    return [
+      Bind.lazyPut<ConnectionProvider>(
+        () => ConnectionProvider(),
+      ),
+      Bind.lazyPut<NewPasswordController>(
+        () => NewPasswordController(),
+      ),
+    ];
   }
 }

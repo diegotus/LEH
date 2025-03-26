@@ -33,6 +33,7 @@ class CoreService {
               'StatusCode :${response.statusCode}',
             ]);
       case 400:
+      case 404:
         throw BadRequestException((body as ServerResponseModel).getMessage());
       case 401:
         // final StorageLocalService storageLocalService = StorageLocalService();

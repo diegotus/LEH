@@ -54,9 +54,12 @@ class OTPView extends GetWidget<OTPController> {
                           style: TextThemeHelper.forgotPassword,
                         ),
                         IconButton(
-                          icon: const Row(
+                          icon: Row(
                             mainAxisSize: MainAxisSize.min,
-                            children: [Icon(Icons.edit), Text("Change Email")],
+                            children: [
+                              const Icon(Icons.edit),
+                              Text(AppStrings.CHANGE_EMAIL)
+                            ],
                           ),
                           onPressed: () {
                             Get.back();

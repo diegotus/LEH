@@ -195,6 +195,7 @@ class AppStrings {
   static String get UNAVAILABLE_METHOD =>
       LocaleKeys.message_unavailable_method.tr;
 
+  static String get CHANGE_EMAIL => LocaleKeys.label_change_email.tr;
   static String get FEE => LocaleKeys.label_fee.tr;
   static String get TAX => LocaleKeys.label_tax.tr;
   static String get FROM => LocaleKeys.direPreposition_inbound.tr;

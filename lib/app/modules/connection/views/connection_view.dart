@@ -16,32 +16,47 @@ class ConnectionView extends GetView<ConnectionController> {
   const ConnectionView({super.key});
   @override
   Widget build(BuildContext context) {
-    controller.provider;
     return Scaffold(
       body: Center(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Image.asset(ImgName.LOGO, width: 150.ss),
-          verticalSpaceRegular,
-          Text(
-            AppStrings.WELCOME_TO,
-            textAlign: TextAlign.center,
-            style: TextThemeHelper.welcomeTitle,
-          ),
-          verticalSpaceMedium,
-          customeAuthButton(
-            lableName: AppStrings.LOG_IN,
-            onTap: () {
-              Get.toNamed(Routes.LOGIN);
-            },
-          ),
-          verticalSpaceRegular,
-          customeAuthButton2(
-            lableName: AppStrings.REGISTER,
-            onTap: () {
-              Get.toNamed(Routes.SIGNUP);
-            },
-          )
-        ]),
+        child: Column(
+          children: [
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Image.asset(ImgName.LOGO, width: 150.ss),
+                  verticalSpaceRegular,
+                  Text(
+                    AppStrings.WELCOME_TO,
+                    textAlign: TextAlign.center,
+                    style: TextThemeHelper.welcomeTitle,
+                  ),
+                ],
+              ),
+            ),
+            verticalSpaceMedium,
+            Expanded(
+              // flex: 2,
+              child: Column(
+                children: [
+                  customeAuthButton(
+                    lableName: AppStrings.LOG_IN,
+                    onTap: () {
+                      Get.toNamed(Routes.LOGIN);
+                    },
+                  ),
+                  verticalSpaceRegular,
+                  customeAuthButton2(
+                    lableName: AppStrings.REGISTER,
+                    onTap: () {
+                      Get.toNamed(Routes.SIGNUP);
+                    },
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

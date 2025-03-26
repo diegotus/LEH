@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_utility.dart';
+import '../../../../core/utils/enums.dart' show OTPType;
 import '../../../../data/models/signup_model.dart';
 import '../../../../routes/app_pages.dart';
 import '../../providers/connection_provider.dart';
@@ -23,6 +24,28 @@ class SignupController extends GetxController {
     isLoading = RxBool(false);
     provider = Get.putOrFind<ConnectionProvider>(() => ConnectionProvider());
     super.onInit();
+  }
+
+  Future<double?> requestOtp() async {
+    try {
+      var response = await provider.askForOtpApi(email, OTPType.register.name);
+      if (response?.isSuccess == true) {
+        var otpData = OTPModel.fromMap(response!.data!);
+        response.showMessage(message: ["Otp sent to successfully"]);
+
+        return otpData.otpValidity;
+      } else {
+        response?.showMessage();
+        if ((response?.error ?? '').isNotEmpty) {
+          return OTPModel.fromMap({
+            'otpValidity': response!.error!,
+          }).otpValidity;
+        }
+        return null;
+      }
+    } catch (e) {
+      return null;
+    }
   }
 
   Future signupApiCall() async {

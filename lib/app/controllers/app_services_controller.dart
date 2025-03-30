@@ -110,10 +110,11 @@ class AppServicesController extends GetxService
     }
   }
 
-  Future<List<AccountBalanceModel>?> getUserBalance() async {
+  Future<double?> getUserBalance() async {
     var response = await provider.getUserBalance();
     if (response?.isSuccess == true) {
-      return listAccountModelFromMap(response!.data);
+      await getUserDetails();
+      return userDetails.value?.extraInfo?.balance;
     }
     return null;
   }

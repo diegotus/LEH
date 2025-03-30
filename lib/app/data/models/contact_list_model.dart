@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:get/get_rx/get_rx.dart';
+import 'package:get/utils.dart';
 
 List<ContactData> listContactFromListMap(List data) {
   return data.map((el) => ContactData.fromMap(el)).toList();
@@ -53,10 +54,10 @@ class ContactData {
   factory ContactData.fromMap(Map<String, dynamic> map) {
     return ContactData(
       id: map['id'] != null ? map['id'] as int : null,
-      name: map['name'],
-      email: map['email'] != null ? map['email'] as String : null,
+      name: (map['name'] as String?)?.capitalize,
+      email: map['email'],
       phone: map['phone'],
-      avatar: map['avatar'] != null ? map['avatar'] as String : null,
+      avatar: map['avatar'],
     );
   }
 

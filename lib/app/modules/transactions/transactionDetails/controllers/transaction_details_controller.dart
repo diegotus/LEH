@@ -22,7 +22,10 @@ class TransactionDetailsController extends GetxController with DefController {
     if (transactionId != null) {
       var response = await provider.getTransactionDetailAPI(id: transactionId);
       if (response?.isSuccess == true) {
-        return TransactionModel.fromMap(response!.data);
+        print("before result");
+        var result = TransactionModel.fromMap(response!.data);
+        print("after result $result");
+        return result;
       }
       return null;
     } else {

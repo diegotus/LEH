@@ -122,21 +122,26 @@ class ExtraInfo {
   AddressData? address;
   String? dob;
   Locale locale;
+  final double balance;
   ExtraInfo({
     this.address,
     this.dob,
     this.locale = const Locale('fr'),
+    this.balance = 0,
   });
 
   ExtraInfo copyWith({
     AddressData? address,
     String? dob,
     Locale? locale,
+    double? balance,
   }) {
     return ExtraInfo(
-        address: address ?? this.address,
-        dob: dob ?? this.dob,
-        locale: locale ?? this.locale);
+      address: address ?? this.address,
+      dob: dob ?? this.dob,
+      locale: locale ?? this.locale,
+      balance: balance ?? this.balance,
+    );
   }
 
   Map<String, dynamic> toMap() {
@@ -144,6 +149,7 @@ class ExtraInfo {
       'address': address?.toMap(),
       'dob': dob,
       'locale': locale.languageCode,
+      'balance': balance
     };
   }
 
@@ -153,6 +159,7 @@ class ExtraInfo {
           map['address'] != null ? AddressData.fromMap(map['address']) : null,
       dob: map['dob'] != null ? map['dob'] as String : null,
       locale: Locale(map['locale'] ?? 'fr'),
+      balance: double.tryParse("${map['balance'] ?? 0}") ?? 0,
     );
   }
 
@@ -163,7 +170,7 @@ class ExtraInfo {
 
   @override
   String toString() {
-    return 'ExtraInfo( address: $address, dob: $dob, locale: ${locale.languageCode})';
+    return 'ExtraInfo( address: $address, dob: $dob, locale: ${locale.languageCode}, balance: $balance)';
   }
 
   @override
@@ -172,12 +179,13 @@ class ExtraInfo {
 
     return other.address == address &&
         other.dob == dob &&
-        other.locale == locale;
+        other.locale == locale &&
+        other.balance == balance;
   }
 
   @override
   int get hashCode {
-    return address.hashCode ^ dob.hashCode ^ locale.hashCode;
+    return address.hashCode ^ dob.hashCode ^ locale.hashCode ^ balance.hashCode;
   }
 }
 

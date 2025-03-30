@@ -16,7 +16,7 @@ class TicketReceiptModel extends TransactionModel {
     required this.billets,
     required super.id,
     required super.type,
-    required super.contact,
+    required super.receiver,
     required super.user,
     required super.amount,
     required super.fees,
@@ -29,7 +29,7 @@ class TicketReceiptModel extends TransactionModel {
   TicketReceiptModel copyWith({
     int? id,
     TransactionType? type,
-    ContactData? contact,
+    ContactData? receiver,
     TransactionMethod? method,
     ContactData? user,
     double? amount,
@@ -41,7 +41,7 @@ class TicketReceiptModel extends TransactionModel {
     return TicketReceiptModel(
       id: id ?? this.id,
       type: type ?? this.type,
-      contact: contact ?? this.contact,
+      receiver: receiver ?? this.receiver,
       user: user ?? this.user,
       amount: amount ?? this.amount,
       fees: fees ?? this.fees,
@@ -65,7 +65,7 @@ class TicketReceiptModel extends TransactionModel {
       id: map['id'],
       type: TransactionType.fromMap(map['type']),
       method: TransactionMethod.fromMap(map['method']),
-      contact: ContactData.fromMap(map['contact'] ?? {}),
+      receiver: ContactData.fromMap(map['receiver'] ?? {}),
       user: ContactData.fromMap(map['user'] ?? {}),
       fees: double.parse(map['fees'].toString()),
       tax: double.tryParse("${map['tax']}") ?? 0,
@@ -87,7 +87,7 @@ class TicketReceiptModel extends TransactionModel {
 
   @override
   String toString() =>
-      'TicketReceiptModel(id: $id, type: $type, method:$method, contact: $contact, user: $user, amount: $amount, fees: $fees, tax: $tax, createdAt: $createdAt, billets: $billets)';
+      'TicketReceiptModel(id: $id, type: $type, method:$method, receiver: $receiver, user: $user, amount: $amount, fees: $fees, tax: $tax, createdAt: $createdAt, billets: $billets)';
 
   @override
   bool operator ==(covariant TicketReceiptModel other) {

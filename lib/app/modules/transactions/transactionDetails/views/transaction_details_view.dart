@@ -102,13 +102,13 @@ class TransactionDetailsView extends GetView<TransactionDetailsController> {
                 case TransactionType.cash:
                   {
                     if (item.method == TransactionMethod.p2p) {
-                      var receiver = direction == Direction.inbound
-                          ? item.contact
+                      var user = direction == Direction.inbound
+                          ? item.receiver
                           : item.user;
                       listMap.add({
                         "title": 'direPreposition_${direction.name}'.tr,
-                        "value": receiver.name,
-                        'subtitle': receiver.phone
+                        "value": user!.name,
+                        'subtitle': user.phone
                       });
                     }
                   }
@@ -116,13 +116,13 @@ class TransactionDetailsView extends GetView<TransactionDetailsController> {
                   listMap.addAll([
                     {
                       'title': AppStrings.FROM,
-                      "value": item.user.name,
-                      'subtitle': item.user.phone
+                      "value": item.user?.name,
+                      'subtitle': item.user?.phone
                     },
                     {
                       'title': AppStrings.TO,
-                      "value": item.contact.name,
-                      'subtitle': item.contact.phone
+                      "value": item.receiver?.name,
+                      'subtitle': item.receiver?.phone
                     },
                   ]);
                   break;

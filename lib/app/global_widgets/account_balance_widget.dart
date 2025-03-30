@@ -11,8 +11,7 @@ import '../core/utils/formatters/format_number.dart';
 import '../core/utils/image_name.dart';
 import '../data/models/account_balance.dart';
 
-Widget accountDetailsCardWidget(
-    {required Future<List<AccountBalanceModel>?> Function() future}) {
+Widget accountDetailsCardWidget({required Future<double?> Function() future}) {
   return Container(
     height: 205.ss,
     width: 1.sw,
@@ -27,9 +26,9 @@ Widget accountDetailsCardWidget(
     child: FutureBuilder(
         future: future(),
         builder: (context, snapshot) {
-          String? balance;
+          double? balance;
           if (snapshot.hasData) {
-            balance = snapshot.data?.firstOrNull?.balance;
+            balance = snapshot.data;
           }
           return Stack(
             children: [
@@ -50,7 +49,7 @@ Widget accountDetailsCardWidget(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          balance?.formatDouble ?? "--",
+                          balance?.formatDecimal ?? "--",
                           style: TextStyle(
                             fontSize: 25.fss,
                             fontFamily: FontPoppins.BOLD,

@@ -11,8 +11,8 @@ import 'contact_list_model.dart';
 class TransactionModel {
   final int id;
   final TransactionType type;
-  ContactData contact;
-  ContactData user;
+  ContactData? receiver;
+  ContactData? user;
   double amount;
   TransactionMethod method;
   double fees;
@@ -22,19 +22,20 @@ class TransactionModel {
   TransactionModel({
     required this.id,
     required this.type,
-    required this.contact,
+    required this.receiver,
     required this.user,
     required this.amount,
     required this.fees,
     required this.tax,
     required this.createdAt,
     required this.method,
-  });
+  }) : assert(receiver != null || user != null,
+            "$receiver or $user must not null");
 
   TransactionModel copyWith({
     int? id,
     TransactionType? type,
-    ContactData? contact,
+    ContactData? receiver,
     ContactData? user,
     double? amount,
     double? fees,
@@ -45,7 +46,7 @@ class TransactionModel {
     return TransactionModel(
       id: id ?? this.id,
       type: type ?? this.type,
-      contact: contact ?? this.contact,
+      receiver: receiver ?? this.receiver,
       user: user ?? this.user,
       amount: amount ?? this.amount,
       fees: fees ?? this.fees,
@@ -59,8 +60,8 @@ class TransactionModel {
     return <String, dynamic>{
       'id': id,
       'type': type.toMap(),
-      'contact': contact.toMap(),
-      'user': user.toMap(),
+      'receiver': receiver?.toMap(),
+      'user': user?.toMap(),
       'amount': amount,
       'fees': fees,
       'tax': tax,
@@ -73,8 +74,10 @@ class TransactionModel {
     return TransactionModel(
         id: map['id'],
         type: TransactionType.fromMap(map['type']),
-        contact: ContactData.fromMap(map['contact']),
-        user: ContactData.fromMap(map['user']),
+        receiver: map['receiver'] != null
+            ? ContactData.fromMap(map['receiver'])
+            : null,
+        user: map['user'] != null ? ContactData.fromMap(map['user']) : null,
         fees: double.parse(map['fees'].toString()),
         tax: double.tryParse("${map['tax']}") ?? 0,
         amount: double.parse(map['amount'].toString()),
@@ -88,7 +91,7 @@ class TransactionModel {
 
   Direction direction(String? id) {
     // if (type == TransactionType.lotoPlay) return Direction.outbound;
-    if (contact.phone == id) {
+    if (receiver?.phone == id) {
       return Direction.inbound;
     } else {
       return Direction.outbound;
@@ -101,31 +104,29 @@ class TransactionModel {
     var bodyLocArgs = <String>[];
     var titleLocArgs = <String>[];
     var directionText = '';
-    print("the direction 1");
+
     if (type == TransactionType.transfer) {
       directionText = direction == Direction.inbound ? '_RECEIVED' : '_SENT';
     } else if (type == TransactionType.cash) {
       directionText = direction == Direction.inbound ? '_IN' : '_OUT';
-    }
-    print("the direction 2");
-
-    if ([TransactionType.lotoPlay, TransactionType.lotoWin].contains(type)) {
-      bodyLocArgs.addAll([amount.toString(), "${contact.name}"]);
-    }
-    print("the direction 3");
-
-    if (type == TransactionType.cash) {
       titleLocArgs.add(method.name.toUpperCase());
       bodyLocArgs.add(method.name.toUpperCase());
-    } else {
-      if (direction == Direction.inbound) {
-        bodyLocArgs.add('${user.name} - ${user.phone}');
-      } else {
-        bodyLocArgs.add('${contact.name} - ${contact.phone}');
-      }
     }
-    print("the direction 4");
+    bodyLocArgs.add(amount.toString());
 
+    if (![
+      TransactionType.cash,
+      TransactionType.lotoPlay,
+      TransactionType.lotoWin
+    ].contains(type)) {
+      ContactData userSelected;
+      if (direction == Direction.inbound) {
+        userSelected = user!;
+      } else {
+        userSelected = receiver!;
+      }
+      bodyLocArgs.add('${userSelected.name}');
+    }
     return {
       'title': '$titleLockKey$directionText'.trArgs(titleLocArgs),
       'body': '$bodyLockKey$directionText'.trArgs(bodyLocArgs),
@@ -139,7 +140,7 @@ class TransactionModel {
 
   @override
   String toString() {
-    return 'TransactionModel(id: $id, type: $type, method: $method, contact: $contact, user: $user, amount: $amount, fees: $fees,  tax: $tax, createdAt: $createdAt)';
+    return 'TransactionModel(id: $id, type: $type, method: $method, receiver: $receiver, user: $user, amount: $amount, fees: $fees,  tax: $tax, createdAt: $createdAt)';
   }
 
   @override
@@ -149,7 +150,7 @@ class TransactionModel {
     return other.id == id &&
         other.type == type &&
         other.method == method &&
-        other.contact == contact &&
+        other.receiver == receiver &&
         other.user == user &&
         other.amount == amount &&
         other.fees == fees &&
@@ -162,7 +163,7 @@ class TransactionModel {
     return id.hashCode ^
         type.hashCode ^
         method.hashCode ^
-        contact.hashCode ^
+        receiver.hashCode ^
         user.hashCode ^
         amount.hashCode ^
         fees.hashCode ^

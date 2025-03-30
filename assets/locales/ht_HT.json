@@ -26,21 +26,21 @@
   },
 
   "NOTIFICATION_TITLE_TRANSFER_RECEIVED": "Lajan antre",
-  "NOTIFICATION_BODY_TRANSFER_RECEIVED": "Ou te resevwa yon kantite %s HTG nan men %s.",
+  "NOTIFICATION_BODY_TRANSFER_RECEIVED": "Ou te resevwa %s HTG nan men %s.",
   "NOTIFICATION_TITLE_TRANSFER_SENT": "Lajan Soti",
-  "NOTIFICATION_BODY_TRANSFER_SENT": "Ou voye yon kantite %s HTG bay %s.",
+  "NOTIFICATION_BODY_TRANSFER_SENT": "Ou voye %s HTG bay %s.",
 
-  "NOTIFICATION_TITLE_WITHDRAW": " Retrè",
-  "NOTIFICATION_BODY_WITHDRAW": " Ou retire yon kantite %s HTG nan %s.",
+  "NOTIFICATION_TITLE_WITHDRAW": " Retrè pa %s",
+  "NOTIFICATION_BODY_WITHDRAW": " Ou retire %s HTG sou kont ou.",
   "NOTIFICATION_TITLE_CASH_IN": "Depot pa %s.",
-  "NOTIFICATION_BODY_CASH_IN": " Ou te fè depo pa %s.",
+  "NOTIFICATION_BODY_CASH_IN": " Ou te fè depo pa %s sou kont u.",
   "NOTIFICATION_TITLE_CASH_OUT": "Retrè pa %s.",
-  "NOTIFICATION_BODY_CASH_OUT": "Ou fè yn retrè pa %s.",
+  "NOTIFICATION_BODY_CASH_OUT": "Ou fè yn retrè de %s HTG sou kont u.",
   "NOTIFICATION_TITLE_PAYMENT": " Peman bòdwo.",
   "NOTIFICATION_BODY_PAYMENT": " Ou peye yon bòdwo %s HTG pou %s.",
 
   "NOTIFICATION_TITLE_LOTOPLAY": "Biyè Achte",
-  "NOTIFICATION_BODY_LOTOPLAY": " Ou achte yon biyè pou %s HTG nan %s.",
+  "NOTIFICATION_BODY_LOTOPLAY": " Ou achte yon biyè pou %s HTG.",
   "NOTIFICATION_TITLE_LOTOWIN": " Ou Genyen",
   "NOTIFICATION_BODY_LOTOWIN": " Ou resevwa %s HTG paske ou genyen nan yon tiraj.",
 

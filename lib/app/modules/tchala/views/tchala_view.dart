@@ -7,7 +7,7 @@ import 'package:haiti_lotri/app/core/utils/app_string.dart';
 import 'package:haiti_lotri/app/data/models/tchala_model.dart';
 import 'package:haiti_lotri/app/global_widgets/app_bar.dart';
 
-import '../../../global_widgets/future_list_widget.dart';
+import '../../../global_widgets/infinite_list.dart';
 import '../controllers/tchala_controller.dart';
 
 class TchalaView extends GetView<TchalaController> {
@@ -18,8 +18,9 @@ class TchalaView extends GetView<TchalaController> {
       appBar: AppBarWidgetTitle(
         title: AppStrings.TCHALA,
       ),
-      body: FutureListWidget<TchalaModel>(
-        future: controller.futureRequest,
+      body: InfiniteList<TchalaModel>(
+        onPage: controller.onPage,
+        onSearch: controller.onSearch,
         itemBuilder: (p0, item) {
           return ConstrainedBox(
             constraints: BoxConstraints(minHeight: 50),

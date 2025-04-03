@@ -30,25 +30,10 @@ class LottoGameProvider extends DefaultWithAuthProvider {
   }
 
   Future<ServerResponseModel?> getTicketsApi(
-      {bool winOnly = false, DateTime? date}) async {
-    // print(
-    //     "the date utc $date ${date?.endOfDay.toUtc()} ${date?.startOfDay.toUtc()}");
+      {required Map<String, dynamic> params}) async {
+    var query = {"pagination": jsonEncode(params)};
     var response = await tryCatch(() async {
-      var response = await get<ServerResponseModel>(Url.tickets, query: {
-        "winOnly": winOnly.toString(),
-        "pagination": jsonEncode({
-          if (date != null)
-            "dateRange": {
-              "from": date.startOfDay.toUtc().toIso8601String(),
-              "to": date.endOfDay.toUtc().toIso8601String(),
-              "name": "createdAt"
-            },
-          if (winOnly)
-            "columns": [
-              {"name": "winTransactionId", "search": "notNul"}
-            ]
-        })
-      });
+      var response = await get<ServerResponseModel>(Url.tickets, query: query);
       return CoreService.returnResponse(response);
     });
     return response;

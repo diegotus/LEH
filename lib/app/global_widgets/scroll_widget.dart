@@ -1,7 +1,9 @@
 import 'package:flutter/widgets.dart';
 
-Widget layoutBuilderWithAlwaytScoll(
-    {required Widget child, bool scrool = false}) {
+Widget layoutBuilderWithAlwaytScoll({
+  required Widget child,
+  bool scrool = false,
+}) {
   return scrool
       ? LayoutBuilder(builder: (context, constraints) {
           return SingleChildScrollView(

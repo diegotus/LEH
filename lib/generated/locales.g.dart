@@ -11,6 +11,7 @@ class AppTranslation {
 
 class LocaleKeys {
   LocaleKeys._();
+  static const all = 'all';
   static const boutons_login = 'boutons_login';
   static const boutons_sign_in = 'boutons_sign_in';
   static const boutons_logout = 'boutons_logout';
@@ -207,6 +208,7 @@ class LocaleKeys {
 
 class Locales {
   static const fr_FR = {
+    'all': 'Tout',
     'boutons_login': 'Connexion',
     'boutons_sign_in': 'Se connecter',
     'boutons_logout': 'Déconnexion',
@@ -400,6 +402,7 @@ class Locales {
     'message_not_implemented': 'Cette page n\'est pas encore prête!',
   };
   static const ht_HT = {
+    'all': 'Tout',
     'buttons_login': 'Login',
     'buttons_sign_in': 'Sign-in',
     'buttons_logout': 'Logout',

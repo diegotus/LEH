@@ -6,6 +6,7 @@ import 'package:haiti_lotri/app/core/utils/enums.dart';
 import '../../../generated/locales.g.dart';
 
 class AppStrings {
+  static String get ALL => LocaleKeys.all.tr;
   static String get LOG_IN => 'LOG_IN'.tr;
   static String get REGISTER => 'REGISTER'.tr;
   static String get RESET_PASSWORD => 'RESET_PASSWORD'.tr;

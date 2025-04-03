@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:haiti_lotri/app/core/utils/app_colors.dart';
-import 'package:haiti_lotri/app/core/utils/enums.dart';
 import 'package:haiti_lotri/app/core/utils/formatters/extension.dart';
 import 'package:haiti_lotri/app/global_widgets/boul_widget.dart';
 import 'package:haiti_lotri/app/global_widgets/list_builder_widget.dart';
-import 'package:sizing/sizing_extension.dart';
 
-import '../../../core/utils/font_family.dart';
 import '../../../data/models/ticket_model.dart';
 import '../controllers/tickets_controller.dart';
 

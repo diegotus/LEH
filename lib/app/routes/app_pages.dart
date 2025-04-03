@@ -40,7 +40,6 @@ import '../modules/transactions/sendMoney/bindings/send_money_binding.dart';
 import '../modules/transactions/sendMoney/views/send_money_view.dart';
 import '../modules/transactions/transactionDetails/bindings/transaction_details_binding.dart';
 import '../modules/transactions/transactionDetails/views/transaction_details_view.dart';
-import '../modules/transactions/transactionHistory/views/transaction_history_view.dart';
 import '../modules/transactions/transactionReceipt/bindings/transaction_receipt_binding.dart';
 import '../modules/transactions/transactionReceipt/views/transaction_receipt_view.dart';
 import '../modules/transactions/views/transactions_view.dart';

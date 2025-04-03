@@ -2,9 +2,15 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/formatters/extension.dart';
+import 'package:haiti_lotri/app/data/models/paginate_data_model.dart';
 
 import 'package:haiti_lotri/app/data/models/ticket_model.dart';
+import 'package:nestjs_prisma_pagination/nestjs_prisma_pagination.dart'
+    show DateRangeOptions, NestJSPrismaPagination, PColumn, Search, SearchType;
 
+import '../../../core/utils/actions/overlay.dart' show showOverlay;
+import '../../../global_widgets/infinite_list.dart' show InfiniteListController;
 import '../../games/providers/lotto_game_provider.dart';
 
 class TicketFilter {
@@ -68,16 +74,55 @@ class TicketsController extends GetxController {
   final winTickets = false.obs;
   final dateFilter = TicketFilter().obs;
 
-  Future<List<TicketModel>> callGetTicketsApi(
-      TicketFilter value, bool winOnly) async {
-    var response = await provider.getTicketsApi(
-        winOnly: winOnly, date: value.dateSelected);
+  late NestJSPrismaPagination pagination;
+  late final InfiniteListController<TicketModel> futureListController;
+
+  Future<PaginateListData<TicketModel>> callGetTicketsApi() async {
+    var response = await provider.getTicketsApi(params: pagination.paginate());
     if (response?.isSuccess == true) {
-      return listTicketModel(response!.data);
+      return PaginateListData(
+          items: listTicketModel(response!.data), total: response.total ?? 0);
     } else {
       response?.showMessage();
       return Future.error("Something went Wrrong");
     }
+  }
+
+  onPage({bool clear = false}) {
+    pagination.skip = clear ? 0 : pagination.take! + pagination.skip!;
+  }
+
+  void addColumn(bool add) {
+    if (add) {
+      pagination.columns!.add(PColumn(
+        name: "winTransactionId",
+        search: Search(type: SearchType.isNotEmpy, value: ''),
+      ));
+    } else {
+      pagination.columns?.clear();
+    }
+    showOverlay(
+      asyncFunction: () => futureListController.callApiData(
+        callBack: () => onPage(clear: true),
+      ),
+    );
+  }
+
+  void updateDate(DateTime? date) {
+    if (date == null) {
+      pagination.dateRange = null;
+    } else {
+      pagination.dateRange = DateRangeOptions(
+        from: date.startOfDay.toUtc(),
+        to: date.startOfDay.toUtc(),
+        name: 'createdAt',
+      );
+    }
+    showOverlay(
+      asyncFunction: () => futureListController.callApiData(
+        callBack: () => onPage(clear: true),
+      ),
+    );
   }
 
   Future<List<BoulJweModel>> callGetTicketDetailApi(int id) async {
@@ -93,7 +138,14 @@ class TicketsController extends GetxController {
   @override
   void onInit() {
     provider = Get.put<LottoGameProvider>(LottoGameProvider());
-
+    pagination = NestJSPrismaPagination(skip: 0, take: 100, columns: [
+      PColumn(
+        name: "winTransactionId",
+        search: Search(type: SearchType.isNotEmpy, value: null),
+      ),
+    ]);
+    futureListController = Get.put<InfiniteListController<TicketModel>>(
+        InfiniteListController<TicketModel>(future: callGetTicketsApi));
     super.onInit();
   }
 

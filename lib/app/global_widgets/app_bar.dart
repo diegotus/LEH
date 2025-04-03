@@ -433,15 +433,16 @@ class AppBarWidgetTitle extends GetWidget<AppServicesController>
 
 class AppBarWithWidgetTitle extends GetWidget<AppServicesController>
     implements PreferredSizeWidget {
-  const AppBarWithWidgetTitle(
-      {super.key,
-      required this.title,
-      this.actions,
-      this.height,
-      this.predicate,
-      this.homeIfCantPop = false,
-      this.toolbarHeight,
-      required this.child});
+  const AppBarWithWidgetTitle({
+    super.key,
+    required this.title,
+    this.actions,
+    this.height,
+    this.predicate,
+    this.homeIfCantPop = false,
+    this.toolbarHeight,
+    required this.child,
+  });
   final String title;
   final List<Widget>? actions;
   final double? height;
@@ -490,6 +491,79 @@ class AppBarWithWidgetTitle extends GetWidget<AppServicesController>
           ),
           verticalSpaceMedium,
           child
+        ],
+      ),
+      actions: actions,
+    );
+  }
+
+  @override
+  Size get preferredSize => Size.square(height ?? 90.ss);
+}
+
+class AppBarTitleWidthBottomFilter extends GetWidget<AppServicesController>
+    implements PreferredSizeWidget {
+  const AppBarTitleWidthBottomFilter({
+    super.key,
+    required this.title,
+    this.actions,
+    this.height,
+    this.predicate,
+    this.homeIfCantPop = false,
+    this.toolbarHeight,
+    required this.children,
+  });
+  final String title;
+  final List<Widget>? actions;
+  final double? height;
+  final bool Function(GetPage<dynamic>)? predicate;
+  final bool homeIfCantPop;
+  final List<Widget> children;
+  final double? toolbarHeight;
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      centerTitle: true,
+      toolbarHeight: toolbarHeight ?? 90.ss,
+      leading: Navigator.canPop(context) ||
+              !Get.searchDelegate(null).canBack ||
+              homeIfCantPop
+          ? IconButton(
+              icon: const Icon(Kiwoo.arrow_left),
+              onPressed: () {
+                if (!Navigator.canPop(context) &&
+                    !Get.searchDelegate(null).canBack &&
+                    homeIfCantPop) {
+                  Get.offAndToNamed(Routes.HOME);
+                  return;
+                } else {
+                  if (predicate != null) {
+                    Get.until(predicate!);
+                  } else {
+                    Get.back();
+                  }
+                }
+              },
+            )
+          : null,
+      title: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: AppColors.LBL_TITLE_NAV,
+              fontSize: 20.ss,
+              fontFamily: FontPoppins.SEMIBOLD,
+            ),
+          ),
+          verticalSpaceSmall,
+          Row(
+            spacing: 10,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: children,
+          )
         ],
       ),
       actions: actions,

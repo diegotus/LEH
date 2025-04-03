@@ -22,22 +22,8 @@ class AppServiceProvider extends DefaultWithAuthProvider {
   }
 
   Future<ServerResponseModel?> getTchalaList(
-      {required int page, required int perPage, String? search}) async {
-    var params = {
-      "pagination": jsonEncode({
-        'skip': perPage * (page - 1),
-        'take': perPage,
-        if ((search ?? '').isNotEmpty)
-          "columns": [
-            {"name": "label", "search": "%$search%"},
-          ],
-      }),
-      "options": jsonEncode({
-        "orderBy": {
-          "created_at": 'desc',
-        }
-      })
-    };
+      {required Map<String, dynamic> pagination}) async {
+    var params = {"pagination": jsonEncode(pagination)};
     var response = await tryCatch(() async {
       var response = await get<ServerResponseModel>(Url.TCHALA, query: params);
       return CoreService.returnResponse(response);

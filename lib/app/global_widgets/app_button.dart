@@ -57,12 +57,18 @@ class DropdownFilterButton<T> extends StatelessWidget {
       required this.items,
       required this.onChanged,
       this.value,
-      this.selectedItemBuilder});
+      this.selectedItemBuilder,
+      this.isDense = false,
+      this.isExpanded = false,
+      this.style});
   final List<DropdownMenuItem<T>>? items;
   final void Function(T?)? onChanged;
   final T? value;
   final List<Widget> Function(BuildContext, List<DropdownMenuItem<T>>?, T?)?
       selectedItemBuilder;
+  final TextStyle? style;
+  final bool isExpanded;
+  final bool isDense;
   @override
   Widget build(BuildContext context) {
     final boderRadius = BorderRadius.circular(15);
@@ -80,8 +86,10 @@ class DropdownFilterButton<T> extends StatelessWidget {
       child: DropdownButton<T>(
         value: value,
         items: items,
+        isDense: isDense,
+        isExpanded: isExpanded,
         onChanged: onChanged,
-        style: dropDownTextStyle,
+        style: style ?? dropDownTextStyle,
         iconEnabledColor: FontColors.PRIMARY2,
         selectedItemBuilder: selectedItemBuilder == null
             ? null

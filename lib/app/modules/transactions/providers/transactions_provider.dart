@@ -35,18 +35,13 @@ class TransactionsProvider extends DefaultWithAuthProvider {
   }
 
   Future<ServerResponseModel?> getTransactions(
-      {required int page, required int perPage}) async {
-    var params = {
-      "pagination": jsonEncode({'page': page + 1, 'limit': '$perPage'}),
-      "options": jsonEncode({
-        "orderBy": {
-          "created_at": 'desc',
-        }
-      })
+      {required Map<String, dynamic> params}) async {
+    var query = {
+      "pagination": jsonEncode(params),
     };
     var response = await tryCatch(() async {
       var response =
-          await get<ServerResponseModel>(Url.TRANSACTIONS, query: params);
+          await get<ServerResponseModel>(Url.TRANSACTIONS, query: query);
       return CoreService.returnResponse(response);
     });
     return response;

@@ -44,6 +44,10 @@
 ///         Author:    MFG Labs
 ///         License:   SIL (http://scripts.sil.org/OFL)
 ///         Homepage:  http://www.mfglabs.com/
+/// * Iconic, Copyright (C) 2012 by P.J. Onori
+///         Author:    P.J. Onori
+///         License:   SIL (http://scripts.sil.org/OFL)
+///         Homepage:  http://somerandomdude.com/work/iconic/
 /// * Linearicons Free, Copyright (C) Linearicons.com
 ///         Author:    Perxis
 ///         License:   CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
@@ -114,6 +118,7 @@ class Kiwoo {
   static const IconData dice = IconData(0xe832, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData person_outline = IconData(0xe833, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData tchala = IconData(0xe834, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData exchange = IconData(0xe835, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData arrow_left = IconData(0xe879, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData arrow_right = IconData(0xe87a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData search = IconData(0xf002, fontFamily: _kFontFam, fontPackage: _kFontPkg);
@@ -122,6 +127,7 @@ class Kiwoo {
   static const IconData image = IconData(0xf03e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData times_circle = IconData(0xf057, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData check_circle = IconData(0xf058, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData calendar_alt = IconData(0xf073, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData credit_card = IconData(0xf09d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData angle_right = IconData(0xf105, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData angle_down = IconData(0xf107, fontFamily: _kFontFam, fontPackage: _kFontPkg);

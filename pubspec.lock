@@ -861,9 +861,10 @@ packages:
   nestjs_prisma_pagination:
     dependency: "direct main"
     description:
-      path: "C:\\developement\\Projet\\Personal\\dart packages\\nestjs-prisma-pagination"
-      relative: false
-    source: path
+      name: nestjs_prisma_pagination
+      sha256: "376e67f5980670c46ccbee4eb5b6705cedad3ca383919ec3827e61e41f51f95e"
+      url: "https://pub.dev"
+    source: hosted
     version: "1.0.0"
   octo_image:
     dependency: transitive

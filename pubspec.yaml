@@ -14,8 +14,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.8
   get: 5.0.0-release-candidate-9.3.2
-  nestjs_prisma_pagination:
-    path: 'C:/developement/Projet/Personal/dart packages/nestjs-prisma-pagination'
+  nestjs_prisma_pagination: ^1.0.0
   sizing: ^1.1.2
   intl: any
   mask_text_input_formatter: ^2.9.0

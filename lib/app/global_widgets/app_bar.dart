@@ -477,23 +477,17 @@ class AppBarWithWidgetTitle extends GetWidget<AppServicesController>
               },
             )
           : null,
-      title: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: AppColors.LBL_TITLE_NAV,
-              fontSize: 20,
-              fontFamily: FontPoppins.SEMIBOLD,
-            ),
-          ),
-          verticalSpaceMedium,
-          child
-        ],
+      bottom: PreferredSize(
+          preferredSize: Size.fromHeight(height ?? 10.ss), child: child),
+      title: Text(
+        title,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: AppColors.LBL_TITLE_NAV,
+          fontSize: 20,
+          fontFamily: FontPoppins.SEMIBOLD,
+        ),
       ),
-      actions: actions,
     );
   }
 
@@ -546,25 +540,25 @@ class AppBarTitleWidthBottomFilter extends GetWidget<AppServicesController>
               },
             )
           : null,
-      title: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: AppColors.LBL_TITLE_NAV,
-              fontSize: 20.ss,
-              fontFamily: FontPoppins.SEMIBOLD,
-            ),
-          ),
-          verticalSpaceSmall,
-          Row(
+      bottom: PreferredSize(
+        preferredSize: Size.fromHeight(height ?? 10.ss),
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: Row(
             spacing: 10,
             mainAxisAlignment: MainAxisAlignment.center,
             children: children,
-          )
-        ],
+          ),
+        ),
+      ),
+      title: Text(
+        title,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: AppColors.LBL_TITLE_NAV,
+          fontSize: 20.ss,
+          fontFamily: FontPoppins.SEMIBOLD,
+        ),
       ),
       actions: actions,
     );
@@ -572,4 +566,28 @@ class AppBarTitleWidthBottomFilter extends GetWidget<AppServicesController>
 
   @override
   Size get preferredSize => Size.square(height ?? 90.ss);
+}
+
+class _FilterBottomWidget extends GetWidget implements PreferredSizeWidget {
+  const _FilterBottomWidget({
+    super.key,
+    this.height,
+    required this.children,
+  });
+  final double? height;
+  final List<Widget> children;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Row(
+        spacing: 10,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: children,
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => Size.fromHeight(height ?? 10.ss);
 }

@@ -1,13 +1,6 @@
 {
-  "all":"Tout",
-  "buttons": {
-    "login": "Login",
-    "sign_in": "Sign-in",
-    "logout": "Logout",
-    "sign_in_fb": "Sign-in with Facebook",
-    "sign_in_google": "Sign-in with Google",
-    "sign_in_apple": "Sign-in with Apple"
-  },
+  "all": "Tout",
+
   "language": "Lang",
   "direction": {
     "inbound": "Resevwa",
@@ -48,9 +41,8 @@
   "LOG_IN": "Konekte",
   "REGISTER": "Enskri",
   "RESET_PASSWORD": "Reyajiste modpas",
-  "RESET": "Reset",
+
   "SIGN_UP_NOW": "Enskri kounye a",
-  "SIGN_UP": "Enskri",
   "VERIFY_PHONE_NUMBER": "Verifye Nimewo Telefòn",
   "VERIFY_EMAIL": "Verifye Imèl",
   "CONTINUE": "Kontinye",
@@ -71,16 +63,10 @@
   "APP_NAME": "Loterie Haïtien",
   "SLOGAN": "Fasil ak Abòdab Banking",
   "WELCOME_TO": "Byenvini nan lotri Leta Ayisyen",
-  "FORGOT_PASSWORD": "ou Bliye Modpas ou?",
   "FORGOT_PASSWORD2": "Bliye Modpas",
   "CREATE_NEW_PASSWORD": "Kreye yon nouvo modpas",
   "NEW_USER": "Nouvo itilizatè?",
-  "back": "Retounen",
-  "next": "Pwochen",
-  "BACK_TO": "Retounen nan",
-  "REGISTER_HERE": "Enskri isit la",
   "ALREADY_HAVE_AN_ACCOUNT": "Deja gen yon kont?",
-  "LOGIN": " Konekte ",
   "OTP": "OTP",
   "CODE_IS_SENT_TO": "OTP ale sou ",
   "RESEND_CODE": "Revoye OTP an",
@@ -147,19 +133,42 @@
   "PLEASE_ENTER_NEW_PASSWORD": "Tanpri antre nouvo modpas",
   "PLEASE_ENTER_CONFIRM_NEW_PASSWORD": "Tanpri antre nouvo modpas la anko.",
 
-  "label": {
+  "LABEL": {
+    "BUTTONS": {
+      "SEND_RECEIVE_MONEY": "Voye/Resevwa Lajan",
+      "CASH_OUT": "Retrè",
+      "CASH_IN": "Depo",
+      "TRANSACTION_HISTORY": "Istwa tranzaksyon",
+      "TCHALA": "Tyala",
+      "LOCAL_BRANCH": "Branch lokal",
+      "LOGIN": "Konekte",
+      "LOGOUT": "Dekonekte",
+      "FORGOT_PASSWORD": "ou Bliye Modpas ou?",
+      "RESET": "Resèt",
+      "SIGN_UP": "Enskri",
+      "REGISTER_HERE": "Enskri isit la",
+      "BACK": "Retounen",
+      "NEXT": "Pwochen",
+      "BACK_TO": "Retounen nan",
+      "PLAY": "Jwe",
+      "ADD": "Ajoute"
+    },
+    "OPTIONS": {
+      "SEND_MONEY": "Voye lajan",
+      "RECEIVE_MONEY": "Resevwa lajan"
+    },
+    "DATE_FILTER": {
+      "TODAY": "Jodi a",
+      "YESTERDAY": "Yè",
+      "CUSTOM": "Pèsonalize"
+    },
+
     "clickHere": "Klike la a",
     "welcome": "Byenvini",
     "home": "Akèy",
-    "play": "Jwe",
     "ticket": "Tikè",
     "result": "Rezilta",
-    "send_receive_money": "Voye/Resevwa Lajan",
-    "send_money": "Voye lajan",
-    "receive_money": "Resevwa lajan",
-    "cash_out": "Retrè",
-    "cash_in": "Depo",
-    "transaction_history": "Istwa tranzaksyon",
+
     "transaction_details": "Detay tranzaksyon an",
     "transaction_type": "Tip tranzaksyon",
     "transaction_type_named": {
@@ -169,18 +178,15 @@
       "cash": "Espès",
       "payment": "Pèman"
     },
-    "local_branch": "Branch lokal",
     "no_tirage_for_now": "Poko gen tiraj",
     "next_tirage": "Pwochen tiraj",
     "Win_ticket": "Tikè genyen",
     "last_ticket": "Denye tikè yo",
-    "today": "Jodi a",
-    "yesterday": "Yè",
-    "custom": "Pèsonalize",
+
     "settings": "Reglaj",
     "disable_account": "Dezaktive kont mwen an",
     "change_password": "Chanje modpas",
-    "logout": "Dekonekte",
+
     "Gallery_file": "Galeri/Fichiye",
     "take_photo": "Pran yon foto",
     "crop_image": "Rekadre imaj la",
@@ -189,7 +195,6 @@
     "choose_Option": "Chwazi yon opsyon",
     "fee": "Frè",
     "tax": "Taks",
-    "add": "Ajoute",
     "draw": "Tiraj @name",
     "pick": "Boul",
     "bet": "Miz",
@@ -197,8 +202,8 @@
     "account_balance": "Balans kont",
     "in_us_dollars": "An dola ameriken",
     "option": "Opsyon",
-    "tchala": "Tyala",
-    "change_email":"Chanje Email lan",
+
+    "change_email": "Chanje Email lan",
     "language": {
       "fr": "Fransè",
       "ht": "Kreyòl"

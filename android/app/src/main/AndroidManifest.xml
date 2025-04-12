@@ -1,9 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- to check network state -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
-        android:label="AYITI LOTRI"
+        android:label="Loterie Haitien"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -59,8 +56,8 @@
             <action android:name="android.intent.action.PROCESS_TEXT" />
             <data android:mimeType="text/plain" />
         </intent>
-        <!-- If your app checks for call support -->
-        <intent>
+         <!-- If your app checks for call support -->
+         <intent>
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="tel" />
         </intent>
@@ -69,15 +66,15 @@
             <action android:name="android.support.customtabs.action.CustomTabsService" />
         </intent>
     </queries>
-    <!-- permissions -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
-    <meta-data
-        android:name="firebase_messaging_auto_init_enabled"
-        android:value="false" />
-    <meta-data
-        android:name="firebase_analytics_collection_enabled"
-        android:value="false" />
+      <!-- permissions -->
+      <uses-permission android:name="android.permission.CAMERA" />
+      <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+      <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+      <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+      <meta-data
+          android:name="firebase_messaging_auto_init_enabled"
+          android:value="false" />
+      <meta-data
+          android:name="firebase_analytics_collection_enabled"
+          android:value="false" />
 </manifest>

@@ -42,37 +42,36 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final firebaseServices = Get.find<FirebaseServices>();
     return FirebaseNotificationsHandler(
-      vapidKey:
-          "BDIzuwGzMtO6gZQ5nbEgXdQugtukDwmfCFVvCe0Px0-596YkKStgwCw8HN29EWCZSGez2ggtG9mOYGY7fI-kTdM",
       messageModifier: FirebaseServices.messageModifier,
       onFcmTokenUpdate: firebaseServices.onFcmTokenUpdate,
       onFcmTokenInitialize: firebaseServices.onFcmTokenInitialize,
       shouldHandleNotification: firebaseServices.shouldHandleNotification,
       onOpenNotificationArrive: firebaseServices.onOpenNotificationArrive,
       // permissionGetter: FirebaseServices.permissionGetter,
-      onTap: (val) =>
-          firebaseServices.onOpenNotificationArrive(val, taped: true),
+      onTap:
+          (val) => firebaseServices.onOpenNotificationArrive(val, taped: true),
       child: SizingBuilder(
-          baseSize: const Size(430, 932),
-          builder: () {
-            return GetMaterialApp(
-              title: "Loterie de l'etat Haïtien",
-              theme: theme,
-              initialRoute: AppPages.INITIAL,
-              getPages: AppPages.routes,
-              scrollBehavior: MyCustomScrollBehavior(),
+        baseSize: const Size(430, 932),
+        builder: () {
+          return GetMaterialApp(
+            title: "Loterie de l'etat Haïtien",
+            theme: theme,
+            initialRoute: AppPages.INITIAL,
+            getPages: AppPages.routes,
+            scrollBehavior: MyCustomScrollBehavior(),
 
-              locale: Locale(StorageBox.locale.val),
-              supportedLocales: const <Locale>[Locale('fr'), Locale('ht')],
-              fallbackLocale: const Locale("fr"),
-              // defaultTransition: Transition.fade,
-              translationsKeys: AppTranslation.translations,
-              localizationsDelegates: [
-                ...GlobalMaterialLocalizations.delegates,
-                ...HTLocalizations.delegates
-              ],
-            );
-          }),
+            locale: Locale(StorageBox.locale.val),
+            supportedLocales: const <Locale>[Locale('fr'), Locale('ht')],
+            fallbackLocale: const Locale("fr"),
+            // defaultTransition: Transition.fade,
+            translationsKeys: AppTranslation.translations,
+            localizationsDelegates: [
+              ...GlobalMaterialLocalizations.delegates,
+              ...HTLocalizations.delegates,
+            ],
+          );
+        },
+      ),
     );
   }
 }
@@ -81,8 +80,8 @@ class MyCustomScrollBehavior extends MaterialScrollBehavior {
   // Override behavior methods and getters like dragDevices
   @override
   Set<PointerDeviceKind> get dragDevices => {
-        PointerDeviceKind.touch,
-        PointerDeviceKind.mouse,
-        // etc.
-      };
+    PointerDeviceKind.touch,
+    PointerDeviceKind.mouse,
+    // etc.
+  };
 }

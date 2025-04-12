@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:haiti_lotri/app/core/utils/formatters/extension.dart';
+import 'package:haiti_lotri/app/modules/transactions/sendMoney/views/recent_transfer.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:sizing/sizing_extension.dart';
@@ -31,8 +32,11 @@ class SendMoneyView extends GetView<SendMoneyController> {
     if (controller.formKey.currentState!.validate()) {
       controller.formKey.currentState!.save();
       showOverlay(
-        asyncFunction: () => controller.getValidationInfo(
-            '+${controller.phone}', controller.amount),
+        asyncFunction:
+            () => controller.getValidationInfo(
+              '+${controller.phone}',
+              controller.amount,
+            ),
       ).then((val) {
         if (val == null) return;
         getValidationSheet(
@@ -47,6 +51,7 @@ class SendMoneyView extends GetView<SendMoneyController> {
   @override
   Widget build(BuildContext context) {
     // final formKey = GlobalKey<FormState>();
+    TextEditingController phoneController = TextEditingController();
     return Scaffold(
       appBar: CustomAppBar(
         context,
@@ -59,8 +64,9 @@ class SendMoneyView extends GetView<SendMoneyController> {
       persistentFooterAlignment: AlignmentDirectional.center,
       persistentFooterButtons: [
         AppButton(
-            buttonText: AppStrings.NEXT,
-            onTap: () => submitTransaction(context)),
+          buttonText: AppStrings.NEXT,
+          onTap: () => submitTransaction(context),
+        ),
       ],
       body: Container(
         margin: const EdgeInsets.only(top: 20, right: 20, left: 20),
@@ -68,63 +74,76 @@ class SendMoneyView extends GetView<SendMoneyController> {
           children: [
             SingleChildScrollView(
               child: Form(
-                  key: controller.formKey,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      inputWithLabel(
-                        required: true,
-                        label: AppStrings.PHONE_NUMBER,
-                        hintText: AppStrings.PHONE_NUMBER,
-                        keyboardType: TextInputType.phone,
-                        textInputAction: TextInputAction.next,
-                        prefixIcon: Center(
-                          widthFactor: 0.1,
-                          child: Text(
-                            "+",
-                            style: labelTextStyle.copyWith(
-                                fontSize: 16.ss, fontWeight: FontWeight.bold),
+                key: controller.formKey,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    inputWithLabel(
+                      controller: phoneController,
+                      required: true,
+                      label: AppStrings.PHONE_NUMBER,
+                      hintText: AppStrings.PHONE_NUMBER,
+                      keyboardType: TextInputType.phone,
+                      textInputAction: TextInputAction.next,
+                      prefixIcon: Center(
+                        widthFactor: 0.1,
+                        child: Text(
+                          "+",
+                          style: labelTextStyle.copyWith(
+                            fontSize: 16.ss,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        inputFormatters: [numberFormatter],
-                        validator: (value) {
-                          if ((value ?? '').isEmpty) {
-                            return AppStrings.PLS_ENTER_PHONE_NUMBER;
-                          }
-                          if (value?.isPhoneNumber != true) {
-                            return AppStrings.PLS_ENTER_VALID_PHONE_NUMBER;
-                          }
-                          return null;
-                        },
-                        onSaved: (value) {
-                          controller.phone = value!;
-                        },
                       ),
-                      verticalSpaceMedium,
-                      inputWithLabel(
-                          required: true,
-                          label: AppStrings.ENTER_AMOUNT,
-                          hintText: AppStrings.AMOUNT,
-                          inputFormatters: [decimalNumberFormatter],
-                          keyboardType: TextInputType.number,
-                          onFieldSubmitted: (p0) => submitTransaction(context),
-                          textInputAction: TextInputAction.done,
-                          onSaved: (val) {
-                            controller.amount = double.parse(val!);
-                          },
-                          validator: (value) {
-                            if ((value ?? '').isEmpty) {
-                              return AppStrings.PLS_ENTER_AMOUNT;
-                            }
-                            if (double.parse(value!) < 100) {
-                              return AppStrings.PLS_MIN_AMOUNT;
-                            }
-                            controller.canNext.value = true;
+                      inputFormatters: [numberFormatter],
+                      validator: (value) {
+                        if ((value ?? '').isEmpty) {
+                          return AppStrings.PLS_ENTER_PHONE_NUMBER;
+                        }
+                        if (value?.isPhoneNumber != true) {
+                          return AppStrings.PLS_ENTER_VALID_PHONE_NUMBER;
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        controller.phone = value!;
+                      },
+                    ),
+                    verticalSpaceMedium,
+                    inputWithLabel(
+                      required: true,
+                      label: AppStrings.ENTER_AMOUNT,
+                      hintText: AppStrings.AMOUNT,
+                      inputFormatters: [decimalNumberFormatter],
+                      keyboardType: TextInputType.number,
+                      onFieldSubmitted: (p0) => submitTransaction(context),
+                      textInputAction: TextInputAction.done,
+                      onSaved: (val) {
+                        controller.amount = double.parse(val!);
+                      },
+                      validator: (value) {
+                        if ((value ?? '').isEmpty) {
+                          return AppStrings.PLS_ENTER_AMOUNT;
+                        }
+                        if (double.parse(value!) < 100) {
+                          return AppStrings.PLS_MIN_AMOUNT;
+                        }
+                        controller.canNext.value = true;
 
-                            return null;
-                          }),
-                    ],
-                  )),
+                        return null;
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            verticalSpaceRegular,
+            Expanded(
+              child: RecentTransfer(
+                onTap: (user) {
+                  phoneController.text = user.phone?.replaceAll("+", '') ?? '';
+                },
+              ),
             ),
           ],
         ),
@@ -138,27 +157,18 @@ class SendMoneyView extends GetView<SendMoneyController> {
     required ValidationData val,
   }) {
     var listData = [
-      {
-        "leading": AppStrings.AMOUNT,
-        "title": amount.toHLG,
-      },
-      {
-        "leading": AppStrings.FEE,
-        "title": val.fees.toHLG,
-      },
-      {
-        "leading": AppStrings.TAX,
-        "title": (amount * 0.1).toHLG,
-      },
+      {"leading": AppStrings.AMOUNT, "title": amount.toHLG},
+      {"leading": AppStrings.FEE, "title": val.fees.toHLG},
+      {"leading": AppStrings.TAX, "title": (amount * 0.1).toHLG},
       {
         "leading": AppStrings.FROM,
         "title": val.senderInfo.name,
-        "subtitle": val.senderInfo.phone
+        "subtitle": val.senderInfo.phone,
       },
       {
         "leading": AppStrings.TO,
         "title": val.receiverInfo.name,
-        "subtitle": val.receiverInfo.phone
+        "subtitle": val.receiverInfo.phone,
       },
     ];
 
@@ -205,18 +215,13 @@ class SendMoneyView extends GetView<SendMoneyController> {
                     itemBuilder: (BuildContext context, int index) {
                       var currentEl = listData[index];
                       return Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "${currentEl['leading']}",
-                              style: _titleStile,
-                            ),
+                            Text("${currentEl['leading']}", style: _titleStile),
                             Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.end,
@@ -228,19 +233,18 @@ class SendMoneyView extends GetView<SendMoneyController> {
                                 if (currentEl['subtitle'] != null)
                                   Text(
                                     "${currentEl['subtitle']}",
-                                    style:
-                                        _titleStile.copyWith(fontSize: 10.fss),
-                                  )
+                                    style: _titleStile.copyWith(
+                                      fontSize: 10.fss,
+                                    ),
+                                  ),
                               ],
-                            )
+                            ),
                           ],
                         ),
                       );
                     },
                     separatorBuilder: (BuildContext context, int index) {
-                      return Divider(
-                        color: FontColors.GREY_140,
-                      );
+                      return Divider(color: FontColors.GREY_140);
                     },
                     itemCount: listData.length,
                   ),
@@ -250,9 +254,7 @@ class SendMoneyView extends GetView<SendMoneyController> {
                     child: Text(
                       AppStrings.PLS_ENTER_PIN,
                       textAlign: TextAlign.center,
-                      style: _titleStile.copyWith(
-                        fontFamily: FontPoppins.BOLD,
-                      ),
+                      style: _titleStile.copyWith(fontFamily: FontPoppins.BOLD),
                     ),
                   ),
                   verticalSpaceSmall,
@@ -297,24 +299,28 @@ class SendMoneyView extends GetView<SendMoneyController> {
                   ),
                   verticalSpaceMedium,
                   //footer
-                  Obx(() => AppButton(
-                        buttonText: AppStrings.SUBMIT,
-                        onTap: pin.isEmpty || pin.value.length < 4
-                            ? null
-                            : () {
+                  Obx(
+                    () => AppButton(
+                      buttonText: AppStrings.SUBMIT,
+                      onTap:
+                          pin.isEmpty || pin.value.length < 4
+                              ? null
+                              : () {
                                 Get.showOverlay(
-                                  asyncFunction: () => controller.sendMoney(
-                                    transactionID: val.id,
-                                    pin: pin.value,
-                                  ),
+                                  asyncFunction:
+                                      () => controller.sendMoney(
+                                        transactionID: val.id,
+                                        pin: pin.value,
+                                      ),
                                   loadingWidget:
                                       LoadingAnimationWidget.fourRotatingDots(
-                                    color: AppColors.PRIMARY1,
-                                    size: 30.0, // Adjust size as needed
-                                  ),
+                                        color: AppColors.PRIMARY1,
+                                        size: 30.0, // Adjust size as needed
+                                      ),
                                 );
                               },
-                      )),
+                    ),
+                  ),
                 ],
               ),
             ),

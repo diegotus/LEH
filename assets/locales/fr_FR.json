@@ -1,13 +1,6 @@
 {
-  "all":"Tout",
-  "boutons": {
-    "login": "Connexion",
-    "sign_in": "Se connecter",
-    "logout": "Déconnexion",
-    "sign_in_fb": "Connectez-vous avec Facebook",
-    "sign_in_google": "Connectez-vous avec Google",
-    "sign_in_apple": "Se connecter avec Apple"
-  },
+  "all": "Tout",
+  "boutons": {},
   "language": "Langue",
 
   "direction": {
@@ -53,9 +46,7 @@
   "LOG_IN": "Connectez-vous",
   "REGISTER": "S'inscrire",
   "RESET_PASSWORD": "Réinitialiser le mot de passe",
-  "RESET": "Réinitialiser",
   "SIGN_UP_NOW": "Inscrivez-vous maintenant",
-  "SIGN_UP": "Inscrivez-vous",
   "VERIFY_PHONE_NUMBER": "Vérifier le numéro de téléphone",
   "VERIFY_EMAIL": "Vérifier l'e-mail",
   "CONTINUE": "Continuer",
@@ -76,16 +67,12 @@
   "APP_NAME": "Loterie haïtienne",
   "SLOGAN": "Jouez pour gagner!!!",
   "WELCOME_TO": "Bienvenue à la Loterie de l'État Haïtien",
-  "FORGOT_PASSWORD": "Mot de passe oublié ?",
+
   "FORGOT_PASSWORD2": "Mot de passe oublié",
   "CREATE_NEW_PASSWORD": "Créer un nouveau mot de passe",
   "NEW_USER": "Nouvel utilisateur ?",
-  "back": "Retour",
-  "next": "Suivant",
-  "BACK_TO": "Retour à",
-  "REGISTER_HERE": "Inscrivez-vous ici",
+
   "ALREADY_HAVE_AN_ACCOUNT": "Vous avez déjà un compte ?",
-  "LOGIN": "Connexion",
   "OTP": "OTP",
   "CODE_IS_SENT_TO": "OTP envoyé à",
   "RESEND_CODE": "Renvoyer l'OTP",
@@ -152,29 +139,52 @@
   "PLEASE_ENTER_NEW_PASSWORD": "Veuillez saisir un nouveau mot de passe",
   "PLEASE_ENTER_CONFIRM_NEW_PASSWORD": "Veuillez saisir votre nouveau mot de passe.",
 
-  "label": {
+
+  "LABEL": {
+    "BUTTONS": {
+      "SEND_RECEIVE_MONEY": "Envoyer/Recevoir de l'argent",
+      "CASH_OUT": "Retrait",
+      "CASH_IN": "Dépôt",
+      "TRANSACTION_HISTORY": "Historique des transactions",
+      "TCHALA": "Tchala",
+      "LOCAL_BRANCH": "Filiale locale",
+      "LOGIN": "Connexion",
+      "SIGN_IN": "Se connecter",
+      "LOGOUT": "Déconnexion",
+      "FORGOT_PASSWORD": "Mot de passe oublié ?",
+      "RESET": "Réinitialiser",
+      "SIGN_UP": "Inscrivez-vous",
+      "REGISTER_HERE": "Inscrivez-vous ici",
+      "BACK": "Retour",
+      "NEXT": "Suivant",
+      "BACK_TO": "Retour à",
+      "PLAY": "Jouer",
+      "ADD": "Ajouter"
+    },
+    "OPTIONS": {
+      "SEND_MONEY": "Envoyer de l'argent",
+      "RECEIVE_MONEY": "Recevoir de l'argent"
+    },
+    "DATE_FILTER": {
+      "TODAY": "Aujourd'hui",
+      "YESTERDAY": "Hier",
+      "CUSTOM": "Personnaliser"
+    },
     "clickHere": "Cliquez ici",
     "welcome": "Bienvenue",
     "home": "Accueil",
-    "play": "Jouer",
     "ticket": "Billet",
     "result": "Résultat",
-    "send_receive_money": "Envoyer/Recevoir de l'argent",
-    "send_money": "Envoyer de l'argent",
-    "receive_money": "Recevoir de l'argent",
-    "cash_out": "Retrait",
-    "cash_in": "Dépôt",
-    "transaction_history": "Historique des transactions",
+
     "transaction_details": "Détail de la transaction",
-    "transaction_type":"Type de transaction",
-    "transaction_type_named":{
-      "transfer":"Transfer",
-      "lotoPlay":"Achat De Billet",
-      "lotoWin":"Gain Loterie",
-      "cash":"Espèces",
-      "payment":"Paiment"
+    "transaction_type": "Type de transaction",
+    "transaction_type_named": {
+      "transfer": "Transfer",
+      "lotoPlay": "Achat De Billet",
+      "lotoWin": "Gain Loterie",
+      "cash": "Espèces",
+      "payment": "Paiment"
     },
-    "local_branch": "Filiale locale",
     "no_tirage_for_now": "Aucun Tirage pour le Moment",
     "next_tirage": "Prochain tirage",
     "Win_ticket": "Billet Gagnant",
@@ -185,7 +195,6 @@
     "settings": "Réglages",
     "disable_account": "Désactiver mon compte",
     "change_password": "Changer de mot de passe",
-    "logout": "Se Déconnecter",
     "Gallery_file": "Galerie/Fichier",
     "take_photo": "Prendre une photo",
     "crop_image": "Recadrer l'image",
@@ -194,16 +203,15 @@
     "choose_Option": "Choisissez une option",
     "fee": "Frais",
     "tax": "Taxe",
-    "add":"Ajouter",
     "draw": "Tirage @name",
-    "pick":"Boule",
-    "bet":"Mise",
-    "more_info":"Plus Info",
-    "account_balance":"Solde du compte",
-    "in_us_dollars":"En dollars américains",
-    "option":"Option",
-    "tchala":"Tchala",
-    "change_email":"Changer l'E-Mail",
+    "pick": "Boule",
+    "bet": "Mise",
+    "more_info": "Plus Info",
+    "account_balance": "Solde du compte",
+    "in_us_dollars": "En dollars américains",
+    "option": "Option",
+
+    "change_email": "Changer l'E-Mail",
 
     "language": {
       "fr": "Français",

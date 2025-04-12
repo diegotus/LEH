@@ -34,6 +34,14 @@ class TransactionsProvider extends DefaultWithAuthProvider {
     return response;
   }
 
+  Future<ServerResponseModel?> recentTransferApi() async {
+    var response = await tryCatch(() async {
+      var response = await get<ServerResponseModel>(Url.RECENT_TRANSACTIONS);
+      return CoreService.returnResponse(response);
+    });
+    return response;
+  }
+
   Future<ServerResponseModel?> getTransactions(
       {required Map<String, dynamic> params}) async {
     var query = {

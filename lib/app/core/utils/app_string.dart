@@ -12,7 +12,7 @@ class AppStrings {
   static String get RESET_PASSWORD => 'RESET_PASSWORD'.tr;
   static String get RESET => 'RESET'.tr;
   static String get SIGN_UP_NOW => 'SIGN_UP_NOW'.tr;
-  static String get SIGN_UP => 'SIGN_UP'.tr;
+  static String get SIGN_UP => LocaleKeys.LABEL_BUTTONS_SIGN_UP.tr;
   static String get VERIFY_PHONE_NUMBER => 'VERIFY_PHONE_NUMBER'.tr;
   static String get VERIFY_EMAIL => 'VERIFY_EMAIL'.tr;
   static String get CONTINUE => 'CONTINUE'.tr;
@@ -31,14 +31,15 @@ class AppStrings {
   static String get SLOGAN => 'SLOGAN'.tr;
   static String get WELCOME => 'label_welcome'.tr;
   static String get WELCOME_TO => 'WELCOME_TO'.tr;
-  static String get FORGOT_PASSWORD => 'FORGOT_PASSWORD'.tr;
+  static String get FORGOT_PASSWORD =>
+      LocaleKeys.LABEL_BUTTONS_FORGOT_PASSWORD.tr;
   static String get FORGOT_PASSWORD2 => 'FORGOT_PASSWORD2'.tr;
   static String get CREATE_NEW_PASSWORD => 'CREATE_NEW_PASSWORD'.tr;
   static String get NEW_USER => 'NEW_USER'.tr;
-  static String get BACK_TO => 'BACK_TO'.tr;
-  static String get REGISTER_HERE => 'REGISTER_HERE'.tr;
+  static String get BACK_TO => LocaleKeys.LABEL_BUTTONS_BACK_TO.tr;
+  static String get REGISTER_HERE => LocaleKeys.LABEL_BUTTONS_REGISTER_HERE.tr;
   static String get ALREADY_HAVE_AN_ACCOUNT => 'ALREADY_HAVE_AN_ACCOUNT'.tr;
-  static String get LOGIN => 'LOGIN'.tr;
+  static String get LOGIN => LocaleKeys.LABEL_BUTTONS_LOGIN.tr;
   static String get OTP => 'OTP'.tr;
   static String get CODE_IS_SENT_TO => 'CODE_IS_SENT_TO'.tr;
   static String get RESEND_CODE => 'RESEND_CODE'.tr;
@@ -111,7 +112,7 @@ class AppStrings {
   static String get PLS_ENTER_ZIPCODE => 'PLS_ENTER_ZIPCODE'.tr;
   static String get GENERAL_CHAT => 'GENERAL_CHAT'.tr;
   static String get PROFILE => 'PROFILE'.tr;
-  static String get CHANGE_PASSWORD => LocaleKeys.label_change_password.tr;
+  static String get CHANGE_PASSWORD => LocaleKeys.LABEL_change_password.tr;
   static String get ADDRESS => 'ADDRESS'.tr;
   static String get IDENTITY_VERIFICATION => 'IDENTITY_VERIFICATION'.tr;
   static String get INCOME_VERIFICATION => 'INCOME_VERIFICATION'.tr;
@@ -155,84 +156,89 @@ class AppStrings {
 
   static String get PASSWORD_NOT_MATCH => "PASSWORD_NOT_MATCH".tr;
 
-  static String get LABEL_SEND_RECEIVE_MONEY => "label_send_receive_money".tr;
-  static String get LABEL_SEND_MONEY => "label_send_money".tr;
-  static String get LABEL_RECEIVE_MONEY => "label_receive_money".tr;
-  static String get LABEL_CASH_OUT => "label_cash_out".tr;
-  static String get LABEL_CASH_IN => "label_cash_in".tr;
-  static String get LABEL_TRANSACTION_HISTORY => "label_transaction_history".tr;
-  static String get LABEL_LOCAL_BRANCH => "label_local_branch".tr;
-  static String get HOME => "label_home".tr;
-  static String get PLAY => "label_play".tr;
-  static String get TICKET => "label_ticket".tr;
-  static String get RESULT => "label_result".tr;
-  static String get NO_TIRAGE => "label_no_tirage_for_now".tr;
+  static String get LABEL_SEND_RECEIVE_MONEY =>
+      LocaleKeys.LABEL_BUTTONS_SEND_RECEIVE_MONEY.tr;
+  static String get LABEL_SEND_MONEY => LocaleKeys.LABEL_OPTIONS_SEND_MONEY.tr;
+  static String get LABEL_RECEIVE_MONEY =>
+      LocaleKeys.LABEL_OPTIONS_RECEIVE_MONEY.tr;
+  static String get LABEL_CASH_OUT => LocaleKeys.LABEL_BUTTONS_CASH_OUT.tr;
+  static String get LABEL_CASH_IN => LocaleKeys.LABEL_BUTTONS_CASH_IN.tr;
+  static String get LABEL_TRANSACTION_HISTORY =>
+      LocaleKeys.LABEL_BUTTONS_TRANSACTION_HISTORY.tr;
+  static String get LABEL_LOCAL_BRANCH =>
+      LocaleKeys.LABEL_BUTTONS_LOCAL_BRANCH.tr;
+  static String get HOME => LocaleKeys.LABEL_home.tr;
+  static String get PLAY => LocaleKeys.LABEL_BUTTONS_PLAY.tr;
+  static String get TICKET => LocaleKeys.LABEL_ticket.tr;
+  static String get RESULT => LocaleKeys.LABEL_result.tr;
+  static String get NO_TIRAGE => LocaleKeys.LABEL_no_tirage_for_now.tr;
 
-  static String get NEXT_TIRAGE => LocaleKeys.label_next_tirage.tr;
-  static String get LAST_TICKETS => LocaleKeys.label_last_ticket.tr;
-  static String get TODAY => LocaleKeys.label_today.tr;
-  static String get YESTERDAY => LocaleKeys.label_yesterday.tr;
-  static String get CUSTOM => LocaleKeys.label_custom.tr;
+  static String get NEXT_TIRAGE => LocaleKeys.LABEL_next_tirage.tr;
+  static String get LAST_TICKETS => LocaleKeys.LABEL_last_ticket.tr;
+  static String get TODAY => LocaleKeys.LABEL_DATE_FILTER_TODAY.tr;
+  static String get YESTERDAY => LocaleKeys.LABEL_DATE_FILTER_YESTERDAY.tr;
+  static String get CUSTOM => LocaleKeys.LABEL_DATE_FILTER_CUSTOM.tr;
 
-  static String get WIN_TICKET => LocaleKeys.label_Win_ticket.tr;
+  static String get WIN_TICKET => LocaleKeys.LABEL_Win_ticket.tr;
 
-  static String get SETTINGS => LocaleKeys.label_settings.tr;
-  static String get TCHALA => LocaleKeys.label_tchala.tr;
+  static String get SETTINGS => LocaleKeys.LABEL_settings.tr;
+  static String get TCHALA => LocaleKeys.LABEL_BUTTONS_TCHALA.tr;
   static String get label_disable_account =>
-      LocaleKeys.label_disable_account.tr;
-  static String get LOGOUT => LocaleKeys.label_logout.tr;
-  static String get CLICK_HERE => LocaleKeys.label_clickHere.tr;
+      LocaleKeys.LABEL_disable_account.tr;
+  static String get LOGOUT => LocaleKeys.LABEL_BUTTONS_LOGOUT.tr;
+  static String get CLICK_HERE => LocaleKeys.LABEL_clickHere.tr;
 
-  static String get GALLERY_FILE => LocaleKeys.label_Gallery_file.tr;
-  static String get TAKE_PHOTO => LocaleKeys.label_take_photo.tr;
-  static String get CROP_IMAGE => LocaleKeys.label_crop_image.tr;
-  static String get FULL_NAME => LocaleKeys.label_fullName.tr;
-  static String get CANCEL => LocaleKeys.label_cancel.tr;
+  static String get GALLERY_FILE => LocaleKeys.LABEL_Gallery_file.tr;
+  static String get TAKE_PHOTO => LocaleKeys.LABEL_take_photo.tr;
+  static String get CROP_IMAGE => LocaleKeys.LABEL_crop_image.tr;
+  static String get FULL_NAME => LocaleKeys.LABEL_fullName.tr;
+  static String get CANCEL => LocaleKeys.LABEL_cancel.tr;
 
-  static String get CHOOSE_OPTION => LocaleKeys.label_choose_Option.tr;
+  static String get CHOOSE_OPTION => LocaleKeys.LABEL_choose_Option.tr;
 
-  static String get BACK => LocaleKeys.back.tr;
+  static String get BACK => LocaleKeys.LABEL_BUTTONS_BACK.tr;
 
   static String get UNAVAILABLE_METHOD =>
       LocaleKeys.message_unavailable_method.tr;
 
-  static String get CHANGE_EMAIL => LocaleKeys.label_change_email.tr;
-  static String get FEE => LocaleKeys.label_fee.tr;
-  static String get TAX => LocaleKeys.label_tax.tr;
+  static String get CHANGE_EMAIL => LocaleKeys.LABEL_change_email.tr;
+  static String get FEE => LocaleKeys.LABEL_fee.tr;
+  static String get TAX => LocaleKeys.LABEL_tax.tr;
   static String get FROM => LocaleKeys.direPreposition_inbound.tr;
   static String get TO => LocaleKeys.direPreposition_outbound.tr;
-  static String get NEXT => LocaleKeys.next.tr;
+  static String get NEXT => LocaleKeys.LABEL_BUTTONS_NEXT.tr;
 
   static String get NOT_IMPLEMENTED => LocaleKeys.message_not_implemented.tr;
   static String get language => LocaleKeys.language.tr;
   static String Function(dynamic code) get languageCode =>
       (code) => 'label_language_$code'.tr;
 
-  static String get ACCOUNT_BALANCE => LocaleKeys.label_account_balance.tr;
-  static String get IN_US_DOLLARS => LocaleKeys.label_in_us_dollars.tr;
-  static String get ADD => LocaleKeys.label_add.tr;
-  static String get PICK => LocaleKeys.label_pick.tr;
-  static String get BET => LocaleKeys.label_bet.tr;
-  static String get TRANSACTION_TYPE => LocaleKeys.label_transaction_type.tr;
-  static String Function(TransactionType name) get TRANSACTION_TYPE_NAMED =>
-      (TransactionType type) {
-        switch (type) {
-          case TransactionType.transfer:
-            return LocaleKeys.label_transaction_type_named_transfer.tr;
-          case TransactionType.lotoPlay:
-            return LocaleKeys.label_transaction_type_named_lotoPlay.tr;
-          case TransactionType.lotoWin:
-            return LocaleKeys.label_transaction_type_named_lotoWin.tr;
-          case TransactionType.cash:
-            return LocaleKeys.label_transaction_type_named_cash.tr;
-          case TransactionType.payment:
-            return LocaleKeys.label_transaction_type_named_payment.tr;
-        }
-      };
+  static String get ACCOUNT_BALANCE => LocaleKeys.LABEL_account_balance.tr;
+  static String get IN_US_DOLLARS => LocaleKeys.LABEL_in_us_dollars.tr;
+  static String get ADD => LocaleKeys.LABEL_BUTTONS_ADD.tr;
+  static String get PICK => LocaleKeys.LABEL_pick.tr;
+  static String get BET => LocaleKeys.LABEL_bet.tr;
+  static String get TRANSACTION_TYPE => LocaleKeys.LABEL_transaction_type.tr;
+  static String Function(TransactionType name) get TRANSACTION_TYPE_NAMED => (
+    TransactionType type,
+  ) {
+    switch (type) {
+      case TransactionType.transfer:
+        return LocaleKeys.LABEL_transaction_type_named_transfer.tr;
+      case TransactionType.lotoPlay:
+        return LocaleKeys.LABEL_transaction_type_named_lotoPlay.tr;
+      case TransactionType.lotoWin:
+        return LocaleKeys.LABEL_transaction_type_named_lotoWin.tr;
+      case TransactionType.cash:
+        return LocaleKeys.LABEL_transaction_type_named_cash.tr;
+      case TransactionType.payment:
+        return LocaleKeys.LABEL_transaction_type_named_payment.tr;
+    }
+  };
   static String get TRANSACTION_DETAIL =>
-      LocaleKeys.label_transaction_details.tr;
-  static String get MORE_INFO => LocaleKeys.label_more_info.tr;
-  static String get option => LocaleKeys.label_option.tr;
+      LocaleKeys.LABEL_transaction_details.tr;
+  static String get MORE_INFO => LocaleKeys.LABEL_more_info.tr;
+  static String get option => LocaleKeys.LABEL_option.tr;
   static String Function(String? name) get DRAW =>
-      (String? name) => LocaleKeys.label_draw.trParams({'name': name ?? ''});
+      (String? name) => LocaleKeys.LABEL_draw.trParams({'name': name ?? ''});
 }

@@ -56,10 +56,11 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.ROOT,
-      page: () => RootView(
-        initialRoute: Routes.CONNECTION,
-        anchorRoute: Routes.ROOT,
-      ),
+      page:
+          () => RootView(
+            initialRoute: Routes.CONNECTION,
+            anchorRoute: Routes.ROOT,
+          ),
       participatesInRootNavigator: true,
       preventDuplicates: true,
       middlewares: [EnsureNotAuthentificated()],
@@ -70,6 +71,8 @@ class AppPages {
           // binding: HomeBinding(),
           middlewares: [EnsureAuthentificated()],
           // participatesInRootNavigator: true,
+          transition: Transition.cupertino,
+
           preventDuplicates: true,
           children: [
             GetPage(
@@ -118,25 +121,24 @@ class AppPages {
           ],
         ),
         GetPage(
-            name: _Paths.SETTINGS,
-            page: () => const SettingView(),
-            binding: SettingsBinding(),
-            middlewares: [
-              EnsureAuthentificated()
-            ],
-            children: [
-              GetPage(
-                name: _Paths.EDIT_PROFIL,
-                page: () => const EditProfileView(),
-                participatesInRootNavigator: true,
-              ),
-              GetPage(
-                name: _Paths.CHANGE_PASSWORD,
-                page: () => const ChangePasswordView(),
-                binding: ChangePasswordBinding(),
-                participatesInRootNavigator: true,
-              )
-            ]),
+          name: _Paths.SETTINGS,
+          page: () => const SettingView(),
+          binding: SettingsBinding(),
+          middlewares: [EnsureAuthentificated()],
+          children: [
+            GetPage(
+              name: _Paths.EDIT_PROFIL,
+              page: () => const EditProfileView(),
+              participatesInRootNavigator: true,
+            ),
+            GetPage(
+              name: _Paths.CHANGE_PASSWORD,
+              page: () => const ChangePasswordView(),
+              binding: ChangePasswordBinding(),
+              participatesInRootNavigator: true,
+            ),
+          ],
+        ),
         GetPage(
           name: _Paths.TRANSACTIONS,
           page: () => const TransactionsView(),
@@ -197,10 +199,11 @@ class AppPages {
         ),
         GetPage(
           name: _Paths.CONNECTION,
-          page: () => const RootView(
-            initialRoute: Routes.CONNECTIONHOME,
-            anchorRoute: Routes.CONNECTION,
-          ),
+          page:
+              () => const RootView(
+                initialRoute: Routes.CONNECTIONHOME,
+                anchorRoute: Routes.CONNECTION,
+              ),
           binding: ConnectionBinding(),
           // middlewares: [EnsureNotAuthentificated()],
           // preventDuplicates: true,
@@ -226,21 +229,23 @@ class AppPages {
           ],
         ),
         GetPage(
-            name: _Paths.FORGET_PASSWORD_ROOT,
-            page: () => const RootView(
-                  key: ValueKey("Forget_PAss"),
-                  initialRoute: Routes.FORGET_PASSWORD,
-                  anchorRoute: Routes.FORGET_PASSWORD_ROOT,
-                ),
-            binding: ForgetPasswordBinding(),
-            preventDuplicates: true,
-            children: [
-              GetPage(
-                name: _Paths.FORGET_PASSWORD,
-                page: () => const ForgetPasswordView(),
-                preventDuplicates: true,
+          name: _Paths.FORGET_PASSWORD_ROOT,
+          page:
+              () => const RootView(
+                key: ValueKey("Forget_PAss"),
+                initialRoute: Routes.FORGET_PASSWORD,
+                anchorRoute: Routes.FORGET_PASSWORD_ROOT,
               ),
-            ]),
+          binding: ForgetPasswordBinding(),
+          preventDuplicates: true,
+          children: [
+            GetPage(
+              name: _Paths.FORGET_PASSWORD,
+              page: () => const ForgetPasswordView(),
+              preventDuplicates: true,
+            ),
+          ],
+        ),
       ],
     ),
   ];
@@ -249,19 +254,17 @@ class AppPages {
 class ScaleTransitions extends CustomTransition {
   @override
   Widget buildTransition(
-      BuildContext context,
-      Curve? curve,
-      Alignment? alignment,
-      Animation<double> animation,
-      Animation<double> secondaryAnimation,
-      Widget child) {
+    BuildContext context,
+    Curve? curve,
+    Alignment? alignment,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
     return Align(
       alignment: Alignment.bottomCenter,
       child: ScaleTransition(
-        scale: CurvedAnimation(
-          parent: animation,
-          curve: curve!,
-        ),
+        scale: CurvedAnimation(parent: animation, curve: curve!),
         child: child,
       ),
     );

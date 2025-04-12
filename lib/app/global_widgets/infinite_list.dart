@@ -154,13 +154,11 @@ class InfiniteListController<T> extends GetxController {
   int? total;
   bool get endPage => items.length == total;
   late StreamController<List<T>> _streamController;
-  late NestJSPrismaPagination pagination;
   String search = '';
   late UniqueKey _uniqueKey;
   @override
   onInit() {
     _uniqueKey = UniqueKey();
-    pagination = NestJSPrismaPagination(skip: 0, take: 100);
     _streamController = StreamController<List<T>>();
     _getData();
     super.onInit();

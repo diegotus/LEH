@@ -170,6 +170,8 @@
       "YESTERDAY": "Hier",
       "CUSTOM": "Personnaliser"
     },
+    "NO_TRANSFERT": "Aucun transfert pour le moment",
+    "PREVIOUS_TRANSFERT":"Transfert précédent",
     "clickHere": "Cliquez ici",
     "welcome": "Bienvenue",
     "home": "Accueil",

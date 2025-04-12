@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:haiti_lotri/app/core/utils/app_string.dart';
 import 'package:haiti_lotri/app/global_widgets/input_field.dart';
 import 'package:haiti_lotri/app/modules/transactions/providers/transactions_provider.dart';
 
@@ -47,10 +48,10 @@ class RecentTransfer extends GetWidget<RecentTransferController> {
   @override
   Widget build(BuildContext context) {
     return labelWidget(
-      label: "Previous Transfer",
+      label: AppStrings.LABEL_PREVIOUS_TRANSFERT,
       child: Expanded(
         child: ListBuilderWidget<ContactData>(
-          emptyMsg: "No Transfer Yet",
+          emptyMsg: AppStrings.LABEL_NO_TRANSFERT,
           builder: (context, listItems) {
             return GridView.extent(
               maxCrossAxisExtent: 190,

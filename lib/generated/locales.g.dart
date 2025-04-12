@@ -151,6 +151,8 @@ class LocaleKeys {
   static const LABEL_DATE_FILTER_TODAY = 'LABEL_DATE_FILTER_TODAY';
   static const LABEL_DATE_FILTER_YESTERDAY = 'LABEL_DATE_FILTER_YESTERDAY';
   static const LABEL_DATE_FILTER_CUSTOM = 'LABEL_DATE_FILTER_CUSTOM';
+  static const LABEL_NO_TRANSFERT = 'LABEL_NO_TRANSFERT';
+  static const LABEL_PREVIOUS_TRANSFERT = 'LABEL_PREVIOUS_TRANSFERT';
   static const LABEL_clickHere = 'LABEL_clickHere';
   static const LABEL_welcome = 'LABEL_welcome';
   static const LABEL_home = 'LABEL_home';
@@ -349,6 +351,8 @@ class Locales {
     'LABEL_DATE_FILTER_TODAY': 'Aujourd\'hui',
     'LABEL_DATE_FILTER_YESTERDAY': 'Hier',
     'LABEL_DATE_FILTER_CUSTOM': 'Personnaliser',
+    'LABEL_NO_TRANSFERT': 'Aucun transfert pour le moment',
+    'LABEL_PREVIOUS_TRANSFERT': 'Transfert précédent',
     'LABEL_clickHere': 'Cliquez ici',
     'LABEL_welcome': 'Bienvenue',
     'LABEL_home': 'Accueil',
@@ -523,6 +527,8 @@ class Locales {
     'LABEL_DATE_FILTER_TODAY': 'Jodi a',
     'LABEL_DATE_FILTER_YESTERDAY': 'Yè',
     'LABEL_DATE_FILTER_CUSTOM': 'Pèsonalize',
+    'LABEL_PREVIOUS_TRANSFERT': 'Transfè anvan yo',
+    'LABEL_NO_TRANSFERT': 'Poko gen transfè',
     'LABEL_clickHere': 'Klike la a',
     'LABEL_welcome': 'Byenvini',
     'LABEL_home': 'Akèy',

@@ -241,4 +241,8 @@ class AppStrings {
   static String get option => LocaleKeys.LABEL_option.tr;
   static String Function(String? name) get DRAW =>
       (String? name) => LocaleKeys.LABEL_draw.trParams({'name': name ?? ''});
+
+  static String get LABEL_PREVIOUS_TRANSFERT =>
+      LocaleKeys.LABEL_PREVIOUS_TRANSFERT.tr;
+  static String get LABEL_NO_TRANSFERT => LocaleKeys.LABEL_NO_TRANSFERT.tr;
 }

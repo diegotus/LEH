@@ -11,24 +11,15 @@ import 'package:haiti_lotri/app/global_widgets/app_button.dart';
 import '../core/utils/app_colors.dart' show AppColors;
 import '../core/utils/app_string.dart' show AppStrings;
 import '../core/utils/app_utility.dart' show horizontalSpaceTiny;
-import '../core/utils/dateTime_Utility.dart' show DateTimeUtility;
+import '../core/utils/datetime_utility.dart';
 
 class _DateFilterData {
   String? type;
   DateTime? date;
-  _DateFilterData({
-    this.type,
-    this.date,
-  });
+  _DateFilterData({this.type, this.date});
 
-  _DateFilterData copyWith({
-    String? type,
-    DateTime? date,
-  }) {
-    return _DateFilterData(
-      type: type ?? this.type,
-      date: date ?? this.date,
-    );
+  _DateFilterData copyWith({String? type, DateTime? date}) {
+    return _DateFilterData(type: type ?? this.type, date: date ?? this.date);
   }
 
   Map<String, dynamic> toMap() {
@@ -41,9 +32,10 @@ class _DateFilterData {
   factory _DateFilterData.fromMap(Map<String, dynamic> map) {
     return _DateFilterData(
       type: map['type'] as String,
-      date: map['date'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int)
-          : null,
+      date:
+          map['date'] != null
+              ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int)
+              : null,
     );
   }
 
@@ -69,10 +61,7 @@ class _DateFilterData {
 class DropdownFilterItem<T> {
   T? value;
   String title;
-  DropdownFilterItem({
-    this.value,
-    required this.title,
-  });
+  DropdownFilterItem({this.value, required this.title});
 }
 
 class DateFilter extends StatelessWidget {
@@ -82,87 +71,68 @@ class DateFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ObxValue(
-        (date) => DropdownFilterButton<String>(
-              // isExpanded: true,
-              items: [
-                DropdownMenuItem(
-                    value: null,
-                    child: Text(
-                      AppStrings.ALL,
-                    )),
-                DropdownMenuItem(
-                    value: "Today",
-                    child: Text(
-                      AppStrings.TODAY,
-                    )),
-                DropdownMenuItem(
-                    value: "Yesterday",
-                    child: Text(
-                      AppStrings.YESTERDAY,
-                    )),
-                DropdownMenuItem(
-                  value: "Custom",
-                  child: Text(
-                    AppStrings.CUSTOM,
-                  ),
-                ),
-              ],
-              value: date.value.type,
-              onChanged: (p0) {
-                if (p0 != "Custom") {
-                  if (p0 != date.value.type) {
-                    DateTime? newDate = DateTime.now();
-                    if (p0 == "Yesterday") {
-                      newDate = newDate.subtract(Duration(days: 1));
-                    } else if (p0 == null) {
-                      newDate = null;
-                    }
-                    date.value = date.value.copyWith(type: p0, date: newDate);
-                    onUpdate(newDate);
-                  }
-                } else {
-                  showDatePicker(
-                    context: context,
-                    initialDate: date.value.date,
-                    initialEntryMode: DatePickerEntryMode.calendarOnly,
-                    firstDate: DateTimeUtility.convertDateFromString(
-                      "2025-01-01",
+      (date) => DropdownFilterButton<String>(
+        // isExpanded: true,
+        items: [
+          DropdownMenuItem(value: null, child: Text(AppStrings.ALL)),
+          DropdownMenuItem(value: "Today", child: Text(AppStrings.TODAY)),
+          DropdownMenuItem(
+            value: "Yesterday",
+            child: Text(AppStrings.YESTERDAY),
+          ),
+          DropdownMenuItem(value: "Custom", child: Text(AppStrings.CUSTOM)),
+        ],
+        value: date.value.type,
+        onChanged: (p0) {
+          if (p0 != "Custom") {
+            if (p0 != date.value.type) {
+              DateTime? newDate = DateTime.now();
+              if (p0 == "Yesterday") {
+                newDate = newDate.subtract(Duration(days: 1));
+              } else if (p0 == null) {
+                newDate = null;
+              }
+              date.value = date.value.copyWith(type: p0, date: newDate);
+              onUpdate(newDate);
+            }
+          } else {
+            showDatePicker(
+              context: context,
+              initialDate: date.value.date,
+              initialEntryMode: DatePickerEntryMode.calendarOnly,
+              firstDate: DateTimeUtility.convertDateFromString("2025-01-01"),
+              lastDate: DateTime.now(),
+            ).then((value) {
+              if (value != null && value != date.value.date) {
+                onUpdate(value);
+                date.value = date.value.copyWith(type: p0, date: value);
+              }
+            });
+          }
+        },
+        selectedItemBuilder: (context, items, value) {
+          return [
+            ...items!.map((el) {
+              return Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Kiwoo.calendar_alt, color: AppColors.PRIMARY1),
+                  horizontalSpaceTiny,
+                  if (value != "Custom" || el.value != "Custom")
+                    el
+                  else
+                    DropdownMenuItem(
+                      value: "Custom",
+                      child: Text(date.value.date!.format("dd-MM-yyyy")),
                     ),
-                    lastDate: DateTime.now(),
-                  ).then((value) {
-                    if (value != null && value != date.value.date) {
-                      onUpdate(value);
-                      date.value = date.value.copyWith(type: p0, date: value);
-                    }
-                  });
-                }
-              },
-              selectedItemBuilder: (context, items, value) {
-                return [
-                  ...items!.map((el) {
-                    return Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Kiwoo.calendar_alt,
-                          color: AppColors.PRIMARY1,
-                        ),
-                        horizontalSpaceTiny,
-                        if (value != "Custom" || el.value != "Custom")
-                          el
-                        else
-                          DropdownMenuItem(
-                              value: "Custom",
-                              child: Text(
-                                date.value.date!.format("dd-MM-yyyy"),
-                              ))
-                      ],
-                    );
-                  })
-                ];
-              },
-            ),
-        Rx<_DateFilterData>(_DateFilterData()));
+                ],
+              );
+            }),
+          ];
+        },
+      ),
+      Rx<_DateFilterData>(_DateFilterData()),
+    );
   }
 }
 
@@ -185,11 +155,9 @@ class DropDownFilter<T> extends GetWidget {
       (selected) => DropdownFilterButton<T>(
         // isExpanded: true,
         items: [
-          ...items.map((el) => DropdownMenuItem(
-              value: el.value,
-              child: Text(
-                el.title,
-              ))),
+          ...items.map(
+            (el) => DropdownMenuItem(value: el.value, child: Text(el.title)),
+          ),
         ],
         value: selected.value,
         onChanged: (p0) {
@@ -199,19 +167,20 @@ class DropDownFilter<T> extends GetWidget {
             onUpdate(p0);
           }
         },
-        selectedItemBuilder: icon != null
-            ? (context, items, value) {
-                print("the icons");
-                return [
-                  ...items!.map((el) {
-                    return Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [icon!, horizontalSpaceTiny, el],
-                    );
-                  })
-                ];
-              }
-            : null,
+        selectedItemBuilder:
+            icon != null
+                ? (context, items, value) {
+                  print("the icons");
+                  return [
+                    ...items!.map((el) {
+                      return Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [icon!, horizontalSpaceTiny, el],
+                      );
+                    }),
+                  ];
+                }
+                : null,
       ),
       Rx<T?>(initialValue),
     );

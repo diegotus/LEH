@@ -4,7 +4,7 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 
-import '../../core/utils/dateTime_Utility.dart';
+import '../../core/utils/datetime_utility.dart';
 import '../../core/utils/enums.dart';
 
 class LedgerModel {
@@ -99,8 +99,10 @@ class LedgerModel {
     final bodyLockKey = 'NOTIFICATION_BODY_$type';
     return {
       'title': titleLockKey.trArgs([method]),
-      'body': bodyLockKey
-          .trArgs(["transactionStatus_.adverbe_${status.name}".tr, method]),
+      'body': bodyLockKey.trArgs([
+        "transactionStatus_.adverbe_${status.name}".tr,
+        method,
+      ]),
     };
   }
 

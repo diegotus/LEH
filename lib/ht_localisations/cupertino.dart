@@ -174,11 +174,19 @@ class CupertinoLocalizationHt extends GlobalCupertinoLocalizations {
 
   @override
   // TODO: implement searchWebButtonLabel
-  String get searchWebButtonLabel => throw UnimplementedError();
+  String get searchWebButtonLabel => "Chèche";
 
   @override
   // TODO: implement shareButtonLabel
-  String get shareButtonLabel => throw UnimplementedError();
+  String get shareButtonLabel => "Pataje";
+
+  @override
+  // TODO: implement backButtonLabel
+  String get backButtonLabel => "Retounen";
+
+  @override
+  // TODO: implement cancelButtonLabel
+  String get cancelButtonLabel => "Anile";
 }
 
 class _CupertinoLocalizationHtDelegate

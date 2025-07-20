@@ -31,8 +31,10 @@ class DateTimeUtility {
   String getTimeFromTimeStamp(timeInMillis) {
     //int timeInMillis = 1586348737122;
     var date = DateTime.fromMillisecondsSinceEpoch(timeInMillis);
-    String formattedDate =
-        parse(dateTime: date.toString(), returnFormat: "hh:mm a");
+    String formattedDate = parse(
+      dateTime: date.toString(),
+      returnFormat: "hh:mm a",
+    );
     return formattedDate;
   }
 
@@ -49,15 +51,16 @@ class DateTimeUtility {
     return dt;
   }
 
-  String parseToLocal(
-      {String? dateTime, String? returnFormat, String? parseFormat}) {
+  String parseToLocal({
+    String? dateTime,
+    String? returnFormat,
+    String? parseFormat,
+  }) {
     final dateNow = DateTime.now();
     if (dateTime == null) {
       return "";
     } else if (parseFormat != null) {
-      DateTime formattedTime = DateFormat(
-        parseFormat,
-      ).parse(dateTime);
+      DateTime formattedTime = DateFormat(parseFormat).parse(dateTime);
       formattedTime = formattedTime.add(dateNow.timeZoneOffset);
       Get.log("formattedTime:$formattedTime");
       DateFormat dateFormat = DateFormat(returnFormat);
@@ -88,10 +91,10 @@ class DateTimeUtility {
       String result = m == 0 && s == 0
           ? "$h${"hr"}"
           : m == 0
-              ? "$h${"hr "}$m${"m "}"
-              : s == 0
-                  ? "$h${"hr "}$s${"s"}"
-                  : "$h${"hr "}$m${"m "}$s${"s"}";
+          ? "$h${"hr "}$m${"m "}"
+          : s == 0
+          ? "$h${"hr "}$s${"s"}"
+          : "$h${"hr "}$m${"m "}$s${"s"}";
       return result;
     } else {
       return "$value${"s"}";

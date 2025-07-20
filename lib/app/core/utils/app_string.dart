@@ -29,7 +29,7 @@ class AppStrings {
   static String get PASSWORD_MAX_LENGTH => 'PASSWORD_MAX_LENGTH'.tr;
   static String get APP_NAME => 'APP_NAME'.tr;
   static String get SLOGAN => 'SLOGAN'.tr;
-  static String get WELCOME => 'label_welcome'.tr;
+  static String get WELCOME => 'LABEL_welcome'.tr;
   static String get WELCOME_TO => 'WELCOME_TO'.tr;
   static String get FORGOT_PASSWORD =>
       LocaleKeys.LABEL_BUTTONS_FORGOT_PASSWORD.tr;
@@ -211,7 +211,7 @@ class AppStrings {
   static String get NOT_IMPLEMENTED => LocaleKeys.message_not_implemented.tr;
   static String get language => LocaleKeys.language.tr;
   static String Function(dynamic code) get languageCode =>
-      (code) => 'label_language_$code'.tr;
+      (code) => 'LABEL_language_$code'.tr;
 
   static String get ACCOUNT_BALANCE => LocaleKeys.LABEL_account_balance.tr;
   static String get IN_US_DOLLARS => LocaleKeys.LABEL_in_us_dollars.tr;
